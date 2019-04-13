@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(function(){
+  var front = $('.Front'),
+      others = ['Left2', 'Left', 'Right', 'Right2'];
+  
+  $('.Carousel').on('click', '.Items', function() {
+    var $this = $(this);
+    
+    $.each(others, function(i, cl) {
+      if ($this.hasClass(cl)) {
+        front.removeClass('Front').addClass(cl);
+        front = $this;
+        front.addClass('Front').removeClass(cl);
+      }
+    });
+  });
+});
+
+	</script>
+	<style>
+	body{
+background: #499bea;
+background: -webkit-gradient(linear, 0 0, 0 100%, from(#499bea), to(#207ce5));
+background: -webkit-linear-gradient(#499bea 0%, #207ce5 100%);
+background: -moz-linear-gradient(#499bea 0%, #207ce5 100%);
+background: -o-linear-gradient(#499bea 0%, #207ce5 100%);
+background: linear-gradient(#499bea 0%, #207ce5 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(     startColorstr='#499bea', endColorstr='#207ce5',GradientType=0 );  
+}
+
+html{
+    min-height:100%;
+}
+
+.Container{
+  width:500px;
+  margin:0 auto;
+  position:relative;
+  top:30px;
+  left: 0;
+}
+
+.Items{
+  position:absolute;
+  
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.Carousel{
+  margin: 0;
+  padding: 0;
+}
+
+.Carousel li{
+  list-style:none;
+  width:400px;
+  height:300px;
+  background:#333;
+  border-radius:8px;
+  border:1px solid #000;
+}
+
+/*Let the users know there is something to click.*/
+.Carousel li:hover{
+  cursor:pointer;
+}
+
+/*The front image.*/
+.Front{
+  z-index:3000;
+}
+
+/*The left image.*/
+.Left{
+  left:-200px;
+  z-index:1000;
+  opacity:0.6;
+  -webkit-transform: scale(.75);
+  -moz-transform: scale(.75);
+  transform: scale(.75);
+}
+
+/*The left image.*/
+.Left2{
+  left:-400px;
+  z-index:1000;
+  opacity:0.4;
+  -webkit-transform: scale(.50);
+  -moz-transform: scale(.50);
+  transform: scale(.50);
+}
+
+/*The right image.*/
+.Right{
+  left:200px;
+  z-index:1000;
+  opacity:0.6;
+  -webkit-transform: scale(.75);
+  -moz-transform: scale(.75);
+  transform: scale(.75);
+}
+
+/*The right image.*/
+.Right2{
+  left:400px;
+  z-index:1000;
+  opacity:0.4;
+  -webkit-transform: scale(.50);
+  -moz-transform: scale(.50);
+  transform: scale(.50);
+}
+
+
+.Scale{
+  z-index:1000;
+  -webkit-transform: scale(.75);
+  -moz-transform: scale(.75);
+  transform: scale(.75);
+}
+
+.Scale2{
+  z-index:3000;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  transform: scale(1);
+}
+
+.Items{
+  font-family:oswald;
+  font-size:200px;
+  text-align:center;
+  color:#FFF;
+  text-shadow:#000 0px 1px;
+}
+
+	</style>
+</head>
+<body>
+	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<div class="Container">
+  <ul class="Carousel">
+    <li class="Items Front">1</li>
+    <li class="Items Left">2</li>
+    <li class="Items Left2">3</li> 
+    <li class="Items Right">4</li>
+    <li class="Items Right2">5</li>  
+  </ul>
+</div>
+</body>
+</html>

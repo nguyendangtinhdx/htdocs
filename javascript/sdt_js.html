@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var phone = new Array();
+		phone["dad"] = "0905930711";
+		phone["mother"]="0935348114";
+		phone["brother2"]="0933410976";
+		phone["brother3"]="0905019522";
+		phone["me"]="01263659419";
+		function display(the_phone,entry)
+		{
+			var number = the_phone[entry];
+			window.document.form.box.value = number;
+		}
+	</script>
+	<b>Name: </b> &ensp;&ensp;&ensp;&ensp;<b>Phone: </b>
+	<form name="form">
+		<select onchange="display(phone,this.options[this.selectedIndex].value);">
+			<option value="family">Family</option>
+			<option value="dad">Dad</option>
+			<option value="mother">Mother</option>
+			<option value="brother2">Brother2</option>
+			<option value="brother3">Brother3</option>
+			<option value="me">Me</option>
+		</select>
+	<input type="text" name="box">
+	</form>
+</body>
+</html>

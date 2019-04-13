@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		1 list-inline
+		<ul class="list-inline">
+			<li><a href="home">Home</a></li>
+			<li><a href="menu1">Menu 1</a></li>
+			<li><a href="menu2">Menu 2</a></li>
+			<li><a href="menu3">Menu 3</a></li>
+		</ul>
+
+		2 nav nav-tabs
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="menu">Home</a></li>
+			<li class="dropdown">
+				<a href="#menu" class="dropdown-toggle" data-toggle="dropdown">Menu 1<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="menu">Menu 1-1</a></li>
+					<li><a href="menu">Menu 1-2</a></li>
+					<li><a href="menu">Menu 1-3</a></li>
+				</ul>
+			</li>
+			<li><a href="menu">Menu 2</a></li>
+			<li><a href="menu">Menu 3</a></li>
+		</ul>
+		3 nav nav-pills nav-stacked
+		<ul class="nav nav-pills nav-stacked">
+			<li class="active"><a href="menu">Home</a></li>
+			<li class="dropdown">
+				<a href="#menu" class="dropdown-toggle" data-toggle="dropdown">Menu 1<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="menu">Menu 1-1</a></li>
+					<li><a href="menu">Menu 1-2</a></li>
+					<li><a href="menu">Menu 1-3</a></li>
+				</ul>
+			</li>
+			<li><a href="menu">Menu 2</a></li>
+			<li><a href="menu">Menu 3</a></li>
+		</ul>
+		
+		4 data-toggle="tab"
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+			<li><a href="#menu1" data-toggle="tab">Menu 1</a></li>
+			<li><a href="#menu2" data-toggle="tab">Menu 2</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="home" class="tab-pane fade in active">
+				<h2>Home</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, ad sequi. At iure aspernatur unde repellendus provident? Ipsum nemo quisquam accusamus earum omnis iusto, vel dolorem, minus natus aliquid ipsa.</p>
+			</div>
+			<div id="menu1" class="tab-pane fade">
+				<h2>Menu 1</h2>
+				<p><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, ad sequi. At iure aspernatur unde repellendus provident? Ipsum nemo quisquam accusamus earum omnis iusto, vel dolorem, minus natus aliquid ipsa.</i></p>
+			</div>
+			<div id="menu2" class="tab-pane fade">
+				<h2>Menu 2</h2>
+				<p><b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, ad sequi. At iure aspernatur unde repellendus provident? Ipsum nemo quisquam accusamus earum omnis iusto, vel dolorem, minus natus aliquid ipsa.</b></p>
+			</div>
+		</div>
+
+		5 data-toggle="pill"
+		<ul class="nav nav-pills">
+			<li class="active"><a href="#home1" data-toggle="tab">Home</a></li>
+			<li><a href="#menu11" data-toggle="tab">Menu 1</a></li>
+			<li><a href="#menu22" data-toggle="tab">Menu 2</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="home1" class="tab-pane fade in active">
+				<h2>Home</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, ad sequi. At iure aspernatur unde repellendus provident? Ipsum nemo quisquam accusamus earum omnis iusto, vel dolorem, minus natus aliquid ipsa.</p>
+			</div>
+			<div id="menu11" class="tab-pane fade">
+				<h2>Menu 1</h2>
+				<p><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, ad sequi. At iure aspernatur unde repellendus provident? Ipsum nemo quisquam accusamus earum omnis iusto, vel dolorem, minus natus aliquid ipsa.</i></p>
+			</div>
+			<div id="menu22" class="tab-pane fade">
+				<h2>Menu 2</h2>
+				<p><b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, ad sequi. At iure aspernatur unde repellendus provident? Ipsum nemo quisquam accusamus earum omnis iusto, vel dolorem, minus natus aliquid ipsa.</b></p>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

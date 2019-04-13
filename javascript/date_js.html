@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<header>
+	<meta charset="UTF-8">
+</header>
+<html>
+<body>
+	<p id="1"></p>
+	<p id="2"></p>
+	<p id="3"></p>
+	<p id="4"></p>
+	<p id="5"></p>
+	<script>
+		d = new Date();
+		document.getElementById('1').innerHTML = d.toLocaleString();
+
+		document.getElementById('2').innerHTML = d.toLocaleDateString();
+
+		document.getElementById('3').innerHTML = d.getHours()+" Giờ";
+		
+		day = ["Sunday","Monday","Friday","Wednesday","Thursday","Friday","Saturday"];
+		document.getElementById('4').innerHTML = day[d.getDay()];
+		
+		var x = setInterval(my);
+		function my() {
+			var	 y = new Date();
+			document.getElementById('5').innerHTML = y.toLocaleTimeString();
+		};
+	</script>
+	<button onclick="clearInterval(x)">Stop Time</button>
+<body>
+</html>

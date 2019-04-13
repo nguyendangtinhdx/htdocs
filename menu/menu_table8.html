@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+/* MENU */
+/* ----------------------------------------- */
+
+#header {
+  position: fixed;
+  background: #696f69;
+  height: 31px;
+  width: 100%;
+  z-index: 502;
+  top: 0;
+  left: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  border-bottom:5px solid #b5baaf;
+}
+
+#menu {
+  display: inline;
+  text-align:center;
+  margin:0 auto;
+  position: relative;
+}
+#menu ul {margin:0; padding:0; list-style:none;}
+#menu ul li {
+  height:23px;
+  display: inline-block;
+  margin: 0;
+  padding:8px 20px 0 20px;
+  font-size:14px;
+}
+#menu ul li a:hover {color:#2c3e50;}
+#menu ul li a.active {background: url(../decom/processtip.png) center bottom no-repeat;
+
+		-webkit-transition: opacity .15s ease-in-out;
+        -moz-transition: opacity .15s ease-in-out;
+        -ms-transition: opacity .15s ease-in-out;
+        -o-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+}
+#menu .disabled {background:none !important;}
+#menu ul li a.hoverion {background: url(../decom/processtip.png) center bottom no-repeat !important;}
+
+#menu ul li:last-child { padding-right:20px;}
+
+
+#menu ul li a {
+  color: #FFFFFF;
+ text-decoration: none;
+ text-transform: uppercase;
+  height: 26px;
+  display: block;
+  cursor: pointer;
+}
+
+
+/* SUBMENU submenu */
+#menu li ul  {
+  list-style:none;
+	position: fixed;
+	z-index:99;
+	height: 24px;
+	background: #b5baaf;
+	width: 100%;
+	top: 31px;
+	left: 0;
+	margin:0;
+  padding-bottom:8px;
+	text-align:center;
+}
+
+#menu li ul  {display:none;
+
+}
+
+
+/*SUBMENU*/
+
+#menu ul li:hover > ul{display:inline;}
+
+#menu ul li ul li a:hover {color:#2c3e50;}
+
+
+/* SUBMENU 3rd submenu */
+#menu > li > ul li > ul{   /* Third Level & beyond */
+  height:0;
+    display:none;
+    background:#068;
+}
+
+#menu > li > ul li:hover > ul {height:30px; }
+#menu > li > ul li:hover > ul{display:inline;}
+
+
+
+
+
+
+
+/*just Footer*/
+#footerion {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0; 
+ width:120px;
+  height:30px;
+}
+#footerion a,
+#footerion a:visited {text-decoration:none; color:#2ecc71;}
+	</style>
+</head>
+<body>
+	<div id="header">
+
+<nav id="menu" class="navbar">
+
+
+<ul>
+			
+<li><a href="#thewindfarm" class="active">Unternehmen</a>
+		<ul>
+      
+		<li><a href="#thewindfarm">Menu</a> </li>
+      
+		<li><a href="#thewindfarm">ZAHLENDATEN</a></li>
+      
+		<li><a href="#thewindfarm">UNSERE VERANTWORTUNGUNSERE</a></li>
+		</ul>
+	</li>
+
+
+					
+	<li><a href="#energy" class="">Ausbildung</a>
+  <ul>
+		<li><a href="#thewindfarm">Über uns</a> </li>
+		<li><a href="#thewindfarm">Geschichte</a></li>
+		<li><a href="#thewindfarm">Fakten / Kurzprofil</a></li>
+    <li><a href="#thewindfarm">Verein</a> </li>
+		<li><a href="#thewindfarm">Mitgliedschaft</a></li>
+		<li><a href="#thewindfarm">Ansprechpartner</a></li>
+    <li><a href="#thewindfarm">Partner</a> </li>
+		<li><a href="#thewindfarm">Bilder</a></li>
+		<li><a href="#thewindfarm">Leitbild / Vision</a></li>
+		</ul>
+  </li>
+	<li><a href="#aboutus" class="">Leistungen</a></li>
+  <li><a href="#theregion" class="">EWF / IIW</a></li>
+</ul>
+
+
+</nav>
+</div>
+
+
+<div id="footerion"><a href="http://decom.ba" rel="nofollow">DECOM TEAM</a></div>
+</body>
+</html>

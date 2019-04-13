@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	function openWin() 
+	{
+		//window.open("http://www.facebook.com");// mở tab lớn
+		window.open("http://www.facebook.com","_blank","width= 400, height= 300");// mở tab nhỏ
+	};
+	</script>
+	<input type="button" onclick="openWin()" value ="Open WinDow">
+	<br><br>
+
+	<script>
+	var my;
+		function openWin() 
+		{
+			my = window.open("http://www.youtube.com","_blank","width= 400, height= 300");
+		};
+		function closeWin()
+		{
+			my.close();
+		};
+	</script>
+	<input type="button" onclick="openWin()" value="Open">
+	<input type="button" onclick="closeWin()" value="Close">
+	<br><br>
+
+	<script>
+	function scrollWindow()
+	{
+		window.scrollTo(0,1000);
+	};
+	</script>
+	<input type="button" onclick="scrollWindow()" value="Scroll">
+	<br><br>
+	<script>
+		function goForward() {
+			window.history.forward()
+		}
+	</script>
+	<script>
+		function goBack() {
+    		window.history.back()
+		}
+	</script>
+	<input type="button" value="Forward" onclick="goForward()">
+	<input type="button" value="Back" onclick="goBack()">
+</body>
+</html>

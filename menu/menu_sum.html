@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body, ul, li {
+ font-size:14px;
+ font-family:Arial, Helvetica, sans-serif;
+ line-height:21px;
+ text-align:left;
+}
+
+/* Navigation Bar */
+
+#menu {
+ list-style:none;
+ width:940px;
+ margin:30px auto 0px auto;
+ height:43px;
+ padding:0px 20px 0px 20px;
+
+ /* Rounded Corners */
+
+ -moz-border-radius: 10px;
+ -webkit-border-radius: 10px;
+ border-radius: 10px;
+
+ /* Background color and gradients */
+
+ background: #014464;
+ background: -moz-linear-gradient(top, #0272a7, #013953);
+ background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0272a7), to(#013953));
+
+ /* Borders */
+
+ border: 1px solid #002232;
+
+ -moz-box-shadow:inset 0px 0px 1px #edf9ff;
+ -webkit-box-shadow:inset 0px 0px 1px #edf9ff;
+ box-shadow:inset 0px 0px 1px #edf9ff;
+}
+
+#menu li {
+ float:left;
+ text-align:center;
+ position:relative;
+ padding: 4px 10px 4px 10px;
+ margin-right:30px;
+ margin-top:7px;
+ border:none;
+}
+
+#menu li:hover {
+ border: 1px solid #777777;
+ padding: 4px 9px 4px 9px;
+
+ /* Background color and gradients */
+
+ background: #F4F4F4;
+ background: -moz-linear-gradient(top, #F4F4F4, #EEEEEE);
+ background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#EEEEEE));
+
+ /* Rounded corners */
+
+ -moz-border-radius: 5px 5px 0px 0px;
+ -webkit-border-radius: 5px 5px 0px 0px;
+ border-radius: 5px 5px 0px 0px;
+}
+
+#menu li a {
+ font-family:Arial, Helvetica, sans-serif;
+ font-size:14px;
+ color: #EEEEEE;
+ display:block;
+ outline:0;
+ text-decoration:none;
+ text-shadow: 1px 1px 1px #000;
+}
+
+#menu li:hover a {
+ color:#161616;
+ text-shadow: 1px 1px 1px #FFFFFF;
+}
+#menu li .drop {
+ padding-right:21px;
+ background:url("http://2.bp.blogspot.com/-g423ObKCf1E/T_sb62gWAhI/AAAAAAAAGGQ/Hf3m6ubCTmY/s1600/drop.png") no-repeat right 8px;
+}
+#menu li:hover .drop {
+ background:url("http://2.bp.blogspot.com/-g423ObKCf1E/T_sb62gWAhI/AAAAAAAAGGQ/Hf3m6ubCTmY/s1600/drop.png") no-repeat right 7px;
+}
+
+/* Drop Down */
+
+.dropdown_1column,
+.dropdown_2columns,
+.dropdown_3columns,
+.dropdown_4columns,
+.dropdown_5columns {
+ margin:4px auto;
+ float:left;
+ position:absolute !important;
+ left:-999em; /* Hides the drop down */
+ text-align:left;
+ padding:10px 5px 10px 5px;
+ border:1px solid #777777;
+ border-top:none;
+
+ /* Gradient background */
+ background:#F4F4F4;
+ background: -moz-linear-gradient(top, #EEEEEE, #BBBBBB);
+ background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEEEEE), to(#BBBBBB));
+
+ /* Rounded Corners */
+ -moz-border-radius: 0px 5px 5px 5px;
+ -webkit-border-radius: 0px 5px 5px 5px;
+ border-radius: 0px 5px 5px 5px;
+}
+
+.dropdown_1column {width: 140px;}
+.dropdown_2columns {width: 280px;}
+.dropdown_3columns {width: 420px;}
+.dropdown_4columns {width: 560px;}
+.dropdown_5columns {width: 700px;}
+
+#menu li:hover .dropdown_1column,
+#menu li:hover .dropdown_2columns,
+#menu li:hover .dropdown_3columns,
+#menu li:hover .dropdown_4columns,
+#menu li:hover .dropdown_5columns {
+ left:-1px ;
+z-index:444 !important;
+    top:auto;
+}
+
+/* Columns */
+
+.col_1,
+.col_2,
+.col_3,
+.col_4,
+.col_5 {
+ display:inline;
+ float: left;
+ position: relative;
+ margin-left: 5px;
+ margin-right: 5px;
+}
+.col_1 {width:130px;}
+.col_2 {width:270px;}
+.col_3 {width:410px;}
+.col_4 {width:550px;}
+.col_5 {width:690px;}
+
+/* Right alignment */
+
+#menu .menu_right {
+ float:right !important;
+ margin-right:0px;
+}
+#menu li .align_right {
+ /* Rounded Corners */
+ -moz-border-radius: 5px 0px 5px 5px;
+    -webkit-border-radius: 5px 0px 5px 5px;
+    border-radius: 5px 0px 5px 5px;
+}
+#menu li:hover .align_right {
+ left:auto;
+ right:-1px;
+ top:auto;
+}
+
+/* Drop Down Content Stylings */
+
+#menu p, #menu h2, #menu h3, #menu div li {
+ font-family:Arial, Helvetica, sans-serif;
+ line-height:21px;
+ font-size:12px;
+ text-align:left;
+ text-shadow: 1px 1px 1px #FFFFFF;
+}
+#menu h2 {
+ font-size:21px;
+ font-weight:400;
+ letter-spacing:-1px;
+ margin:7px 0 14px 0;
+ padding-bottom:14px;
+ border-bottom:1px solid #666666;
+}
+#menu h3 {
+ font-size:14px;
+ margin:7px 0 14px 0;
+ padding-bottom:7px;
+ border-bottom:1px solid #888888;
+}
+#menu p {
+ line-height:18px;
+ margin:0 0 10px 0;
+}
+
+#menu li:hover div a {
+ font-size:12px;
+ color:#015b86;
+}
+#menu li:hover div a:hover {
+ color:#029feb;
+}
+.strong {
+ font-weight:bold;
+}
+.italic {
+ font-style:italic;
+}
+.imgshadow {
+ background:#FFFFFF;
+ padding:4px;
+ border:1px solid #777777;
+ margin-top:5px;
+ -moz-box-shadow:0px 0px 5px #666666;
+ -webkit-box-shadow:0px 0px 5px #666666;
+ box-shadow:0px 0px 5px #666666;
+}
+.img_left { /* Image sticks to the left */
+ width:auto;
+ float:left;
+ margin:5px 15px 5px 5px;
+}
+#menu li .black_box {
+ background-color:#333333;
+ color: #eeeeee;
+ text-shadow: 1px 1px 1px #000;
+ padding:4px 6px 4px 6px;
+
+ /* Rounded Corners */
+ -moz-border-radius: 5px;
+ -webkit-border-radius: 5px;
+ border-radius: 5px;
+
+ /* Shadow */
+ -webkit-box-shadow:inset 0 0 3px #000000;
+ -moz-box-shadow:inset 0 0 3px #000000;
+ box-shadow:inset 0 0 3px #000000;
+}
+#menu li ul {
+ list-style:none;
+ padding:0;
+ margin:0 0 12px 0;
+}
+#menu li ul li {
+ font-size:12px;
+ line-height:24px;
+ position:relative;
+ text-shadow: 1px 1px 1px #ffffff;
+ padding:0;
+ margin:0;
+ float:none;
+ text-align:left;
+ width:130px;
+}
+#menu li ul li:hover {
+ background:none;
+ border:none;
+ padding:0;
+ margin:0;
+}
+#menu li .greybox li {
+ background:#F4F4F4;
+ border:1px solid #bbbbbb;
+ margin:0px 0px 4px 0px;
+ padding:4px 6px 4px 6px;
+ width:116px;
+
+ /* Rounded Corners */
+ -moz-border-radius: 5px;
+ -webkit-border-radius: 5px;
+ border-radius: 5px;
+}
+#menu li .greybox li:hover {
+ background:#ffffff;
+ border:1px solid #aaaaaa;
+ padding:4px 6px 4px 6px;
+ margin:0px 0px 4px 0px;
+}
+
+.tabs-inner .widget li a {
+padding: 1px ;
+display:block !important;
+border: 1px solid  transparent !important ;
+}
+
+
+	</style>
+</head>
+<body>
+	<div id="menu">
+<li><a href="#" class="drop">Home</a><!-- Begin Home Item -->
+<div class="dropdown_2columns"><!-- Begin 2 columns container -->
+<div class="col_2">
+<h2>Welcome !</h2>
+</div>
+<div class="col_2">
+<p>Chào đón bạn đến đây ! Đây là một ví dụ điển hình về khả năng tùy biến tuyệt vời của CSS về Mega drop menu.</p>             
+<p>Phần này bao gồm một danh sách như tiêu đề, danh sách,.v.v...</p>             
+</div>
+<div class="col_2">
+<h2>Trình duyệt hỗ trợ</h2>
+</div>
+<div class="col_1">
+<img src="http://1.bp.blogspot.com/-ghzmqWV-JVc/T_sb6dIHydI/AAAAAAAAGGI/KVKV6tgO-fM/s1600/browsers.png" width="125" height="48" alt="" />
+</div>
+<div class="col_1">
+<p>Menu này đã được thủ nghiệp và chạy tốt trên các trình duyệt phổ biến hiện nay.</p>
+</div>
+</div><!-- End 2 columns container -->
+</li><!-- End Home Item -->
+<li><a href="#" class="drop">5 Columns</a><!-- Begin 5 columns Item -->
+<div class="dropdown_5columns"><!-- Begin 5 columns container -->
+<div class="col_5">
+<h2>Đây là một ví dụ với 1 hộp lớn có 5 cột</h2>
+</div>
+<div class="col_1">
+<p class="black_box">Đây là hộp văn bản màu xám tối. </p>
+</div>
+<div class="col_1">
+<p>Đây là một văn bản minh họa hãy thay nó bằng văn bản của bạn.</p>
+</div>
+<div class="col_1">
+<p class="italic">Đây là một mẫu của một văn bản in nghiêng.</p>
+</div>
+<div class="col_1">
+<p>Mọi thắc mắc hãy comment tại blog http://namkna.blogspot.com/. Những comment hỏi đáp nhớ ghi rõ URL của menu demo này</p>
+</div>
+<div class="col_1">
+<p class="strong">đây là một mẫu của một văn bản in đậm.</p>
+</div>
+<div class="col_5">
+<h2>Đây là nội dung với hình ảnh phụ</h2>
+</div>
+<div class="col_3">
+<img src="http://3.bp.blogspot.com/-5q7uMlFeK98/UMP1225QK8I/AAAAAAAADz0/A314XSOSuMA/s200/how-to-create-drop-menu-1-hover-with-css3.png" width="70" height="70" class="img_left imgshadow" alt="" />
+<p>Hiện nay menu là thành phàn quan trọng của blogger/website. Blog của bạn sẽ chuyên nghiệp hơn. Có rất nhiều cách làm thanh menu này như dùng javascript dùng jquery hay CSS. Mình dã giới thiệu rất nhiều loại menu bạn có search trên google với <a href="http://namkna.blogspot.com/2012/10/create-drop-menu-with-css3-1-cap-style8.html">Read more...</a></p>
+<img src="http://1.bp.blogspot.com/-ucbC7xbdc6E/UJ5lwLGIXJI/AAAAAAAAAPQ/04bh69hZ6pg/s1600/menu-ngang-voi-hieu-ung-thay-doi-khi-de-chuot-namkna-blogspot-com.png" width="70" height="70" class="img_left imgshadow" alt="" />
+<p>Theo yêu cầu bạn chjpsea namkna sẽ hướng dẫn các bạn cách tạo một menu ngang với hiệu ứng thay đổi khi dê chuột qua mỗi một sub menu Thêm nữa menu này chỉ hiện ra khi dê chuột lên đầu trang.<a href="http://namkna.blogspot.com/2012/11/menu-truot-voi-css3-cho-blogspot.html">Read more...</a></p>
+</div>
+<div class="col_2">
+<p class="black_box">Đây là một hộp đen, bạn có thể sử dụng nó để viết một số nội dung thông báo, nhắc nhở hay hướng dẫn người đọc (This is a black box, you can use it to highligh some content)</p>
+</div>
+</div><!-- End 5 columns container -->
+</li><!-- End 5 columns Item -->
+<li><a href="#" class="drop">4 Columns</a><!-- Begin 4 columns Item -->
+<div class="dropdown_4columns"><!-- Begin 4 columns container -->
+<div class="col_4">
+<h2>Đây là một tiêu đề [Namkna's Blog]</h2>
+</div>
+<div class="col_1">
+<h3>Some Links</h3>
+<ul>
+<li><a href="#">ThemeForest</a></li>
+<li><a href="#">GraphicRiver</a></li>
+<li><a href="#">ActiveDen</a></li>
+<li><a href="#">VideoHive</a></li>
+<li><a href="#">3DOcean</a></li>
+</ul>   
+</div>
+<div class="col_1">
+<h3>Useful Links</h3>
+<ul>
+<li><a href="#">NetTuts</a></li>
+<li><a href="#">VectorTuts</a></li>
+<li><a href="#">PsdTuts</a></li>
+<li><a href="#">PhotoTuts</a></li>
+<li><a href="#">ActiveTuts</a></li>
+</ul>   
+</div>
+<div class="col_1">
+<h3>Other Stuff</h3>
+<ul>
+<li><a href="#">FreelanceSwitch</a></li>
+<li><a href="#">Creattica</a></li>
+<li><a href="#">WorkAwesome</a></li>
+<li><a href="#">Mac Apps</a></li>
+<li><a href="#">Web Apps</a></li>
+</ul>   
+</div>
+<div class="col_1">
+<h3>Misc</h3>
+<ul>
+<li><a href="#">Design</a></li>
+<li><a href="#">Logo</a></li>
+<li><a href="#">Flash</a></li>
+<li><a href="#">Illustration</a></li>
+<li><a href="#">More...</a></li>
+</ul>   
+</div>
+</div><!-- End 4 columns container -->
+</li><!-- End 4 columns Item -->
+<li class="menu_right"><a href="#" class="drop">1 Column</a>
+<div class="dropdown_1column align_right">
+<div class="col_1">
+<ul class="simple">
+<li><a href="#">FreelanceSwitch</a></li>
+<li><a href="#">Creattica</a></li>
+<li><a href="#">WorkAwesome</a></li>
+<li><a href="#">Mac Apps</a></li>
+<li><a href="#">Web Apps</a></li>
+<li><a href="#">NetTuts</a></li>
+<li><a href="#">VectorTuts</a></li>
+<li><a href="#">PsdTuts</a></li>
+<li><a href="#">PhotoTuts</a></li>
+<li><a href="#">ActiveTuts</a></li>
+<li><a href="#">Design</a></li>
+<li><a href="#">Logo</a></li>
+<li><a href="#">Flash</a></li>
+<li><a href="#">Illustration</a></li>
+<li><a href="#">More...</a></li>
+</ul>   
+</div>
+</div>
+</li>
+<li class="menu_right"><a href="#" class="drop">3 columns</a><!-- Begin 3 columns Item -->
+<div class="dropdown_3columns align_right"><!-- Begin 3 columns container -->
+<div class="col_3">
+<h2>Danh sách trong hộp</h2>
+</div>
+<div class="col_1">
+<ul class="greybox">
+<li><a href="#">FreelanceSwitch</a></li>
+<li><a href="#">Creattica</a></li>
+<li><a href="#">WorkAwesome</a></li>
+<li><a href="#">Mac Apps</a></li>
+<li><a href="#">Web Apps</a></li>
+</ul>   
+</div>
+<div class="col_1">
+<ul class="greybox">
+<li><a href="#">ThemeForest</a></li>
+<li><a href="#">GraphicRiver</a></li>
+<li><a href="#">ActiveDen</a></li>
+<li><a href="#">VideoHive</a></li>
+<li><a href="#">3DOcean</a></li>
+</ul>   
+</div>
+<div class="col_1">
+<ul class="greybox">
+<li><a href="#">Design</a></li>
+<li><a href="#">Logo</a></li>
+<li><a href="#">Flash</a></li>
+<li><a href="#">Illustration</a></li>
+<li><a href="#">More...</a></li>
+</ul>   
+</div>
+<div class="col_3">
+<h2>Đây là một số hình ảnh minh họa</h2>
+</div>
+<div class="col_3">
+<img src="http://4.bp.blogspot.com/-txv5Gfih2y0/T2gcvYo45pI/AAAAAAAAEOY/LW4GjrQbsy8/s1600/menu%2Bngang-xo-doc-mot-cap-cho-blogspot-namkna-ngoctra.png" width="70" height="70" class="img_left imgshadow" alt="" />
+<p>Namkna đã viết rất nhiều bài viết tạo drop menu cho web, blog... Hôm nay namkna sẽ giới thiệu cho các bạn một mẫu menu Drop mới dành cho các bạn có nhu cầu. Đặc điểm của Menu này là chỉ xổ 1 cấp...<a href="http://namkna.blogspot.com/2012/03/menu-ngang-xo-doc-mot-cap-cho-blogspot.html">Đọc thêm...</a></p>
+<img src="http://2.bp.blogspot.com/-2InTP6YD26M/UMHUMo3Qx4I/AAAAAAAADws/w6mz3xBsHxM/s1600/create-drop-menu-by-css-for-blogger_blogspot.png" width="70" height="70" class="img_left imgshadow" alt="" />
+<p>Namkna đã viết rất nhiều bài viết tạo drop menu cho web, blog... nhưng tất cả đều là code có sẵn mà chưa hướng dẫn chi tiết về cách làm nên hôm nay mình viết hướng dẫn này nhằm hỗ trợ mọi người tự thiết kế ra drop menu cho riêng mình. Bài viết này mình sẽ hướng dẫn tạo drop menu từ 1 đến 3 cấp... <a href="http://namkna.blogspot.com/2012/08/create-drop-menu-by-css-for-blogger.html">Đọc thêm...</a></p>
+</div>
+</div><!-- End 3 columns container -->
+</li><!-- End 3 columns Item -->
+</div>
+
+</body>
+</html>

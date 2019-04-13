@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../bootstrap/js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			// hide then alert
+			$("#button1").click(function(){
+				$("#p1").hide("slow",function(){
+					alert("The paragraph is not hidden ");
+				});
+			});
+			// alert then hide
+			$("#button2").click(function(){
+				$("#p2").hide(1000);
+				alert("The paragraph is not hidden ");
+			});
+		});
+		
+		$(document).ready(function(){
+			$("#button3").click(function(){
+				$("#p3").css("color","red").slideUp(2000).slideDown(2000);
+			});
+		});
+	</script>
+</head>
+	<button id="button1">Hide 1</button>
+	<p id="p1">Nguyễn Đăng Tỉnh</p>
+	<button id="button2">Hide 2</button>
+	<p id="p2">Nguyễn Đăng Tỉnh</p>
+
+	<button id="button3">Hide 2</button>
+	<p id="p3">Nguyễn Đăng Tỉnh</p>
+</body>
+</html>
+<body>

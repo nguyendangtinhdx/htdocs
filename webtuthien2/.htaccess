@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteRule "index.html" "index.php"
+
+RewriteRule "^Tin/(.*)/(.*)-(.*).html$" "index.php?p=chitiettin&TieuDe_KhongDau=$1&TieuDe_KhongDau=$2&idTin=$3"
+
+RewriteRule "^The-Loai/(.*)/(.*)-(.*).html$" "index.php?p=tintrongloai&Ten_KhongDau=$1&idLT=$2&trang=$3"
+
+RewriteRule "^Video/(.*)-(.*).html$" "index.php?p=video&TieuDe_KhongDau=$1&idVideo=$2"
+
+

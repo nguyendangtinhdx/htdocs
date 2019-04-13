@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			background-color: #efefef;
+			font-family: arial;
+			font-size: 14px;
+			font-weight: normal;
+		}
+
+		.container {
+			width: 50%;
+			margin: 50px auto;
+			text-align: center;
+		}
+
+		.btn {
+			position: relative;
+			display: inline-block;
+			padding: 6px 12px;
+			margin-bottom: 0;
+			line-height: 1.428571429;
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: middle;
+			cursor: pointer;
+			background-image: none;
+			border: 1px solid transparent;
+			border-radius: 4px;
+			background-color: #d9534f;
+			color: white;
+			outline: 0;
+			text-decoration: none;
+			transition: all .1s linear;
+		}
+		.btn:hover {
+			background-color: #d43f3a;
+		}
+
+		.btn-next {
+			border-radius: 4px 0 0 4px;
+			margin-right: 18px;
+			transition: all .1s linear;
+		}
+		.btn-next:hover::after {
+			border-left: 17px solid #d43f3a;
+		}
+		.btn-next::after {
+			content: "";
+			position: absolute;
+			top: -1px;
+			right: -18px;
+			width: 0;
+			height: 0;
+			border-top: 17px solid transparent;
+			border-bottom: 17px solid transparent;
+			border-left: 17px solid #d9534f;
+		}
+
+		.btn-prev {
+			border-radius: 0 4px 4px 0;
+			margin-left: 18px;
+			transition: all .1s linear;
+		}
+		.btn-prev:hover::after {
+			border-right: 17px solid #d43f3a;
+		}
+		.btn-prev::after {
+			content: "";
+			position: absolute;
+			top: -1px;
+			left: -18px;
+			width: 0;
+			height: 0;
+			border-bottom: 17px solid transparent;
+			border-top: 17px solid transparent;
+			border-right: 17px solid #d9534f;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="#" class="btn btn-prev">Prev</a>
+		<a href="#" class="btn">1</a>
+		<a href="#" class="btn">2</a>
+		<a href="#" class="btn">3</a>
+		<a href="#" class="btn">4</a>
+		<a href="#" class="btn">5</a>
+		<a href="#" class="btn btn-next">Next</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chay Thu</title>
+</head>
+<style>
+table,th,td{border: 1px solid blue;
+		 border-collapse:collapse ;
+}
+td,th{padding: 5px}
+th{text-align: left}
+tr:nth-child(even){background: red;}   /*màu xen kẻ*/
+p:first-child{font-family:cursive}  /*dòng đầu trong các thẻ <p>*/
+p:nth-child(3){color: #cc0000}    /*dòng thứ 3 trong các thẻ <p>*/
+<!-- comment table {border-spacing: 15px;}-->
+table#t01{
+		width: 50%;
+		background-color: lightblue;
+}
+table#t01 th{
+			background-color: green;
+			color: yellow;
+}
+</style>
+<body>
+<table style="width: 50%">
+	<caption>Home</caption>
+	<tr>
+		<th>STT</th>
+		<!--comment<th colspan="2">Name</th>-->
+		<th>Name</th>
+		<th>Age</th>
+	</tr>
+	<tr>
+		<td rowspan="2">1</td>
+		<td>Nguyen Dang Tinh</td>
+		<td>18</td>
+	</tr>
+	<tr>
+		<td>Nguyen Dang Tan</td>
+		<td>34</td>
+	</tr>
+	</table>
+<br>
+<table id ="t01">
+	<caption>Gia Dinh</caption>
+	<tr>
+		<th>STT</th>
+		<!--comment<th colspan="2">Name</th>-->
+		<th colspan="2">Name</th>
+		<th>Age</th>
+	</tr>
+	<tr>
+		<th rowspan="2">1</th>
+		<td>Nguyen Dang Tinh</td>
+		<td>Nguyen Dang Loi</td>
+		<td>18</td>
+	</tr>
+	<tr>
+		<td>Nguyen Dang Tan</td>
+		<td>Nguyen Dang Khoa</td>
+		<td>34</td>
+	</tr>
+	</table>
+</body>
+</html>

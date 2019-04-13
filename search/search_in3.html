@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+  "use strict"
+  var style = ""
+    + "<style>" + ".filter .hidden {" + "opacity: 0;" + "}" + 
+      ".filter > * {" + "position: absolute;" + 
+      "transition: .5s ease-in-out;"  +  "}" + "</style>";
+  document.head.insertAdjacentHTML("beforeend", style);
+  
+  var list = document.querySelectorAll(".filter > *");
+  var h = list[0].offsetHeight, arr = [], i = -1, l = list.length;
+  var anim = "transform" in document.body.style ? "transform" : "webkitTransform";
+  
+  while (++i < l) {
+    arr.push(list[i].textContent.trim());
+    list[i].style[anim] = "translateY(" + i*h +"px)";
+  }
+  
+    document.querySelector("input.filter").addEventListener("input", function() {
+      var rgx = new RegExp(this.value, "i");
+          arr.forEach(function(el, idx) {
+            if (rgx.test(el)) list[idx].classList.remove("hidden");
+            else list[idx].classList.add("hidden");
+            var i = -1;
+            var p = 0;
+            while (++i < l) {
+              if (list[i].className != "hidden")
+                list[i].style[anim] = "translateY(" + p++ * h + "px)";
+            }
+        })
+    })
+})
+	</script>
+	<style>
+	@import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
+  font: 14px 'Titillium Web', sans-serif;
+  letter-spacing: 2px;
+  background: -webkit-linear-gradient(320deg, #543958 0%, #a06060 25%, #bea27b 50%, #9ca898 75%, #506d8d 100%) no-repeat center center fixed;
+  background: linear-gradient(130deg, #543958 0%, #a06060 25%, #bea27b 50%, #9ca898 75%, #506d8d 100%) no-repeat center center fixed;
+}
+
+section {
+  -webkit-align-self: top;
+      -ms-flex-item-align: top;
+          align-self: top;
+  margin: 150px 0;
+  display: block;
+  position: relative;
+  width: 380px;
+  max-height: 550px;
+  color: rgba(244, 230, 254, 0.7);
+  background: rgba(199, 131, 252, 0.05);
+  border-top: 15px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 40px solid rgba(0, 0, 0, 0.06);
+  -webkit-filter: drop-shadow(26px 26px 20px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(26px 26px 20px rgba(0, 0, 0, 0.5));
+  box-shadow: -4vh -6vh 16vh -6vh rgba(0, 0, 0, 0.2), -4vh 6vh 16vh -6vh rgba(0, 0, 0, 0.15);
+}
+section header {
+  padding: 1em 1.4em;
+  background: rgba(0, 0, 0, 0.12);
+  margin: 0 auto 0 auto;
+}
+section header h4 {
+  height: 3rem;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  line-height: 1.1rem;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 1.1rem;
+}
+section header h4 span {
+  padding: 1.2rem;
+}
+section header h4 span.c {
+  padding: .5rem;
+  background: rgba(0, 0, 0, 0.045);
+  border-bottom: 2px solid rgba(233, 205, 254, 0.8);
+}
+section header input[type="search"] {
+  margin: 0 .5rem;
+  padding: .5rem;
+  width: 95%;
+  color: rgba(244, 230, 254, 0.8);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(210, 158, 250, 0.5);
+  font-size: 1.15rem;
+  -webkit-transition: translateX 6s ease-in;
+  transition: translateX 6s ease-in;
+}
+section header input[type="search"]:focus {
+  outline: none;
+  border: 1px solid rgba(210, 158, 250, 0.5);
+}
+section header input[type="search"]:focus::-webkit-input-placeholder {
+  -webkit-transform: translateX(70%);
+          transform: translateX(70%);
+  opacity: 0;
+}
+section header input[type="search"]:focus::-webkit-input-placeholder:-moz-placeholder {
+  -webkit-transform: translateX(70%);
+          transform: translateX(70%);
+  opacity: 0;
+}
+section header input[type="search"]:focus::-webkit-input-placeholder::-moz-placeholder {
+  -webkit-transform: translateX(70%);
+          transform: translateX(70%);
+  opacity: 0;
+}
+section header input[type="search"]:focus::-webkit-input-placeholder:-ms-input-placeholder {
+  -webkit-transform: translateX(70%);
+          transform: translateX(70%);
+  opacity: 0;
+}
+section header input[type="search"]:focus::-webkit-input-placeholder::-ms-input-placeholder {
+  -webkit-transform: translateX(70%);
+          transform: translateX(70%);
+  opacity: 0;
+}
+section header input[type="search"]::-webkit-input-placeholder {
+  color: rgba(233, 205, 254, 0.8);
+  -webkit-transition: ease-in 0.3s;
+  transition: ease-in 0.3s;
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+}
+section header input[type="search"]:-moz-placeholder {
+  color: rgba(233, 205, 254, 0.8);
+  -webkit-transition: ease-in 0.3s;
+  transition: ease-in 0.3s;
+  transform-origin: 0 50%;
+}
+section header input[type="search"]::-moz-placeholder {
+  color: rgba(233, 205, 254, 0.8);
+  -webkit-transition: ease-in 0.3s;
+  transition: ease-in 0.3s;
+  transform-origin: 0 50%;
+}
+section header input[type="search"]:-ms-input-placeholder {
+  color: rgba(233, 205, 254, 0.8);
+  -webkit-transition: ease-in 0.3s;
+  transition: ease-in 0.3s;
+  transform-origin: 0 50%;
+}
+section header input[type="search"]::-ms-input-placeholder {
+  color: rgba(233, 205, 254, 0.8);
+  -webkit-transition: ease-in 0.3s;
+  transition: ease-in 0.3s;
+  transform-origin: 0 50%;
+}
+section .filter {
+  padding: 1rem 0;
+}
+section .filter li {
+  width: 100%;
+  padding: 1rem 0;
+  line-height: 1.5rem;
+  -webkit-filter: drop-shadow(26px 26px 20px rgba(0, 0, 0, 0.7));
+          filter: drop-shadow(26px 26px 20px rgba(0, 0, 0, 0.7));
+  list-style-type: none;
+  text-align: left;
+}
+section .filter li span {
+  font-size: 1.15rem;
+  padding: 1.8rem;
+}
+section .filter li:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.03);
+  margin: 0;
+}
+
+	</style>
+</head>
+<body>
+	<section>
+<header>
+  <h4>
+      <span>Log</span>
+      <span>Favorites</span>
+      <span class ='c'>Contacts</span>
+  </h4>
+  <input type = 'search' placeholder="🔍 Search" autofocus class="filter">
+</header>
+<ul class="filter">
+  <li><span class='img'>👦</span><span class='name'>John</span> <span class='ph'>609-579-1254</span></li>
+  <li><span class='img'>👧</span><span class='name'>Diane</span> <span class='ph'>908-240-2297</span></li>
+  <li><span class='img'>👦</span><span class='name'>Mike</span> <span class='ph'>303-539-1425</span></li>
+  <li><span class='img'>👧</span><span class='name'>Mary</span> <span class='ph'>424-308-9976</span></li>
+  <li><span class='img'>👦</span><span class='name'>Adam</span> <span class='ph'>509-998-0025</span></li>
+  <li><span class='img'>👦</span><span class='name'>Billy</span> <span class='ph'>609-898-3325</span></li>
+</ul>
+</section>
+
+</body>
+</html>

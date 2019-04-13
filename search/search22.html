@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(function(){
+  $(".s-w .s-b").on("click", function(e){
+    e.preventDefault();
+    $("html").addClass("search-exp");
+    $(".s-i").focus();
+  });
+  $(".s-i").blur(function(){
+    // Do not hide input if contains text
+    if($(".s-i").val() === ""){
+      $("html").removeClass("search-exp");
+    }
+  });
+});
+	</script>
+	<style>
+	@import url(http://fonts.googleapis.com/css?family=Tangerine);
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: tomato;
+}
+
+.txtc {
+  text-align: center;
+}
+
+h1 {
+  font: bold 5em/1em 'Tangerine', cursive;
+}
+
+.head {
+  background: #333;
+  height: 50px;
+}
+.head h1 {
+  float: left;
+  margin: 0;
+  font-size: 30px;
+  padding-left: 1em;
+  color: white;
+  line-height: 50px;
+}
+
+.s-f {
+  float: right;
+  height: 50px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+.s-f .s-w {
+  display: block;
+  background: inherit;
+  overflow: hidden;
+  height: 30px;
+  border-radius: 5px;
+}
+.s-f .s-w .s-b,
+.s-f .s-w .s-i {
+  height: 30px;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  outline: none;
+}
+.s-f .s-w .s-b {
+  width: 30px;
+  height: 30px;
+  transition: all .6s ease;
+  background: inherit;
+  color: #eee;
+}
+.search-exp .s-f .s-w .s-b {
+  background: #eee;
+  color: #c9c9c9;
+}
+.s-f .s-w .s-i {
+  transition: width .6s ease;
+  width: 0;
+  background: #eee;
+  color: #666;
+}
+.search-exp .s-f .s-w .s-i {
+  width: 150px;
+}
+
+.main {
+  margin: 0 2em;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.main h1 {
+  margin-bottom: 0;
+}
+.main p {
+  line-height: 1.7em;
+}
+
+	</style>
+</head>
+<body>
+	<header class="head">
+  <h1>My page</h1>
+  <form class="s-f">
+    <label for="search" class="s-w">
+      <button class="s-b"><i class="fa fa-search"></i></button><!-- Fix the break-row-bug
+      --><input type="text" id="search" class="s-i" />
+    </label>
+  </form>
+</header>
+<div class="main">
+  <h1 class="txtc">Try to search</h1>
+  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>  
+</div>
+</body>
+</html>

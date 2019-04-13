@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// giữ thanh nav cố định bên trái
+		// <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
+		$('nav').affix({offset:{top:150}});
+		
+		// giữ thanh menu cố định 
+		// <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+		$("nav").affix({offset:{top: $("header").outerHeight(true)}});
+
+	</script>
+</body>
+</html>

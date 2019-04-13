@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	var debug = "none";
+	function getName() 
+	{
+		var first_name = prompt(" What's your first name ");
+		var last_name = prompt(" What's your lasst name ");
+		var the_name = first_name + "" + last_name;
+		 doError("in getName, the_name is : " + the_name);
+	}
+	function theGreeting() 
+	{
+		var the_name = getName();
+		doError("after getName, the_name = " + the_name);
+		if (the_name == "Dave Thau") 
+			{
+				alert("Hello partner!");
+			};
+		else
+			{
+				alert("ahoy palloi");	
+			}	
+	}
+	function doError() 
+	{
+		if(debug=="brief")
+		{
+			alert("the_message");
+		}
+		else if(debug=="extreme")
+		{
+			window.document.the_form.the_text.value+= the_message + "\n";
+		}
+	}
+	</script>
+</body>
+</html>

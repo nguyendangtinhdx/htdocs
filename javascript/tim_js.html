@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<button onclick="my()">Click Me</button>
+	<p id="1"></p>
+	<p id="2">Wecome to you</p>
+	<p id="3">Wecome to you</p>
+	<p id="4">Wecome to you</p>
+	<p id="5"></p>
+	<script>
+		function my()
+		{
+			t = "Nguyen Dang Tinh";
+			n = t.search("Dang");  /* <=> t.search(/Dang/i); */
+			document.getElementById("1").innerHTML = n;		
+
+			k = document.getElementById("2").innerHTML;
+			m = k.replace("you","me");
+			document.getElementById("2").innerHTML = m;
+
+			document.getElementById("3").innerHTML = /e/.test(k);	/*  trả về true */
+			document.getElementById("4").innerHTML = /t/.exec(k);	/*	trả về kí tự t*/
+			document.getElementById("5").innerHTML = t.constructor;	
+
+		}
+	</script>
+</body>
+</html>

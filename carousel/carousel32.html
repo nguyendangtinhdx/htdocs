@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<style>
+	/* Elastislide Style */
+
+.elastislide-list {
+	list-style-type: none;
+	display: none;
+}
+
+.no-js .elastislide-list {
+	display: block;
+}
+
+.elastislide-carousel ul li {
+	min-width: 20px; /* minimum width of the image (min width + border) */
+}
+
+.elastislide-wrapper {
+	position: relative;
+	background-color: #fff;
+	margin: 0 auto;
+	min-height: 60px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.elastislide-wrapper.elastislide-loading {
+	background-image: url(http://tympanus.net/Development/Elastislide/images/loading.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.elastislide-horizontal {
+	padding: 10px 40px;
+}
+
+.elastislide-vertical {
+	padding: 40px 10px;
+}
+
+.elastislide-carousel {
+	overflow: hidden;
+	position: relative;
+}
+
+.elastislide-carousel ul {
+	position: relative;
+	display: block;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	-ms-transform: translateX(0px);
+	-o-transform: translateX(0px);
+	transform: translateX(0px);
+}
+
+.elastislide-horizontal ul {
+	white-space: nowrap;
+}
+
+.elastislide-carousel ul li {
+	margin: 0;
+	-webkit-backface-visibility: hidden;
+}
+
+.elastislide-horizontal ul li {
+	height: 100%;
+	display: inline-block;
+}
+
+.elastislide-vertical ul li {
+	display: block;
+}
+
+.elastislide-carousel ul li a {
+	display: inline-block;
+	width: 100%;
+}
+
+.elastislide-carousel ul li a img {
+	display: block;
+	border: 2px solid white;
+	max-width: 100%;
+}
+
+/* Navigation Arrows */
+
+.elastislide-wrapper nav span {
+	position: absolute;
+	background: #ddd url(http://tympanus.net/Development/Elastislide/images/nav.png) no-repeat 4px 3px;
+	width: 23px;
+	height: 23px;
+	border-radius: 50%;
+	text-indent: -9000px;
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.elastislide-wrapper nav span:hover {
+	opacity: 1.0
+}
+
+.elastislide-horizontal nav span {
+	top: 50%;
+	left: 10px;
+	margin-top: -11px;
+}
+
+.elastislide-vertical nav span {
+	top: 10px;
+	left: 50%;
+	margin-left: -11px;
+	background-position: -17px 5px;
+}
+
+.elastislide-horizontal nav span.elastislide-next {
+	right: 10px;
+	left: auto;
+	background-position: 4px -17px;
+}
+
+.elastislide-vertical nav span.elastislide-next {
+	bottom: 10px;
+	top: auto;
+	background-position: -17px -18px;
+}
+
+.demo-3 .elastislide-horizontal {
+	background-color: #000;
+	padding: 30px 60px;
+}
+
+.no-touch .demo-3 .elastislide-horizontal {
+	opacity: 0.8;
+	-webkit-transition: opacity 0.3s ease-in-out;
+	-moz-transition: opacity 0.3s ease-in-out;
+	-ms-transition: opacity 0.3s ease-in-out;
+	-o-transition: opacity 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.no-touch .demo-3 .elastislide-horizontal:hover {
+	opacity: 1;
+}
+
+.demo-3 .elastislide-wrapper nav span {
+	background-color: #000;
+}
+
+.demo-3 .elastislide-carousel ul li a{
+	padding: 0 10px;
+}
+
+.demo-3 .elastislide-carousel ul li a img {
+	border-radius: 10px;
+	border: none;
+}
+
+.demo-4 .elastislide-horizontal {
+	background-color: transparent;
+	border-radius: 20px 20px 0 0;
+}
+
+.demo-3 .elastislide-horizontal.elastislide-loading,
+.demo-4 .elastislide-horizontal.elastislide-loading {
+	background-image: url(http://tympanus.net/Development/Elastislide/images/loading_dark.gif);
+}
+	</style>
+</head>
+<body>
+					<script src="http://tympanus.net/Development/Elastislide/js/modernizr.custom.17475.js"></script>	
+<!-- Elastislide Carousel -->
+					<ul id="carousel" class="elastislide-list">
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/1.jpg" alt="image01" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/2.jpg" alt="image02" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/3.jpg" alt="image03" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/4.jpg" alt="image04" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/5.jpg" alt="image05" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/6.jpg" alt="image06" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/7.jpg" alt="image07" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/8.jpg" alt="image08" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/9.jpg" alt="image09" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/10.jpg" alt="image10" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/11.jpg" alt="image11" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/12.jpg" alt="image12" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/13.jpg" alt="image13" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/14.jpg" alt="image14" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/15.jpg" alt="image15" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/16.jpg" alt="image16" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/17.jpg" alt="image17" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/18.jpg" alt="image18" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/19.jpg" alt="image19" /></a></li>
+						<li><a href="#"><img src="http://tympanus.net/Development/Elastislide/images/small/20.jpg" alt="image20" /></a></li>
+					</ul>
+					<!-- End Elastislide Carousel -->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://tympanus.net/Development/Elastislide/js/jquerypp.custom.js"></script>
+		<script type="text/javascript" src="http://tympanus.net/Development/Elastislide/js/jquery.elastislide.js"></script>
+		<script type="text/javascript">
+			
+			$( '#carousel'
+      ).elastislide( {
+				minItems : 2
+			} );
+			
+		</script>
+
+		<script type="text/javascript" src="http://tympanus.net/codrops/adpacks/demoad.js"></script>
+</body>
+</html>

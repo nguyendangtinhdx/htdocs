@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+body {
+  background: darkred;
+  font-family: Electrolize, sans-serif;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  padding-top: 60px;
+}
+p {line-height: 1.8}
+h1 {font-size: 2em;line-height:2}
+#tog {display: none}
+
+#ham {
+  background: crimson;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  padding: 38px 20px 0 34px;
+  display: block;
+  cursor: pointer;
+  position: fixed;
+  left: -3vw;
+  top: -4vh;
+  border: 6px solid #000;
+  z-index: 500;
+  opacity: .9;
+  transition: opacity .3s;
+}
+
+#ham:hover {opacity:1}
+
+#ham span {
+  display: block;
+  background: #fff;
+  width: 100%;
+  height: 2px;
+  margin-bottom: 3px;
+  transition: transform .3s;
+}
+
+#tog:checked ~ nav {transform: rotate(-20deg)}
+#tog:checked ~ #ham span {transform: rotate(-90deg)}
+
+nav {
+  background: crimson;
+  position: fixed;
+  top: 0;
+  transform: translateX(-278px);
+  width: 278px;
+  height: 830px;
+  padding-top: 115px;
+  margin-top: -10px;
+  box-sizing: border-box;
+  transition: transform .3s, left .3s;
+  overflow: hidden;
+}
+
+nav a {
+  text-decoration: none;
+  color: lightsalmon;
+  display: block;
+  text-align: center;
+  padding: 20px;
+  width: 95%;
+  border-bottom: 1px solid indianred;
+  transition: background .3s;
+  transform: rotate(20deg);
+  position: relative;
+}
+/* nav a:last-child {border-bottom-color: #fff} */
+
+nav a:hover {background: darkred}
+nav a:hover:before {background: darkred}
+nav a:before {
+  content: '';
+  background: crimson;
+  width: 22px;
+  height: 58px;
+  position: absolute;
+  left: -7%;
+  top: 0px;
+  transition: background .3s;
+}
+
+#fb {
+  text-decoration: none;
+  color: #fff;
+  margin: 20px 0;
+  display: inline-block;
+  border: 3px solid blue;
+  border-left: 0;
+  border-radius: 2px;
+  padding: 10px 0;
+  padding-right: 10px;
+  transition: .3s;
+}
+
+#fb span {
+  background: blue;
+  padding: 10px 15px;
+  margin-right: 10px;
+  transition: .3s;
+}
+#fb:hover {
+  color: blue;
+  border-color: #fff;
+}
+#fb:hover span {background:#fff}
+	</style>
+</head>
+<body>
+	<input type="checkbox" id="tog" checked>
+<label for="tog" id="ham">
+  <span></span>
+  <span></span>
+  <span></span>
+</label>
+
+<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Movies</a></li>
+    <li><a href="#">Anime</a></li>
+    <li><a href="#">Breaking Bad</a></li>
+    <li><a href="#">Better Call Saul</a></li>
+  </ul>
+</nav>
+
+<div id="content">
+  <h1>CSS Slide In Menu</h1>
+  <p>Click the burger button on the top left</br>Follow me!</p>
+  <a id="fb" target="_blank" href="https://www.facebook.com/Web-Engineers-Ask-An-Expert-1198988973463061">
+  <span>f</span>Web Engineers
+  </a>
+</div>
+</body>
+</html>

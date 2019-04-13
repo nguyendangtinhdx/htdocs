@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+  var currTime;
+  var hour;
+  var minute;
+  var second;
+  var isLit = false;
+  
+  function zero(digitID){
+    $('div[id = "' + digitID + ' hbar-1"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-1"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' vbar-2"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' vbar-3"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' vbar-4"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-3"]').addClass('horiz-on');
+  }
+  
+  function one(digitID){
+    $('div[id = "' + digitID + ' vbar-2"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' vbar-4"]').addClass('vert-on');
+  }
+  
+  function two(digitID){
+    $('div[id = "' + digitID + ' hbar-1"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-2"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-2"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-3"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-3"]').addClass('horiz-on');
+  }
+  
+  function three(digitID){
+    $('div[id = "' + digitID + ' hbar-1"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-2"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-2"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-4"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-3"]').addClass('horiz-on');
+  }
+  
+  function four(digitID){
+    $('div[id = "' + digitID + ' vbar-1"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' vbar-2"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-2"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-4"]').addClass('vert-on');
+  }
+  
+  function five(digitID){
+    $('div[id = "' + digitID + ' hbar-1"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-1"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-2"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-4"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-3"]').addClass('horiz-on');
+  }
+  
+  function six(digitID){
+    $('div[id = "' + digitID + ' hbar-1"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-1"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-2"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-3"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' vbar-4"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-3"]').addClass('horiz-on');
+  }
+  
+  function seven(digitID){
+    $('div[id = "' + digitID + ' hbar-1"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-2"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' vbar-4"]').addClass('vert-on');
+  }
+  
+  function eight(digitID){
+    $('div[id = "' + digitID + ' hbar-1"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-1"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' vbar-2"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-2"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-3"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' vbar-4"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-3"]').addClass('horiz-on');
+  }
+  
+  function nine(digitID){
+    $('div[id = "' + digitID + ' hbar-1"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-1"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' vbar-2"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-2"]').addClass('horiz-on');
+    $('div[id = "' + digitID + ' vbar-4"]').addClass('vert-on');
+    $('div[id = "' + digitID + ' hbar-3"]').addClass('horiz-on');
+  }
+  
+  function putHours(hour){
+    if (hour > 9){
+      one('hour-1');
+    }
+
+    if (hour == 1 || hour == 11){
+      one('hour-2');
+    }
+    else if(hour == 2 || hour == 12){
+      two('hour-2');
+    }
+    else if(hour == 3){
+      three('hour-2');
+    }
+    else if(hour == 4){
+      four('hour-2');
+    }
+    else if(hour == 5){
+      five('hour-2');
+    }
+    else if(hour == 6){
+      six('hour-2');
+    }
+    else if(hour == 7){
+      seven('hour-2');
+    }
+    else if(hour == 8){
+      eight('hour-2');
+    }
+    else if(hour == 9){
+      nine('hour-2');
+    }
+    else if(hour == 10){
+      zero('hour-2');
+    }
+  }
+  
+  
+  function putMinutes(minute){
+    var m1 = parseInt(minute/10);
+    var m2 = minute%10;
+
+    if (m1 == 1){
+      one('minute-1');
+    }
+    else if(m1 == 2 ){
+      two('minute-1');
+    }
+    else if(m1 == 3){
+      three('minute-1');
+    }
+    else if(m1 == 4){
+      four('minute-1');
+    }
+    else if(m1 == 5){
+      five('minute-1');
+    }
+    else{
+      zero('minute-1');
+    }
+
+    if (m2 == 1){
+      one('minute-2');
+    }
+    else if(m2 == 2 ){
+      two('minute-2');
+    }
+    else if(m2 == 3){
+      three('minute-2');
+    }
+    else if(m2 == 4){
+      four('minute-2');
+    }
+    else if(m2 == 5){
+      five('minute-2');
+    }
+    else if(m2 == 6){
+      six('minute-2');
+    }
+    else if(m2 == 7){
+      seven('minute-2');
+    }
+    else if(m2 == 8){
+      eight('minute-2');
+    }
+    else if(m2 == 9){
+      nine('minute-2');
+    }
+    else{
+      zero('minute-2');
+    }
+  }
+  
+  function putSeconds(second){
+    var s1 = parseInt(second/10);
+    var s2 = second%10;
+
+    if (s1 == 1){
+      one('second-1');
+    }
+    else if(s1 == 2 ){
+      two('second-1');
+    }
+    else if(s1 == 3){
+      three('second-1');
+    }
+    else if(s1 == 4){
+      four('second-1');
+    }
+    else if(s1 == 5){
+      five('second-1');
+    }
+    else{
+      zero('second-1');
+    }
+
+    if (s2 == 1){
+      one('second-2');
+    }
+    else if(s2 == 2 ){
+      two('second-2');
+    }
+    else if(s2 == 3){
+      three('second-2');
+    }
+    else if(s2 == 4){
+      four('second-2');
+    }
+    else if(s2 == 5){
+      five('second-2');
+    }
+    else if(s2 == 6){
+      six('second-2');
+    }
+    else if(s2 == 7){
+      seven('second-2');
+    }
+    else if(s2 == 8){
+      eight('second-2');
+    }
+    else if(s2 == 9){
+      nine('second-2');
+    }
+    else{
+      zero('second-2');
+    }
+  }
+  
+  function putTime(){
+    currTime = new Date();
+    $('.horizontal-bar').addClass('horiz-off');
+    $('.vertical-bar').addClass('vert-off');
+    if (isLit == true){
+      $('.horizontal-bar').addClass('lit');
+      $('.vertical-bar').addClass('lit');
+      $('.separator').addClass('lit');
+      $('#clock').addClass('lit');
+    }
+    if (isLit == false){
+      $('.horizontal-bar').removeClass('lit');
+      $('.vertical-bar').removeClass('lit');
+      $('.separator').removeClass('lit');
+      $('#clock').removeClass('lit');
+    }
+    $('.horizontal-bar').removeClass('horiz-on');
+    $('.vertical-bar').removeClass('vert-on');
+    hour = currTime.getHours() % 12;
+    if (hour == 0){
+      hour += 12;
+    }
+    minute = currTime.getMinutes();
+    second = currTime.getSeconds();
+    putHours(hour);
+    putMinutes(minute);
+    putSeconds(second);
+  }
+  
+  
+  $('#toggle-backlight-container').click(function(){
+    if (!isLit){
+      isLit = true;
+      $('#toggle-backlight').css('float', 'right');
+    }
+    else {
+      isLit = false;
+      $('#toggle-backlight').css('float', 'left');
+    }
+    
+  });
+  $('#night-mode-toggle').click( function(){
+      if (!isLit){
+        isLit = true;
+        $('.toggle-label').text('Turn Backlight Off');
+        $(this).removeClass('light-off');
+        $(this).addClass('light-on');
+      }
+      else {
+        isLit = false;
+        $('.toggle-label').text('Turn Backlight On');
+        $(this).removeClass('light-on');
+        $(this).addClass('light-off');
+      }
+    }
+  );
+  
+  setInterval(putTime, 10);
+});
+	</script>
+	<style>
+	@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+html {
+  background: #000;
+}
+
+#clock {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 993px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #A8AA96;
+}
+#clock.lit {
+  background: #00ffff;
+}
+
+.separator {
+  width: 0;
+  height: 0;
+  float: left;
+  border: 10px solid transparent;
+  border-bottom-color: #21221e;
+  position: relative;
+}
+.separator.upper {
+  left: 12px;
+  top: 50px;
+}
+.separator.lower {
+  left: -8px;
+  top: 200px;
+}
+.separator:after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #21221e;
+}
+.separator.lit {
+  border-bottom-color: #003434;
+}
+.separator.lit:after {
+  border-top-color: #003434;
+}
+
+.horiz-off {
+  background: #b9bbab;
+  width: 100px;
+  height: 20px;
+  position: relative;
+  margin-left: 20px;
+}
+.horiz-off:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -10px;
+  width: 0;
+  border-right: 10px solid #b9bbab;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+.horiz-off:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 100px;
+  width: 0;
+  border-left: 10px solid #b9bbab;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+.horiz-off.lit {
+  background: #00f6f6;
+}
+.horiz-off.lit:before {
+  border-right-color: #00f6f6;
+}
+.horiz-off.lit:after {
+  border-left-color: #00f6f6;
+}
+
+.horiz-on {
+  background: #21221e;
+  width: 100px;
+  height: 20px;
+  position: relative;
+  margin-left: 20px;
+}
+.horiz-on:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -10px;
+  width: 0;
+  border-right: 10px solid #21221e;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+.horiz-on:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 100px;
+  width: 0;
+  border-left: 10px solid #21221e;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+.horiz-on.lit {
+  background: #003434;
+}
+.horiz-on.lit:before {
+  border-right-color: #003434;
+}
+.horiz-on.lit:after {
+  border-left-color: #003434;
+}
+
+.vert-off {
+  background: #b9bbab;
+  width: 20px;
+  height: 100px;
+  position: relative;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.vert-off:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  width: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #b9bbab;
+}
+.vert-off:after {
+  content: "";
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  width: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #b9bbab;
+}
+.vert-off.lit {
+  background: #00f6f6;
+}
+.vert-off.lit:before {
+  border-bottom-color: #00f6f6;
+}
+.vert-off.lit:after {
+  border-top-color: #00f6f6;
+}
+
+.vert-on {
+  background: #21221e;
+  width: 20px;
+  height: 100px;
+  position: relative;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.vert-on:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  width: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #21221e;
+}
+.vert-on:after {
+  content: "";
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  width: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #21221e;
+}
+.vert-on.lit {
+  background: #003434;
+}
+.vert-on.lit:before {
+  border-bottom-color: #003434;
+}
+.vert-on.lit:after {
+  border-top-color: #003434;
+}
+
+.vbar-1, .vbar-3 {
+  margin-left: 0px;
+  float: left;
+}
+
+.vbar-2, .vbar-4 {
+  margin-left: 120px;
+}
+
+div[id^='block-hour-'],
+div[id^='block-minute-'],
+div[id^='block-second-'] {
+  float: left;
+  margin-left: 10px;
+}
+
+#toggle-backlight-container {
+  width: 100px;
+  height: 35px;
+  border: 4px solid white;
+  border-radius: 25px;
+  padding: 4px;
+}
+
+#toggle-backlight {
+  width: 35px;
+  height: 35px;
+  background: #aaa;
+  border-radius: 18px;
+}
+
+	</style>
+</head>
+<body>
+	<div id='toggle-backlight-container'>
+  <div id='toggle-backlight'>
+  </div>
+</div>
+<div id='clock'>
+  <div id='hours'>
+    <div class='digit' id='block-hour-1'>
+      <div class='horizontal-bar hbar-1' id='hour-1 hbar-1'></div>
+      <div class='vertical-bar vbar-1' id='hour-1 vbar-1'></div>
+      <div class='vertical-bar vbar-2' id='hour-1 vbar-2'></div>
+      <div class='horizontal-bar hbar-2' id='hour-1 hbar-2'></div>
+      <div class='vertical-bar vbar-3' id='hour-1 vbar-3'></div>
+      <div class='vertical-bar vbar-4' id='hour-1 vbar-4'></div>
+      <div class='horizontal-bar hbar-3' id='hour-1 hbar-3'></div>
+    </div>
+
+    <div class='digit' id='block-hour-2'>
+      <div class='horizontal-bar hbar-1' id='hour-2 hbar-1'></div>
+      <div class='vertical-bar vbar-1' id='hour-2 vbar-1'></div>
+      <div class='vertical-bar vbar-2' id='hour-2 vbar-2'></div>
+      <div class='horizontal-bar hbar-2' id='hour-2 hbar-2'></div>
+      <div class='vertical-bar vbar-3' id='hour-2 vbar-3'></div>
+      <div class='vertical-bar vbar-4' id='hour-2 vbar-4'></div>
+      <div class='horizontal-bar hbar-3' id='hour-2 hbar-3'></div>
+    </div>
+  </div>
+
+  <div class='separator upper'></div>
+  <div class='separator lower'></div>
+
+  <div id='minutes'>
+    <div class='digit' id='block-minute-1'>
+      <div class='horizontal-bar hbar-1' id='minute-1 hbar-1'></div>
+      <div class='vertical-bar vbar-1' id='minute-1 vbar-1'></div>
+      <div class='vertical-bar vbar-2' id='minute-1 vbar-2'></div>
+      <div class='horizontal-bar hbar-2' id='minute-1 hbar-2'></div>
+      <div class='vertical-bar vbar-3' id='minute-1 vbar-3'></div>
+      <div class='vertical-bar vbar-4' id='minute-1 vbar-4'></div>
+      <div class='horizontal-bar hbar-3' id='minute-1 hbar-3'></div>
+    </div>
+
+    <div class='digit' id='block-minute-2'>
+      <div class='horizontal-bar hbar-1' id='minute-2 hbar-1'></div>
+      <div class='vertical-bar vbar-1' id='minute-2 vbar-1'></div>
+      <div class='vertical-bar vbar-2' id='minute-2 vbar-2'></div>
+      <div class='horizontal-bar hbar-2' id='minute-2 hbar-2'></div>
+      <div class='vertical-bar vbar-3' id='minute-2 vbar-3'></div>
+      <div class='vertical-bar vbar-4' id='minute-2 vbar-4'></div>
+      <div class='horizontal-bar hbar-3' id='minute-2 hbar-3'></div>
+    </div>
+  </div>
+
+  <div class='separator upper'></div>
+  <div class='separator lower'></div
+
+  <div id='seconds'>
+    <div class='digit' id='block-second-1'>
+      <div class='horizontal-bar hbar-1' id='second-1 hbar-1'></div>
+      <div class='vertical-bar vbar-1' id='second-1 vbar-1'></div>
+      <div class='vertical-bar vbar-2' id='second-1 vbar-2'></div>
+      <div class='horizontal-bar hbar-2' id='second-1 hbar-2'></div>
+      <div class='vertical-bar vbar-3' id='second-1 vbar-3'></div>
+      <div class='vertical-bar vbar-4' id='second-1 vbar-4'></div>
+      <div class='horizontal-bar hbar-3' id='second-1 hbar-3'></div>
+    </div>
+
+    <div class='digit' id='block-second-2'>
+      <div class='horizontal-bar hbar-1' id='second-2 hbar-1'></div>
+      <div class='vertical-bar vbar-1' id='second-2 vbar-1'></div>
+      <div class='vertical-bar vbar-2' id='second-2 vbar-2'></div>
+      <div class='horizontal-bar hbar-2' id='second-2 hbar-2'></div>
+      <div class='vertical-bar vbar-3' id='second-2 vbar-3'></div>
+      <div class='vertical-bar vbar-4' id='second-2 vbar-4'></div>
+      <div class='horizontal-bar hbar-3' id='second-2 hbar-3'></div>
+    </div>
+  </div>
+</div>
+
+<!--
+<button type='button' id='night-mode-toggle' class='light-off'><span class='toggle-label'>Turn Backlight On</span></button>
+-->
+
+</body>
+</html>

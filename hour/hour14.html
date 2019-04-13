@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// adding initial time classnames on load. css handles the timing.
+var time = new Date(),
+	hours = time.getHours(),
+	minutes = time.getMinutes(),
+	seconds = time.getSeconds();
+
+document.getElementById("second-hand").className = "sh-" + seconds;
+document.getElementById("minute-hand").className = "mh-" + minutes;
+document.getElementById("hour-hand").className = "hh-" + hours;
+
+$('.tick_12').on('click', function() {
+	$('.bubble').removeClass('remove');
+	$('.bubble').addClass('active');
+	$('.alaram_wrapper').addClass('show');
+	$('.tick_12').addClass('animte');
+	$('.tick_3').addClass('animte3');
+	$('.tick_6').addClass('animte6');
+	$('.tick_9').addClass('animte9');
+});
+
+$('.alaram_wrapper .alaram__icon i:nth-child(2)').on('click', function() {	$('.tick_3').removeClass('animte3');	$('.tick_6').removeClass('animte6');	$('.tick_9').removeClass('animte9');	$('.tick_12').removeClass('animte');	$('.bubble').removeClass('active');
+	$('.bubbleback').removeClass('remove');	$('.alaram_wrapper').removeClass('show');
+});
+	</script>
+	<style>
+	html { 
+  font-size: 100%;
+  height: 100%;
+  width: 100%;
+  outline: none;
+}
+
+body {
+  background: #F1EFF1;
+  font-family: 'Cabin', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 26px;
+  text-align: left;
+  overflow-x: hidden;
+  margin: auto;
+  width: 100%;
+  outline: none;
+}
+.social{
+  position: absolute;
+  top:35%;
+}
+.social i{
+  font-size: 40px;
+  color: #F52833;
+  line-height: 60px;
+  display: block;
+}
+.social i:hover{
+  color: #737373;
+}
+
+a{
+  text-decoration: none;
+  color: #737373;
+}
+h5 span{
+  text-decoration: underline;
+  margin: 5px;
+  cursor: pointer;
+}
+p{
+  text-align: center;
+  color: #737373;
+  font-size: 22px;
+  position: relative;
+  top: 30px;
+}
+p span{
+  color: #F52833;
+}
+.info {
+  top: 400px;
+}
+.info a:nth-child(1){
+  color: #F52833;
+}
+.info a:nth-child(2){
+  color: #FF4286;
+}
+.shadow_1 {
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+}
+
+.shadow_2 {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+}
+
+.shadow_3 {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
+}
+
+.shadow_4 {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22), 0 14px 56px rgba(0, 0, 0, 0.25);
+}
+
+.shadow_5 {
+  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+}
+.watch{
+  transform: scale(.8);
+}
+.watch__wrapper{
+  position: absolute;
+  text-align: center;
+  font-size: 24px;
+  color: #737373;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.watch__belt{
+  height: 400px;
+  width: 150px;
+  background: #1F1E1F;
+  border-radius: 8px;
+}
+.watch__model{
+  position: absolute;
+
+  background: #2D2C2D;
+  border-radius: 50%;
+  border:5px solid #131415;
+  overflow: hidden;
+}
+.tick_3{
+  right:5%;
+  -webkit-transition: all .2s cubic-bezier(0, 0.02, 0.97, 0.05);
+}
+.tick_6{
+  top: 85% !important;
+  left: calc(50% - 10px);
+  -webkit-transition: all .2s cubic-bezier(0, 0.02, 0.97, 0.05);
+}
+.tick_9{
+  left:5% !important;
+  left: calc(50% - 15px);
+  -webkit-transition: all .2s cubic-bezier(0, 0.02, 0.97, 0.05);
+}
+.tick_12{
+  top:5% !important;
+  left: calc(50% - 15px);
+  background: #F52833 !important;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  line-height: 35px;
+  cursor: pointer;
+  z-index: 1;
+   -webkit-transition: all 0.3s ease-out;
+}
+.animte{
+  font-size: 40px;
+  z-index: 1003;
+  left: 30%;
+  top: 20% !important;
+  background-color: transparent;
+  -webkit-transition: all .2s cubic-bezier(0, 0.02, 0.97, 0.05);
+  -webkit-transition-delay: .4s;
+}
+.animte3{
+  right: -15% !important;
+  -webkit-transition: all .2s cubic-bezier(0, 0.02, 0.97, 0.05);
+}
+.animte6{
+  top: 110% !important;
+  -webkit-transition: all .2s cubic-bezier(0, 0.02, 0.97, 0.05);
+}
+.animte9{
+   left: -15% !important;
+  -webkit-transition: all .2s cubic-bezier(0, 0.02, 0.97, 0.05);
+}
+.bubble {
+  position: absolute;
+  top:5% !important;
+  left: calc(50% - 15px);
+  background: #F52833; !important;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+-webkit-transform: scale(1);
+  -webkit-transition: all 0.3s ease-out;
+}
+
+.bubble.active { 
+  z-index: 100;
+  top: -10% !important;
+  -webkit-transform: scale(10);
+  -webkit-transition: all .2s cubic-bezier(0, 0.02, 0.97, 0.05);
+  -webkit-transition-delay: .4s;
+}
+
+.bubbleback {
+  position: absolute;
+  border-radius: 50%;
+  -webkit-transform: scale(1);
+  opacity: 1;
+}
+
+.bubbleback.remove{
+ -webkit-transform: scale(1.5);
+  opacity: 0;
+  -webkit-transition: all 0.3s cubic-bezier(0, 0, 0, 0.94);
+}
+
+.alaram_wrapper {
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 250px;
+  height: 250px;
+  background-color: transparent;
+  z-index: 101;
+}
+.show{
+  display: block;
+}
+.alaram_wrapper h3{
+  position: relative;
+  margin: 20px 0 0 0;
+  width: 250px;
+  color: #fff;
+}
+.alaram_wrapper h4{
+  position: relative;
+  font-size: 30px;
+  z-index: 1003;
+  color: #fff;
+  margin: 55px 0px 0 80px;
+  width: 170px;
+  background-color: transparent !important;
+}
+.alaram_wrapper h5{
+  position: relative;
+  margin: 10px 0 0 0;
+  width: 250px;
+  color: #fff;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+.alaram_wrapper .alaram__icon{
+  margin: 15px 50px;
+  width: 150px;
+  height: 55px;
+  cursor: pointer;
+}
+.alaram_wrapper .alaram__icon i{
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  font-size: 25px;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0 10px;
+}
+.alaram_wrapper .alaram__icon i:nth-child(1){
+  background-color: #FFEB3B;
+  color: #F52833;
+}
+.alaram_wrapper .alaram__icon i:nth-child(2){
+  background-color: #fff;
+  color: #F52833;
+}
+
+/*title animation*/
+.bounceInUp {
+  -webkit-animation:bounceInUp ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:bounceInUp ease-in 1;
+  animation:bounceInUp ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+
+
+.bounceInLeft {
+  -webkit-animation:bounceInLeft ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:bounceInLeft ease-in 1;
+  animation:bounceInLeft ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+.bounce {
+  opacity:0;  /* make things invisible upon start */
+  -webkit-animation:bounce ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:bounce ease-in 1;
+  animation:bounce ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+.bounce {
+  opacity:0;  /* make things invisible upon start */
+  -webkit-animation:bounce ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:bounce ease-in 1;
+  animation:bounce ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+
+.title h3,.title h5{
+-webkit-animation-delay: 1.5s;
+-moz-animation-delay: 1.5s;
+animation-delay: 1.5s;
+}
+
+.title h4{
+-webkit-animation-delay: 1s;
+-moz-animation-delay: 1s;
+animation-delay: 1s;
+}
+
+.alaram__icon i:nth-child(1),.alaram__icon i:nth-child(2){
+-webkit-animation-delay: 1.5s;
+-moz-animation-delay: 1.5s;
+animation-delay: 1.5s;
+}
+
+
+@-webkit-keyframes bounce {
+  0%,20%,40%,60%,80%,100% {
+    -webkit-animation-timing-function: cubic-bezier(0.215,0.610,0.355,1.000);
+    animation-timing-function: cubic-bezier(0.215,0.610,0.355,1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3,.3,.3);
+    transform: scale3d(.3,.3,.3);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1,1.1,1.1);
+    transform: scale3d(1.1,1.1,1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(.9,.9,.9);
+    transform: scale3d(.9,.9,.9);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03,1.03,1.03);
+    transform: scale3d(1.03,1.03,1.03);
+  }
+
+  80% {
+    -webkit-transform: scale3d(.97,.97,.97);
+    transform: scale3d(.97,.97,.97);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale3d(1,1,1);
+    transform: scale3d(1,1,1);
+  }
+}
+
+@keyframes bounce {
+  0%,20%,40%,60%,80%,100% {
+    -webkit-animation-timing-function: cubic-bezier(0.215,0.610,0.355,1.000);
+    animation-timing-function: cubic-bezier(0.215,0.610,0.355,1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3,.3,.3);
+    transform: scale3d(.3,.3,.3);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1,1.1,1.1);
+    transform: scale3d(1.1,1.1,1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(.9,.9,.9);
+    transform: scale3d(.9,.9,.9);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03,1.03,1.03);
+    transform: scale3d(1.03,1.03,1.03);
+  }
+
+  80% {
+    -webkit-transform: scale3d(.97,.97,.97);
+    transform: scale3d(.97,.97,.97);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale3d(1,1,1);
+    transform: scale3d(1,1,1);
+  }
+}
+
+
+/*icon animation*/
+@-webkit-keyframes bounceInUp {
+  0%,60%,75%,90%,100% {
+    -webkit-animation-timing-function: cubic-bezier(0.215,0.610,0.355,1.000);
+    animation-timing-function: cubic-bezier(0.215,0.610,0.355,1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0,3000px,0);
+    transform: translate3d(0,3000px,0);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0,-20px,0);
+    transform: translate3d(0,-20px,0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(0,10px,0);
+    transform: translate3d(0,10px,0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0,-5px,0);
+    transform: translate3d(0,-5px,0);
+  }
+
+  100% {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+}
+
+@keyframes bounceInUp {
+  0%,60%,75%,90%,100% {
+    -webkit-animation-timing-function: cubic-bezier(0.215,0.610,0.355,1.000);
+    animation-timing-function: cubic-bezier(0.215,0.610,0.355,1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0,3000px,0);
+    transform: translate3d(0,3000px,0);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0,-20px,0);
+    transform: translate3d(0,-20px,0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(0,10px,0);
+    transform: translate3d(0,10px,0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0,-5px,0);
+    transform: translate3d(0,-5px,0);
+  }
+
+  100% {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+}
+.clock{width: 260px;height: 260px;background: #2D2C2D;border-radius: 50%;position: absolute;top: 50%;left: 50%;-webkit-transform: translate3d(-50%, -50%, 0);transform: translate3d(-50%, -50%, 0)}.clock div{position: absolute;-webkit-transform-origin: 50% 0;-ms-transform-origin: 50% 0;transform-origin: 50% 0}.clock::after{position: absolute;content: '';width: 12px;padding-bottom: 12px;background-color: white;border-radius: 50%;top: calc(50% - 6px);left: calc(50% - 6px);z-index: 99}.clock::before{position: absolute;content: '';width: 12px;padding-bottom: 12px;background-color: transparent;z-index: -9;display: block;height: 0;width: 0;border-style: solid;border-width: 0 300px 300px 0px;border-color: transparent transparent rgba(255, 255, 255, 0.04) transparent}.clock #second-hand{height: 45%;top: 50%;left: calc(50% - 1px);z-index: 3;border-left: 1px solid #F52833;border-right: 1px solid #F52833;border-radius: 0 0 1px 1px}.clock #minute-hand{height: 35%;top: 50%;left: calc(50% - 2px);z-index: 7;border-left: 1px solid #918E8E;border-right: 2px solid #918E8E;border-radius: 0 0 2px 2px}.clock #hour-hand{height: 25%;top: 50%;left: calc(50% - 3px);z-index: 1;border-left: 1px solid #ffffff;border-right: 2px solid #ffffff;border-radius: 0 0 3px 3px}.clock .ticks span{position: absolute;display: block;background: transparent;color: #fff;top: 50%;font-family: 'Cabin', sans-serif;font-weight: 600}@-webkit-keyframes animate-hand-0{from{-webkit-transform: rotate(-180deg);transform: rotate(-180deg)}to{-webkit-transform: rotate(180deg);transform: rotate(180deg)}}@keyframes animate-hand-0{from{-webkit-transform: rotate(-180deg);transform: rotate(-180deg)}to{-webkit-transform: rotate(180deg);transform: rotate(180deg)}}@-webkit-keyframes animate-hour-hand-0{from{-webkit-transform: rotate(-180deg);transform: rotate(-180deg)}to{-webkit-transform: rotate(180deg);transform: rotate(180deg)}}@keyframes animate-hour-hand-0{from{-webkit-transform: rotate(-180deg);transform: rotate(-180deg)}to{-webkit-transform: rotate(180deg);transform: rotate(180deg)}}.sh-0{-webkit-animation: animate-hand-0 60s linear infinite;animation: animate-hand-0 60s linear infinite}.mh-0{-webkit-animation: animate-hand-0 3600s linear infinite;animation: animate-hand-0 3600s linear infinite}.hh-0{-webkit-animation: animate-hour-hand-0 86400s linear infinite;animation: animate-hour-hand-0 86400s linear infinite}@-webkit-keyframes animate-hand-1{from{-webkit-transform: rotate(-174deg);transform: rotate(-174deg)}to{-webkit-transform: rotate(186deg);transform: rotate(186deg)}}@keyframes animate-hand-1{from{-webkit-transform: rotate(-174deg);transform: rotate(-174deg)}to{-webkit-transform: rotate(186deg);transform: rotate(186deg)}}@-webkit-keyframes animate-hour-hand-1{from{-webkit-transform: rotate(-150deg);transform: rotate(-150deg)}to{-webkit-transform: rotate(210deg);transform: rotate(210deg)}}@keyframes animate-hour-hand-1{from{-webkit-transform: rotate(-150deg);transform: rotate(-150deg)}to{-webkit-transform: rotate(210deg);transform: rotate(210deg)}}.sh-1{-webkit-animation: animate-hand-1 60s linear infinite;animation: animate-hand-1 60s linear infinite}.mh-1{-webkit-animation: animate-hand-1 3600s linear infinite;animation: animate-hand-1 3600s linear infinite}.hh-1{-webkit-animation: animate-hour-hand-1 86400s linear infinite;animation: animate-hour-hand-1 86400s linear infinite}@-webkit-keyframes animate-hand-2{from{-webkit-transform: rotate(-168deg);transform: rotate(-168deg)}to{-webkit-transform: rotate(192deg);transform: rotate(192deg)}}@keyframes animate-hand-2{from{-webkit-transform: rotate(-168deg);transform: rotate(-168deg)}to{-webkit-transform: rotate(192deg);transform: rotate(192deg)}}@-webkit-keyframes animate-hour-hand-2{from{-webkit-transform: rotate(-120deg);transform: rotate(-120deg)}to{-webkit-transform: rotate(240deg);transform: rotate(240deg)}}@keyframes animate-hour-hand-2{from{-webkit-transform: rotate(-120deg);transform: rotate(-120deg)}to{-webkit-transform: rotate(240deg);transform: rotate(240deg)}}.sh-2{-webkit-animation: animate-hand-2 60s linear infinite;animation: animate-hand-2 60s linear infinite}.mh-2{-webkit-animation: animate-hand-2 3600s linear infinite;animation: animate-hand-2 3600s linear infinite}.hh-2{-webkit-animation: animate-hour-hand-2 86400s linear infinite;animation: animate-hour-hand-2 86400s linear infinite}@-webkit-keyframes animate-hand-3{from{-webkit-transform: rotate(-162deg);transform: rotate(-162deg)}to{-webkit-transform: rotate(198deg);transform: rotate(198deg)}}@keyframes animate-hand-3{from{-webkit-transform: rotate(-162deg);transform: rotate(-162deg)}to{-webkit-transform: rotate(198deg);transform: rotate(198deg)}}@-webkit-keyframes animate-hour-hand-3{from{-webkit-transform: rotate(-90deg);transform: rotate(-90deg)}to{-webkit-transform: rotate(270deg);transform: rotate(270deg)}}@keyframes animate-hour-hand-3{from{-webkit-transform: rotate(-90deg);transform: rotate(-90deg)}to{-webkit-transform: rotate(270deg);transform: rotate(270deg)}}.sh-3{-webkit-animation: animate-hand-3 60s linear infinite;animation: animate-hand-3 60s linear infinite}.mh-3{-webkit-animation: animate-hand-3 3600s linear infinite;animation: animate-hand-3 3600s linear infinite}.hh-3{-webkit-animation: animate-hour-hand-3 86400s linear infinite;animation: animate-hour-hand-3 86400s linear infinite}@-webkit-keyframes animate-hand-4{from{-webkit-transform: rotate(-156deg);transform: rotate(-156deg)}to{-webkit-transform: rotate(204deg);transform: rotate(204deg)}}@keyframes animate-hand-4{from{-webkit-transform: rotate(-156deg);transform: rotate(-156deg)}to{-webkit-transform: rotate(204deg);transform: rotate(204deg)}}@-webkit-keyframes animate-hour-hand-4{from{-webkit-transform: rotate(-60deg);transform: rotate(-60deg)}to{-webkit-transform: rotate(300deg);transform: rotate(300deg)}}@keyframes animate-hour-hand-4{from{-webkit-transform: rotate(-60deg);transform: rotate(-60deg)}to{-webkit-transform: rotate(300deg);transform: rotate(300deg)}}.sh-4{-webkit-animation: animate-hand-4 60s linear infinite;animation: animate-hand-4 60s linear infinite}.mh-4{-webkit-animation: animate-hand-4 3600s linear infinite;animation: animate-hand-4 3600s linear infinite}.hh-4{-webkit-animation: animate-hour-hand-4 86400s linear infinite;animation: animate-hour-hand-4 86400s linear infinite}@-webkit-keyframes animate-hand-5{from{-webkit-transform: rotate(-150deg);transform: rotate(-150deg)}to{-webkit-transform: rotate(210deg);transform: rotate(210deg)}}@keyframes animate-hand-5{from{-webkit-transform: rotate(-150deg);transform: rotate(-150deg)}to{-webkit-transform: rotate(210deg);transform: rotate(210deg)}}@-webkit-keyframes animate-hour-hand-5{from{-webkit-transform: rotate(-30deg);transform: rotate(-30deg)}to{-webkit-transform: rotate(330deg);transform: rotate(330deg)}}@keyframes animate-hour-hand-5{from{-webkit-transform: rotate(-30deg);transform: rotate(-30deg)}to{-webkit-transform: rotate(330deg);transform: rotate(330deg)}}.sh-5{-webkit-animation: animate-hand-5 60s linear infinite;animation: animate-hand-5 60s linear infinite}.mh-5{-webkit-animation: animate-hand-5 3600s linear infinite;animation: animate-hand-5 3600s linear infinite}.hh-5{-webkit-animation: animate-hour-hand-5 86400s linear infinite;animation: animate-hour-hand-5 86400s linear infinite}@-webkit-keyframes animate-hand-6{from{-webkit-transform: rotate(-144deg);transform: rotate(-144deg)}to{-webkit-transform: rotate(216deg);transform: rotate(216deg)}}@keyframes animate-hand-6{from{-webkit-transform: rotate(-144deg);transform: rotate(-144deg)}to{-webkit-transform: rotate(216deg);transform: rotate(216deg)}}@-webkit-keyframes animate-hour-hand-6{from{-webkit-transform: rotate(0deg);transform: rotate(0deg)}to{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes animate-hour-hand-6{from{-webkit-transform: rotate(0deg);transform: rotate(0deg)}to{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}.sh-6{-webkit-animation: animate-hand-6 60s linear infinite;animation: animate-hand-6 60s linear infinite}.mh-6{-webkit-animation: animate-hand-6 3600s linear infinite;animation: animate-hand-6 3600s linear infinite}.hh-6{-webkit-animation: animate-hour-hand-6 86400s linear infinite;animation: animate-hour-hand-6 86400s linear infinite}@-webkit-keyframes animate-hand-7{from{-webkit-transform: rotate(-138deg);transform: rotate(-138deg)}to{-webkit-transform: rotate(222deg);transform: rotate(222deg)}}@keyframes animate-hand-7{from{-webkit-transform: rotate(-138deg);transform: rotate(-138deg)}to{-webkit-transform: rotate(222deg);transform: rotate(222deg)}}@-webkit-keyframes animate-hour-hand-7{from{-webkit-transform: rotate(30deg);transform: rotate(30deg)}to{-webkit-transform: rotate(390deg);transform: rotate(390deg)}}@keyframes animate-hour-hand-7{from{-webkit-transform: rotate(30deg);transform: rotate(30deg)}to{-webkit-transform: rotate(390deg);transform: rotate(390deg)}}.sh-7{-webkit-animation: animate-hand-7 60s linear infinite;animation: animate-hand-7 60s linear infinite}.mh-7{-webkit-animation: animate-hand-7 3600s linear infinite;animation: animate-hand-7 3600s linear infinite}.hh-7{-webkit-animation: animate-hour-hand-7 86400s linear infinite;animation: animate-hour-hand-7 86400s linear infinite}@-webkit-keyframes animate-hand-8{from{-webkit-transform: rotate(-132deg);transform: rotate(-132deg)}to{-webkit-transform: rotate(228deg);transform: rotate(228deg)}}@keyframes animate-hand-8{from{-webkit-transform: rotate(-132deg);transform: rotate(-132deg)}to{-webkit-transform: rotate(228deg);transform: rotate(228deg)}}@-webkit-keyframes animate-hour-hand-8{from{-webkit-transform: rotate(60deg);transform: rotate(60deg)}to{-webkit-transform: rotate(420deg);transform: rotate(420deg)}}@keyframes animate-hour-hand-8{from{-webkit-transform: rotate(60deg);transform: rotate(60deg)}to{-webkit-transform: rotate(420deg);transform: rotate(420deg)}}.sh-8{-webkit-animation: animate-hand-8 60s linear infinite;animation: animate-hand-8 60s linear infinite}.mh-8{-webkit-animation: animate-hand-8 3600s linear infinite;animation: animate-hand-8 3600s linear infinite}.hh-8{-webkit-animation: animate-hour-hand-8 86400s linear infinite;animation: animate-hour-hand-8 86400s linear infinite}@-webkit-keyframes animate-hand-9{from{-webkit-transform: rotate(-126deg);transform: rotate(-126deg)}to{-webkit-transform: rotate(234deg);transform: rotate(234deg)}}@keyframes animate-hand-9{from{-webkit-transform: rotate(-126deg);transform: rotate(-126deg)}to{-webkit-transform: rotate(234deg);transform: rotate(234deg)}}@-webkit-keyframes animate-hour-hand-9{from{-webkit-transform: rotate(90deg);transform: rotate(90deg)}to{-webkit-transform: rotate(450deg);transform: rotate(450deg)}}@keyframes animate-hour-hand-9{from{-webkit-transform: rotate(90deg);transform: rotate(90deg)}to{-webkit-transform: rotate(450deg);transform: rotate(450deg)}}.sh-9{-webkit-animation: animate-hand-9 60s linear infinite;animation: animate-hand-9 60s linear infinite}.mh-9{-webkit-animation: animate-hand-9 3600s linear infinite;animation: animate-hand-9 3600s linear infinite}.hh-9{-webkit-animation: animate-hour-hand-9 86400s linear infinite;animation: animate-hour-hand-9 86400s linear infinite}@-webkit-keyframes animate-hand-10{from{-webkit-transform: rotate(-120deg);transform: rotate(-120deg)}to{-webkit-transform: rotate(240deg);transform: rotate(240deg)}}@keyframes animate-hand-10{from{-webkit-transform: rotate(-120deg);transform: rotate(-120deg)}to{-webkit-transform: rotate(240deg);transform: rotate(240deg)}}@-webkit-keyframes animate-hour-hand-10{from{-webkit-transform: rotate(120deg);transform: rotate(120deg)}to{-webkit-transform: rotate(480deg);transform: rotate(480deg)}}@keyframes animate-hour-hand-10{from{-webkit-transform: rotate(120deg);transform: rotate(120deg)}to{-webkit-transform: rotate(480deg);transform: rotate(480deg)}}.sh-10{-webkit-animation: animate-hand-10 60s linear infinite;animation: animate-hand-10 60s linear infinite}.mh-10{-webkit-animation: animate-hand-10 3600s linear infinite;animation: animate-hand-10 3600s linear infinite}.hh-10{-webkit-animation: animate-hour-hand-10 86400s linear infinite;animation: animate-hour-hand-10 86400s linear infinite}@-webkit-keyframes animate-hand-11{from{-webkit-transform: rotate(-114deg);transform: rotate(-114deg)}to{-webkit-transform: rotate(246deg);transform: rotate(246deg)}}@keyframes animate-hand-11{from{-webkit-transform: rotate(-114deg);transform: rotate(-114deg)}to{-webkit-transform: rotate(246deg);transform: rotate(246deg)}}@-webkit-keyframes animate-hour-hand-11{from{-webkit-transform: rotate(150deg);transform: rotate(150deg)}to{-webkit-transform: rotate(510deg);transform: rotate(510deg)}}@keyframes animate-hour-hand-11{from{-webkit-transform: rotate(150deg);transform: rotate(150deg)}to{-webkit-transform: rotate(510deg);transform: rotate(510deg)}}.sh-11{-webkit-animation: animate-hand-11 60s linear infinite;animation: animate-hand-11 60s linear infinite}.mh-11{-webkit-animation: animate-hand-11 3600s linear infinite;animation: animate-hand-11 3600s linear infinite}.hh-11{-webkit-animation: animate-hour-hand-11 86400s linear infinite;animation: animate-hour-hand-11 86400s linear infinite}@-webkit-keyframes animate-hand-12{from{-webkit-transform: rotate(-108deg);transform: rotate(-108deg)}to{-webkit-transform: rotate(252deg);transform: rotate(252deg)}}@keyframes animate-hand-12{from{-webkit-transform: rotate(-108deg);transform: rotate(-108deg)}to{-webkit-transform: rotate(252deg);transform: rotate(252deg)}}@-webkit-keyframes animate-hour-hand-12{from{-webkit-transform: rotate(180deg);transform: rotate(180deg)}to{-webkit-transform: rotate(540deg);transform: rotate(540deg)}}@keyframes animate-hour-hand-12{from{-webkit-transform: rotate(180deg);transform: rotate(180deg)}to{-webkit-transform: rotate(540deg);transform: rotate(540deg)}}.sh-12{-webkit-animation: animate-hand-12 60s linear infinite;animation: animate-hand-12 60s linear infinite}.mh-12{-webkit-animation: animate-hand-12 3600s linear infinite;animation: animate-hand-12 3600s linear infinite}.hh-12{-webkit-animation: animate-hour-hand-12 86400s linear infinite;animation: animate-hour-hand-12 86400s linear infinite}@-webkit-keyframes animate-hand-13{from{-webkit-transform: rotate(-102deg);transform: rotate(-102deg)}to{-webkit-transform: rotate(258deg);transform: rotate(258deg)}}@keyframes animate-hand-13{from{-webkit-transform: rotate(-102deg);transform: rotate(-102deg)}to{-webkit-transform: rotate(258deg);transform: rotate(258deg)}}@-webkit-keyframes animate-hour-hand-13{from{-webkit-transform: rotate(210deg);transform: rotate(210deg)}to{-webkit-transform: rotate(570deg);transform: rotate(570deg)}}@keyframes animate-hour-hand-13{from{-webkit-transform: rotate(210deg);transform: rotate(210deg)}to{-webkit-transform: rotate(570deg);transform: rotate(570deg)}}.sh-13{-webkit-animation: animate-hand-13 60s linear infinite;animation: animate-hand-13 60s linear infinite}.mh-13{-webkit-animation: animate-hand-13 3600s linear infinite;animation: animate-hand-13 3600s linear infinite}.hh-13{-webkit-animation: animate-hour-hand-13 86400s linear infinite;animation: animate-hour-hand-13 86400s linear infinite}@-webkit-keyframes animate-hand-14{from{-webkit-transform: rotate(-96deg);transform: rotate(-96deg)}to{-webkit-transform: rotate(264deg);transform: rotate(264deg)}}@keyframes animate-hand-14{from{-webkit-transform: rotate(-96deg);transform: rotate(-96deg)}to{-webkit-transform: rotate(264deg);transform: rotate(264deg)}}@-webkit-keyframes animate-hour-hand-14{from{-webkit-transform: rotate(240deg);transform: rotate(240deg)}to{-webkit-transform: rotate(600deg);transform: rotate(600deg)}}@keyframes animate-hour-hand-14{from{-webkit-transform: rotate(240deg);transform: rotate(240deg)}to{-webkit-transform: rotate(600deg);transform: rotate(600deg)}}.sh-14{-webkit-animation: animate-hand-14 60s linear infinite;animation: animate-hand-14 60s linear infinite}.mh-14{-webkit-animation: animate-hand-14 3600s linear infinite;animation: animate-hand-14 3600s linear infinite}.hh-14{-webkit-animation: animate-hour-hand-14 86400s linear infinite;animation: animate-hour-hand-14 86400s linear infinite}@-webkit-keyframes animate-hand-15{from{-webkit-transform: rotate(-90deg);transform: rotate(-90deg)}to{-webkit-transform: rotate(270deg);transform: rotate(270deg)}}@keyframes animate-hand-15{from{-webkit-transform: rotate(-90deg);transform: rotate(-90deg)}to{-webkit-transform: rotate(270deg);transform: rotate(270deg)}}@-webkit-keyframes animate-hour-hand-15{from{-webkit-transform: rotate(270deg);transform: rotate(270deg)}to{-webkit-transform: rotate(630deg);transform: rotate(630deg)}}@keyframes animate-hour-hand-15{from{-webkit-transform: rotate(270deg);transform: rotate(270deg)}to{-webkit-transform: rotate(630deg);transform: rotate(630deg)}}.sh-15{-webkit-animation: animate-hand-15 60s linear infinite;animation: animate-hand-15 60s linear infinite}.mh-15{-webkit-animation: animate-hand-15 3600s linear infinite;animation: animate-hand-15 3600s linear infinite}.hh-15{-webkit-animation: animate-hour-hand-15 86400s linear infinite;animation: animate-hour-hand-15 86400s linear infinite}@-webkit-keyframes animate-hand-16{from{-webkit-transform: rotate(-84deg);transform: rotate(-84deg)}to{-webkit-transform: rotate(276deg);transform: rotate(276deg)}}@keyframes animate-hand-16{from{-webkit-transform: rotate(-84deg);transform: rotate(-84deg)}to{-webkit-transform: rotate(276deg);transform: rotate(276deg)}}@-webkit-keyframes animate-hour-hand-16{from{-webkit-transform: rotate(300deg);transform: rotate(300deg)}to{-webkit-transform: rotate(660deg);transform: rotate(660deg)}}@keyframes animate-hour-hand-16{from{-webkit-transform: rotate(300deg);transform: rotate(300deg)}to{-webkit-transform: rotate(660deg);transform: rotate(660deg)}}.sh-16{-webkit-animation: animate-hand-16 60s linear infinite;animation: animate-hand-16 60s linear infinite}.mh-16{-webkit-animation: animate-hand-16 3600s linear infinite;animation: animate-hand-16 3600s linear infinite}.hh-16{-webkit-animation: animate-hour-hand-16 86400s linear infinite;animation: animate-hour-hand-16 86400s linear infinite}@-webkit-keyframes animate-hand-17{from{-webkit-transform: rotate(-78deg);transform: rotate(-78deg)}to{-webkit-transform: rotate(282deg);transform: rotate(282deg)}}@keyframes animate-hand-17{from{-webkit-transform: rotate(-78deg);transform: rotate(-78deg)}to{-webkit-transform: rotate(282deg);transform: rotate(282deg)}}@-webkit-keyframes animate-hour-hand-17{from{-webkit-transform: rotate(330deg);transform: rotate(330deg)}to{-webkit-transform: rotate(690deg);transform: rotate(690deg)}}@keyframes animate-hour-hand-17{from{-webkit-transform: rotate(330deg);transform: rotate(330deg)}to{-webkit-transform: rotate(690deg);transform: rotate(690deg)}}.sh-17{-webkit-animation: animate-hand-17 60s linear infinite;animation: animate-hand-17 60s linear infinite}.mh-17{-webkit-animation: animate-hand-17 3600s linear infinite;animation: animate-hand-17 3600s linear infinite}.hh-17{-webkit-animation: animate-hour-hand-17 86400s linear infinite;animation: animate-hour-hand-17 86400s linear infinite}@-webkit-keyframes animate-hand-18{from{-webkit-transform: rotate(-72deg);transform: rotate(-72deg)}to{-webkit-transform: rotate(288deg);transform: rotate(288deg)}}@keyframes animate-hand-18{from{-webkit-transform: rotate(-72deg);transform: rotate(-72deg)}to{-webkit-transform: rotate(288deg);transform: rotate(288deg)}}@-webkit-keyframes animate-hour-hand-18{from{-webkit-transform: rotate(360deg);transform: rotate(360deg)}to{-webkit-transform: rotate(720deg);transform: rotate(720deg)}}@keyframes animate-hour-hand-18{from{-webkit-transform: rotate(360deg);transform: rotate(360deg)}to{-webkit-transform: rotate(720deg);transform: rotate(720deg)}}.sh-18{-webkit-animation: animate-hand-18 60s linear infinite;animation: animate-hand-18 60s linear infinite}.mh-18{-webkit-animation: animate-hand-18 3600s linear infinite;animation: animate-hand-18 3600s linear infinite}.hh-18{-webkit-animation: animate-hour-hand-18 86400s linear infinite;animation: animate-hour-hand-18 86400s linear infinite}@-webkit-keyframes animate-hand-19{from{-webkit-transform: rotate(-66deg);transform: rotate(-66deg)}to{-webkit-transform: rotate(294deg);transform: rotate(294deg)}}@keyframes animate-hand-19{from{-webkit-transform: rotate(-66deg);transform: rotate(-66deg)}to{-webkit-transform: rotate(294deg);transform: rotate(294deg)}}@-webkit-keyframes animate-hour-hand-19{from{-webkit-transform: rotate(390deg);transform: rotate(390deg)}to{-webkit-transform: rotate(750deg);transform: rotate(750deg)}}@keyframes animate-hour-hand-19{from{-webkit-transform: rotate(390deg);transform: rotate(390deg)}to{-webkit-transform: rotate(750deg);transform: rotate(750deg)}}.sh-19{-webkit-animation: animate-hand-19 60s linear infinite;animation: animate-hand-19 60s linear infinite}.mh-19{-webkit-animation: animate-hand-19 3600s linear infinite;animation: animate-hand-19 3600s linear infinite}.hh-19{-webkit-animation: animate-hour-hand-19 86400s linear infinite;animation: animate-hour-hand-19 86400s linear infinite}@-webkit-keyframes animate-hand-20{from{-webkit-transform: rotate(-60deg);transform: rotate(-60deg)}to{-webkit-transform: rotate(300deg);transform: rotate(300deg)}}@keyframes animate-hand-20{from{-webkit-transform: rotate(-60deg);transform: rotate(-60deg)}to{-webkit-transform: rotate(300deg);transform: rotate(300deg)}}@-webkit-keyframes animate-hour-hand-20{from{-webkit-transform: rotate(420deg);transform: rotate(420deg)}to{-webkit-transform: rotate(780deg);transform: rotate(780deg)}}@keyframes animate-hour-hand-20{from{-webkit-transform: rotate(420deg);transform: rotate(420deg)}to{-webkit-transform: rotate(780deg);transform: rotate(780deg)}}.sh-20{-webkit-animation: animate-hand-20 60s linear infinite;animation: animate-hand-20 60s linear infinite}.mh-20{-webkit-animation: animate-hand-20 3600s linear infinite;animation: animate-hand-20 3600s linear infinite}.hh-20{-webkit-animation: animate-hour-hand-20 86400s linear infinite;animation: animate-hour-hand-20 86400s linear infinite}@-webkit-keyframes animate-hand-21{from{-webkit-transform: rotate(-54.0deg);transform: rotate(-54.0deg)}to{-webkit-transform: rotate(306deg);transform: rotate(306deg)}}@keyframes animate-hand-21{from{-webkit-transform: rotate(-54.0deg);transform: rotate(-54.0deg)}to{-webkit-transform: rotate(306deg);transform: rotate(306deg)}}@-webkit-keyframes animate-hour-hand-21{from{-webkit-transform: rotate(450deg);transform: rotate(450deg)}to{-webkit-transform: rotate(810deg);transform: rotate(810deg)}}@keyframes animate-hour-hand-21{from{-webkit-transform: rotate(450deg);transform: rotate(450deg)}to{-webkit-transform: rotate(810deg);transform: rotate(810deg)}}.sh-21{-webkit-animation: animate-hand-21 60s linear infinite;animation: animate-hand-21 60s linear infinite}.mh-21{-webkit-animation: animate-hand-21 3600s linear infinite;animation: animate-hand-21 3600s linear infinite}.hh-21{-webkit-animation: animate-hour-hand-21 86400s linear infinite;animation: animate-hour-hand-21 86400s linear infinite}@-webkit-keyframes animate-hand-22{from{-webkit-transform: rotate(-48deg);transform: rotate(-48deg)}to{-webkit-transform: rotate(312deg);transform: rotate(312deg)}}@keyframes animate-hand-22{from{-webkit-transform: rotate(-48deg);transform: rotate(-48deg)}to{-webkit-transform: rotate(312deg);transform: rotate(312deg)}}@-webkit-keyframes animate-hour-hand-22{from{-webkit-transform: rotate(480deg);transform: rotate(480deg)}to{-webkit-transform: rotate(840deg);transform: rotate(840deg)}}@keyframes animate-hour-hand-22{from{-webkit-transform: rotate(480deg);transform: rotate(480deg)}to{-webkit-transform: rotate(840deg);transform: rotate(840deg)}}.sh-22{-webkit-animation: animate-hand-22 60s linear infinite;animation: animate-hand-22 60s linear infinite}.mh-22{-webkit-animation: animate-hand-22 3600s linear infinite;animation: animate-hand-22 3600s linear infinite}.hh-22{-webkit-animation: animate-hour-hand-22 86400s linear infinite;animation: animate-hour-hand-22 86400s linear infinite}@-webkit-keyframes animate-hand-23{from{-webkit-transform: rotate(-42deg);transform: rotate(-42deg)}to{-webkit-transform: rotate(318deg);transform: rotate(318deg)}}@keyframes animate-hand-23{from{-webkit-transform: rotate(-42deg);transform: rotate(-42deg)}to{-webkit-transform: rotate(318deg);transform: rotate(318deg)}}@-webkit-keyframes animate-hour-hand-23{from{-webkit-transform: rotate(510deg);transform: rotate(510deg)}to{-webkit-transform: rotate(870deg);transform: rotate(870deg)}}@keyframes animate-hour-hand-23{from{-webkit-transform: rotate(510deg);transform: rotate(510deg)}to{-webkit-transform: rotate(870deg);transform: rotate(870deg)}}.sh-23{-webkit-animation: animate-hand-23 60s linear infinite;animation: animate-hand-23 60s linear infinite}.mh-23{-webkit-animation: animate-hand-23 3600s linear infinite;animation: animate-hand-23 3600s linear infinite}.hh-23{-webkit-animation: animate-hour-hand-23 86400s linear infinite;animation: animate-hour-hand-23 86400s linear infinite}@-webkit-keyframes animate-hand-24{from{-webkit-transform: rotate(-36deg);transform: rotate(-36deg)}to{-webkit-transform: rotate(324deg);transform: rotate(324deg)}}@keyframes animate-hand-24{from{-webkit-transform: rotate(-36deg);transform: rotate(-36deg)}to{-webkit-transform: rotate(324deg);transform: rotate(324deg)}}@-webkit-keyframes animate-hour-hand-24{from{-webkit-transform: rotate(540deg);transform: rotate(540deg)}to{-webkit-transform: rotate(900deg);transform: rotate(900deg)}}@keyframes animate-hour-hand-24{from{-webkit-transform: rotate(540deg);transform: rotate(540deg)}to{-webkit-transform: rotate(900deg);transform: rotate(900deg)}}.sh-24{-webkit-animation: animate-hand-24 60s linear infinite;animation: animate-hand-24 60s linear infinite}.mh-24{-webkit-animation: animate-hand-24 3600s linear infinite;animation: animate-hand-24 3600s linear infinite}.hh-24{-webkit-animation: animate-hour-hand-24 86400s linear infinite;animation: animate-hour-hand-24 86400s linear infinite}@-webkit-keyframes animate-hand-25{from{-webkit-transform: rotate(-30deg);transform: rotate(-30deg)}to{-webkit-transform: rotate(330deg);transform: rotate(330deg)}}@keyframes animate-hand-25{from{-webkit-transform: rotate(-30deg);transform: rotate(-30deg)}to{-webkit-transform: rotate(330deg);transform: rotate(330deg)}}@-webkit-keyframes animate-hour-hand-25{from{-webkit-transform: rotate(570deg);transform: rotate(570deg)}to{-webkit-transform: rotate(930deg);transform: rotate(930deg)}}@keyframes animate-hour-hand-25{from{-webkit-transform: rotate(570deg);transform: rotate(570deg)}to{-webkit-transform: rotate(930deg);transform: rotate(930deg)}}.sh-25{-webkit-animation: animate-hand-25 60s linear infinite;animation: animate-hand-25 60s linear infinite}.mh-25{-webkit-animation: animate-hand-25 3600s linear infinite;animation: animate-hand-25 3600s linear infinite}.hh-25{-webkit-animation: animate-hour-hand-25 86400s linear infinite;animation: animate-hour-hand-25 86400s linear infinite}@-webkit-keyframes animate-hand-26{from{-webkit-transform: rotate(-24deg);transform: rotate(-24deg)}to{-webkit-transform: rotate(336deg);transform: rotate(336deg)}}@keyframes animate-hand-26{from{-webkit-transform: rotate(-24deg);transform: rotate(-24deg)}to{-webkit-transform: rotate(336deg);transform: rotate(336deg)}}@-webkit-keyframes animate-hour-hand-26{from{-webkit-transform: rotate(600deg);transform: rotate(600deg)}to{-webkit-transform: rotate(960deg);transform: rotate(960deg)}}@keyframes animate-hour-hand-26{from{-webkit-transform: rotate(600deg);transform: rotate(600deg)}to{-webkit-transform: rotate(960deg);transform: rotate(960deg)}}.sh-26{-webkit-animation: animate-hand-26 60s linear infinite;animation: animate-hand-26 60s linear infinite}.mh-26{-webkit-animation: animate-hand-26 3600s linear infinite;animation: animate-hand-26 3600s linear infinite}.hh-26{-webkit-animation: animate-hour-hand-26 86400s linear infinite;animation: animate-hour-hand-26 86400s linear infinite}@-webkit-keyframes animate-hand-27{from{-webkit-transform: rotate(-18deg);transform: rotate(-18deg)}to{-webkit-transform: rotate(342deg);transform: rotate(342deg)}}@keyframes animate-hand-27{from{-webkit-transform: rotate(-18deg);transform: rotate(-18deg)}to{-webkit-transform: rotate(342deg);transform: rotate(342deg)}}@-webkit-keyframes animate-hour-hand-27{from{-webkit-transform: rotate(630deg);transform: rotate(630deg)}to{-webkit-transform: rotate(990deg);transform: rotate(990deg)}}@keyframes animate-hour-hand-27{from{-webkit-transform: rotate(630deg);transform: rotate(630deg)}to{-webkit-transform: rotate(990deg);transform: rotate(990deg)}}.sh-27{-webkit-animation: animate-hand-27 60s linear infinite;animation: animate-hand-27 60s linear infinite}.mh-27{-webkit-animation: animate-hand-27 3600s linear infinite;animation: animate-hand-27 3600s linear infinite}.hh-27{-webkit-animation: animate-hour-hand-27 86400s linear infinite;animation: animate-hour-hand-27 86400s linear infinite}@-webkit-keyframes animate-hand-28{from{-webkit-transform: rotate(-12deg);transform: rotate(-12deg)}to{-webkit-transform: rotate(348deg);transform: rotate(348deg)}}@keyframes animate-hand-28{from{-webkit-transform: rotate(-12deg);transform: rotate(-12deg)}to{-webkit-transform: rotate(348deg);transform: rotate(348deg)}}@-webkit-keyframes animate-hour-hand-28{from{-webkit-transform: rotate(660deg);transform: rotate(660deg)}to{-webkit-transform: rotate(1020deg);transform: rotate(1020deg)}}@keyframes animate-hour-hand-28{from{-webkit-transform: rotate(660deg);transform: rotate(660deg)}to{-webkit-transform: rotate(1020deg);transform: rotate(1020deg)}}.sh-28{-webkit-animation: animate-hand-28 60s linear infinite;animation: animate-hand-28 60s linear infinite}.mh-28{-webkit-animation: animate-hand-28 3600s linear infinite;animation: animate-hand-28 3600s linear infinite}.hh-28{-webkit-animation: animate-hour-hand-28 86400s linear infinite;animation: animate-hour-hand-28 86400s linear infinite}@-webkit-keyframes animate-hand-29{from{-webkit-transform: rotate(-6deg);transform: rotate(-6deg)}to{-webkit-transform: rotate(354deg);transform: rotate(354deg)}}@keyframes animate-hand-29{from{-webkit-transform: rotate(-6deg);transform: rotate(-6deg)}to{-webkit-transform: rotate(354deg);transform: rotate(354deg)}}@-webkit-keyframes animate-hour-hand-29{from{-webkit-transform: rotate(690deg);transform: rotate(690deg)}to{-webkit-transform: rotate(1050deg);transform: rotate(1050deg)}}@keyframes animate-hour-hand-29{from{-webkit-transform: rotate(690deg);transform: rotate(690deg)}to{-webkit-transform: rotate(1050deg);transform: rotate(1050deg)}}.sh-29{-webkit-animation: animate-hand-29 60s linear infinite;animation: animate-hand-29 60s linear infinite}.mh-29{-webkit-animation: animate-hand-29 3600s linear infinite;animation: animate-hand-29 3600s linear infinite}.hh-29{-webkit-animation: animate-hour-hand-29 86400s linear infinite;animation: animate-hour-hand-29 86400s linear infinite}@-webkit-keyframes animate-hand-30{from{-webkit-transform: rotate(0deg);transform: rotate(0deg)}to{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes animate-hand-30{from{-webkit-transform: rotate(0deg);transform: rotate(0deg)}to{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@-webkit-keyframes animate-hour-hand-30{from{-webkit-transform: rotate(720deg);transform: rotate(720deg)}to{-webkit-transform: rotate(1080deg);transform: rotate(1080deg)}}@keyframes animate-hour-hand-30{from{-webkit-transform: rotate(720deg);transform: rotate(720deg)}to{-webkit-transform: rotate(1080deg);transform: rotate(1080deg)}}.sh-30{-webkit-animation: animate-hand-30 60s linear infinite;animation: animate-hand-30 60s linear infinite}.mh-30{-webkit-animation: animate-hand-30 3600s linear infinite;animation: animate-hand-30 3600s linear infinite}.hh-30{-webkit-animation: animate-hour-hand-30 86400s linear infinite;animation: animate-hour-hand-30 86400s linear infinite}@-webkit-keyframes animate-hand-31{from{-webkit-transform: rotate(6.0deg);transform: rotate(6.0deg)}to{-webkit-transform: rotate(366deg);transform: rotate(366deg)}}@keyframes animate-hand-31{from{-webkit-transform: rotate(6.0deg);transform: rotate(6.0deg)}to{-webkit-transform: rotate(366deg);transform: rotate(366deg)}}@-webkit-keyframes animate-hour-hand-31{from{-webkit-transform: rotate(750deg);transform: rotate(750deg)}to{-webkit-transform: rotate(1110deg);transform: rotate(1110deg)}}@keyframes animate-hour-hand-31{from{-webkit-transform: rotate(750deg);transform: rotate(750deg)}to{-webkit-transform: rotate(1110deg);transform: rotate(1110deg)}}.sh-31{-webkit-animation: animate-hand-31 60s linear infinite;animation: animate-hand-31 60s linear infinite}.mh-31{-webkit-animation: animate-hand-31 3600s linear infinite;animation: animate-hand-31 3600s linear infinite}.hh-31{-webkit-animation: animate-hour-hand-31 86400s linear infinite;animation: animate-hour-hand-31 86400s linear infinite}@-webkit-keyframes animate-hand-32{from{-webkit-transform: rotate(12deg);transform: rotate(12deg)}to{-webkit-transform: rotate(372deg);transform: rotate(372deg)}}@keyframes animate-hand-32{from{-webkit-transform: rotate(12deg);transform: rotate(12deg)}to{-webkit-transform: rotate(372deg);transform: rotate(372deg)}}@-webkit-keyframes animate-hour-hand-32{from{-webkit-transform: rotate(780deg);transform: rotate(780deg)}to{-webkit-transform: rotate(1140deg);transform: rotate(1140deg)}}@keyframes animate-hour-hand-32{from{-webkit-transform: rotate(780deg);transform: rotate(780deg)}to{-webkit-transform: rotate(1140deg);transform: rotate(1140deg)}}.sh-32{-webkit-animation: animate-hand-32 60s linear infinite;animation: animate-hand-32 60s linear infinite}.mh-32{-webkit-animation: animate-hand-32 3600s linear infinite;animation: animate-hand-32 3600s linear infinite}.hh-32{-webkit-animation: animate-hour-hand-32 86400s linear infinite;animation: animate-hour-hand-32 86400s linear infinite}@-webkit-keyframes animate-hand-33{from{-webkit-transform: rotate(18.0deg);transform: rotate(18.0deg)}to{-webkit-transform: rotate(378deg);transform: rotate(378deg)}}@keyframes animate-hand-33{from{-webkit-transform: rotate(18.0deg);transform: rotate(18.0deg)}to{-webkit-transform: rotate(378deg);transform: rotate(378deg)}}@-webkit-keyframes animate-hour-hand-33{from{-webkit-transform: rotate(810deg);transform: rotate(810deg)}to{-webkit-transform: rotate(1170deg);transform: rotate(1170deg)}}@keyframes animate-hour-hand-33{from{-webkit-transform: rotate(810deg);transform: rotate(810deg)}to{-webkit-transform: rotate(1170deg);transform: rotate(1170deg)}}.sh-33{-webkit-animation: animate-hand-33 60s linear infinite;animation: animate-hand-33 60s linear infinite}.mh-33{-webkit-animation: animate-hand-33 3600s linear infinite;animation: animate-hand-33 3600s linear infinite}.hh-33{-webkit-animation: animate-hour-hand-33 86400s linear infinite;animation: animate-hour-hand-33 86400s linear infinite}@-webkit-keyframes animate-hand-34{from{-webkit-transform: rotate(24deg);transform: rotate(24deg)}to{-webkit-transform: rotate(384deg);transform: rotate(384deg)}}@keyframes animate-hand-34{from{-webkit-transform: rotate(24deg);transform: rotate(24deg)}to{-webkit-transform: rotate(384deg);transform: rotate(384deg)}}@-webkit-keyframes animate-hour-hand-34{from{-webkit-transform: rotate(840deg);transform: rotate(840deg)}to{-webkit-transform: rotate(1200deg);transform: rotate(1200deg)}}@keyframes animate-hour-hand-34{from{-webkit-transform: rotate(840deg);transform: rotate(840deg)}to{-webkit-transform: rotate(1200deg);transform: rotate(1200deg)}}.sh-34{-webkit-animation: animate-hand-34 60s linear infinite;animation: animate-hand-34 60s linear infinite}.mh-34{-webkit-animation: animate-hand-34 3600s linear infinite;animation: animate-hand-34 3600s linear infinite}.hh-34{-webkit-animation: animate-hour-hand-34 86400s linear infinite;animation: animate-hour-hand-34 86400s linear infinite}@-webkit-keyframes animate-hand-35{from{-webkit-transform: rotate(30deg);transform: rotate(30deg)}to{-webkit-transform: rotate(390deg);transform: rotate(390deg)}}@keyframes animate-hand-35{from{-webkit-transform: rotate(30deg);transform: rotate(30deg)}to{-webkit-transform: rotate(390deg);transform: rotate(390deg)}}@-webkit-keyframes animate-hour-hand-35{from{-webkit-transform: rotate(870deg);transform: rotate(870deg)}to{-webkit-transform: rotate(1230deg);transform: rotate(1230deg)}}@keyframes animate-hour-hand-35{from{-webkit-transform: rotate(870deg);transform: rotate(870deg)}to{-webkit-transform: rotate(1230deg);transform: rotate(1230deg)}}.sh-35{-webkit-animation: animate-hand-35 60s linear infinite;animation: animate-hand-35 60s linear infinite}.mh-35{-webkit-animation: animate-hand-35 3600s linear infinite;animation: animate-hand-35 3600s linear infinite}.hh-35{-webkit-animation: animate-hour-hand-35 86400s linear infinite;animation: animate-hour-hand-35 86400s linear infinite}@-webkit-keyframes animate-hand-36{from{-webkit-transform: rotate(36deg);transform: rotate(36deg)}to{-webkit-transform: rotate(396deg);transform: rotate(396deg)}}@keyframes animate-hand-36{from{-webkit-transform: rotate(36deg);transform: rotate(36deg)}to{-webkit-transform: rotate(396deg);transform: rotate(396deg)}}@-webkit-keyframes animate-hour-hand-36{from{-webkit-transform: rotate(900deg);transform: rotate(900deg)}to{-webkit-transform: rotate(1260deg);transform: rotate(1260deg)}}@keyframes animate-hour-hand-36{from{-webkit-transform: rotate(900deg);transform: rotate(900deg)}to{-webkit-transform: rotate(1260deg);transform: rotate(1260deg)}}.sh-36{-webkit-animation: animate-hand-36 60s linear infinite;animation: animate-hand-36 60s linear infinite}.mh-36{-webkit-animation: animate-hand-36 3600s linear infinite;animation: animate-hand-36 3600s linear infinite}.hh-36{-webkit-animation: animate-hour-hand-36 86400s linear infinite;animation: animate-hour-hand-36 86400s linear infinite}@-webkit-keyframes animate-hand-37{from{-webkit-transform: rotate(42deg);transform: rotate(42deg)}to{-webkit-transform: rotate(402deg);transform: rotate(402deg)}}@keyframes animate-hand-37{from{-webkit-transform: rotate(42deg);transform: rotate(42deg)}to{-webkit-transform: rotate(402deg);transform: rotate(402deg)}}@-webkit-keyframes animate-hour-hand-37{from{-webkit-transform: rotate(930deg);transform: rotate(930deg)}to{-webkit-transform: rotate(1290deg);transform: rotate(1290deg)}}@keyframes animate-hour-hand-37{from{-webkit-transform: rotate(930deg);transform: rotate(930deg)}to{-webkit-transform: rotate(1290deg);transform: rotate(1290deg)}}.sh-37{-webkit-animation: animate-hand-37 60s linear infinite;animation: animate-hand-37 60s linear infinite}.mh-37{-webkit-animation: animate-hand-37 3600s linear infinite;animation: animate-hand-37 3600s linear infinite}.hh-37{-webkit-animation: animate-hour-hand-37 86400s linear infinite;animation: animate-hour-hand-37 86400s linear infinite}@-webkit-keyframes animate-hand-38{from{-webkit-transform: rotate(48deg);transform: rotate(48deg)}to{-webkit-transform: rotate(408deg);transform: rotate(408deg)}}@keyframes animate-hand-38{from{-webkit-transform: rotate(48deg);transform: rotate(48deg)}to{-webkit-transform: rotate(408deg);transform: rotate(408deg)}}@-webkit-keyframes animate-hour-hand-38{from{-webkit-transform: rotate(960deg);transform: rotate(960deg)}to{-webkit-transform: rotate(1320deg);transform: rotate(1320deg)}}@keyframes animate-hour-hand-38{from{-webkit-transform: rotate(960deg);transform: rotate(960deg)}to{-webkit-transform: rotate(1320deg);transform: rotate(1320deg)}}.sh-38{-webkit-animation: animate-hand-38 60s linear infinite;animation: animate-hand-38 60s linear infinite}.mh-38{-webkit-animation: animate-hand-38 3600s linear infinite;animation: animate-hand-38 3600s linear infinite}.hh-38{-webkit-animation: animate-hour-hand-38 86400s linear infinite;animation: animate-hour-hand-38 86400s linear infinite}@-webkit-keyframes animate-hand-39{from{-webkit-transform: rotate(54deg);transform: rotate(54deg)}to{-webkit-transform: rotate(414deg);transform: rotate(414deg)}}@keyframes animate-hand-39{from{-webkit-transform: rotate(54deg);transform: rotate(54deg)}to{-webkit-transform: rotate(414deg);transform: rotate(414deg)}}@-webkit-keyframes animate-hour-hand-39{from{-webkit-transform: rotate(990deg);transform: rotate(990deg)}to{-webkit-transform: rotate(1350deg);transform: rotate(1350deg)}}@keyframes animate-hour-hand-39{from{-webkit-transform: rotate(990deg);transform: rotate(990deg)}to{-webkit-transform: rotate(1350deg);transform: rotate(1350deg)}}.sh-39{-webkit-animation: animate-hand-39 60s linear infinite;animation: animate-hand-39 60s linear infinite}.mh-39{-webkit-animation: animate-hand-39 3600s linear infinite;animation: animate-hand-39 3600s linear infinite}.hh-39{-webkit-animation: animate-hour-hand-39 86400s linear infinite;animation: animate-hour-hand-39 86400s linear infinite}@-webkit-keyframes animate-hand-40{from{-webkit-transform: rotate(60deg);transform: rotate(60deg)}to{-webkit-transform: rotate(420deg);transform: rotate(420deg)}}@keyframes animate-hand-40{from{-webkit-transform: rotate(60deg);transform: rotate(60deg)}to{-webkit-transform: rotate(420deg);transform: rotate(420deg)}}@-webkit-keyframes animate-hour-hand-40{from{-webkit-transform: rotate(1020deg);transform: rotate(1020deg)}to{-webkit-transform: rotate(1380deg);transform: rotate(1380deg)}}@keyframes animate-hour-hand-40{from{-webkit-transform: rotate(1020deg);transform: rotate(1020deg)}to{-webkit-transform: rotate(1380deg);transform: rotate(1380deg)}}.sh-40{-webkit-animation: animate-hand-40 60s linear infinite;animation: animate-hand-40 60s linear infinite}.mh-40{-webkit-animation: animate-hand-40 3600s linear infinite;animation: animate-hand-40 3600s linear infinite}.hh-40{-webkit-animation: animate-hour-hand-40 86400s linear infinite;animation: animate-hour-hand-40 86400s linear infinite}@-webkit-keyframes animate-hand-41{from{-webkit-transform: rotate(66deg);transform: rotate(66deg)}to{-webkit-transform: rotate(426deg);transform: rotate(426deg)}}@keyframes animate-hand-41{from{-webkit-transform: rotate(66deg);transform: rotate(66deg)}to{-webkit-transform: rotate(426deg);transform: rotate(426deg)}}@-webkit-keyframes animate-hour-hand-41{from{-webkit-transform: rotate(1050deg);transform: rotate(1050deg)}to{-webkit-transform: rotate(1410deg);transform: rotate(1410deg)}}@keyframes animate-hour-hand-41{from{-webkit-transform: rotate(1050deg);transform: rotate(1050deg)}to{-webkit-transform: rotate(1410deg);transform: rotate(1410deg)}}.sh-41{-webkit-animation: animate-hand-41 60s linear infinite;animation: animate-hand-41 60s linear infinite}.mh-41{-webkit-animation: animate-hand-41 3600s linear infinite;animation: animate-hand-41 3600s linear infinite}.hh-41{-webkit-animation: animate-hour-hand-41 86400s linear infinite;animation: animate-hour-hand-41 86400s linear infinite}@-webkit-keyframes animate-hand-42{from{-webkit-transform: rotate(72.0deg);transform: rotate(72.0deg)}to{-webkit-transform: rotate(432deg);transform: rotate(432deg)}}@keyframes animate-hand-42{from{-webkit-transform: rotate(72.0deg);transform: rotate(72.0deg)}to{-webkit-transform: rotate(432deg);transform: rotate(432deg)}}@-webkit-keyframes animate-hour-hand-42{from{-webkit-transform: rotate(1080deg);transform: rotate(1080deg)}to{-webkit-transform: rotate(1440deg);transform: rotate(1440deg)}}@keyframes animate-hour-hand-42{from{-webkit-transform: rotate(1080deg);transform: rotate(1080deg)}to{-webkit-transform: rotate(1440deg);transform: rotate(1440deg)}}.sh-42{-webkit-animation: animate-hand-42 60s linear infinite;animation: animate-hand-42 60s linear infinite}.mh-42{-webkit-animation: animate-hand-42 3600s linear infinite;animation: animate-hand-42 3600s linear infinite}.hh-42{-webkit-animation: animate-hour-hand-42 86400s linear infinite;animation: animate-hour-hand-42 86400s linear infinite}@-webkit-keyframes animate-hand-43{from{-webkit-transform: rotate(78deg);transform: rotate(78deg)}to{-webkit-transform: rotate(438deg);transform: rotate(438deg)}}@keyframes animate-hand-43{from{-webkit-transform: rotate(78deg);transform: rotate(78deg)}to{-webkit-transform: rotate(438deg);transform: rotate(438deg)}}@-webkit-keyframes animate-hour-hand-43{from{-webkit-transform: rotate(1110deg);transform: rotate(1110deg)}to{-webkit-transform: rotate(1470deg);transform: rotate(1470deg)}}@keyframes animate-hour-hand-43{from{-webkit-transform: rotate(1110deg);transform: rotate(1110deg)}to{-webkit-transform: rotate(1470deg);transform: rotate(1470deg)}}.sh-43{-webkit-animation: animate-hand-43 60s linear infinite;animation: animate-hand-43 60s linear infinite}.mh-43{-webkit-animation: animate-hand-43 3600s linear infinite;animation: animate-hand-43 3600s linear infinite}.hh-43{-webkit-animation: animate-hour-hand-43 86400s linear infinite;animation: animate-hour-hand-43 86400s linear infinite}@-webkit-keyframes animate-hand-44{from{-webkit-transform: rotate(84deg);transform: rotate(84deg)}to{-webkit-transform: rotate(444deg);transform: rotate(444deg)}}@keyframes animate-hand-44{from{-webkit-transform: rotate(84deg);transform: rotate(84deg)}to{-webkit-transform: rotate(444deg);transform: rotate(444deg)}}@-webkit-keyframes animate-hour-hand-44{from{-webkit-transform: rotate(1140deg);transform: rotate(1140deg)}to{-webkit-transform: rotate(1500deg);transform: rotate(1500deg)}}@keyframes animate-hour-hand-44{from{-webkit-transform: rotate(1140deg);transform: rotate(1140deg)}to{-webkit-transform: rotate(1500deg);transform: rotate(1500deg)}}.sh-44{-webkit-animation: animate-hand-44 60s linear infinite;animation: animate-hand-44 60s linear infinite}.mh-44{-webkit-animation: animate-hand-44 3600s linear infinite;animation: animate-hand-44 3600s linear infinite}.hh-44{-webkit-animation: animate-hour-hand-44 86400s linear infinite;animation: animate-hour-hand-44 86400s linear infinite}@-webkit-keyframes animate-hand-45{from{-webkit-transform: rotate(90deg);transform: rotate(90deg)}to{-webkit-transform: rotate(450deg);transform: rotate(450deg)}}@keyframes animate-hand-45{from{-webkit-transform: rotate(90deg);transform: rotate(90deg)}to{-webkit-transform: rotate(450deg);transform: rotate(450deg)}}@-webkit-keyframes animate-hour-hand-45{from{-webkit-transform: rotate(1170deg);transform: rotate(1170deg)}to{-webkit-transform: rotate(1530deg);transform: rotate(1530deg)}}@keyframes animate-hour-hand-45{from{-webkit-transform: rotate(1170deg);transform: rotate(1170deg)}to{-webkit-transform: rotate(1530deg);transform: rotate(1530deg)}}.sh-45{-webkit-animation: animate-hand-45 60s linear infinite;animation: animate-hand-45 60s linear infinite}.mh-45{-webkit-animation: animate-hand-45 3600s linear infinite;animation: animate-hand-45 3600s linear infinite}.hh-45{-webkit-animation: animate-hour-hand-45 86400s linear infinite;animation: animate-hour-hand-45 86400s linear infinite}@-webkit-keyframes animate-hand-46{from{-webkit-transform: rotate(96deg);transform: rotate(96deg)}to{-webkit-transform: rotate(456deg);transform: rotate(456deg)}}@keyframes animate-hand-46{from{-webkit-transform: rotate(96deg);transform: rotate(96deg)}to{-webkit-transform: rotate(456deg);transform: rotate(456deg)}}@-webkit-keyframes animate-hour-hand-46{from{-webkit-transform: rotate(1200deg);transform: rotate(1200deg)}to{-webkit-transform: rotate(1560deg);transform: rotate(1560deg)}}@keyframes animate-hour-hand-46{from{-webkit-transform: rotate(1200deg);transform: rotate(1200deg)}to{-webkit-transform: rotate(1560deg);transform: rotate(1560deg)}}.sh-46{-webkit-animation: animate-hand-46 60s linear infinite;animation: animate-hand-46 60s linear infinite}.mh-46{-webkit-animation: animate-hand-46 3600s linear infinite;animation: animate-hand-46 3600s linear infinite}.hh-46{-webkit-animation: animate-hour-hand-46 86400s linear infinite;animation: animate-hour-hand-46 86400s linear infinite}@-webkit-keyframes animate-hand-47{from{-webkit-transform: rotate(102deg);transform: rotate(102deg)}to{-webkit-transform: rotate(462deg);transform: rotate(462deg)}}@keyframes animate-hand-47{from{-webkit-transform: rotate(102deg);transform: rotate(102deg)}to{-webkit-transform: rotate(462deg);transform: rotate(462deg)}}@-webkit-keyframes animate-hour-hand-47{from{-webkit-transform: rotate(1230deg);transform: rotate(1230deg)}to{-webkit-transform: rotate(1590deg);transform: rotate(1590deg)}}@keyframes animate-hour-hand-47{from{-webkit-transform: rotate(1230deg);transform: rotate(1230deg)}to{-webkit-transform: rotate(1590deg);transform: rotate(1590deg)}}.sh-47{-webkit-animation: animate-hand-47 60s linear infinite;animation: animate-hand-47 60s linear infinite}.mh-47{-webkit-animation: animate-hand-47 3600s linear infinite;animation: animate-hand-47 3600s linear infinite}.hh-47{-webkit-animation: animate-hour-hand-47 86400s linear infinite;animation: animate-hour-hand-47 86400s linear infinite}@-webkit-keyframes animate-hand-48{from{-webkit-transform: rotate(108deg);transform: rotate(108deg)}to{-webkit-transform: rotate(468deg);transform: rotate(468deg)}}@keyframes animate-hand-48{from{-webkit-transform: rotate(108deg);transform: rotate(108deg)}to{-webkit-transform: rotate(468deg);transform: rotate(468deg)}}@-webkit-keyframes animate-hour-hand-48{from{-webkit-transform: rotate(1260deg);transform: rotate(1260deg)}to{-webkit-transform: rotate(1620deg);transform: rotate(1620deg)}}@keyframes animate-hour-hand-48{from{-webkit-transform: rotate(1260deg);transform: rotate(1260deg)}to{-webkit-transform: rotate(1620deg);transform: rotate(1620deg)}}.sh-48{-webkit-animation: animate-hand-48 60s linear infinite;animation: animate-hand-48 60s linear infinite}.mh-48{-webkit-animation: animate-hand-48 3600s linear infinite;animation: animate-hand-48 3600s linear infinite}.hh-48{-webkit-animation: animate-hour-hand-48 86400s linear infinite;animation: animate-hour-hand-48 86400s linear infinite}@-webkit-keyframes animate-hand-49{from{-webkit-transform: rotate(114deg);transform: rotate(114deg)}to{-webkit-transform: rotate(474deg);transform: rotate(474deg)}}@keyframes animate-hand-49{from{-webkit-transform: rotate(114deg);transform: rotate(114deg)}to{-webkit-transform: rotate(474deg);transform: rotate(474deg)}}@-webkit-keyframes animate-hour-hand-49{from{-webkit-transform: rotate(1290deg);transform: rotate(1290deg)}to{-webkit-transform: rotate(1650deg);transform: rotate(1650deg)}}@keyframes animate-hour-hand-49{from{-webkit-transform: rotate(1290deg);transform: rotate(1290deg)}to{-webkit-transform: rotate(1650deg);transform: rotate(1650deg)}}.sh-49{-webkit-animation: animate-hand-49 60s linear infinite;animation: animate-hand-49 60s linear infinite}.mh-49{-webkit-animation: animate-hand-49 3600s linear infinite;animation: animate-hand-49 3600s linear infinite}.hh-49{-webkit-animation: animate-hour-hand-49 86400s linear infinite;animation: animate-hour-hand-49 86400s linear infinite}@-webkit-keyframes animate-hand-50{from{-webkit-transform: rotate(120deg);transform: rotate(120deg)}to{-webkit-transform: rotate(480deg);transform: rotate(480deg)}}@keyframes animate-hand-50{from{-webkit-transform: rotate(120deg);transform: rotate(120deg)}to{-webkit-transform: rotate(480deg);transform: rotate(480deg)}}@-webkit-keyframes animate-hour-hand-50{from{-webkit-transform: rotate(1320deg);transform: rotate(1320deg)}to{-webkit-transform: rotate(1680deg);transform: rotate(1680deg)}}@keyframes animate-hour-hand-50{from{-webkit-transform: rotate(1320deg);transform: rotate(1320deg)}to{-webkit-transform: rotate(1680deg);transform: rotate(1680deg)}}.sh-50{-webkit-animation: animate-hand-50 60s linear infinite;animation: animate-hand-50 60s linear infinite}.mh-50{-webkit-animation: animate-hand-50 3600s linear infinite;animation: animate-hand-50 3600s linear infinite}.hh-50{-webkit-animation: animate-hour-hand-50 86400s linear infinite;animation: animate-hour-hand-50 86400s linear infinite}@-webkit-keyframes animate-hand-51{from{-webkit-transform: rotate(126deg);transform: rotate(126deg)}to{-webkit-transform: rotate(486deg);transform: rotate(486deg)}}@keyframes animate-hand-51{from{-webkit-transform: rotate(126deg);transform: rotate(126deg)}to{-webkit-transform: rotate(486deg);transform: rotate(486deg)}}@-webkit-keyframes animate-hour-hand-51{from{-webkit-transform: rotate(1350deg);transform: rotate(1350deg)}to{-webkit-transform: rotate(1710deg);transform: rotate(1710deg)}}@keyframes animate-hour-hand-51{from{-webkit-transform: rotate(1350deg);transform: rotate(1350deg)}to{-webkit-transform: rotate(1710deg);transform: rotate(1710deg)}}.sh-51{-webkit-animation: animate-hand-51 60s linear infinite;animation: animate-hand-51 60s linear infinite}.mh-51{-webkit-animation: animate-hand-51 3600s linear infinite;animation: animate-hand-51 3600s linear infinite}.hh-51{-webkit-animation: animate-hour-hand-51 86400s linear infinite;animation: animate-hour-hand-51 86400s linear infinite}@-webkit-keyframes animate-hand-52{from{-webkit-transform: rotate(132deg);transform: rotate(132deg)}to{-webkit-transform: rotate(492deg);transform: rotate(492deg)}}@keyframes animate-hand-52{from{-webkit-transform: rotate(132deg);transform: rotate(132deg)}to{-webkit-transform: rotate(492deg);transform: rotate(492deg)}}@-webkit-keyframes animate-hour-hand-52{from{-webkit-transform: rotate(1380deg);transform: rotate(1380deg)}to{-webkit-transform: rotate(1740deg);transform: rotate(1740deg)}}@keyframes animate-hour-hand-52{from{-webkit-transform: rotate(1380deg);transform: rotate(1380deg)}to{-webkit-transform: rotate(1740deg);transform: rotate(1740deg)}}.sh-52{-webkit-animation: animate-hand-52 60s linear infinite;animation: animate-hand-52 60s linear infinite}.mh-52{-webkit-animation: animate-hand-52 3600s linear infinite;animation: animate-hand-52 3600s linear infinite}.hh-52{-webkit-animation: animate-hour-hand-52 86400s linear infinite;animation: animate-hour-hand-52 86400s linear infinite}@-webkit-keyframes animate-hand-53{from{-webkit-transform: rotate(138deg);transform: rotate(138deg)}to{-webkit-transform: rotate(498deg);transform: rotate(498deg)}}@keyframes animate-hand-53{from{-webkit-transform: rotate(138deg);transform: rotate(138deg)}to{-webkit-transform: rotate(498deg);transform: rotate(498deg)}}@-webkit-keyframes animate-hour-hand-53{from{-webkit-transform: rotate(1410deg);transform: rotate(1410deg)}to{-webkit-transform: rotate(1770deg);transform: rotate(1770deg)}}@keyframes animate-hour-hand-53{from{-webkit-transform: rotate(1410deg);transform: rotate(1410deg)}to{-webkit-transform: rotate(1770deg);transform: rotate(1770deg)}}.sh-53{-webkit-animation: animate-hand-53 60s linear infinite;animation: animate-hand-53 60s linear infinite}.mh-53{-webkit-animation: animate-hand-53 3600s linear infinite;animation: animate-hand-53 3600s linear infinite}.hh-53{-webkit-animation: animate-hour-hand-53 86400s linear infinite;animation: animate-hour-hand-53 86400s linear infinite}@-webkit-keyframes animate-hand-54{from{-webkit-transform: rotate(144deg);transform: rotate(144deg)}to{-webkit-transform: rotate(504deg);transform: rotate(504deg)}}@keyframes animate-hand-54{from{-webkit-transform: rotate(144deg);transform: rotate(144deg)}to{-webkit-transform: rotate(504deg);transform: rotate(504deg)}}@-webkit-keyframes animate-hour-hand-54{from{-webkit-transform: rotate(1440deg);transform: rotate(1440deg)}to{-webkit-transform: rotate(1800deg);transform: rotate(1800deg)}}@keyframes animate-hour-hand-54{from{-webkit-transform: rotate(1440deg);transform: rotate(1440deg)}to{-webkit-transform: rotate(1800deg);transform: rotate(1800deg)}}.sh-54{-webkit-animation: animate-hand-54 60s linear infinite;animation: animate-hand-54 60s linear infinite}.mh-54{-webkit-animation: animate-hand-54 3600s linear infinite;animation: animate-hand-54 3600s linear infinite}.hh-54{-webkit-animation: animate-hour-hand-54 86400s linear infinite;animation: animate-hour-hand-54 86400s linear infinite}@-webkit-keyframes animate-hand-55{from{-webkit-transform: rotate(150deg);transform: rotate(150deg)}to{-webkit-transform: rotate(510deg);transform: rotate(510deg)}}@keyframes animate-hand-55{from{-webkit-transform: rotate(150deg);transform: rotate(150deg)}to{-webkit-transform: rotate(510deg);transform: rotate(510deg)}}@-webkit-keyframes animate-hour-hand-55{from{-webkit-transform: rotate(1470deg);transform: rotate(1470deg)}to{-webkit-transform: rotate(1830deg);transform: rotate(1830deg)}}@keyframes animate-hour-hand-55{from{-webkit-transform: rotate(1470deg);transform: rotate(1470deg)}to{-webkit-transform: rotate(1830deg);transform: rotate(1830deg)}}.sh-55{-webkit-animation: animate-hand-55 60s linear infinite;animation: animate-hand-55 60s linear infinite}.mh-55{-webkit-animation: animate-hand-55 3600s linear infinite;animation: animate-hand-55 3600s linear infinite}.hh-55{-webkit-animation: animate-hour-hand-55 86400s linear infinite;animation: animate-hour-hand-55 86400s linear infinite}@-webkit-keyframes animate-hand-56{from{-webkit-transform: rotate(156deg);transform: rotate(156deg)}to{-webkit-transform: rotate(516deg);transform: rotate(516deg)}}@keyframes animate-hand-56{from{-webkit-transform: rotate(156deg);transform: rotate(156deg)}to{-webkit-transform: rotate(516deg);transform: rotate(516deg)}}@-webkit-keyframes animate-hour-hand-56{from{-webkit-transform: rotate(1500deg);transform: rotate(1500deg)}to{-webkit-transform: rotate(1860deg);transform: rotate(1860deg)}}@keyframes animate-hour-hand-56{from{-webkit-transform: rotate(1500deg);transform: rotate(1500deg)}to{-webkit-transform: rotate(1860deg);transform: rotate(1860deg)}}.sh-56{-webkit-animation: animate-hand-56 60s linear infinite;animation: animate-hand-56 60s linear infinite}.mh-56{-webkit-animation: animate-hand-56 3600s linear infinite;animation: animate-hand-56 3600s linear infinite}.hh-56{-webkit-animation: animate-hour-hand-56 86400s linear infinite;animation: animate-hour-hand-56 86400s linear infinite}@-webkit-keyframes animate-hand-57{from{-webkit-transform: rotate(162deg);transform: rotate(162deg)}to{-webkit-transform: rotate(522deg);transform: rotate(522deg)}}@keyframes animate-hand-57{from{-webkit-transform: rotate(162deg);transform: rotate(162deg)}to{-webkit-transform: rotate(522deg);transform: rotate(522deg)}}@-webkit-keyframes animate-hour-hand-57{from{-webkit-transform: rotate(1530deg);transform: rotate(1530deg)}to{-webkit-transform: rotate(1890deg);transform: rotate(1890deg)}}@keyframes animate-hour-hand-57{from{-webkit-transform: rotate(1530deg);transform: rotate(1530deg)}to{-webkit-transform: rotate(1890deg);transform: rotate(1890deg)}}.sh-57{-webkit-animation: animate-hand-57 60s linear infinite;animation: animate-hand-57 60s linear infinite}.mh-57{-webkit-animation: animate-hand-57 3600s linear infinite;animation: animate-hand-57 3600s linear infinite}.hh-57{-webkit-animation: animate-hour-hand-57 86400s linear infinite;animation: animate-hour-hand-57 86400s linear infinite}@-webkit-keyframes animate-hand-58{from{-webkit-transform: rotate(168deg);transform: rotate(168deg)}to{-webkit-transform: rotate(528deg);transform: rotate(528deg)}}@keyframes animate-hand-58{from{-webkit-transform: rotate(168deg);transform: rotate(168deg)}to{-webkit-transform: rotate(528deg);transform: rotate(528deg)}}@-webkit-keyframes animate-hour-hand-58{from{-webkit-transform: rotate(1560deg);transform: rotate(1560deg)}to{-webkit-transform: rotate(1920deg);transform: rotate(1920deg)}}@keyframes animate-hour-hand-58{from{-webkit-transform: rotate(1560deg);transform: rotate(1560deg)}to{-webkit-transform: rotate(1920deg);transform: rotate(1920deg)}}.sh-58{-webkit-animation: animate-hand-58 60s linear infinite;animation: animate-hand-58 60s linear infinite}.mh-58{-webkit-animation: animate-hand-58 3600s linear infinite;animation: animate-hand-58 3600s linear infinite}.hh-58{-webkit-animation: animate-hour-hand-58 86400s linear infinite;animation: animate-hour-hand-58 86400s linear infinite}@-webkit-keyframes animate-hand-59{from{-webkit-transform: rotate(174deg);transform: rotate(174deg)}to{-webkit-transform: rotate(534deg);transform: rotate(534deg)}}@keyframes animate-hand-59{from{-webkit-transform: rotate(174deg);transform: rotate(174deg)}to{-webkit-transform: rotate(534deg);transform: rotate(534deg)}}@-webkit-keyframes animate-hour-hand-59{from{-webkit-transform: rotate(1590deg);transform: rotate(1590deg)}to{-webkit-transform: rotate(1950deg);transform: rotate(1950deg)}}@keyframes animate-hour-hand-59{from{-webkit-transform: rotate(1590deg);transform: rotate(1590deg)}to{-webkit-transform: rotate(1950deg);transform: rotate(1950deg)}}.sh-59{-webkit-animation: animate-hand-59 60s linear infinite;animation: animate-hand-59 60s linear infinite}.mh-59{-webkit-animation: animate-hand-59 3600s linear infinite;animation: animate-hand-59 3600s linear infinite}.hh-59{-webkit-animation: animate-hour-hand-59 86400s linear infinite;animation: animate-hour-hand-59 86400s linear infinite}
+	</style>
+</head>
+<body>
+	<div class="social text-center">
+	<a href="https://twitter.com/home?status=http://codepen.io/grapestheme/pen/GJNoPd" target="_blank"><i class="fa fa-twitter-square"></i></a>
+	<a href="https://www.facebook.com/sharer/sharer.php?u=http://codepen.io/grapestheme/pen/GJNoPd" target="_blank"><i class="fa fa-facebook-square"></i></a>
+	<a href="https://plus.google.com/share?url=http://codepen.io/grapestheme/pen/GJNoPd" target="_blank"><i class="fa fa-google-plus-square"></i></a>
+</div>
+<div class="watch__wrapper">
+	<div class="watch">
+		<div class="watch__belt shadow_5">
+			<div class="watch__model clock shadow_5">
+				<div class='sh-0' id='second-hand'></div>
+				<div class='mh-56' id='minute-hand'></div>
+				<div class='hh-8' id='hour-hand'></div>
+				<span class="ticks">
+				<span class="tick_3">3</span>
+				<span class="tick_6">6</span>
+				<span class="tick_9">9</span>
+				<span class="tick_12">12</span>
+				</span>
+				<div class="bubbleback"></div>
+				<div class="bubble"></div>
+				<div class="alaram_wrapper">
+					<div class="title">
+						<h4 class="bounce">:30 pm</h4>
+						<h3 class="bounce">You have a Meet!</h3>
+						<h5 class="bounce">with<span>Narendra modi.</span></h5>
+						<div class="alaram__icon bounceInUp">
+							<i class="fa fa-bell"></i>
+							<i class="fa fa-times"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<p>Click on <span>12 O'cloack<span></p>
+<p class="info">By <a href="http://codepen.io/grapestheme/public/" target="_blank">Grapestheme</a> Original on <a href="https://dribbble.com/shots/2076324-Smartwatch?list=searches&offset=0" target="_blank">@Dribble short</a></p>
+</body>
+</html>

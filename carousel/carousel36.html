@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<style>
+	body {
+    background-image: url(http://jasonmckennadesign.com/review/FCC_Tribute_Project/images/elephants_bg.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+     background-attachment: fixed;
+}
+
+.title-block {
+    background-color:rgba(59, 22, 6, 0.85);
+    color:beige; 
+    padding:30px;    
+}
+.title-block h1{
+    color:#FFF;
+}
+
+#main-carousel{
+    padding:0px; 
+    margin:0px; 
+}
+
+#main-carousel img{
+    width:100%;
+    margin:0px;
+    border:0px;
+}
+
+.content-area{
+    background-color:rgba(59, 24, 8, 0.09);
+    padding:30px;
+}
+
+.img-framed{
+    padding:5px;
+    margin-bottom:20px;
+    background-color:#fff;
+    width:auto;
+    max-width:310px;
+}
+
+.img-framed h1{
+    color:rgb(59, 22, 6);
+    font-size:.9em;
+    padding:15px 5px 10px 5px;
+    margin:0px;
+}
+
+.pull-right{
+    margin-left:30px;
+}
+
+header
+{
+    border:0 !important;
+    margin-bottom:0 !important;
+    margin-top:0 !important;
+    padding:0 !important;
+}
+
+.mission{
+    background-color: rgba(59, 27, 0, 0.17);    
+}
+.mission p{
+    
+    font-weight: 600;
+}
+
+h2{
+    color:rgb(59, 22, 6);    
+}
+
+footer{
+    background-color:rgb(36, 14, 4);
+    padding:80px 30px 80px 30px;
+    text-align:center;    
+}
+
+.legal{
+    color:rgb(100, 88, 82);
+    font-size: .9em;
+}
+
+.launch-btn{
+    width:300px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+
+
+
+/* Carousel Fade Effect - sample code from justinwhall.com
+==========================================================*/
+
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+}
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+	</style>
+</head>
+<body>
+	<body>
+
+    <div class="container">
+    
+    <header class="page-header">
+
+
+        <div class=" title-block text-center">
+            <h1>The David Sheldrick Wildlife Trust</h1>
+            <h4>A tribute to a lifetime dedicated to the protection of Africa's Wilderness and its denizens.</h4>
+        </div>
+
+
+        <div id="main-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#main-carousel" data-slide-to="1"></li>
+                <li data-target="#main-carousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="http://jasonmckennadesign.com/review/FCC_Tribute_Project/images/slider_01.jpg" alt="...">
+                    <div class="carousel-caption"></div>
+                </div>
+                <div class="item">
+                    <img src="http://jasonmckennadesign.com/review/FCC_Tribute_Project/images/slider_02.jpg" alt="...">
+                    <div class="carousel-caption"></div>
+                </div>
+                <div class="item">
+                    <img src="http://jasonmckennadesign.com/review/FCC_Tribute_Project/images/slider_03.jpg" alt="...">
+                    <div class="carousel-caption"></div>
+                </div>
+            </div>
+
+            <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a> 
+        </div>       
+
+    </header>
+
+
+    <section class="content-area">       
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>About the DSWT</h2>
+                    <div class="img-framed pull-right">
+                        <img class="img-responsive" src="http://jasonmckennadesign.com/review/FCC_Tribute_Project/images/daphne_sheldrick_and_dida-1.jpg">
+                        <h1>DSWT Founder Dr. Dame Daphne Sheldrick with rescued elephant baby "Dida"</h1>
+                    </div>
+                    <p>Born from one family’s passion for Kenya and its wilderness, the David Sheldrick Wildlife Trust is today the most successful orphan-elephant rescue and rehabilitation program in the world and one of the pioneering conservation organisations for wildlife and habitat protection in East Africa.</p>
+                    <p>Founded in 1977 by Dr. Dame Daphne Sheldrick D.B.E, in honour of the memory of her late husband, famous naturalist and founding Warden of Tsavo East National Park, David Leslie William Sheldrick MBE, the DSWT claims a rich and deeply rooted family history in wildlife and conservation.</p>
+                    <p>At the heart of the DSWT’s conservation activities is the Orphans’ Project, which has achieved world-wide acclaim through its hugely successful elephant and rhino rescue and rehabilitation program. The Orphans’ Project exists to offer hope for the future of Kenya’s threatened elephant and rhino populations as they struggle against the threat of poaching for their ivory and horn, and the loss of habitat due to human population pressures and conflict, deforestation and drought.</p>
+                    <p>To date the David Sheldrick Wildlife Trust has successfully hand-raised over 150 infant elephants and has accomplished its long-term conservation priority by effectively reintegrating orphans back into the wild herds of Tsavo, claiming many healthy wild-born calves from former-orphaned elephants raised in our care.</p>
+                    <p>The DSWT has remained true to its principles and ideals, remaining a sustainable and flexible organization. Guided by experienced and dedicated Trustees and assisted by an Advisory Committee of proactive naturalists with a lifetime of wildlife and environmental experience, the Trust takes effective action and achieves long-lasting results.</p>
+                    <p>Chaired by Daphne Sheldrick, the DSWT is run by Angela Sheldrick, the daughter of David and Daphne, who has been managing all of the Trust’s activities for over a decade. Growing up in Tsavo and later in the Nairobi National Park, Angela has been part of the Trust’s vision from the start, supported by her husband Robert Carr-Hartley and their two boys Taru and Roan, who are passionate about Kenya’s wildlife and eager to ensure that David and Daphne’s legacy continues.</p>
+                    <p>In 2004 the DSWT was incorporated as a Charitable Company in the U.K. and granted charitable status by the Charities Commission, whilst during the same year the Trust has also attained US Charitable status enhancing its corporate funding capability under the guidance of the U.S. Friends of the David Sheldrick Wildlife Trust.</p>
+                </div>
+            </div>
+
+    </section>
+        
+    <section class="content-area mission">            
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2>Mission Statement</h2>
+                    <p>The David Sheldrick Wildlife Trust embraces all measures that compliment the conservation, preservation and protection of wildlife. These include anti-poaching, safe guarding the natural environment, enhancing community awareness, addressing animal welfare issues, providing veterinary assistance to animals in need, rescuing and hand rearing elephant and rhino orphans, along with other species that can ultimately enjoy a quality of life in wild terms when grown.</p>
+                </div>
+            </div>      
+
+    </section>
+
+        <section class="content-area">            
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h2>Learn More and Get Involved!</h2>
+                    <p>This page is purposed as a simple tribute and introduction to this honorable and just cause. If you would like to learn more about the DSWT, please visit their website linked below. You can also find out how to support these wonderful people as they risk their lives to protect these docile, loving, and intelligent creatures.</p>
+                    <a href="https://www.sheldrickwildlifetrust.org/index.asp" target="_blank" class="btn btn-primary btn-lg active launch-btn center-block" role="button">Visit the DSWT Website!</a>
+                </div>
+            </div>      
+
+    </section>
+
+    <footer>
+        <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p class="legal">"About" and "Mission" descriptive copy borrowed directly from the DSWT website.</p>
+                    <p class="legal">&copy; 2016 jasonmckennadesign.com</p>
+                </div>
+        </div>
+    </footer>
+        
+    </div>
+
+
+    <!-- SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+</body>
+</html>

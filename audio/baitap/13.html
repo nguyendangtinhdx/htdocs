@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	table,tr,td{border-collapse: collapse;
+				border: 1px solid black;
+				background: #FEFBC5;
+				color: #356799;}
+	caption{font-size: 40px;
+			text-align: center;
+			color: #356799;
+			padding: 5px}
+	td:nth-child(2){padding-right: 45px;}
+	#a13{width: 550px;box-shadow: 3px 3px 3px #787878;
+		margin: auto;}
+	#b13{text-align: center; color: #FE822D}
+	#c13{text-align: center;color: #FE7831}
+	#d13{position: relative;left: 70px}
+	#e13{background: #FFFFFF;margin: 0;
+		width: 300px;color: #000000;}
+	fieldset{margin-right: 150px;border: 2px solid #880B08}
+	legend{color: #C5834E;}
+	iframe{background: #fff}
+	</style>
+</head>
+<body>
+	<div id="a13">
+		<table>
+		<form name="view">
+				<caption><b>Đăng kí du lịch</b></caption>
+				<tr>
+					<td>Họ và tên</td>
+					<td><input type="text" size="50"></td>
+				</tr>
+				<tr>
+					<td>Địa chỉ</td>
+					<td><input type="text" size="35"></td>
+				</tr>
+				<tr>
+					<td>Điện thoại</td>
+					<td><input type="text" size="30"></td>
+				</tr>
+				<tr>
+					<td>Khách Việt Nam</td>
+					<td>
+						<input type="checkbox" checked>
+					</td>
+				</tr>
+				<tr>
+					<td>Chọn tour</td>
+					<td>
+						<select name="travel" id="">
+							<optgroup label="Miền Bắc">
+								<option value="HN-HL-SP">Hà Nội - Hạ Long - Sapa</option>
+								<option value="HN-CH-NB">Hà Nội-Chùa Hương - Ninh Bình</option>
+								<option value="HN-CB-TC">Hà Nội - Cát Bà - Tuân Châu</option>
+							</optgroup>
+							<optgroup label="Miền Trung">
+								<option value="H-BM-ĐN">Huế - Bạch Mã - Đà Nẵng</option>
+								<option value="NT-ĐL">Nha Trang - Đà Lạt</option>
+								<option value="BMT-GL-KT" selected>Buôn Mê Thuột - Gia Lai - Kon Tum</option>
+							</optgroup>
+							<optgroup label="Miền Nam">
+								<option value="HCM-CT-CM">TP-HCM - Cần Thơ - Cà Mau</option>
+								<option value="HCM-MT">TP-HCM - Mỹ Tho</option>
+							</optgroup>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Phương tiện</td>
+					<td>
+						<input type="radio" name="sex">Máy bay
+						<input type="radio" name="sex"checked>Xe ô tô
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<div id="d13">
+					<fieldset>
+						<legend>Số lượng đoàn khách</legend>
+						
+						Người lớn <input type="text" size="10">
+						Trẻ em <input type="text" size="10">
+					</fieldset>
+					</div
+					</td>
+				</tr>
+				<tr>
+					<td>Ghi chứ thêm</td>
+					<td>
+							<!-- <p id='e13'>Có 2 trẻ em dưới 6 tuổi</p>
+							<p id='e13'>Có 2 người ăn </p> -->
+							<iframe srcdoc="Có 2 trẻ em dưới 6 tuổi<br> Có 2 người ăn" height="45"></iframe>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" id="c13">
+						<button onclick="my(); return false">Đồng ý</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" id='b13'>
+						<p id="1"></p>
+						<script>
+							function my() 
+							{
+								var x =document.forms['view'];
+								var y="";
+								for (i = 0; i < x.length;i++) 
+								{
+									y += x.elements[i].value+"-";
+								}
+								// document.getElementById('1').innerHTML = "Bạn đã đăng kí thành công !!!";
+								document.getElementById('1').innerHTML = y + "<br>" + "Bạn đã đăng kí thành công !!!";
+							}
+						</script>
+					</td>
+				</tr>
+			</form>
+			</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+  // Set Transform Origin And Rotate Sites
+  var a, b, c, alpha, angle, origin, n, m;
+  
+  // Set The Origin Of The Carousel
+  function carousel(list) {
+    alpha = 360 / $(list).size();
+    a = $(list).width() / 2;
+    c = a / Math.sin(alpha / 2 * Math.PI / 180);
+    b = Math.sqrt(Math.pow(c, 2) - Math.pow(a, 2));
+    origin = '50% 50% ' + -b + 'px'
+    angle = 0;
+    
+    $(list).each(function(n) {
+      this.style.transformOrigin = origin;
+      this.style.transform = 'rotateY(' + angle + 'deg)';
+      this.parentNode.style.transformOrigin = origin;
+      angle += alpha;
+    });
+  };
+  
+  function showhide(list) {
+    n = $('#sites>input').val();
+    m = n - 1
+    $('#carousel>ul>li:gt(' + m + ')').hide();
+    $('#carousel>ul>li:lt(' + n + ')').show();
+  };
+  
+  // Set The Rotate-Angel Of The Carousel
+  showhide($('#carousel>ul>li'));
+  carousel($('#carousel>ul>li:visible'));
+  
+  // Spin The Carousel Left
+  $('#carousel-nav-left').click(function() {
+    angle -= alpha;
+    $('#carousel>ul').css('transform', 'rotateY(' + angle + 'deg)');
+  });
+  
+  // Spin The Carousel Right
+  $('#carousel-nav-right').click(function() {
+    angle += alpha;
+    $('#carousel>ul').css('transform', 'rotateY(' + angle + 'deg)');
+  });
+  
+  // Spin The Carousel With Interval Right
+  setInterval(function() {
+    angle += alpha;
+    $('#carousel>ul').css('transform', 'rotateY(' + angle + 'deg)');
+  }, 4000);
+  
+  // Set Sites For The Carousel
+  $('#sites>input').change(function() {
+    showhide($('#carousel>ul>li'));
+    carousel($('#carousel>ul>li:visible'));
+  });
+});
+	</script>
+	<style>
+	body {
+  background-color: #FFF;
+}
+
+h2 {
+  margin: 0px 60px;
+  padding: 0;
+  text-shadow: 1px 1px 4px #999;
+  float: left;
+}
+
+#carousel {
+  width: 480px;
+  margin: 50px auto;
+  padding: 0;
+  perspective: 5000px;
+}
+
+#carousel>ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  transition: 1s;
+  transform-style: preserve-3d;
+}
+
+#carousel>ul>li {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  width: 480px;
+  height: 320px;
+  border-style: solid;
+  border-with: 1px;
+  border-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 3px 15px #000;
+}
+
+#carousel>ul>li>* {
+  width: 100%;
+  height: auto;
+}
+
+#carousel-nav-left {
+  position: fixed;
+  width: 30pt;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 2000;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), transparent);
+  cursor: pointer;
+}
+
+#carousel-nav-right {
+  position: fixed;
+  width: 30pt;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  right: 0;
+  top: 0;
+  z-index: 2000;
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.4), transparent);
+  cursor: pointer;
+}
+
+.fa {
+  position: fixed;
+  top: 50vh;
+  font-size: 28pt;
+  color: #CCC;
+  text-shadow: 0px 5px 15px #000;
+}
+
+#sites{
+  position: relative;
+  max-width: 20%;
+  margin: 15px auto;
+}
+
+#sites>input {
+  position: fixed;
+  max-width: 20%;
+  height: 0;
+  bottom: 0;
+  margin: 15px auto;
+  z-index: 2000;
+}
+
+/* customisable sheets */
+#carousel>ul>li div {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(30deg, #77A, #F77);
+}
+
+#carousel>ul>li p,
+#carousel>ul>li h3,
+#carousel>ul>li h3>.fa.fa-plane{
+  position: relative;
+  top: 0;
+  padding: 10px;
+  margin: 0px;
+}
+	</style>
+</head>
+<body>
+	<h2>3D Carousel</h2>
+<div id="carousel">
+  <ul>
+    <li>
+      <img src="https://c2.staticflickr.com/6/5488/10164928895_b8e660954c_z.jpg" alt="Colourful carousel, on Flickr" />
+    </li>
+    <li>
+      <img src="https://c1.staticflickr.com/5/4064/4570676607_dfac2ab021_z.jpg" alt="dog, on Flickr" />
+    </li>
+    <li>
+      <div>
+        <h3>Lorem ipsum</h3>
+        <p>
+          dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </p>
+        <p>
+          <input type="button" value="OK" />
+          <input type="button" value="Cancel" />
+        </p>
+      </div>
+    </li>
+    <li>
+      <img src="https://c2.staticflickr.com/6/5539/9072004507_08db127a7b_z.jpg" alt="Flowers by Patty Vicknair, on Flickr" />
+    </li>
+    <li>
+      <img src="https://c2.staticflickr.com/8/7041/6827271264_5bab7ef2f2_z.jpg" alt="Mir Space Station Command Control Console and Monitor, on Flickr" />
+    </li>
+    <li>
+      <img src="https://c1.staticflickr.com/9/8831/17697545601_707f911695_z.jpg" alt="Space Needle, on Flickr" />
+    </li>
+    <li>
+      <div>
+        <h3>
+          <i class="fa fa-plane"></i>
+          Lorem ipsum
+          <i class="fa fa-plane"></i>
+        </h3>
+        <p>
+          dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        </p>
+        <img src="https://c1.staticflickr.com/7/6036/6266930999_f1af81fa9c_z.jpg" alt="Flight London - Madrid, on Flickr" />
+      </div>
+    </li>
+    <li>
+      <img src="https://c2.staticflickr.com/6/5345/8854205418_cc97dbeaaa_z.jpg" alt="My cat!, on Flickr" />
+    </li>
+    <li>
+      <img src="https://c1.staticflickr.com/3/2286/5759049867_9774c59f39_z.jpg" alt="Lake Tahoe, NV, Sand Harbor (2) 9-2010, on Flickr" />
+    </li>
+    <li>
+      <img src="https://c2.staticflickr.com/6/5005/5361276466_e3fc989ddd_z.jpg"  alt="January 2011 - Vacation on Grand Cayman - Cruise Ships at Anchor, on Flickr" />
+    </li>
+    <li>
+      <img src="https://c2.staticflickr.com/6/5475/9287395988_34987d2671_z.jpg" alt="37. Internationales Oldtimer-Meeting Baden-Baden 2013 - Alfa Romeo, on Flickr" />
+    </li>
+  </ul>
+</div>
+<div id="carousel-nav-left">
+  <i class="fa fa-chevron-left"></i>
+</div>
+<div id="carousel-nav-right">
+  <i class="fa fa-chevron-right"></i>
+</div>
+<form id="sites">
+  <input name="sites" type="range" name="sheets" min="3" max="11" value="5" /> 
+</form>
+</body>
+</html>

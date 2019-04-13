@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		@import "compass/css3";
+
+		@font-face {
+			font-family: 'BebasNeueRegular';
+			src: url('http://jahdaicintron.com/wp-content/themes/Flexible/fonts/BebasNeue-webfont.eot');
+			src: url('http://jahdaicintron.com/wp-content/themes/Flexible/fonts/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+			url('http://jahdaicintron.com/wp-content/themes/Flexible/fonts/BebasNeue-webfont.woff') format('woff'),
+			url('http://jahdaicintron.com/wp-content/themes/Flexible/fonts/BebasNeue-webfont.ttf') format('truetype'),
+			url('http://jahdaicintron.com/wp-content/themes/Flexible/fonts/BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Bazar';
+			src: url('http://xaichai.com/wp-content/uploads/fonts/Bazar/bazar-webfont.svg#bazarmedium') format('svg'),
+			url('http://xaichai.com/wp-content/uploads/fonts/Bazar/bazar-webfont.eot?#iefix') format('embedded-opentype'),
+			url('http://xaichai.com/wp-content/uploads/fonts/Bazar/bazar-webfont.woff') format('woff'),
+			url('http://xaichai.com/wp-content/uploads/fonts/Bazar/bazar-webfont.ttf') format('truetype');
+			font-weight:normal;
+			font-style:normal;
+		}
+
+		body
+		{
+			background: url(http://www.ambrosiasw.com/assets/images/graphics_products/ipadwallpaper/wallpaper/Felt-Green.jpg);
+		}
+
+		h1
+		{
+			font-size: 60px;
+			font-family: Bazar;
+			text-transform: uppercase;
+			text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+			color: #fff;
+		}
+
+		.sleeve
+		{
+			position: relative;
+			background: transparent;
+			line-height: 2.5em;
+			border: 0;
+			padding: 0 40px 0 15px;
+			border: 1px solid #aaa;
+			border-radius: 4px 200px 0px 4px;
+			background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+			font-family: 'BebasNeueRegular';
+			font-size: 40px;
+			text-shadow: 0 1px 0px #fff;
+			margin-right: 120px;
+			box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+		}
+
+		.insert
+		{
+			position: absolute;
+			left: 10px;
+			top: 3%;
+			display: block;
+			z-index: -100;
+			width: 100%;
+			height: 94%;
+			box-sizing: border-box;
+			background: linear-gradient(to bottom, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+			font-family: 'BebasNeueRegular';
+			font-size: 18px;
+			color: #fff;
+			text-shadow: 0 1px 0px rgba(0,0,0,0.6);
+			border-radius: 2px;
+			text-align: right;
+			padding-right:10px;
+			box-shadow: 0 1px 0 rgba(255,255,255,0.50) inset, 2px 2px 5px rgba(0,0,0,0.5);
+			transition: all 1s ease-in-out;
+		}
+
+		.sleeve:hover .insert
+		{
+			text-align: right;
+			width: 150%;
+			transition: all 1s ease-in-out;
+		}
+
+		.insert.facebook
+		{
+			background: linear-gradient(to bottom, rgba(73,125,193,1) 0%,rgba(39,71,114,1) 100%);
+		}
+
+		.insert.twitter
+		{
+			background: linear-gradient(to bottom, rgba(169,228,247,1) 0%,rgba(15,180,231,1) 100%);
+		}
+
+		.insert.google
+		{
+			
+			background: linear-gradient(to bottom, rgba(255,48,25,1) 0%,rgba(207,4,4,1) 100%);
+		}
+	</style>
+</head>
+<body>
+	<center>  
+		<h1>Slide-Out Buttons</h1><br>
+		<button class="sleeve">
+			Facebook
+			<span class="insert facebook">25 likes</span>
+		</button>
+		<button class="sleeve">
+			Twitter
+			<span class="insert twitter">25 retweets</span>
+		</button>
+		<button class="sleeve">
+			Google+
+			<span class="insert google">25 pluses</span>
+		</button>
+	</center>
+
+</body>
+</html>

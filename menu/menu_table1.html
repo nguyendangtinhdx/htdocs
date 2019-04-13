@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+		ul#menu {
+			font-family: Montserrat, sans-serif;
+			width: 960px;
+			height: 40px;
+			position: relative;
+			font-size: 12px;
+			position: relative;
+			z-index: 500;
+			background-color: #83A91D;
+			*zoom: 1;
+			text-align: center;
+			margin: auto; padding: auto;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			border-radius: 3px;
+			margin:10%;
+		}
+
+		ul#menu li {
+			float: left;
+			width: auto; 
+			list-style-type: none;
+		}
+		
+		ul#menu li ul {
+			height: 40px;
+			line-height:40px; 
+			background-color:#456456; 
+			display:block;
+		}
+		ul#menu li a, 
+		ul#menu li a:visited {
+			display: block;
+			width: auto; 
+			text-decoration: none;
+			padding: 0 20px 0 20px;
+			height: 40px;
+			line-height: 40px;
+			color: #fff;
+			font-size:14px;
+		}
+		ul#menu table {
+			border-collapse: collapse;
+			margin: 0;
+			padding: 0;
+			font-size: 1em;
+		}
+		ul#menu li ul, 
+		ul#menu li ul li ul {
+			visibility: hidden;
+			position: absolute;
+			top: 38px;
+			left: 0;
+			height: 30px;
+			line-height: 30px;
+		}
+		ul#menu li:hover a, 
+		ul#menu li a:hover {
+			background: #97C41F;
+		}
+		ul#menu li:hover ul, 
+		ul#menu li a:hover ul {
+			visibility: visible;
+			width: 960px;
+			background: #97C41F;
+			color: #fff;
+			-moz-border-radius: 0px 0px 3px 3px;
+			-webkit-border-radius: 0px 0px 3px 3px;
+			border-radius: 0px 0px 3px 3px;
+		}
+		ul#menu li:hover ul.direita li, 
+		ul#menu li a:hover ul.direita li {
+			float: right;  
+			-moz-border-radius: 0px 0px 3px 3px;
+			-webkit-border-radius: 0px 0px 3px 3px;
+			border-radius: 0px 0px 3px 3px;
+		}
+		ul#menu li:hover ul.esquerda li, 
+		ul#menu li a:hover ul.esquerda li {
+			float: left;
+		}
+		ul#menu li:hover ul li a.sub, 
+		ul#menu li a:hover ul li a.sub {
+			color: #fff;
+		}
+		ul#menu li:hover ul li ul, 
+		ul#menu li a:hover ul li a ul {
+			visibility: hidden;
+			position: absolute;
+			left: 0;
+			top: 28px;
+			-moz-border-radius: 0px 0px 3px 3px;
+			-webkit-border-radius: 0px 0px 3px 3px;
+			border-radius: 0px 0px 3px 3px;
+		}
+		ul#menu li:hover ul li a, 
+		ul#menu li a:hover ul li a {
+			display: block;
+			background: #97C41F;
+			color: #fff;
+			height: 30px;
+			line-height: 30px;
+		}
+		ul#menu li:hover ul li a:hover, 
+		ul#menu li a:hover ul li a:hover {
+			background-color: #A5D820;
+			color: #fff;
+			height: 30px;
+			line-height: 30px;
+			
+		}
+		ul#menu li:hover ul li:hover ul, 
+		ul#menu li a:hover ul li a:hover ul {
+			visibility: visible;
+			color: #000;
+			background-color: #A5D820;
+		}
+		ul#menu li:hover ul.right li {
+			float: right
+		}
+		ul#menu li:hover ul li:hover ul li a, 
+		ul#menu li a:hover ul li a:hover ul li a {
+			color: #fff; background-color: #A5D820;  
+			
+		}
+		ul#menu li ul li:hover ul li:hover li a:hover, 
+		ul#menu li ul lia:hover ul li a:hover ul li a:hover {
+			height: 30px;
+			line-height: 30px;
+
+		}
+
+
+		ul#menu li ul li:hover a.sub { background-color:#A5D820 !important; }
+
+		.tinynav { display: none; }
+
+		@media screen and (max-width: 959px) {
+
+			.verde { display: none }
+		}
+	</style>
+</head>
+<body>
+	
+	<ul id="menu">
+		
+		<li><a href="#">Home</a>
+			<ul>
+				<li><a href="#">item</a></li>
+				<li><a href="#" class="sub">item</a>
+					<ul class="esquerda">
+						<li><a href="#">item</a></li>
+						<li><a href="#">item</a></li>
+						<li><a href="#">item</a></li>
+					</ul>
+				</li>
+				<li><a href="#">item</a></li>
+				<li><a href="#">item</a></li>
+			</ul>
+		</li>
+		<li><a href="#">item</a>
+			<ul>
+				<li><a href="#">item</a></li>
+				<li><a href="#">item</a></li>
+			</ul>
+		</li>
+		<li><a href="#">item</a>
+			<ul>
+				<li><a href="#">item</a></li>
+				<li><a href="#">item</a></li>
+			</ul>
+		</li>
+		<li><a href="#">item</a>
+			
+			<ul>
+				<li><a href="#">item</a></li>
+				<li><a href="#">item</a></li>
+				<li><a href="#">item</a></li>                   
+				<li><a href="#">item</a></li>
+			</ul>
+		</li>
+		<li><a href="#">item</a></li>
+		<li><a href="#">item</a></li>
+		<li><a href="#">item</a></li>
+	</ul><!--fim menu--> 
+
+</body>
+</html>

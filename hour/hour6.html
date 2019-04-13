@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<script>
+		function getStyle (object, attribute, pseudoElt) {
+    return object.currentStyle ? object.currentStyle[attribute] : getComputedStyle(object,pseudoElt)[attribute];
+}
+function move (object, direction, time, destination, callback) {
+    var speed = Math.abs(destination / time * 30);
+    speed = destination >= parseInt(getStyle(object,direction)) ? speed : -speed;
+    clearInterval(object.moveTimer);
+    object.moveTimer = setInterval(function () {
+        object.isMoving = true;
+        var moveTo = parseInt(getStyle(object,direction)) + speed;
+        if ((moveTo > destination && speed > 0) || (moveTo < destination && speed < 0)) {
+            moveTo = destination;
+            object.isMoving = false;
+            clearInterval(object.moveTimer);
+            object.style[direction] = moveTo + "px";
+            (callback && typeof(callback) === "function") && callback();
+            return false;
+        }
+        object.style[direction] = moveTo + "px";
+    }, 30);
+} 
+
+window.onload = function () {
+    var oUl = document.getElementsByTagName("ul")[0];
+    var arrLi = oUl.getElementsByTagName("li");
+    var arrImgs =["http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/0.JPG", "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/1.JPG", "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/2.JPG", "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/3.JPG", "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/4.JPG", "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/5.JPG", "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/6.JPG", "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/7.JPG", "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/8.JPG", "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/9.JPG"];
+    var date = new Date();
+    var newTime = new Date(date);
+    newTime.setSeconds(newTime.getSeconds() + 1);
+    for (var i = 0; i < arrLi.length; i++) {
+        if (i == 2 || i == 5) {
+            fnColon(arrLi[i]);
+        } else {
+            fnTime(arrLi[i], date.toTimeString()[i], newTime.toTimeString()[i]);
+        }
+    } 
+    setInterval(function () {
+        var date = new Date();
+        var newTime = new Date(date);
+        newTime.setSeconds(newTime.getSeconds() + 1);
+        for (var i = 0; i < arrLi.length; i++) {
+            if (i == 2 || i == 5) {
+                fnColon(arrLi[i]);
+            } else {
+                fnTime(arrLi[i], date.toTimeString()[i], newTime.toTimeString()[i]);
+            }
+        }   
+    }, 1000);
+    function fnTime(obj, val, nextVal) {
+        var img = obj.getElementsByTagName("img");
+        img[0].src = arrImgs[val];
+        obj.style.top = "0";
+        if (val == nextVal) return;
+        img[1].src = arrImgs[nextVal];
+        move(obj, "top", 800, -173);
+    }
+    function fnColon(obj) {
+        var img = obj.getElementsByTagName("img")[0];
+        img.src = "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/colon.JPG";
+        setTimeout(function () {
+            img.src = "http://7xlt2a.com1.z0.glb.clouddn.com/miaoV/homework/JS10/colon-1.JPG";
+        }, 500);
+    }
+};
+	</script>
+	<style>
+	* {
+    padding: 0;
+    margin: 0;
+}
+ul {
+    position: relative;
+    width: 1010px;
+    height: 172px;
+    margin: 200px auto;
+    background-color: #fff;
+    list-style: none;
+    overflow: hidden;
+}
+li {
+    position: relative;
+    float: left;
+    width: 123px;
+    top: 0px;
+}
+	</style>
+</head>
+<body>
+	<ul>
+    <li>
+        <img alt="hour"/>
+        <img alt="hour"/>
+    </li>
+    <li>
+        <img alt="hour"/>
+        <img alt="hour"/>
+    </li>
+    <li class="colon"><img src="img/colon.JPG" /></li>
+    <li>
+        <img alt="minute"/>
+        <img alt="minute"/>
+    </li>
+    <li>
+        <img alt="minute"/>
+        <img alt="minute"/>
+    </li>
+    <li class="colon"><img src="img/colon.JPG" /></li>
+    <li>
+        <img alt="second"/>
+        <img alt="second"/>
+    </li>
+    <li>
+        <img alt="second"/>
+        <img alt="second"/>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p id="1" onclick="my(this)">Click Me</p>
+	<img onmouseenter="big(this)" onmouseleave="normal(this)" border="0" src="img/compman.gif" alt="Smiley" width="50" height="50">
+<!-- 	onmouseenter = onmouseleave
+	onmouseover = onmouseout -->
+	<p id="2" onmousedown="down(this)" onmouseup="up(this)">Nguyen Dang Tinh</p>
+	<p id="3"></p>
+	<img onmouseover="over(this)" onmouseout="out(this)" src="baitap/image/hoadiendien.jpg" height="150" width="150">
+	<script>
+
+		function my(x)
+		{
+			x.innerHTML="Hello";
+		}
+		function big(x) {
+			x.style.height = "100px";
+			x.style.width = "100px";
+		}
+
+		function normal(x) {
+			x.style.height = "50px";
+			x.style.width = "50px";
+		}
+		function down(x)
+		{
+			x.style.color="red";
+		}
+
+		function up(x)
+		{
+			x.style.color="blue";
+		}
+
+		function over(x) 
+		{
+			x.src = "baitap/image/amthuc.jpg";
+		}
+		function out(x) 
+		{
+			x.src = "baitap/image/hoadiendien.jpg";
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// Clear the text box when it receives focus
+$("#search").focusin(function(e) {
+  if($(this).val() != "") {
+    $(this).val("");
+  }
+})
+	</script>
+	<style>
+	body {
+  background: #343d46;
+  font-size: 2rem;
+}
+
+/*
+  CSS for the Prefixbox Auto-Complete Container
+*/
+.pf-suggestion-container {
+  margin: 0;
+  padding: 0;
+  padding: 5px;
+  padding-top: 0px;
+  top: 50px;
+  left: 45px;
+  z-index: 10000;
+  position: absolute;
+  display: none;
+  box-sizing: border-box;
+  font-size: 11pt;
+  color: #65737e;
+  width: 405px;
+  background-color: #2b303b;
+  border-radius: 0px 0px 5px 5px;
+}
+.pf-suggestion-container.open {
+  display: block;
+}
+.pf-suggestion-container ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pf-suggestion-container li.pf-suggestion {
+  padding: 2px 0px;
+  width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+}
+.pf-suggestion-container li.pf-suggestion .pf-suggestion-body-text1 {
+  color: #7b5252;
+}
+.pf-suggestion-container li.pf-suggestion .pf-highlight {
+  color: #65737e;
+}
+.pf-suggestion-container li.pf-suggestion .pf-suggestion-right,
+.pf-suggestion-container li.pf-suggestion .pf-suggestion-left {
+  display: none;
+}
+.pf-suggestion-container .pf-selected {
+  color: white !important;
+}
+.pf-suggestion-container .pf-selected .pf-suggestion-body-text1 {
+  color: inherit !important;
+}
+.pf-suggestion-container .pf-selected .pf-highlight {
+  color: inherit !important;
+}
+
+/*
+Look and feel of the demo, has nothing to do with the Prefixbox code
+*/
+.box {
+  margin: 100px auto;
+  width: 300px;
+  height: 50px;
+}
+
+.container-2 {
+  width: 450px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+
+.container-2 input#search {
+  width: 50px;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 11pt;
+  float: left;
+  color: #262626;
+  padding-left: 50px;
+  border-radius: 5px;
+  color: #fff;
+  transition: width .55s ease;
+}
+
+.container-2 input#search::-webkit-input-placeholder {
+  color: #65737e;
+}
+
+.container-2 input#search:-moz-placeholder {
+  /* Firefox 18- */
+  color: #65737e;
+}
+
+.container-2 input#search::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #65737e;
+}
+
+.container-2 input#search:-ms-input-placeholder {
+  color: #65737e;
+}
+
+.container-2 .icon {
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 12px;
+  z-index: 1;
+  color: #4f5b66;
+}
+
+.container-2 input#search:focus, .container-2 input#search:active {
+  outline: none;
+  width: 450px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.container-2:hover input#search {
+  width: 450px;
+}
+
+.container-2:hover .icon {
+  color: #93a2ad;
+}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+  <p style="color: white;">As seen on <a href="https://blog.sverrirs.com/2016/04/instant-autocomplete-for-static-sites.html" target="_new">blog.sverrirs.com</a></p>
+  
+  <div class="container-2"><span class="icon"><i class="fa fa-search"></i></span>
+  
+    <!-- Ensure that the input control you want to use is decorated with the data-prefixbox attribute -->
+    <input type="search" id="search" placeholder="Search..." data-prefixbox="true" />
+  
+  </div>
+  
+</div>
+
+<!-- This is the main Prefixbox code file -->
+<script async src="//script.prefixbox.com/plugin.js?btr=58b846f8-a5c4-416c-a208-dfa653674f71"></script>
+</body>
+</html>

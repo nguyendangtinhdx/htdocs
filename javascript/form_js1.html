@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<body>
+<!-- 	<input id="1" type="number" step="2" min="10" max="20">  -->
+	<input id="3" type="number"  max="20">
+	<button onclick="my()">Check</button>
+	<p id="2"></p>
+	<p id="4"></p>
+	
+		<script>	
+		function my()
+		{
+			/*var x = document.getElementById('1');
+			if(x.checkValidity()==false)
+				document.getElementById('2').innerHTML = x.validationMessage;
+			else
+				document.getElementById('2').innerHTML = " Success ";
+			*/
+			var t="";
+			if(document.getElementById('3').validity.rangeOverflow)	/* rangeUnderflow <=> mix="10" */
+			{
+				t=" Giá trị quá lớn";
+			}
+			else
+			{	
+				t=" OK";
+			}
+			document.getElementById('4').innerHTML = t
+		}
+		</script>
+</body>
+</html>

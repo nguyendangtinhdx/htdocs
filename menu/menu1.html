@@ -1,0 +1,91 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Title</title>
+	<style type="text/css">
+		*{margin:0; padding: 0;}
+
+		#container {
+			margin: 20px 0px 0px 500px;
+			border: 1px solid #686;
+			background: #e4e4e3;
+			float: left;
+		}
+
+		#container ul {
+			float: left;
+			list-style: none;
+			behavior: url(whateverhover.htc);
+		}
+
+		#container ul li {
+			position: relative;
+			float: left;
+		}
+
+		#container li a {
+			display: block;
+			color: #292929;
+			font-weight: bold;
+			text-decoration: none;
+			padding: .3em 6px;
+		}
+
+		#container li a:hover {
+			color: white;
+			background: orange;
+		}
+
+		#container li ul{
+			background: yellow;
+			position: absolute;
+			display: none;
+			width: 10em;
+		}
+
+
+		#container li:hover ul{
+			display: block;
+		}
+
+		#container ul li ul li {
+			border: 1px solid #686;
+			width: 100%;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		
+		<ul>
+			<li><a href="#">Home Page</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a>
+				<ul>
+					<li><a href="#">Admin</a></li>
+					<li><a href="#">Super Mod</a></li>
+					<li><a href="#">Mod</a></li>
+				</ul>	
+			</li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Forum</a>
+				<ul>
+					<li><a href="#">Photoshop</a></li>
+					<li><a href="#">Gallery</a></li>
+					<li><a href="#">Members</a></li>
+				</ul>
+			</li>
+			<li><a href="#">FAQs</a></li>
+		</ul>
+
+		
+	</div><!--End #container-->
+	
+</body>
+</html>
+

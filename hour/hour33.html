@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		jQuery(function($) {
+
+  function getTime() {
+  
+    var currentTime = new Date(),
+        hour = currentTime.getHours(),
+        prettyHour = "",
+        min = currentTime.getMinutes(),
+        sec = currentTime.getSeconds(),
+        myHour = $(".time-hour .number"),
+        myMin = $(".time-minute .number"),
+        mySec = $(".time-second .number");
+        
+    
+    //use 12 hour time
+    if ( hour > 12 ) {
+      
+      prettyHour = hour - 12;
+      
+    } else {
+      
+      prettyHour = hour;
+      
+    }
+    
+    //leading zero before seconds    
+    if ( sec < 10 ) {
+      
+      var prettySec = "0"+sec;
+      
+    } else {
+      
+      var prettySec = sec;
+      
+    }
+    
+    //leading zero before minutes
+    if ( min < 10 ) {
+      
+      var prettyMin = "0"+min;
+      
+    } else {
+      
+      var prettyMin = min;
+      
+      }
+    
+        
+    if ( mySec.txt === undefined ) {
+      
+      mySec.text(prettySec);
+      
+    } else {
+      
+      if ( mySec.txt != prettySec ) {
+        
+        mySec.txt(prettySec);
+        
+      }
+      
+    } // end counting seconds
+    
+    if ( myMin.txt === undefined ) {
+      
+      myMin.text(prettyMin);
+      
+    } else {
+      
+      if ( myMin.txt != prettyMin ) {
+        
+        myMin.txt(prettyMin);
+        
+      }
+      
+    } // end counting minutes
+    
+    if ( myHour.txt === undefined ) {
+      
+      myHour.text(prettyHour);
+      
+    } else {
+      
+      if ( myHour.txt != prettyHour ) {
+        
+        myHour.txt(prettyHour);
+      }
+      
+    } // end counting minutes
+    
+    // get total seconds
+    totalSec = (((hour - 1) * 60)*60) + (min*60) + sec;
+    $('.total-sec').text(totalSec);
+    
+    //get total minutes
+    totalMin = ((hour - 1) * 60) + min;
+    $('.total-min').text(totalMin);    
+    
+    //total hours
+    $('.total-hour').text(hour);
+    
+    //determine am or pm
+    if ( hour >-1 && hour < 13 ) {
+      var meridian = "a.m.";
+    } else {
+      var meridian = "p.m.";
+    }
+    
+    $('.meridian').text(meridian);
+    
+    //show timeline
+    var elapsed = (totalSec / 86400) * 100;
+    $('.timeline-line').css('width',elapsed+'%');
+
+      
+    
+  } // end getTime();
+  
+  setInterval(function(){
+    
+    getTime();
+    
+  },100);
+
+
+}); 
+	</script>
+	<style>
+	* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 87.5%;
+}
+
+body {
+  text-align: center;
+  background: #333;
+  padding: 20px;
+  color: #999;
+}
+
+.time {
+  margin: 0 auto;
+}
+
+.number {
+  font-size: 50px;
+  color: #999;
+  color: #07C3F7;
+}
+
+.label {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  font-size: .85rem;
+  width: 100%;
+  padding: .5rem;
+  color: silver;
+}
+
+.block {
+  float: left;
+  position: relative;
+  margin: 10px;
+  padding-top: 1.5rem;
+  text-align: center;
+  width: 8em;
+  height: 8em;
+  border-radius: 10em;
+  background: #001D23;
+  overflow: hidden;
+  box-shadow:0 0 20px rgba(0,0,0,.5);
+}
+
+.meridian.block {
+  width: 3rem;
+  height: 3rem;
+  color: silver;
+  line-height: 1;
+  padding-top: .8rem;
+  background: #222;
+}
+
+.totals {
+  text-align: left;
+  
+}
+
+.totals span {
+  color: #07C3F7;
+}
+
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  padding: 10px;
+  border-radius: 20px;
+  background: #222;
+  box-shadow: 1px 1px 8px rgba(0,0,0,.5);
+}
+
+.timeline-line {
+  width: 75%;
+  height: 1px;
+  background: #07C3F7;
+  
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 15px;
+}
+
+.three-up {
+  margin: 10px 0 0 0;
+}
+
+.three-up li {
+  float: left;
+  width: 33.3333333333%;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: .8rem;
+  line-height: 1;
+}
+
+.three-up li:first-child {
+  text-align: left;
+}
+
+.three-up li:last-child {
+  text-align: right;
+}
+
+
+	</style>
+</head>
+<body>
+	<div class="time clearfix">
+  <div class="time-hour block">
+    <span class="number"></span>
+    <span class="label">Hours</span>
+  </div>
+  <div class="time-minute block">
+    <span class="number"></span>
+    <span class="label">Minutes</span>
+  </div>
+  <div class="time-second block">
+    <span class="number"></span>
+    <span class="label">Seconds</span>
+  </div>
+  <div class="meridian block"></div>
+
+</div>
+  <div class="totals">
+    <ul>
+      <li>Total hours today = <span class="total-hour"></span>
+      </li>
+      <li>Total minutes today = <span class="total-min"></span>
+      </li>
+      <li>Total seconds today = <span class="total-sec"></span>
+      </li>
+      
+    </ul>
+  </div>
+
+<div class="timeline">
+  <div class="timeline-line"></div>
+  <ul class="three-up clearfix">
+    <li>midnight</li>
+    <li>noon</li>
+    <li>midnight</li>
+  </ul>
+</div>
+</body>
+</html>

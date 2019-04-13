@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<style>
+	body {
+color: #454545 !important;
+background: #47789e url("http://files.homepagemodules.de/b192007/f35t7403p101763n38.png") repeat !important;
+}
+
+.MouseHover1 { text-decoration: none }
+.MouseHover1:hover { text-decoration: underline }
+
+.MouseHover2 { text-decoration: none }
+.MouseHover2:hover {  background: #123245; } 
+
+.footer2 .content-row{
+  height:25px; !important;
+  margin:5px 0 0 0 !important;
+}
+.footer-logo img{
+  width:auto !important;
+  height:100% !important;
+}
+.footer-social{
+  font-size:1.5rem !important; 
+  text-align:right !important;
+  vertical-align:bottom !important;
+  padding:-5px !important;
+}
+.footer-social .fa {
+  padding:7px 5px 0px 0px !important;
+}
+.footer-uber_item{
+  display:block !important;
+  float:left !important;
+  margin:0 0 0 15px !important;
+}
+.footer-uber{
+  text-transform:uppercase;
+  font-weight:400 !important;
+  float:right !important;
+}
+.footer-legal{
+  font-weight:400 !important;
+}
+
+.footer-legal_item,.footer-legal_label {
+  display:block !important;
+  float:left !important;
+  margin:0 15px 13px 0 !important;
+}
+
+
+.footer-legal_item,.footer-legal_label {
+  display:block !important;
+  float:left !important;
+  margin:0 15px 0 0 !important;
+}
+
+
+.header-mobile_toggle{margin-right:0}
+.header-nav-mobile{display:none;list-style-type:none;margin:10px 0 5px 0;padding:0 10px;width:0;float:right;clear:both}
+.mmx-header .header-nav_item-mobile{float:right;clear:both;display:block;padding:8px 0 8px 0;margin:0;white-space:nowrap;font-size:1.3rem;line-height:1.5rem;letter-spacing:.15rem;text-transform:uppercase;cursor:pointer}
+.mmx-header.white .navbar-toggle .icon-bar{background-color:#333}
+.mmx-header.black .navbar-toggle .icon-bar{background-color:#333}
+.navbar-toggle:focus{outline:none}
+.mmx-header .header-uber{position:absolute;opacity:1;list-style-type:none;margin:20px 0 0 0;padding:0}
+.mmx-header:not(.scroll-top) .header-uber{opacity:0}
+.header-uber .header-uber_item{float:left;text-transform:uppercase;padding:0 15px 0 0;font-size:1.2rem;font-weight:400;color:#A0A0A0}
+.header-uber .header-uber_item a:hover{color:#333;cursor:pointer}
+.scroll-transition{transition:all .3s ease;-webkit-transition:all .3s ease}
+.mmx-header{width:100%;position:fixed;top:0;left:0;right:0;margin:0;padding:0;font-weight:400;z-index:9999}
+.mmx-header-offset{display:block;height:70px}
+.mmx-header-offset.scroll-top{height:105px}
+.mmx-header .visual-bar{height:70px;width:100%;position:absolute;top:0;right:0;z-index:-10}
+.mmx-header.scroll-top .visual-bar{height:105px}
+.mmx-header .header-content{margin:20px 0 0 0}
+.mmx-header.scroll-top .header-content{margin:55px 0 0 0}
+.mmx-header textarea:focus,.mmx-header input:focus{outline:0}
+.mmx-header .header-search{float:right;padding:5px 10px 7px 10px;margin:14px 0 0 0;font-size:1.25rem;width:30px;height:30px;position:relative;transition:width .5s ease;-moz-transition:width .5s ease;-webkit-transition:width .5s ease}
+.mmx-header .header-search.open{width:150px;transition:width .5s ease;-moz-transition:width .5s ease;-webkit-transition:width .5s ease}
+.mmx-header .header-search_input{width:0;height:20px;padding:0;margin:0 0 0 18px;border:0;background-color:transparent;color:#707070}
+.mmx-header .header-search.open input{transition:width .5s ease;-moz-transition:width .5s ease;-webkit-transition:width .5s ease;width:115px}
+.mmx-header .header-search .header-search_icon{position:absolute;left:10px;top:5px}
+.mmx-header a,.mmx-header a:hover{color:inherit}
+.mmx-header.white{background-color:rgba(255,255,255,.95);border-bottom:solid 2px #DBDBDB}
+.mmx-header.white{background-color:rgba(34,93,130,.95);border-bottom:solid 2px #DBDBDB}
+.mmx-header.white .visual-bar{background-color:#225d82;border-bottom:solid 1px #DBDBDB;color:#333}
+.mmx-header.black{background-color:rgba(34,93,130,.9);border-bottom:solid 2px #DBDBDB}
+.mmx-header.black .visual-bar{background-color:#225d82;border-bottom:solid 1px #DBDBDB;color:#FFF}
+.mmx-header .logo{height:40px;width:auto;position:absolute;top:-4px;left:12px}
+.mmx-header.white .header-nav:hover .header-nav_item:not(.active){color:#E7E7E7}
+.mmx-header .header-nav{padding:0;margin:19px 0 0 0;list-style-type:none;float:right;text-transform:uppercase;letter-spacing:.00006rem;font-size:1.4rem}
+.mmx-header .header-nav_item{background-color:inherit;padding:0 1.3rem;float:left;margin:0;transition:color .2s ease;-moz-transition:color .2s ease;-webkit-transition:color .2s ease;background-color:inherit}
+.mmx-header .header-dropdown{display:none;list-style-type:none;margin:30px 0 10px 0;padding:0;width:0}
+.mmx-header .header-nav_item.active .header-dropdown{display:block}
+.mmx-header .header-dropdown_label{color:#AAA;font-weight:600;font-size:1.1rem;line-height:1.1rem;letter-spacing:.15rem;text-transform:uppercase;padding:0 0 10px 0}
+.mmx-header .header-dropdown:not(:first-child) .header-dropdown_label{padding-top:10px}
+.mmx-header .header-dropdown_item{float:none;clear:both;display:block;padding:0 0 10px 0;margin:0;width:0;overflow:visible;white-space:nowrap;font-size:1.3rem;line-height:1.5rem;letter-spacing:.15rem;text-transform:uppercase;cursor:pointer}
+.mmx-header.white .header-dropdown{color:#333}
+.mmx-header.black .header-dropdown{color:#FFF}
+@media(max-width:991px){.mmx-header .visual-bar,.mmx-header.scroll-top .visual-bar{height:50px}
+.mmx-header-offset,.mmx-header-offset.scroll-top{height:50px}
+.mmx-header .logo{height:23px;top:12px}
+.mmx-header .header-content,.mmx-header.scroll-top .header-content{margin:0}
+.mmx-header{border-bottom-width:1px!important}}
+
+
+
+
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://stormhuntersat.cluster-root.at/NAVneu2/bootstrap.min.SHA.css">
+  
+<!-- Optional theme -->
+<link rel="stylesheet" href="http://stormhuntersat.cluster-root.at/NAVneu2/bootstrap.theme.min.SHA.css">   
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="http://stormhuntersat.cluster-root.at/NAVneu2/java/bootstrap.min.js"></script> 
+
+<link rel="stylesheet" href="http://stormhuntersat.cluster-root.at/NAVneu2/headerDESKTOP.css" type="text/css"/>
+<link rel="stylesheet" href="http://stormhuntersat.cluster-root.at/NAVneu2/footerDESKTOP.css" type="text/css"/>
+<link rel="stylesheet" href="http://stormhuntersat.cluster-root.at/NAVneu2/search1460.css" type="text/css"/>
+<link rel="stylesheet" href="http://stormhuntersat.cluster-root.at/NAVneu2/importantbootstrapNEU.css" type="text/css"/> 
+<link rel="stylesheet" href="http://stormhuntersat.cluster-root.at/NAVneu2/containerbottomWIN.css" type="text/css"/> 
+<link rel="stylesheet" href="http://stormhuntersat.cluster-root.at/NAVneu2/containerbottomMAC.css" type="text/css"/>
+<link rel="stylesheet" href="http://stormhuntersat.cluster-root.at/NAVneu2/normalize.css" type="text/css"/>
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>    
+
+        <div class="mmx-header scroll-top black" style="color:#fff;">   
+            <div class="visual-bar scroll-transition" style="color:#fff;"></div>
+            <div class="container" style="width:100%">
+                <div class="row" style="color:#fff;">
+                    <div class="col-md-12 hidden-sm hidden-xs"> 
+                        <ul class="header-uber scroll-transition hidden-sm hidden-xs"> 
+                            <li class="header-uber_item" data-linktarget="about">
+                                <a href="http://www.stormhunters-austria.com/page-kurzinfos.html" class="MouseHover1" style="color:#fff;">Über uns</a>
+                            </li>
+                            <li class="header-uber_item" data-linktarget="press">
+                                <a href="http://www.stormhunters-austria.com/f21-Sturmjaeger-Berichte-SHA-EU.html" class="MouseHover1" style="color:#fff;">Presse</a>
+                            </li>
+                            <li class="header-uber_item" data-linktarget="careers">
+                                <a href="http://www.stormhunters-austria.com/f37-Chasingreports-Extremwetter-Schwergewitter-Unwetter-uvm.html" class="MouseHover1" style="color:#fff;">Chasings</a>
+                            </li>
+                          <li class="header-uber_item" data-linktarget="contact">
+                                <a href="http://www.stormhunters-austria.com/userlist.php" class="MouseHover1"  style="color:#fff;">Mitglieder</a> 
+                            </li>
+                            <li class="header-uber_item" data-linktarget="contact">
+                                <a href="http://www.stormhunters-austria.com/page-contact.html" class="MouseHover1" style="color:#fff;">Kontakt</a>
+                            </li>
+                          <li class="header-uber_item" data-linktarget="contact">
+                                <a href="http://www.stormhunters-austria.com/faq.php" class="MouseHover1"  style="color:#fff;">Hilfe</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 header-content scroll-transition" style="color:#fff;">
+                        <a href="/">
+                            <img class="logo" src="http://img5.fotos-hochladen.net/uploads/schriftzug1xbhuqsizm.png" alt="StormhuntersSchriftzug">
+                        </a> 
+                       <button type="button" class="header-mobile_toggle navbar-toggle hidden-lg hidden-md visible-sm visible-xs"style="background-color:white;">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                     <div class="header-search hidden-sm hidden-xs">                  
+                            <span class="header-search_icon"><i class="fa fa-search" style="color: #fff;"></i></span>         
+                           <form method="get" id="hpmsearchform" action="http://www.stormhunters-austria.com/search.php" name="hpmsearchform">
+                                <input type="text" name="q" class="header-search_input" style="color:#fff !important; background-color:#225d82 !important; border: none !important;" id="header_search" placeholder=" SUCHEN" autocomplete="off">
+                            </form>
+                        </div>
+                        <ul class="header-nav hidden-sm hidden-xs">
+                            <li class="header-nav_item" data-linktarget="catalog" style="color:#fff;">
+                                <a href="http://www.stormhunters-austria.com"target="_blank" class="MouseHover1"/> <img src="http://files.homepagemodules.de/b192007/a_167_acee0c89.png" style="width:15px; padding: 0px; margin: 0px 5px 2px 0px; vertical-align: middle; color: #fff;">HOME</a>
+                            <li class="header-nav_item" data-linktarget="profil" style="color:#fff;">
+                                <a href="/series/from-dusk-till-dawn-the-series/" class="MouseHover1" style="color: #fff;">Profil</a>
+                                <ul class="header-dropdown clearfix">
+                                    <li class="header-dropdown_label" style="margin-top:-30px;">Account</li>
+                                    <li class="header-dropdown_item" data-linktarget="{{link_myprofile}}">
+                                        <a href="/catalog/action/" class="MouseHover1" style="color:#fff;">Profil bearbeiten</a>
+                                    </li>
+                                  <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/catalog/action/" class="MouseHover1" style="color:#fff;">Private Nachrichten</a>
+                                    </li>
+                                  <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/catalog/action/" class="MouseHover1" style="color:#fff;">Einstellungen</a>
+                                    </li>
+                                   <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/catalog/action/" class="MouseHover1" style="color:#fff;">Abwesend</a>
+                                    </li>
+                                  <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/catalog/action/" class="MouseHover1" style="color:#fff;">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="header-nav_item" data-linktarget="video" style="color:#fff;">
+                                <a href="/video/" class="MouseHover1" style="color: #fff;">Admin</a>
+                                <ul class="header-dropdown clearfix">
+                                    <li class="header-dropdown_item" style="margin-top:-20px;" data-linktarget="catalog_action">
+                                        <a href="/catalog/action/" class="MouseHover1" style="color:#fff;">Statistik</a>
+                                    </li>
+                                     <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/trailers/" class="MouseHover1"style="color:#fff;">Template Edit</a>
+                                    </li>
+                                    <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/trailers/" class="MouseHover1"style="color:#fff;">Neuanmeldungen</a>
+                                    </li>
+                                </ul>
+                            </li>   
+                            <li class="header-nav_item" data-linktarget="blog" style="color:#fff;">
+                                <a href="/subscript/" class="MouseHover1" style="color: #fff;">SWC+</a>
+                                <ul class="header-dropdown clearfix">
+                                    <li class="header-dropdown_item" style="margin-top:-20px;" data-linktarget="catalog_action">
+                                        <a href="http://www.stormhunters-austria.com/useronline.php" class="MouseHover1" style="color:#fff;">Wer ist Online ?</a>
+                                    </li>
+                                    <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/catalog/action/" class="MouseHover1" style="color:#fff;">Wettermeldung</a>
+                                    </li>
+                                    <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/subscript/category/quizzes-and-polls/" class="MouseHover1" style="color:#fff;">Unwettermeldung</a>
+                                    </li>
+                           
+                                 <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/subscript/category/staff-picks/" class="MouseHover1" style="color:#fff;">Foto hochladen</a>
+                                    </li>
+                                    <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/subscript/category/film-festivals/" class="MouseHover1" style="color:#fff;">Fotoalbum erstellen</a> 
+                                    </li>
+                                    <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/subscript/category/emerging-filmmakers/" class="MouseHover1" style="color:#fff;">Letzte Foto Uploads</a>
+                                    </li>
+                                    <li class="header-dropdown_item" data-linktarget="catalog_action">
+                                        <a href="/subscript/category/guest-bloggers/" class="MouseHover1" style="color:#fff;">Wetransfer Upload</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="header-nav_item" data-linktarget="shop" style="color:#fff;">
+                                <a href="//shop.miramax.com" target="_blank" class="MouseHover1" style="color: #fff;">Letzte Beiträge</a>
+                            </li>
+                        </ul>
+                        <ul class="header-nav-mobile" style="margin-right:-10px;>
+                            <li class="header-nav_item-mobile" data-linktarget="catalog">
+                                <a href="/catalog/" style="color:#fff;">FILMS</a>
+                            </li>
+                            <li class="header-nav_item-mobile" data-linktarget="tv">
+                                <a href="/series/from-dusk-till-dawn-the-series/" style="color:#fff;">TV</a>
+                            </li>
+                            <li class="header-nav_item-mobile" data-linktarget="video">
+                                <a href="/video/" style="color:#fff;">WATCH</a>
+                            </li>
+                            <li class="header-nav_item-mobile" data-linktarget="blog">
+                                <a href="/subscript/" style="color:#fff;">BLOG</a>
+                            </li>
+                            <li class="header-nav_item-mobile" data-linktarget="shop">
+                                <a href="//shop.miramax.com" style="color:#fff;">SHOP</a>
+                            </li>
+                            <li class="header-nav_item-mobile" data-linktarget="fans">
+                                <a href="/fans/" style="color:#fff;">FANS</a>
+                            </li>
+                            <li class="header-nav_item-mobile" data-linktarget="search">
+                                <a href="/search/" style="color:#fff;">SEARCH</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> 
+<div class="mmx-header-offset scroll-transition scroll-top"></div>
+<script type="text/javascript">
+/* make the submenus appear/disappear */
+jQuery(".mmx-header .header-nav_item").mouseover(function () {
+removeActives();
+jQuery(this).addClass('active');
+});
+jQuery(".mmx-header").mouseleave(removeActives);
+function removeActives() {
+jQuery(".mmx-header .header-nav .header-nav_item.active").each( function( index, element ) {
+jQuery(this).removeClass('active');
+});
+}
+/* toggle the menu on mobile */
+jQuery('.navbar-toggle').click(function () {
+if (!jQuery('.header-mobile_toggle').hasClass('open')) {
+jQuery('.header-mobile_toggle').addClass('open');
+jQuery('.header-nav-mobile').show();
+} else {
+jQuery('.header-mobile_toggle').removeClass('open');
+jQuery('.header-nav-mobile').hide();
+}
+});
+/* search hover effect */
+jQuery(".mmx-header .header-search").mouseover(function () {
+jQuery(this).addClass('open');
+$(".header-search_input").focus();
+});
+function closeSearch() {
+if (jQuery(".mmx-header .header-search_input").val() == "") {
+jQuery(".mmx-header .header-search").removeClass('open');
+}
+}
+jQuery(".mmx-header .header-search_input").focusout(closeSearch);
+jQuery(".mmx-header .header-search").mouseleave(closeSearch);
+/* scroll - hide uber menu effect */
+var lastScrollTop = 0;
+jQuery(window).scroll(function(event){
+var st = $(this).scrollTop();
+if ((st < lastScrollTop || window.pageYOffset <= 20) && !($(window).scrollTop() + $(window).height() >= $(document).height())){
+//upscroll
+jQuery(".mmx-header:not(.scroll-top)").addClass('scroll-top');
+jQuery(".mmx-header-offset:not(.scroll-top)").addClass('scroll-top');
+} else {
+//downscroll
+jQuery(".mmx-header.scroll-top").removeClass('scroll-top');
+jQuery(".mmx-header-offset.scroll-top").removeClass('scroll-top');
+}
+lastScrollTop = st;
+});
+</script>
+<div class="share_bar clearfix" style="background-color: #47789e; display:none;">
+<a href="//www.facebook.com/sharer/sharer.php?u=www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=640');return false;">
+<div class="share_bar-social_link button facebook" data-linktarget="facebook">
+<i class="fa fa-facebook"></i>
+<span class="social-count" id="share-count" style="">18</span>
+</div>
+</a>
+<a href="//twitter.com/intent/tweet?text=4th%20Of%20July%20%28Adventureland%29 www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=250,width=550');return false;">
+<div class="share_bar-social_link button twitter" data-linktarget="twitter">
+<i class="fa fa-twitter"></i>
+<span class="social-count" id="tweet-count" style="">1</span>
+</div>
+</a>
+<a href="//www.pinterest.com/pin/create/button/?url=www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx&amp;media=http%3A%2F%2Fpmd205465tn.download.theplatform.com.edgesuite.net%2FMiramax%2F138%2F479%2F5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx_640x360_53833283572.jpg&amp;description=4th%20Of%20July%20%28Adventureland%29" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=320,width=750');return false;">
+<div class="share_bar-social_link button pinterest" data-linktarget="pinterest">
+<i class="fa fa-pinterest"></i>
+<span class="social-count" id="pin-count"></span>
+</div>
+</a>
+<a href="//plus.google.com/share?url=www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+<div class="share_bar-social_link button google-plus" data-linktarget="google-plus">
+<i class="fa fa-google-plus"></i>
+<span class="social-count" id="plus-count" style=""></span>
+</div>
+</a>
+<div class="share_bar-social_link button url" data-linktarget="url">
+<i class="fa fa-link"></i>
+<input name="share-url" onclick="this.focus();this.select()" value="www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx" type="text">
+</div>
+</div>
+<script>
+$(document).ready(function() {
+// AJAX to do the share function
+$.ajax({
+url: "//urls.api.twitter.com/1/urls/count.json?url=www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx",
+dataType: "jsonp"
+}).done(function(data) {
+if (data['count']) $('#tweet-count').html(commaSeparateNumber(data['count']));
+});
+$.ajax({
+url: "//graph.facebook.com/?id=http://www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx",
+dataType: "jsonp"
+}).done(function(data) {
+if (data['shares']) $('#share-count').html(commaSeparateNumber(data['shares']));
+});
+function commaSeparateNumber(val){
+while (/(\d+)(\d{3})/.test(val.toString())){
+val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+}
+return val;
+}
+});
+</script>  
+        <script type="text/javascript">
+    /* make the submenus appear/disappear */
+    jQuery(".mmx-header .header-nav_item").mouseover(function () {
+        removeActives();
+        jQuery(this).addClass('active');
+    });
+    jQuery(".mmx-header").mouseleave(removeActives);
+    function removeActives() {
+        jQuery(".mmx-header .header-nav .header-nav_item.active").each( function( index, element ) {
+            jQuery(this).removeClass('active');
+        });
+    }
+    /* toggle the menu on mobile */
+    jQuery('.navbar-toggle').click(function () {
+        if (!jQuery('.header-mobile_toggle').hasClass('open')) {
+            jQuery('.header-mobile_toggle').addClass('open');
+            jQuery('.header-nav-mobile').show();
+        } else {
+            jQuery('.header-mobile_toggle').removeClass('open');
+            jQuery('.header-nav-mobile').hide();
+        }
+    });
+    /* search hover effect */
+    jQuery(".mmx-header .header-search").mouseover(function () {
+        jQuery(this).addClass('open');
+        $(".header-search_input").focus();
+    });
+    function closeSearch() {
+        if (jQuery(".mmx-header .header-search_input").val() == "") {
+            jQuery(".mmx-header .header-search").removeClass('open');
+        }
+    }
+    jQuery(".mmx-header .header-search_input").focusout(closeSearch);
+    jQuery(".mmx-header .header-search").mouseleave(closeSearch);
+    
+    /* scroll - hide uber menu effect */
+	var lastScrollTop = 0;
+    jQuery(window).scroll(function(event){
+        var st = $(this).scrollTop();
+        if ((st < lastScrollTop || window.pageYOffset <= 20) && !($(window).scrollTop() + $(window).height() >= $(document).height())){
+            //upscroll
+            jQuery(".mmx-header:not(.scroll-top)").addClass('scroll-top');
+            jQuery(".mmx-header-offset:not(.scroll-top)").addClass('scroll-top');
+        } else {
+            //downscroll
+            jQuery(".mmx-header.scroll-top").removeClass('scroll-top');
+            jQuery(".mmx-header-offset.scroll-top").removeClass('scroll-top');
+        }
+        lastScrollTop = st;
+	});
+</script>
+        <div class="share_bar clearfix" style="background-color: #47789e; display:none;">
+            <a href="//www.facebook.com/sharer/sharer.php?u=www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=640');return false;">
+                <div class="share_bar-social_link button facebook" data-linktarget="facebook">
+                    <i class="fa fa-facebook"></i>
+                    <span class="social-count" id="share-count" style=""></span>
+                </div>
+            </a>
+            <a href="//twitter.com/intent/tweet?text=4th%20Of%20July%20%28Adventureland%29 www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=250,width=550');return false;">
+                <div class="share_bar-social_link button twitter" data-linktarget="twitter">
+                    <i class="fa fa-twitter"></i>
+                    <span class="social-count" id="tweet-count" style=""></span>
+                </div>
+            </a>
+            <a href="//www.pinterest.com/pin/create/button/?url=www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx&amp;media=http%3A%2F%2Fpmd205465tn.download.theplatform.com.edgesuite.net%2FMiramax%2F138%2F479%2F5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx_640x360_53833283572.jpg&amp;description=4th%20Of%20July%20%28Adventureland%29" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=320,width=750');return false;">
+                <div class="share_bar-social_link button pinterest" data-linktarget="pinterest">
+                    <i class="fa fa-pinterest"></i>
+                    <span class="social-count" id="pin-count"></span>
+                </div>
+            </a>
+            <a href="//plus.google.com/share?url=www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+                <div class="share_bar-social_link button google-plus" data-linktarget="google-plus">
+                    <i class="fa fa-google-plus"></i>
+                    <span class="social-count" id="plus-count" style=""></span>
+                </div>
+            </a>
+            <div class="share_bar-social_link button url" data-linktarget="url">
+                <i class="fa fa-link"></i>
+                <input type="text" name="share-url" onclick="this.focus();this.select()" value="www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx">
+            </div>
+        </div>
+        <script>
+$(document).ready(function() {
+    // AJAX to do the share function
+    $.ajax({
+        url: "//urls.api.twitter.com/1/urls/count.json?url=www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx",
+        dataType: "jsonp"
+    }).done(function(data) {
+        if (data['count']) $('#tweet-count').html(commaSeparateNumber(data['count']));
+    });
+    $.ajax({
+        url: "//graph.facebook.com/?id=http://www.miramax.com/watch?v=5ybWEwZDo1iJGvc53SDc4_2sPHTtPFmx",
+        dataType: "jsonp"
+    }).done(function(data) {
+        if (data['shares']) $('#share-count').html(commaSeparateNumber(data['shares']));
+    });
+    
+    
+    function commaSeparateNumber(val){
+        while (/(\d+)(\d{3})/.test(val.toString())){
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+        }
+        return val;
+    }
+});
+</script>
+        <script type="text/javascript" src="http://stormhuntersat.cluster-root.at/NAVneu2/java/faf06faa4dc7.js"></script>
+        <div class="footer-offset"></div>
+        <div class="footer2" style="background-color: #225d82;">
+            <div class="container" style="width: 100%; margin-bottom: -10px; margin-left:5px; padding:15px;">
+              <a title="Social Weather Community - Version Stormhunters-Austria" href="http://www.stormhunters-austria.com/page-swc.html" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n230.png" alt="image" align="left"></a>
+<a title="Ubimet GmbH" href="http://www.ubimet.com" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n395.png" alt="image" align="left"></a>
+<a title="Red Bull Media House GmbH" href="http://www.redbullmediahouse.com/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n512.png" alt="image" align="left"></a>
+<a title="ServusTV - Red Bull Media House GmbH" href="http://www.servustv.com/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n502.png" alt="image" align="left"></a>
+<a title="Na Servus - das Wetter auf ServusTV" href="http://www.servustv.com/at/Sendungen/Na-Servus" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n499.png" alt="image" align="left"></a>
+<a title="Servus.Wetter - Das exklusive Wetter für den Alpenraum" href="http://www.servustv.com/at/Sendungen/Servus-Wetter" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n514.png" alt="image" align="left"></a>
+<a title="Servus am Morgen - Frühstücksfernsehen bei ServusTV" href="http://www.servustv.com/at/Sendungen/Servus-am-Morgen" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n501.png" alt="image" align="left"></a>
+<a title="derStandard.at" href="http://www.derstandard.at/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n479.png" alt="image" align="left"></a>
+<a title="Krone Multimedia GmbH & Co KG " href="http://www.krone.at/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n511.png" alt="image" align="left"></a>
+<a title="TVN CORPORATE MEDIA GmbH & Co. KG" href="http://www.ende.tv/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n433.png" alt="image" align="left"></a>
+<a title="PULS 4 TV GmbH & Co KG" href="http://www.puls4.com" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n164.png" alt="image" align="left"></a>
+<a title="ORF - Österreichischer Rundfunk" href="http://www.orf.at" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n163.png" alt="image" align="left"></a>
+<a title="LT1 Privatfernsehen GmbH" href="http://www.lt1.at" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n161.png" alt="image" align="left"></a>
+<a title="Radio Eins Privatradio GmbH" href="http://www.radio886regional.at/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n244.png" alt="image" align="left"></a>
+<a title="APA - Austria Presse Agentur " href="http://www.apa.at" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n159.png" alt="image" align="left"></a>
+<a title="Telekurier Online Medien GmbH & Co KG" href="http://kurier.at" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n260.png" alt="image" align="left"></a>
+<a title="Regionalradio Tirol GmbH" href="http://www.liferadio-tirol.at/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n291.png" alt="image" align="left"></a>
+<a title="ADIRO GmbH - ADs Brain Delivered" href="http://www.adiro.de" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n158.png" alt="image" align="left"></a>
+<a title="Miranus GmbH - Social Community Software" href="http://www.xobor.de" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n162.png" alt="image" align="left"></a>
+<a title="Ab die Taube e.U. - Taubenabwehr & Schädlingsbekämpfung" href="http://www.ab-die-taube.at" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n186.png" alt="image" align="left"></a>
+<a title="Leutgeb Entertainment Group GmbH" href="http://www.sfz.at" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n170.png" alt="image" align="left"></a>
+<a title="LIMARUTTI KFZ-Meisterwerkstatt & Autohandel" href="http://limarutti.at" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n211.png" alt="image" align="left"></a>
+<a title="PEPA Autoglas KFZ Folien" href="http://www.pepa-autoglas.at/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n374.png" alt="image" align="left"></a>
+<a title="Salamon & Scherr Dachbau GmbH" href="http://salamon-scherr.at/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t7403p101763n45.png" alt="image" align="left"></a>
+<a title="Severe Weather Europe (SWE)" href="http://www.severe-weather.eu/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n453.png" alt="image" align="left"></a>
+<a title="Neurje.si Stormchasers" href="http://neurje.si/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n448.png" alt="image" align="left"></a>
+<a title="Stormchasers-Germany" href="https://stormchasers-germany.de/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n450.png" alt="image" align="left"></a>
+<a title="Tornado-Map.info" href="http://www.tornado-map.info/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n451.png" alt="image" align="left"></a>
+<a title="plista GmbH" href="https://www.plista.com/" target="_blank"><img src="http://files.homepagemodules.de/b192007/f35t4372p67190n477.png" alt="image" align="left"></a>
+  </div>
+<hr style="margin-left:1%;margin-right:1%;width:98%" />
+  <div class="container" style="width:100%">
+                <div class="row";>
+                    <div class="col-sm-5 col-xs-6">
+                        <div class="footer-logo content-row">
+                            <a href="/">
+                                <img src="http://img5.fotos-hochladen.net/uploads/schriftzug1xbhuqsizm.png" alt="Stormhunters" align="left">
+                            </a>
+                        </div>
+                        <ul class="footer-legal content-row">
+                            <li class="footer-legal_label" style="color: #fff;">© 2014 hjpMEDIA</li>
+                            <li class="footer-legal_item" data-linktarget="terms">
+                                <a href="http://www.stormhunters-austria.com/page-richtlinien.html" class="MouseHover1" style="color: #fff;">Richtlinien</a>
+                            </li>
+                            <li class="footer-legal_item" data-linktarget="privacy">
+                                <a href="http://www.stormhunters-austria.com/faq.php#impressum" class="MouseHover1" style="color: #fff;">Impressum & FAQ</a>
+                            </li> 
+                        </ul>
+                    </div>
+                    <div class="col-sm-7 col-xs-6">
+                        <div class="footer-social content-row clearfix"> 
+                            <a href="http://www.twitter.com/stormhuntersAT" target="_blank" data-linktarget="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="http://www.facebook.com/stormhuntersAT" target="_blank" data-linktarget="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="http://www.google.at/+stormhuntersAT" target="_blank" data-linktarget="google-plus"><i class="fa fa-google-plus"></i></a>
+                            <a href="http://pinterest.com/stormhuntersAT" target="_blank" data-linktarget="pinterest"><i class="fa fa-pinterest"></i></a>
+                            <a href="http://www.youtube.com/stormhuntersHD" target="_blank" data-linktarget="youtube"><i class="fa fa-youtube"></i></a>
+                            <a href="http://www.youtube.com/stormhuntersSERIE" target="_blank" data-linktarget="youtube"><i class="fa fa-youtube"></i></a>
+                        </div>
+                        <div class="content-row clearfix">
+                            <ul class="footer-uber">
+                                <li class="footer-uber_item" data-linktarget="about">
+                                    <a href="http://www.stormhunters-austria.com/page-kurzinfos.html"><span class="MouseHover1" style="color: #fff;">Über uns</span></a>
+                                </li>
+                                <li class="footer-uber_item" data-linktarget="press">
+                                    <a href="http://www.stormhunters-austria.com/f21-Sturmjaeger-Berichte-SHA-EU.html"><span class="MouseHover1" style="color: #fff;">Presse</span></a>
+                                </li>
+                                <div class="clearfix hidden-lg hidden-md hidden-sm"></div>
+                                <li class="footer-uber_item" data-linktarget="careers">
+                                    <a href="http://www.stormhunters-austria.com/f37-Chasingreports-Extremwetter-Schwergewitter-Unwetter-uvm.html"><span class="MouseHover1" style="color: #fff;">Chasings</span></a>
+                                </li>
+                               <li class="footer-uber_item" data-linktarget="contact">
+                                    <a href="http://www.stormhunters-austria.com/userlist.php"><span class="MouseHover1" style="color: #fff;">Mitglieder</span></a>
+                                </li>
+                                <li class="footer-uber_item" data-linktarget="contact">
+                                    <a href="http://www.stormhunters-austria.com/page-contact.html"><span class="MouseHover1" style="color: #fff;">Kontakt</span></a>
+                                </li>
+                               <li class="footer-uber_item" data-linktarget="contact">
+                                    <a href="http://www.stormhunters-austria.com/faq.php"><span class="MouseHover1" style="color: #fff;">Hilfe</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+</body>
+</html>

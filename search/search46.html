@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		var animationTime = 500;
+
+$(function(){
+  
+  init();
+  
+  var that = this;
+  $('.search-input').on('keydown', function(e) {
+    var val = $(this).val();
+    if (e.keyCode == 13) {
+      e.preventDefault(); 
+      if(!val) {
+      	return;
+    	}
+      
+      hideResults();
+      
+      // Do some AJAX call here to get results
+      getSearchResults(val).then(function(results){
+        // Do something with results here before calling showResults
+        //
+        //
+        showResults();
+      });
+    }
+  });
+    
+  function init() {
+    var searchButton = $('.search-button');
+    searchButton.on('click', function(e) {
+      var panelContainer = $('.panel-container')
+      if(!panelContainer.hasClass('show-search')) {
+        panelContainer.addClass('show-search')
+        setTimeout(function() {
+          $('.search-input').focus();
+        }, animationTime*3);
+      }
+    });
+  };
+    
+  function getSearchResults(val) {
+    return new Promise(function(resolve, reject) {
+      var results = [];
+
+      setTimeout(function(){
+        resolve(results);
+      }, 2000);
+    });
+  }
+  
+  function showResults() {
+    var panelContainer = $('.panel-container');
+    var results = $('.results');
+    var searchIcon = $('.search-button i');
+    
+    panelContainer.addClass('show-search show-results');
+    searchIcon.toggleClass('glyphicon-search glyphicon-refresh spinning');
+    results.addClass('show');
+
+    // After first run, change result.show class to have no transition animation delay
+    if(!results.hasClass('no-wait')) {
+      setTimeout(function(){
+        results.addClass('no-wait');
+      }, animationTime*2);
+    }
+  }
+  
+  function hideResults() {
+    var panelContainer = $('.panel-container');
+    var results = $('.results');
+    var searchIcon = $('.search-button i');
+
+    if(!panelContainer.hasClass('show-results')) {
+      panelContainer.removeClass('show-search')
+    }
+
+    results.removeClass('show');
+    searchIcon.toggleClass('glyphicon-search glyphicon-refresh spinning');
+  }
+
+});
+	</script>
+	<style>
+	html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  background-color: #e06d5e;
+}
+::-webkit-input-placeholder {
+  color: white;
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: scale(1) rotate(0deg);
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    -webkit-transform: scale(1) rotate(360deg);
+    transform: scale(1) rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    -webkit-transform: scale(1) rotate(0deg);
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    -webkit-transform: scale(1) rotate(360deg);
+    transform: scale(1) rotate(360deg);
+  }
+}
+.content {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 75px);
+  top: 75px;
+  overflow: hidden;
+}
+.content .results {
+  bottom: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  visibility: hidden;
+  width: 60%;
+  border: 1px solid #fafafa;
+  list-style: none;
+  background: white;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  right: 20%;
+  box-shadow: 0px -1px 3px 0px rgba(203, 58, 39, 0.5);
+  -webkit-transition: all 0.5s ease-in-out 0;
+  transition: all 0.5s ease-in-out 0;
+}
+.content .results li {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px;
+  margin: 0 auto;
+  width: 98%;
+}
+.content .results li .title {
+  font-weight: 300;
+}
+.content .results li .desc {
+  font-weight: 200;
+  color: #808080;
+}
+.content .results.show {
+  overflow: auto;
+  display: block;
+  visibility: visible;
+  height: 100%;
+  -webkit-transition: all 0.5s ease-in-out 1s;
+  transition: all 0.5s ease-in-out 1s;
+}
+.content .results.show.no-wait {
+  -webkit-transition: all 0.5s ease-in-out 0 !important;
+  transition: all 0.5s ease-in-out 0 !important;
+}
+.panel-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+}
+.panel-container .top-panel {
+  z-index: 50;
+  width: 100%;
+  height: 50%;
+  border-bottom: 1px solid #e06d5e;
+  box-shadow: 0px 1px 2px 0px rgba(224, 109, 94, 0.6);
+  position: relative;
+  top: 0;
+  background: white;
+  -webkit-transition: all 0.5s ease-in-out 0s;
+  transition: all 0.5s ease-in-out 0s;
+}
+.panel-container .bottom-panel {
+  z-index: 50;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  background: white;
+  -webkit-transition: all 0.5s ease-in-out 0s;
+  transition: all 0.5s ease-in-out 0s;
+}
+.panel-container .search-container {
+  position: absolute;
+  left: calc(50% - 40px);
+  top: calc(50% - 40px);
+  z-index: 100;
+}
+.panel-container .search-container .search-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  border: none;
+  background: #e06d5e;
+  color: white;
+  font-size: 20px;
+  outline: none;
+  box-shadow: inset 0px 0px 3px 0px rgba(216, 70, 51, 0.9);
+  -webkit-transition: all 0.5s ease-in-out 0s;
+  transition: all 0.5s ease-in-out 0s;
+}
+.panel-container .search-container .search-button i.spinning {
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+}
+.panel-container .search-container input {
+  border: none;
+  border-bottom: 2px solid white;
+  background: transparent;
+  width: 0px;
+  font-size: 20px;
+  visibility: hidden;
+  -webkit-appearance: none;
+  color: white;
+  -webkit-transform: translate(-175px, -9px);
+          transform: translate(-175px, -9px);
+  font-weight: 100;
+}
+.panel-container .search-container input:focus {
+  outline: none;
+}
+.panel-container.show-search {
+  -webkit-transition: all 0.5s ease-in-out 0s;
+  transition: all 0.5s ease-in-out 0s;
+}
+.panel-container.show-search .top-panel {
+  -webkit-transform: translate(0, -45px);
+          transform: translate(0, -45px);
+  box-shadow: 0px 1px 2px 0px rgba(216, 70, 51, 0.9);
+}
+.panel-container.show-search .bottom-panel {
+  -webkit-transform: translate(0, 45px);
+          transform: translate(0, 45px);
+  box-shadow: 0px -1px 2px 0px rgba(216, 70, 51, 0.9);
+}
+.panel-container.show-search .search-container .search-button {
+  -webkit-transform: translate(-150px, 0);
+          transform: translate(-150px, 0);
+  box-shadow: none;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out 0.5s;
+  transition: -webkit-transform 0.5s ease-in-out 0.5s;
+  transition: transform 0.5s ease-in-out 0.5s;
+  transition: transform 0.5s ease-in-out 0.5s, -webkit-transform 0.5s ease-in-out 0.5s;
+  cursor: default;
+}
+.panel-container.show-search .search-container input {
+  visibility: visible;
+  width: 300px;
+  position: relative;
+  -webkit-transition: all 0.5s ease-in-out 1s;
+  transition: all 0.5s ease-in-out 1s;
+}
+.panel-container.show-results .top-panel {
+  box-shadow: none;
+  -webkit-transform: translate(0, -100%);
+          transform: translate(0, -100%);
+  -webkit-transition: -webkit-transform 0.5s ease-in-out 0s;
+  transition: -webkit-transform 0.5s ease-in-out 0s;
+  transition: transform 0.5s ease-in-out 0s;
+  transition: transform 0.5s ease-in-out 0s, -webkit-transform 0.5s ease-in-out 0s;
+}
+.panel-container.show-results .bottom-panel {
+  box-shadow: none;
+  -webkit-transform: translate(0, 100%);
+          transform: translate(0, 100%);
+  -webkit-transition: -webkit-transform 0.5s ease-in-out 0s;
+  transition: -webkit-transform 0.5s ease-in-out 0s;
+  transition: transform 0.5s ease-in-out 0s;
+  transition: transform 0.5s ease-in-out 0s, -webkit-transform 0.5s ease-in-out 0s;
+}
+.panel-container.show-results .search-container {
+  -webkit-transition: all 0.5s ease-in-out 1s;
+  transition: all 0.5s ease-in-out 1s;
+  top: 0;
+}
+.panel-container.show-results .search-container .search-button {
+  background: transparent;
+  box-shadow: none;
+}
+
+	</style>
+</head>
+<body>
+	<div class="panel-container">
+  <div class="top-panel"></div>
+  <div class="search-container">
+      <form>
+        <button type="button" class="search-button"><i class="glyphicon glyphicon-search"></i></button>
+        <input type="text" class="search-input" placeholder="Search...">
+      </form>
+    </div>
+  <div class="bottom-panel"></div>
+</div>
+
+<div class="content">
+  <ul class="results">
+    <li>
+      <h4 class="title">Morbi Cras Consequat</h4>
+      <p class="desc">Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>
+    </li>
+    <li>
+      <h4 class="title">Accumsan Porttitor</h4>
+      <p class="desc">Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+    </li>
+    <li>
+      <h4 class="title">Phasellus Ultrices Nulla Quis Nib</h4>
+      <p class="desc">Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</p>
+    </li>
+    <li>
+      <h4 class="title">Pellentesque Fermentum Dolor</h4>
+      <p class="desc">Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc</p>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

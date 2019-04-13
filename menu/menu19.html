@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul#navigationMenu {
+	height:25px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+ul#navigationMenu li {
+	border:1px solid #444444;
+	display:inline-block;
+	float:left;
+	height:25px;
+	overflow:hidden
+}
+ul#navigationMenu a {
+	position:relative;
+	top:-25px;
+	padding-top:25px;
+	display:block;
+	text-decoration:none;
+	background:#444;
+	-moz-transition:top .2s linear;
+	-webkit-transition:top .2s linear;
+	transition:top .2s linear;
+}
+ul#navigationMenu a:after {
+	content:" ";
+	background:#eee;
+	position:absolute;
+	top:0px;
+	left:0;
+	right:0;
+	height:25px;
+	z-index:2;
+}
+ul#navigationMenu a:hover { top:0 }
+ul#navigationMenu a b {
+	outline:none;
+	padding:5px 15px;
+	display:block;
+	position:relative;
+	z-index:3;
+	font-weight:normal;
+	text-shadow:0 -25px 0px #444;
+	color:#fff;
+	height:15px;
+  line-height:15px;
+}
+
+	</style>
+</head>
+<body>
+	<!--[if lte IE 9]>
+<style>
+ul#navigationMenu a:after{display:none}
+ul#navigationMenu a:hover{
+	top:-25px;
+	background:#eee;color:#444;
+}
+ul#navigationMenu a:hover b{color:#444}
+</style>
+<![endif]-->
+<ul id="navigationMenu">
+		<li><a href="#"><b>Link 1</b></a></li>
+		<li><a href="#"><b>Link 2</b></a></li>
+		<li><a href="#"><b>Link 3</b></a></li>
+		<li><a href="#"><b>Link 4</b></a></li>
+		<li><a href="#"><b>Link 5</b></a></li>
+		<li><a href="#"><b>Link 6</b></a></li>
+</ul>
+
+</body>
+</html>

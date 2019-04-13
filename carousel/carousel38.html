@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<style>
+	body {
+  background: #000;
+}
+h1 {
+  color: #7CFC00;
+}
+label {
+ display: block;
+}
+/* start general carousel styles */
+.carousel {
+  height: 392px;
+  margin: 12px;
+}
+.carousel-inner {
+  overflow: visible;
+}
+.carousel ul {
+  -webkit-transform: translateY(36%);
+  -ms-transform: translateY(36%);
+  transform: translateY(36%);
+  padding-left: 7px;
+}
+.carousel li {
+  float: left;
+  font-size: 13px;
+  margin: 0 3%;
+  text-align: center;
+  width: 20%;
+  list-style-type: none;
+}
+.carousel li:first-child {
+  margin-left: 1%;
+}
+.carousel li:last-child {
+  margin-right: 1%;
+}
+.carousel li {
+  margin: 0 1.64%;
+  width: 30%;
+}
+.carousel img {
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 5px;
+  width: 100%;
+}
+.carousel label {
+  padding: 0;
+  -webkit-transition: all .34s linear;
+  transition: all .34s linear;
+}
+.carousel input[type="radio"] {
+  display: none;
+}
+.carousel input[type="radio"]:checked + label {
+  border-color: transparent;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 0 #7CFC00;
+  cursor: pointer;
+  padding: 0;
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  -webkit-transition: all .34s linear;
+  transition: all .34s linear;
+  z-index: 2;
+}
+.carousel li:first-child input[type="radio"]:checked + label  {
+  position: relative;
+  -ms-transform: translateX(25%) scale(1.5);
+  -webkit-transform: translateX(25%) scale(1.5);
+  transform: translateX(25%) scale(1.5);
+}
+.carousel li:last-child input[type="radio"]:checked + label  {
+  position: relative;
+  -ms-transform: translateX(-25%) scale(1.5);
+  -webkit-transform: translateX(-25%) scale(1.5);
+  transform: translateX(-25%) scale(1.5);
+}
+	</style>
+</head>
+<body>
+	<h1>Bootstrap Carousel with CSS Scaling and Sliding</h1>
+   <div id="carousel-thingy" class="carousel slide" data-interval="false">
+     <div class="carousel-inner">
+      <div class="item active">
+       <ul class="reset clearfix">
+        <li class="prod1">
+         <input type="radio" name="product" id="product-1" value="a" checked>
+         <label for="product-1">  
+          <img src="http://www.miataturbo.net/attachments/insert-bs-here-4/68653d1361891555-random-pictures-thread-only-rule-post-here-more-entertain-me-two_face_piece.jpg" alt="...">
+         </label>
+        </li>
+        <li class="prod2">
+         <input type="radio" name="product" id="product-2" value="b">
+         <label for="product-2">  
+          <img src="http://vignette2.wikia.nocookie.net/batman/images/9/92/JokerMHBTAS.jpg/revision/latest?cb=20100928165524" alt="...">
+         </label>
+        </li>
+        <li class="prod3">
+         <input type="radio" name="product" id="product-3" value="c">
+         <label for="product-3">  
+          <img src="http://vignette3.wikia.nocookie.net/batman/images/9/94/13.jpg/revision/latest?cb=20111101031612" alt="...">
+         </label>
+        </li>
+       </ul>
+      </div>
+      <div class="item">
+       <ul class="reset clearfix">
+        <li class="prod1">
+         <input type="radio" name="product" id="product-4" value="d">
+         <label for="product-4">  
+          <img src="http://vignette1.wikia.nocookie.net/batmantheanimatedseries/images/b/b5/The_Penguin.jpg/revision/latest?cb=20130303081132" alt="...">
+         </label>
+        </li>
+        <li class="prod2">
+         <input type="radio" name="product" id="product-5" value="e">
+         <label for="product-5">  
+          <img src="http://vignette2.wikia.nocookie.net/batman/images/c/c7/20s.jpg/revision/latest?cb=20111212234019" alt="...">
+         </label>
+        </li>
+        <li class="prod3">
+         <input type="radio" name="product" id="product-6" value="f">
+         <label for="product-6">  
+          <img src="http://vignette3.wikia.nocookie.net/dcanimated/images/4/46/Batman_Duplicant.png/revision/latest?cb=20100302011547" alt="...">
+         </label>
+        </li>
+       </ul>
+      </div>
+     </div>
+     <a class="carousel-control left sprite" href="#carousel-thingy" data-slide="prev">Previous</a>
+     <a class="carousel-control right sprite" href="#carousel-thingy" data-slide="next">Next</a>
+    </div>
+</body>
+</html>

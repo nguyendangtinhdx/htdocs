@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<style>
+		form{border: 5px solid #8EC1DA;
+			padding: 10px;
+			width: 30%;
+			margin: auto;
+			text-align: center;}
+		article{float: left;}
+		i{float: right;
+			color: #3B5998;}
+		#button {
+	    background-color: #4CAF50; /* Green */
+	    border: none;
+	    color: white;
+	    padding: 5px 13px;
+	    -webkit-transition-duration: 0.5s; /* Safari */
+	    transition-duration: 0.5s;
+		}	
+		#button1{border-radius: 3px;}	
+		#button1:hover {
+		    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	</style>
+</head>
+<body>
+	<form action="personal information">
+		<div>
+			<b>THÔNG TIN CÁ NHÂN</b>
+			<a href="form1.1.html">
+			<i class="fa fa-arrow-right" style="font-size: 25px;">
+			</i></a>
+			<p>Xác nhận danh tính người bán</p>
+		</div>
+		<input class="form-control" type="text" name="name" placeholder="  Tên" required><br>
+		<input class="form-control" type="email" name="email" placeholder="  E-mail" required>
+		<br>
+		<input class="form-control" type="tel" name="number phone" placeholder="  Số điện thoại" required pattern="((091[432])|(090[536])|(0168)[326])\d{6}"><br>
+		<input class="form-control" type="text" name="address" placeholder="  Địa chỉ" required><br>
+		<article>Ngày sinh</article>
+		<input class="form-control" type="date" min="1950-01-01" name="date" required><br>
+		<button type="submit" class="btn btn-success">Tìm kiếm</button>
+	</form>
+</body>
+</html>

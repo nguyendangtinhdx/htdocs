@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<style>
+		.pagination-a .pager {
+			clear: both;
+			text-align: center;
+		}
+		.pagination-a .pager a {
+			text-decoration: none;
+			padding: 5px;
+		}
+		.pagination-a .pager li {
+			background-image: none;
+			display: inline;
+			list-style-type: none;
+			padding: 0.5em 0;
+		}
+		.pagination-a .pager .pager-current {
+			font-weight: bold;
+		}
+		.pagination-a .pager .pager-last, .pagination-a .pager .pager-first {
+			display: none;
+		}
+		.pagination-a .pager .pager-next {
+			background: url(https://woods.stanford.edu/sites/all/themes/stanford/img/pager-arrow-next.png) no-repeat right;
+			padding-right: 15px;
+		}
+		.pagination-a .pager .pager-previous {
+			background: url(https://woods.stanford.edu/sites/all/themes/stanford/img/pager-arrow-prev.png) no-repeat left;
+			padding-left: 15px;
+		}
+		.pagination-a .pager .pager-current {
+			font-weight: bold;
+			color: #333;
+		}
+
+		.element-invisible {
+			position: absolute !important;
+			clip: rect(1px 1px 1px 1px);
+			clip: rect(1px, 1px, 1px, 1px);
+			overflow: hidden;
+			height: 1px;
+		}
+
+		.element-invisible.element-focusable:active, .element-invisible.element-focusable:focus {
+			position: static !important;
+			clip: auto;
+			overflow: visible;
+			height: auto;
+		}
+
+	</style>
+</head>
+<body>
+	<h2 class="element-invisible">Pages</h2>
+	<div class="pagination-a">
+		<ul class="pager">
+			<li class="pager-first first"><a href="#">« first</a></li>
+			<li class="pager-previous"><a href="#">‹ previous</a></li>
+			<li class="pager-item"><a href="#">1</a></li>
+			<li class="pager-current">2</li>
+			<li class="pager-item"><a href="#">3</a></li>
+			<li class="pager-item"><a href="#">4</a></li>
+			<li class="pager-item"><a href="#">5</a></li>
+			<li class="pager-item"><a href="#">6</a></li>
+			<li class="pager-item"><a href="#">7</a></li>
+			<li class="pager-item"><a href="#">8</a></li>
+			<li class="pager-item"><a href="#">9</a></li>
+			<li class="pager-ellipsis">…</li>
+			<li class="pager-next"><a href="#">next ›</a></li>
+			<li class="pager-last last"><a href="#">last »</a></li>
+		</ul>
+	</div>
+</body>
+</html>

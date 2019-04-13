@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// Konsep Mega Menu Untuk Blogger 
+// By Arlina Design
+// Twitter: @ArlinaDesign
+var q = $('li.blogger-pos');
+q.each(function() {
+  var e = $(this),
+    indexnumber = Math.random(),
+    domain = 'http://minima9.blogspot.com',
+    f = e.attr('data-label'),
+    g = domain + '/feeds/posts/summary/-/' + f + '?max-results=5&alt=json-in-script';
+  e.append('<div class="nav-item"></div>');
+  $.ajax({
+    type: 'GET',
+    url: g,
+    async: false,
+    contentType: "application/json",
+    dataType: 'jsonp',
+    success: function(json) {
+      for (var i = 0; i < json.feed.entry.length; i++) {
+        var h = json.feed.entry[i];
+        for (var j = 0; j < h.link.length; j++) {
+          if (h.link[j].rel == 'alternate') {
+            var l = h.link[j].href;
+            break;
+          }
+        }
+        try {
+          var k = h.media$thumbnail.url.replace("s72-c", "s250-no");
+        } catch (m) {
+          var k = 'http://4.bp.blogspot.com/-44M8yK5CHp8/ViTaiQDurbI/AAAAAAAALnU/v7jzzQsbkCY/s1600/No%2Bimage.png';
+        }
+        var z = h.title.$t;
+        var nnitem = "<div class='item'><img src='" + k + "'/><h3><a href='" + l + "'>" + z + "</a></h3></div>";
+        e.find('.nav-item').append(nnitem);
+      }
+    }
+  });
+});
+	</script>
+	<style>
+body {
+  background: #ddd
+}
+/* Mega Menu Blogger */
+
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+nav {
+  height: 60px;
+  position: relative;
+  background: #222;
+  font-family: 'fontawesome', 'oswald', sans-serif;
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav>ul>li {
+  position: relative;
+  float: left;
+}
+
+nav>ul>li>a {
+  position: relative;
+  line-height: 60px;
+  padding: 0 20px;
+  color: #fff;
+  display: block;
+  transition: all .3s;
+}
+
+nav>ul>li>a:hover {
+  color: #f6d039;
+}
+
+nav>ul>li.contact-menu>a:after,
+nav>ul>li.mega-menu>a:after,
+nav>ul>li.blogger-pos>a:after,
+nav>ul>li.drop-down>a:after {
+  content: '\f0d7';
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+nav>ul>li.mega-menu {
+  position: static;
+}
+
+nav>ul>li.mega-menu .mega-menu-inner {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  overflow: auto;
+  top: -9999px;
+  left: -9999px;
+  background: #f9f9f9;
+  visibility: hidden;
+  border-top: 3px solid #f6d039;
+  transition: opacity .3s;
+}
+
+nav>ul>li.mega-menu .mega-menu-inner ul {
+  width: 23%;
+  float: left;
+  margin: 20px 1%;
+}
+
+nav>ul>li.mega-menu .mega-menu-inner ul li a {
+  display: block;
+  padding: 10px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #999;
+  color: #222;
+}
+
+nav>ul>li.mega-menu .mega-menu-inner ul h3 {
+  color: #8181ee;
+  padding: 0;
+  margin: 20px 10px;
+}
+
+nav>ul>li.mega-menu:hover .mega-menu-inner {
+  opacity: 1;
+  left: 0;
+  top: 100%;
+  visibility: visible;
+}
+
+nav>ul>li.blogger-pos {
+  position: static;
+}
+
+nav>ul>li.blogger-pos:hover .nav-item {
+  opacity: 1;
+  top: 100%;
+  left: 0;
+  visibility: visible;
+}
+
+nav>ul>li.blogger-pos .nav-item {
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  padding: 40px 0;
+  top: -9999px;
+  opacity: 0;
+  left: -9999px;
+  background: #f9f9f9;
+  visibility: hidden;
+  border-top: 3px solid #f6d039;
+  transition: opacity .3s;
+}
+
+nav>ul>li.blogger-pos .nav-item .item {
+  float: left;
+  width: calc(23.1% - 100px);
+  background: #ddd;
+  margin: 0 10px;
+  padding: 10px;
+}
+
+nav>ul>li.blogger-pos .nav-item .item img {
+  width: 100%;
+  height: 180px;
+}
+
+nav>ul>li.blogger-pos .nav-item .item h3 {
+  font-size: 15px;
+}
+
+nav>ul>li.blogger-pos .nav-item .item a {
+  color: #222;
+}
+
+nav>ul>li.drop-down>ul {
+  position: absolute;
+  border-top: 3px solid #f6d039;
+  top: -9999px;
+  visibility: hidden;
+  opacity: 0;
+  left: -99999px;
+  width: 170px;
+  background: #f9f9f9;
+  transition: opacity .3s;
+}
+
+nav>ul>li.drop-down>ul:after,
+nav>ul>li.drop-down>ul:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+nav>ul>li.drop-down>ul:after {
+  border-color: rgba(236, 240, 241, 0);
+  border-bottom-color: #f6d039;
+  border-width: 5px;
+  margin-left: -5px;
+}
+
+nav>ul>li.drop-down>ul:before {
+  border-color: rgba(231, 76, 60, 0);
+  border-bottom-color: #f6d039;
+  border-width: 9px;
+  margin-left: -9px;
+}
+
+nav>ul>li.drop-down:hover>ul {
+  opacity: 1;
+  top: 100%;
+  left: 0;
+  visibility: visible;
+}
+
+nav>ul>li.drop-down>ul a {
+  padding: 10px;
+  display: block;
+  border-bottom: 1px solid #ddd;
+  color: #222;
+  font: 400 15px 'oswald', 'fontawesome', sans-serif;
+  transition: all .3s;
+}
+
+nav>ul>li.drop-down>ul>li.sub-menu:after {
+  content: '\f101';
+  position: Absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -10px;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  text-align: center;
+  display: block;
+}
+
+nav>ul>li.drop-down>ul>li.sub-menu {
+  position: relative;
+}
+
+nav>ul>li.drop-down>ul>li.sub-menu>ul {
+  left: 90%;
+  width: 150px;
+  opacity: 0;
+  background: #f9f9f9;
+  top: -99999px;
+  visibility: hidden;
+  border-left: 3px solid #f6d039;
+  position: Absolute;
+  transition: opacity .3s;
+}
+
+nav>ul>li.drop-down>ul>li.sub-menu:hover>ul {
+  opacity: 1;
+  left: 100%;
+  top: 0;
+  visibility: visible;
+}
+
+.arrow_box:after,
+nav>ul>li.drop-down>ul>li.sub-menu>ul:before {
+  right: 100%;
+  top: 15px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+nav>ul>li.drop-down>ul>li.sub-menu>ul:after {
+  border-color: rgba(236, 240, 241, 0);
+  border-right-color: #f6d039;
+  border-width: 5px;
+  margin-top: -5px;
+}
+
+nav>ul>li.drop-down>ul>li.sub-menu>ul:before {
+  border-color: rgba(231, 76, 60, 0);
+  border-right-color: #f6d039;
+  border-width: 9px;
+  margin-top: -9px;
+}
+
+nav>ul>li.contact-menu {
+  position: static;
+}
+
+nav>ul>li.contact-menu .contact-menu-inner {
+  position: Absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  border-top: 3px solid #f6d039;
+  overflow: auto;
+  background: #f9f9f9;
+  transition: opacity .3s;
+}
+
+nav>ul>li.contact-menu:hover .contact-menu-inner {
+  opacity: 1;
+  left: 0;
+  top: 100%;
+  visibility: visible;
+}
+
+nav>ul>li.contact-menu .contact-menu-inner form {
+  float: left;
+  width: 46%;
+  padding: 20px 0;
+  margin: 0 2%;
+}
+
+nav>ul>li.contact-menu .contact-menu-inner form span {
+  display: block;
+  font: 400 14px 'oswald', 'fontawesome', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+nav>ul>li.contact-menu .contact-menu-inner form input,
+nav>ul>li.contact-menu .contact-menu-inner form textarea {
+  display: block;
+  width: 50%;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  outline: none;
+  color: #999;
+  font-family: 'oswald', sans-serif;
+  margin: 10px 0;
+}
+
+nav>ul>li.contact-menu .contact-menu-inner .misc-contact {
+  float: right;
+  width: 50%;
+  padding: 20px 0;
+}
+
+nav>ul>li.contact-menu .contact-menu-inner .misc-contact span,
+nav>ul>li.contact-menu .contact-menu-inner .misc-contact a {
+  color: #e74c3c;
+}
+	</style>
+</head>
+<body>
+	<nav>
+  <ul>
+    <li><a href='#'>&#xf015; Home</a></li>
+    <li class='mega-menu'><a href='#'>&#xf03a; Categories</a>
+      <div class='mega-menu-inner'>
+        <ul>
+          <h3>Heading 1</h3>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+        </ul>
+        <ul>
+          <h3>Heading 2</h3>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+        </ul>
+        <ul>
+          <h3>Heading 3</h3>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+        </ul>
+        <ul>
+          <h3>Heading 4</h3>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+          <li><a href='#'>Sublink</a></li>
+        </ul>
+
+      </div>
+    </li>
+    <li class='blogger-pos' data-label='All'><a href='#'>&#xf1ea; Coding</a></li>
+    <li class='drop-down'><a href='#'>&#xf129; About Us</a>
+      <ul>
+        <li><a href='#'>&#xf1fe; Profile</a></li>
+        <li><a href='#'>&#xf0e6; Community</a></li>
+        <li class='sub-menu'><a href='#'>&#xf0c0; Team</a>
+          <ul>
+            <li><a href='#'>&#xf1fc; Designers</a></li>
+            <li><a href='#'>&#xf121; Developers</a></li>
+            <li><a href='#'>&#xf201; Marketers</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class='contact-menu'><a href='#'>&#xf0e0; Contact Us</a>
+      <div class='contact-menu-inner'>
+        <form>
+          <span>Name</span>
+          <input type='text' />
+          <span>Email</span>
+          <input type='email' />
+          <span>Description</span>
+          <textarea></textarea>
+        </form>
+        <div class='misc-contact'>
+          <address>
+        Visit us at:<br>
+          Galaksi Bima Sakti,<br>
+          Bintang Matahari,<br>
+          Planet Bumi.
+        </address>
+          <span class='email'><a href='mailto:arlinadesign@hotmail.com'>arlinadesign@hotmail.com</a></span> /
+          <span class='number'>+00-000-123456</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</nav>
+</body>
+</html>

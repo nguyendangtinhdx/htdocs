@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script><link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		// Hide the search icon and accompanying instructions
+// Show the search field and give it focus
+// the .hidden class has display:none defined in CSS
+function displaySearch() {
+  document.getElementById('search-icon').classList.add('hidden');
+  document.getElementById('instructions').classList.add('hidden');
+  document.getElementById('search-form').classList.remove('hidden');
+  document.getElementById('search-field').focus();
+}
+
+// Reset elements back to their defaults
+function resetPage() {
+  document.getElementById('main').className = 'container main-default-view';
+  document.getElementById('search-icon').classList.remove('hidden');
+  document.getElementById('instructions').classList.remove('hidden');
+  document.getElementById('search-form').classList.add('hidden');
+  document.getElementById('search-results').classList.add('hidden');
+  document.getElementById('search-results').innerHTML = '';
+  document.getElementById('search-field').value = '';
+}
+
+function notFound(searchTerm) {
+  document.getElementById('search-results').innerHTML = 
+    '<p style="text-align:center;margin: 2em 1em 0 1em">' +
+    'Sorry, Wikipedia did not return any search results for the term: ' + 
+    '<strong>' + searchTerm + '</strong>' + 
+    '</p>';
+}
+
+
+// Parse JSON and display results on the page
+function displayResults(json) {
+  
+  // Clear previous results, if any, and prepare page to display results
+  document.getElementById('search-results').innerHTML = '';
+  document.getElementById('search-results').classList.remove('hidden');
+  document.getElementById('main').className = 'container main-results-view';
+  
+  // Remove focus from the search field to hide the keyboard on mobile
+  document.getElementById('search-field').blur(); 
+
+  // Iterate through JSON to create one bootstrap row for each search result
+  for(var i = 0; i < json[1].length; i++) {
+    document.getElementById('search-results').innerHTML +=
+      '<div class="row result"><a href="' + json[3][i] +
+      '" + target="_blank"><p><strong>' +
+      json[1][i] +
+      '</strong></p><p>' +
+      json[2][i] +
+      '</p></a></div>';
+  }
+}
+
+// get data for the search term
+function search() {
+  // read the input field to get the search term
+  var searchTerm = document.getElementById('search-field').value;
+
+  // get the data
+  $.ajax({
+    url: 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + searchTerm,
+    cache: true, // caching to be a good netizen - may get old results, but okay for this project
+    dataType: 'jsonp'
+    })
+    .fail(function(err) {
+      console.log(err);
+    })
+    .always(function(json) {
+      json[1].length===0?notFound(searchTerm):displayResults(json);
+  });
+}
+
+// If the user hits Esc, reset the page back to the default
+$(document).keyup(function(e) {
+  if (e.keyCode === 27) {
+    resetPage();
+  }
+});
+
+// If user presses enter, search
+function pressedEnter(e) {
+  var key=e.keyCode || e.which;
+    if (key === 13) {
+      search();
+  }
+}
+
+
+	</script>
+	<style>
+	/* To Do: Transition effects for search results */
+
+html {
+  position: relative;
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  font-size: 16px;
+  background-color: #222222;
+  color: white;
+  /* disable text selection */
+  -webkit-user-select: none!important;
+  -moz-user-select: -moz-none!important;
+  -ms-user-select: none!important;
+  user-select: none!important;
+  /* buffer for footer */
+  margin-bottom: 155px;
+}
+
+/* top margin before searching */
+.main-default-view {
+  margin-top: 20vh;
+}
+
+/* top margin after searching */
+.main-results-view {
+  margin-top: 1em;
+}
+
+/* generic class for hiding elements with JS */
+.hidden {
+  display: none;
+}
+
+/* Search form */
+.input-group {
+  max-width: 15em;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* workaround for Bootstrap CSS hiding the 'x' to clear search
+   and showing rounded corners in text fields on mobile devices */
+input[type="search"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -moz-appearance: searchfield-cancel-button;
+  -webkit-appearance: searchfield-cancel-button;
+  cursor: pointer;
+}
+
+/* invert <kbd> defaults to match theme colors */
+kbd {
+  background-color: white;
+  color: black;
+}
+
+/* search result formatting */
+.search-results {
+  margin-bottom: 120px;
+}
+
+.result {
+  background-color: white;
+  margin: 1em auto;
+  padding: 1em 2em;
+  box-shadow: 10px 10px 5px #000000;
+  border-radius: 10px;
+  /* limit width for large monitors */
+  max-width: 1024px;
+}
+
+.result:hover {
+  border-left: solid .4em orange;
+}
+
+.result a, .result a:hover, .result a:focus {
+  text-decoration: none;
+  color: black;
+}
+
+/* footer formatting */
+.footer {
+  background-color: #222222;
+  font-size: 12px;
+  position: absolute;
+  border-top: 1px solid black;
+  bottom: 0;
+  width: 100%;
+  padding: 1em 1em 0 1em;
+}
+
+.footer-logos {
+  margin-top: -1em;
+  font-size: 14px;
+}
+
+.footer-logos a {
+  text-decoration: none;
+}
+
+.footer-logos i {
+  text-align: center;
+  color: #777777;
+  margin: 0 0 1em 1em;
+  padding-top: .25em;
+  border: 1px solid rgba(100, 100, 100, .3);
+  border-radius: 25%;
+  vertical-align: -1.5em;
+}
+
+.footer-logos .genericon {
+  width: 1.6em;
+  height: 1.6em;
+}
+
+.footer-logos .fa {
+  width: 1.75em;
+  height: 1.75em;  
+}
+
+.footer .container-fluid {
+  max-width: 480px;
+}
+	</style>
+</head>
+<body>
+	<!--
+  ****       ***         ***       ***         ***        **** 
+  *  Copyright (C) 2016 Tyler Moeller. All rights reserved.  *
+  *  All trademarks, product names, and logos on this site   *
+  *  are the property of their respective owners.            *
+  ****       ***         ***       ***         ***        ****
+
+Assignment Details:
+  - Developed for the freeCodeCamp front end challenge: Build a Wikipedia Viewer
+  - Details: http://www.freecodecamp.com/challenges/build-a-wikipedia-viewer
+  
+Requirements for this assignment:
+  - Objective: Build a CodePen.io app that is functionally similar to this: http://codepen.io/FreeCodeCamp/full/pgNRvJ.
+  - Rule #1: Don't look at the example project's code. Figure it out for yourself.
+  - Rule #2: Fulfill the below user stories. Use whichever libraries or APIs you need. Give it your own personal style.
+  - User Story: I can search Wikipedia entries in a search box and see the resulting Wikipedia entries.
+  - User Story: I can click a button to see a random Wikipedia entry.
+
+Assignment Completed. v1.0 02/26/2016:
+  - Mobile-friendly design using JavaScript, jQuery, HTML5, and Bootstrap + Font-awesome CSS libraries.
+  - Successfully reverse engineered http://codepen.io/FreeCodeCamp/full/pgNRvJ without looking at the code.
+  - Users are able to:
+      - Search Wikipedia entries in a search box and see previews of the resulting entries.
+      - Click on a search result to visit the full Wikipedia entry
+      - Click to see a random Wikipedia entry
+      - Cancel their search
+      - Search multiple times in a row with previous results cleared on each search
+-->
+
+<div id="main" class="container-fluid main-default-view">
+  <div class="row random text-center">
+    <a style="color:white;" href="http://en.wikipedia.org/wiki/Special:Random" target="_blank">Click here for a random article</a>
+  </div>
+  <div id="search-form" class="row hidden text-center">
+    <div class="input-group" style="margin: 1em auto;">
+      <span class="input-group-addon" onclick="search()" style="cursor:pointer">
+        <i class="fa fa-search fa-fw"></i>
+      </span>
+      <input id="search-field" class="form-control" type="search" onkeypress="pressedEnter(event)" placeholder="Search Wikipedia">
+    </div>
+    <div class="text-center" onclick="resetPage()" style="cursor:pointer">(Click here or press <kbd>Esc</kbd> to cancel)</div>
+  </div>
+  <div id="search-icon" class="row search text-center" style="margin: 1em auto;cursor:pointer" onclick="displaySearch()">
+    <i class="fa fa-search fa-5x"></i>
+  </div>
+  <div id="instructions" class="row text-center">Click the icon to search</div>
+  <div id="search-results" class="row search-results"></div>
+</div>
+
+<footer class="footer">
+  <div class="container-fluid text-center">
+    <div class="footer-text text-muted row">Copyright &copy; <script>document.write(new Date().getFullYear());</script> Tyler Moeller. All rights reserved. Developed for the freeCodeCamp Front-end Development Challenge: <a href="http://www.freecodecamp.com/challenges/build-a-wikipedia-viewer" target="_blank">Build a Wikipedia Viewer</a></div>
+    <div class="footer-logos row">
+      <a href="https://twitter.com/Tyler_Moeller" target="_blank"><i class="fa fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/tylermoeller" target="_blank"><i class="fa fa-linkedin"></i></a>
+      <a href="https://github.com/TylerMoeller" target="_blank"><i class="fa fa-github"></i></a>
+      <a href="http://freecodecamp.com/tylermoeller" target="_blank"><i class="fa fa-fire"></i></a>
+      <a href="http://codepen.io/TylerMoeller/pens/public" target="_blank"><i class="fa fa-codepen"></i></a>
+      <a href="https://tylermoeller.net" target="_blank"><i class="fa fa-wordpress"></i></a>
+    </div>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body {margin: 0px;padding-top:0;}
+body,html{
+  font-family:'Lato', sans-serif;
+  font-weight:normal;
+}
+article{
+  color:#515151;
+  max-width:90%;
+  width:1000px;
+  padding-top:4%;
+  margin: 0 auto ;
+  line-height:160%;}
+
+/*BASE CSS STYLE FOR RESPONSIVE MENU*/
+/*START*/
+#menu{
+/*Rev 140508*/
+  width:auto;
+  min-width:300px;
+  height: 45px;
+  margin:0 auto;
+  position:relative;
+  overflow:no-display;
+  /**/
+  color: #FFF;
+  background: #222;
+  border-bottom: 2px solid #222;
+}
+
+#menu ul,#menu li{
+  margin:0 auto;
+  padding:0 0;
+  list-style:none;
+}
+#menu ul{
+  height:45px;
+  width:100%}
+#menu li{
+	float:left;
+	display:inline;
+	position:relative;
+  font:0.9em 'Lato', sans-serif;
+  /*font-weight:700;*/
+}
+#menu a{/*main menu*/
+	display: block;
+  font-size:120%;
+	line-height: 45px;
+	padding: 0 14px;
+	text-decoration: none;
+	color: #dedede;
+}
+#menu li a:hover{
+  color:#fff;
+-webkit-transition: all .3s ease-in-out;
+-moz-transition: all .3s ease-in-out;
+-ms-transition: all .3s ease-in-out;
+-o-transition: all .3s ease-in-out;
+transition: all .3s ease-in-out;
+
+}
+#menu input{display:none;margin:0 0;padding:0 0;width:80px;height:30px;opacity:0;cursor:pointer
+}
+#menu label{
+	font:normal 20px Arial;
+  display:none;
+  width:35px;
+  height:36px;
+  line-height:36px;
+  text-align:center;
+  float:right;
+  
+}
+
+/*BRAND*/
+#menu label span{font-size:80%;position:absolute;left:35px;}
+#menu ul.menus{/*SUBMENUS*/
+	height: auto;
+	overflow: hidden;
+	width: 170px;
+	background: #383838;
+	position: absolute;
+	z-index: 99;
+	display: none;
+}
+#menu ul.menus li{
+display: block;
+width: 100%;
+font:normal 100% Arial;
+text-transform: none;
+text-shadow: none;
+}
+
+#menu ul.menus a{
+color: #FFF;
+line-height: 40px;  /*REV*/
+  -webkit-transition: all .6s ease-in-out;
+-moz-transition: all .6s ease-in-out;
+-ms-transition: all .6s ease-in-out;
+-o-transition: all .6s ease-in-out;
+transition: all .6s ease-in-out;
+}
+
+#menu li:hover ul.menus{display:block;}
+#menu ul.menus a:hover{
+  
+background: #bebebe;
+color: #222;
+-webkit-transition: all .1s ease-in-out;
+-moz-transition: all .1s ease-in-out;
+-ms-transition: all .1s ease-in-out;
+-o-transition: all .1s ease-in-out;
+transition: all .1s ease-in-out;
+}
+/*END*/
+/*BASE CSS STYLE FOR RESPONSIVE MENU*/
+/**/
+/*MOBIL VERSION, 0 > 600px*/
+@media screen and (max-width: 600px){
+  #menu{
+    position:relative;
+    color:#fff;  
+    background:#222;
+    border-bottom: 0px solid #222;  
+  }
+
+#menu ul{
+  top:100%;
+  left:0;
+  height:auto;
+  display:none;
+  position:absolute;
+  z-index:3;
+  background:#555;
+  }
+#menu ul.menus{
+  width:100%;
+  position:static;
+  padding-left:0px;
+}
+#menu li{
+  font:normal 90% Arial;
+  width:auto; 
+  display:block;
+  float:none;
+}
+#menu input,#menu label{
+  margin:0  2%;
+  float:right;  
+  display:block;  
+  position:absolute;
+}
+#menu input{z-index:4;}
+#menu input:checked + label{color:#fff}
+#menu input:checked ~ ul{display:block}
+}
+/*End Media Queries*/
+/*End CSS*/
+	</style>
+</head>
+<body>
+	<!-- FONT API-->
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+
+<!-- ICON API-->
+<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+
+
+<div class='menuwrap'>
+
+  <nav id='menu'>
+  <input type='checkbox'/>
+  
+    <label >
+      <i class="fa fa-bars"></i>
+      <!--&#8801-->
+      <span>Logotype</span>
+    </label>
+    <ul>
+      <li><a href='/'>Home</a></li>
+      <li><a href='#'>About</a></li>
+      <li><a href='#'>Services <font size='1'>&#9660;</font></a>
+        <ul class='menus'>
+          <li><a href='#'>Administration</a></li>
+          <li><a href='#'>Communication</a></li>
+          <li><a href='#'>Development</a></li>
+
+        </ul>
+      </li>
+      <li><a href='#'>Support</a></li>
+      <li><a href='#'>Drop Down <font size='1'>&#9660;</font></a>
+        <ul class='menus'>
+          <li><a href='#'>Tab 1</a></li>
+          <li><a href='#'>Tab 2</a></li>
+          <li><a href='#'>Tab 3</a></li>
+        </ul>
+      </li>
+      <li><a href='#'>Advertise</a></li>
+
+    </ul>
+  </nav>
+</div>
+
+
+<article>
+Vivamus arcu augue, facilisis non ligula ac, adipiscing feugiat nunc. Proin pretium, magna vitae ultrices fringilla, nisi sem ornare lorem, et ultrices tortor magna quis tellus. Mauris ut adipiscing dui, quis sagittis arcu. Maecenas varius commodo auctor. Donec lobortis ut ipsum quis pellentesque. Nam sollicitudin tempus erat, a luctus neque viverra eget. Aliquam erat volutpat. Nam dolor dolor, elementum id ante ac, sagittis posuere neque. Vestibulum faucibus ligula quis convallis rutrum. Phasellus eu consequat augue. Nam sit amet lacus mauris. Vivamus leo libero, faucibus vel placerat a, tempus sit amet sem. In elit nibh, blandit eget consectetur et, condimentum eu neque.
+<br><br>
+In eget purus vel purus sollicitudin dictum. Vivamus non consectetur turpis. Maecenas quis rutrum urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque dictum, eros eu luctus consequat, velit est dignissim orci, ac ultrices velit leo sit amet augue. Nunc in tincidunt enim. Nulla eget lobortis enim, quis tincidunt nibh. Donec vel feugiat dolor. Vestibulum porttitor erat in nisi ornare convallis. Duis accumsan varius ornare. Maecenas posuere, lorem sit amet volutpat suscipit, magna ante hendrerit urna, et eleifend enim mi quis mi. Nunc porta sollicitudin diam, non aliquam metus porta sollicitudin.
+<br><br>
+In id turpis in diam congue porttitor vitae dignissim sem. Nullam pharetra euismod dolor sed placerat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed bibendum arcu eget porta condimentum. Etiam vel nibh purus. Vivamus blandit tellus ac metus porta, ut faucibus ante facilisis. Praesent non elit nisi. Ut id lobortis justo. Phasellus malesuada sagittis nunc ac egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam velit augue, semper at tortor nec, congue commodo est.
+<br><br>
+In eu ante fringilla, ultrices magna ac, rutrum augue. Maecenas sit amet eleifend ante, eu congue eros. Vestibulum posuere nunc a semper consequat. Suspendisse elementum, velit ac scelerisque rutrum, est quam sodales mauris, ac sagittis neque sapien in odio. Sed dignissim, lectus id egestas vestibulum, est augue luctus nibh, quis suscipit nunc felis sit amet enim. Curabitur quis massa vehicula, sagittis metus eget, posuere arcu. Quisque non metus gravida, malesuada magna sed, varius odio. Duis ut sollicitudin arcu. Nam non tincidunt leo. Morbi non pulvinar dui. Duis tempus hendrerit eros. Mauris suscipit turpis eu sapien varius, id venenatis libero commodo. Vestibulum vel blandit nibh. Maecenas pulvinar diam porta tellus viverra sagittis. Integer condimentum in ipsum id consectetur.
+
+</article>
+
+</body>
+</html>
+</body>
+</html>

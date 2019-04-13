@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		$('a[href^=#]').on('click', function(e){ var href = $(this).attr('href'); $('html, body').animate({ scrollTop:$(href).offset().top },'slow'); e.preventDefault(); });
+	</script>
+	<style>
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+/*============================ ============================*/
+
+body {
+background-color: #ecf0f1;
+color: #6f6d68;
+font-family: 'Lato', Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+
+.container {
+	max-width: 660px;
+	margin: 0 auto;
+}
+
+a {
+	outline:none;
+}
+
+.header {
+	background-color: #666;
+	height: 300px;
+}
+
+h1 {
+	color:#ededed;
+	font-size: 5em;
+	line-height: 1.3;
+	font-weight: 300;
+	text-align: center;
+	padding: 80px 0;
+
+}
+
+h2 {
+	font-size: 4em;
+	line-height: 1.3;
+	font-weight: 300;
+	margin: 60px 0 30px 0;
+}
+
+h2::first-letter {
+	font-weight: 400;
+	color: #dedede;
+	text-shadow:
+    -2px -2px 0 #6f6d68,
+    2px -2px 0 #6f6d68,
+    -2px 2px 0 #6f6d68,
+    2px 2px 0 #6f6d68;  
+}
+
+/*============================ NAVIGATION ============================*/
+
+.menu-icon {
+	position:fixed;
+	background: #1F282D;
+	width: 48px;
+	height: 120px;
+	border-top-right-radius: 24px;
+	border-bottom-right-radius: 24px;
+	left: -24px;
+	box-shadow: 0px 0px 3px #444;
+	top:45%;
+}
+
+.menu-icon img {
+	padding:  15px 0 0 25px;
+	opacity: 0.8;
+}
+
+#navbar a {
+	text-decoration: none;
+	color: #ededed;
+}
+
+.shownav{
+	z-index:9999;
+	width:40px;
+	height:100%;
+	left:0;
+	top:0;
+	position:fixed;
+}
+
+.hidenav0{
+	z-index:-9999;
+	width:0;
+	height:100%;
+	left:0;
+	top:0;
+	position:fixed;
+}
+
+.hidenav1{
+	z-index:9996;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	position:fixed;
+}
+
+.navbar0{
+	z-index:10000;
+	background:#1f282d;
+	width:100px;
+	height:100%;
+	position:fixed;
+	left:-100px;
+	top:0;
+	vertical-align:middle;
+	display:table;-webkit-transition:all 600ms cubic-bezier(0.000,0,0,1.000);transition:all 600ms cubic-bezier(0.000,0,0,1.000);
+}
+	
+.navbar1{
+	z-index:10000;
+	box-shadow: 0px 0px 3px #444;
+    background:#1f282d;
+    width:100px;
+    height:100%;
+    position:fixed;
+    left:0;
+    top:0;
+    vertical-align:middle;
+    display:table;-webkit-transition:all 600ms cubic-bezier(0.000,0,0,1.000);transition:all 600ms cubic-bezier(0.000,0,0,1.000);}
+
+.navbar-inner {
+	display: table-cell; 
+	vertical-align: middle; 
+	height: 500px;
+}
+
+.nav-item{
+	background:#1f282d;
+	text-align:center;
+	vertical-align:middle;
+	display:block;
+	width:100px;
+	height:100px;
+}
+
+.nav-item.one:hover{background:#ED5565;}
+.nav-item.two:hover{background:#A0D468;}
+.nav-item.three:hover{background:#FFCE54;}
+.nav-item.four:hover{background:#5D9CEC;}
+.nav-item.five:hover{background:#EC87C0;}
+.nav-item.six:hover{background:#967ADC;}  
+
+.nav-item img {
+	width: 40px;
+	height: 40px;
+	padding: 15px 0 0 0;
+	opacity: 0.9;
+}
+
+.nav-item p {
+	color: #ededed;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+
+	</style>
+</head>
+<body>
+		<div class="menu-icon"><img src="http://projects.timmuennig.com/navigation/left-nav/img/icons-small.png"></div>
+						
+	<div class="shownav" onmouseover="document.getElementById('navbar').className='navbar1'" onmousemove="document.getElementById('hidenav').className='hidenav1'">&nbsp;</div>
+
+	<div id="hidenav" class="hidenav0" onmouseover="document.getElementById('navbar').className='navbar0'" onmousemove="document.getElementById('hidenav').className='hidenav0'">&nbsp;</div>
+
+	<div id="navbar" class="navbar0"> <!-- navbar -->
+		<div class="navbar-inner">
+			<a class="nav-item one" href="#design">
+				<img src="http://projects.timmuennig.com/navigation/left-nav/img/design-icon.png" alt="Design-Icon"/>
+				<p color="white">Design</p>
+			</a>
+			<a class="nav-item two" href="#development">
+				<img src="http://projects.timmuennig.com/navigation/left-nav/img/development-icon.png" alt="Development-Icon"/>
+				<p color="white">Development</p>
+			</a>
+			<a div class="nav-item three" href="#support">
+				<img src="http://projects.timmuennig.com/navigation/left-nav/img/support-icon.png" alt="Support-Icon"/>
+				<p color="white">Support</p>
+			</a>
+			<a class="nav-item four" href="#portfolio">
+				<img src="http://projects.timmuennig.com/navigation/left-nav/img/portfolio-icon.png" alt="Portfolio-Icon"/>
+				<p color="white">Portfolio</p>
+			</a>
+			<a class="nav-item five" href="#contact">
+				<img src="http://projects.timmuennig.com/navigation/left-nav/img/contact2-icon.png" alt="Contact-Icon"/>
+				<p color="white">Contact </p>				
+			</a>
+		</div> <!-- end navbar-inner -->
+	</div> <!-- end navbar -->
+
+<!--=====================================================================================-->
+
+	<div class="header">
+		<h1>Left-Navbar</h1>
+	</div>
+
+	<div class="container">
+	    <h2 id="design">Design</h2>
+      <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+	    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+      <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>   
+
+	    <h2 id="development">Development</h2>
+	    <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+	    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+      <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>  
+
+ 	    <h2 id="support">Support</h2>
+	    <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+	    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+      <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>  
+
+ 	    <h2 id="portfolio">Portfolio</h2>
+	    <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+	    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+      <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>    
+
+ 	    <h2 id="contact">Contact</h2>
+	   <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+	    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+      <p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>    
+
+	</div> <!-- end container -->
+</body>
+</html>

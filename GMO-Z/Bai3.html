@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bài 3</title>
+	<link rel="stylesheet" href="css/styleBai3.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/Bai3.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h2 align="center">List Infomation</h2>
+		<table>
+			<thead>
+				<tr>
+					<th width="10%"><input type="checkbox" id="selectAll" name="checkbox" value="option1" class="form-check-input" onClick="selectAll(this,'color')"><span id="errcheckbox" style="color: red; float: right; display: none;">*</span></th>
+					<th width="40%">Name</th>
+					<th width="25%">Price</th>
+					<th width="25%">Action</th>
+				</tr>
+			</thead>
+		</table>
+		<table id="tbl">
+
+		</table>
+	</div>
+	<table id="tbl2">
+		<tr>
+			<td>
+				<div class="card-footer">
+					<button type="deleteAll" class="btn btn-danger btn-sm btnDeleteAll">Delete All</button>
+					<button type="Add" id="btnAdd" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add</button>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+	<!-- Modal Add -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="exampleModalLabel" align="center">Infomation</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -30px">
+						<span aria-hidden="true">X</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="frm" method="post">
+						<div class="form-group">
+							<label for="recipient-name" class="form-control-label">Name:</label>
+							<input type="text" class="form-control" id="txtName" name="txtName">
+						</div>
+						<div class="form-group">
+							<label for="message-text" class="form-control-label">Price:</label>
+							<input type="number" class="form-control" id="txtPrice" name="txtPrice">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-info">Save</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="margin: -50px 0 0 600px; position: absolute;" id="showimage"></div>
+</body>
+<script>
+
+	$(function(){
+		var operacao = "A";
+		var indice = -1; 
+		var tbClientes = localStorage.getItem("tbClientes");
+		tbClientes = JSON.parse(tbClientes); 
+
+		if(tbClientes == null){ 
+			tbClientes = [];
+		}
+
+		$("#frm").on("submit",function(){
+			if(operacao == "A"){
+				return Add(tbClientes);
+			}else{
+				return Edit(tbClientes,indice);
+			}
+		});
+
+		Read(tbClientes);
+
+		$("#tbl").on("click", ".btnEdit", function(){
+			operacao = "E";
+			indice = parseInt($(this).attr("alt"));
+			var cli = JSON.parse(tbClientes[indice]);
+			$("#txtName").val(cli.Name);
+			$("#txtPrice").val(cli.Price);
+            // $("#txtName").attr("readonly","readonly");
+            // $("#txtPrice").focus();
+        });
+
+		$("#tbl").on("click", ".btnSave", function(){
+			operacao = "S";
+			indice = parseInt($(this).attr("alt"));
+			var cli = JSON.parse(tbClientes[indice]);
+			$("#txtName").val(cli.Name);
+			$("#txtPrice").val(cli.Price);
+			Save(tbClientes,indice);
+		});
+
+		$("#tbl").on("click", ".btnDelete",function(){
+			indice = parseInt($(this).attr("alt"));
+			Delete(tbClientes, indice);
+			Read(tbClientes);
+			$(".btnSave").attr("disabled",true);
+		});
+
+		$("#tbl2").on("click", ".btnDeleteAll",function(){
+			DeleteAll(tbClientes);
+			Read(tbClientes);
+			$(".btnSave").attr("disabled",true);
+		});
+
+		$(".btnSave").attr("disabled",true);
+		$(".editInPlace").change(function() {
+			$(".btnSave").attr("disabled",false);
+        });
+		$(".editInPlace2").change(function() {
+			$(".btnSave").attr("disabled",false);
+            // alert($(this).attr("stt"));
+        });
+
+
+
+	});
+
+
+
+</script>
+</html>

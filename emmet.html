@@ -1,0 +1,173 @@
+!  |  html:5 	    bắt đầu
+.ten 
+	<div class="ten"></div>       div class
+#ten
+	<div id="ten"></div>       div id
+p.ten
+	<p class="ten"></p>    
+p#ten  	
+	<p id="ten"></p>
+header.ten>div.name*3
+	<header id="ten">
+		<div class="name"></div>
+		<div class="name"></div>
+		<div class="name"></div>
+	</header>    			 thẻ header bao 3 cột thẻ div
+p>span
+	<p><span></span></p>      p bao span
+p>span^p
+	<p><span></span></p>
+    	<p></p>    p bao span và thêm p ở ngoài
+h1+h2
+	<h1></h1>
+       	<h2></h2>       2 thẻ 
+(.ten>h1)+(.name>h2)
+	<div class="ten">
+		<h1></h1>
+	</div>
+	<div class="name">
+		<h2></h2>
+	</div>
+ul
+	<ul></ul>
+.ten
+	<li class="ten"></li>
+ul>li*3
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+ul>li.ten$*3
+	<ul>
+		<li class="ten1"></li>
+		<li class="ten2"></li>
+		<li class="ten3"></li>
+	</ul>
+<style>
+	body{
+		w100
+			width: 100px;
+		m5e
+			margin: 5em;
+		h10
+			height: 10px;
+		h10%
+			height: 10%;
+		w100+m5e+h10
+			width: 100px;
+			margin: 5em;
+			height: 10px;
+	}
+	
+	@font-face {          @f
+		font-family:;
+		src:url();
+	}
+
+	@font-face {			@f+
+		font-family: 'FontName';
+		src: url('FileName.eot');
+		src: url('FileName.eot?#iefix') format('embedded-opentype'),
+			 url('FileName.woff') format('woff'),
+			 url('FileName.ttf') format('truetype'),
+			 url('FileName.svg#FontName') format('svg');
+		font-style: normal;
+		font-weight: normal;
+	}
+oh  |  ov:h  |  ov-h	
+
+	overflow: hidden;
+
+-super-foo
+	-webkit-super-foo: ;
+	-moz-super-foo: ;
+	-ms-super-foo: ;
+	-o-super-foo: ;
+	super-foo: ;
+trs
+	-webkit-transition: prop time;
+	-o-transition: prop time;
+	transition: prop time;
+trf
+	-webkit-transform: ;
+	-ms-transform: ;
+	-o-transform: ;
+	transform: ;
+
+-wm-trf
+	-webkit-transform: ;
+	-moz-transform: ;
+	transform: ;
+
+-we-transform 
+	-webkit-we-transform: ;
+	-moz-we-transform: ;
+	-ms-we-transform: ;
+	-o-we-transform: ;
+	we-transform: ;
+
+-super-foo
+	-webkit-super-foo: ;
+	-moz-super-foo: ;
+	-ms-super-foo: ;
+	-o-super-foo: ;
+	super-foo: ;
+
+-w-super-foo	
+	-webkit-super-foo: ;
+	super-foo: ;
+
+-w-transform-mymove
+	-webkit-transform-mymove: ;
+	transform-mymove: ;
+body{
+lg(left, #fff 50%, #000)
+	background-image: -webkit-linear-gradient(left, #fff 50%, #000);
+	background-image: -o-linear-gradient(left, #fff 50%, #000);
+	background-image: linear-gradient(to right, #fff 50%, #000);
+
+lorem
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure 	sunt sint doloremque similique, quisquam mollitia nam error modi, laborum beatae dolorem praesentium minus voluptate quas. Soluta nihil adipisci quae reprehenderit.
+lorem3
+	Lorem ipsum dolor: ;
+lorem*2
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, fuga fugit perferendis quisquam! Nihil beatae itaque consequatur recusandae obcaecati! Rerum repellendus delectus magni quisquam maxime possimus itaque corrupti aut eos.
+	Velit, magni animi aliquid hic nobis ex. Iure, totam exercitationem. Veniam ipsa ea magni laudantium dignissimos nulla itaque possimus id, necessitatibus. Blanditiis debitis temporibus nam doloribus impedit commodi quis vitae!
+p*3>lorem5
+	padding: ;
+	Lorem ipsum dolor sit amet.
+	padding: ;
+	Nam culpa, neque tempora ad.
+	padding: ;
+	deserunt, repellat beatae ex debitis.
+li
+	list-style: ;
+bg
+	background: #000;
+ta
+	text-align: left;
+ts
+	text-shadow: hoff voff blur #000;
+bb
+	border-bottom: ;
+}
+Ctrl D : bôi đen xuống từng hàng
+Alt F3 : bôi đen các thẻ cùng tên
+cách thu sắp xếp code
+	[
+	{"keys": ["ctrl+shift+i"],"command": "reindent", "args": {"single_line": false}}
+	]
+	copy đoạn mã trên vào Preference -> Key Bindings-User
+</style>
+!		
+
+cài emmet link: https://packagecontrol.io/installation
+View > Show Console 
+
+nhập
+
+import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+
+Ctrl + Shift + P, gõ Install Package, gõ tiếp Emmet và nhấn enter để cài đặt plugin
+

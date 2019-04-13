@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .scrollbar {
+  margin-left: 30px;
+  float: right;
+  height: 300px;
+  width: 65px;
+  background: rgb(30, 30, 80);
+  overflow-y: scroll;
+  margin-bottom: 25px;
+}
+
+.scrollbar2 {
+  background: rgb(130, 180, 130);
+}
+
+.scrollbar3 {
+  background: rgb(230, 180, 180);
+}
+
+.scrollbar4 {
+  background: rgb(245, 245, 245);
+}
+
+.scrollbar5 {
+  background: rgb(0, 0, 0);
+}
+
+.scrollbar-horizontal {
+  width: 500px;
+  background: moccasin;
+}
+
+.scrollbar1 .force-overflow {
+  min-height: 450px;
+}
+
+.scrollbar2 .force-overflow {
+  min-height: 750px;
+}
+
+.scrollbar3 .force-overflow {
+  min-height: 950px;
+}
+
+.scrollbar4 .force-overflow {
+  min-height: 2250px;
+}
+
+.scrollbar5 .force-overflow {
+  min-height: 350px;
+}
+
+.scrollbar-horizontal .force-overflow {
+  min-height: 150px;
+  min-width: 850px;
+}
+
+#wrapper {
+  padding: 50px;
+  text-align: center;
+  width: 500px;
+  margin: auto;
+}
+
+
+/*
+ *  SCROLLBAR CSS
+ */
+
+*::-webkit-scrollbar-track:vertical {
+  background-color: rgba(0, 0, 0, 0);
+  border-right: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-thumb:vertical {
+  background-color: rgba(0, 0, 0, 0);
+  border-right: 3px solid rgba(50, 50, 50, 0.5);
+}
+
+*::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: rgba(150, 150, 150, 0.7);
+  border-right: none;
+  border-radius: 10px;
+}
+
+
+/*
+ *  HORIZONTAL SCROLLBAR CSS
+ */
+
+*::-webkit-scrollbar-track:horizontal {
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+}
+
+*::-webkit-scrollbar:horizontal {
+  height: 6px;
+}
+
+*::-webkit-scrollbar-thumb:horizontal {
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: 3px solid rgba(50, 50, 50, 0.5);
+}
+
+*::-webkit-scrollbar-thumb:horizontal:hover {
+  background-color: rgba(150, 150, 150, 0.7);
+  border-bottom: none;
+  border-radius: 10px;
+}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+  <div class="scrollbar scrollbar5">
+    <div class="force-overflow"></div>
+  </div>
+  <div class="scrollbar scrollbar1">
+    <div class="force-overflow"></div>
+  </div>
+  <div class="scrollbar scrollbar2">
+    <div class="force-overflow"></div>
+  </div>
+  <div class="scrollbar scrollbar3">
+    <div class="force-overflow"></div>
+  </div>
+  <div class="scrollbar scrollbar4">
+    <div class="force-overflow"></div>
+  </div>
+  <div class="scrollbar scrollbar-horizontal">
+    <div class="force-overflow"></div>
+  </div>
+</div>
+</body>
+</html>

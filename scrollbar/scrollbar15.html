@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#scrollbarsContainer {
+  width: 100px;
+  height: 200px;
+  background: #eee;
+  padding:5px;
+  overflow:auto;
+  font-family:arial;
+}
+/*div::scroolbars*/
+div::-webkit-scrollbar {
+    width: 8px;
+}
+div::-webkit-scrollbar-track {
+    background: #cccccc; 
+    border-radius: 5px;
+}
+div::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: gray;
+}
+	</style>
+</head>
+<body>
+	<div id="scrollbarsContainer">
+  <p>Test</p>
+  <p>Test</p>
+  <p>Test</p>
+  <p>Test</p>
+  <p>Test</p>
+  <p>Test</p>
+  <p>Test</p>
+  <p>Test</p>
+  <p>Test</p>
+  <p>Test</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../bootstrap/js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			// content
+			$("#bt1").click(function(){
+				alert(" Text: " + $("#text").text());
+			});
+			// element
+			$("#bt2").click(function(){
+				alert(" Text: " + $("#text").html());
+			});
+			// value
+			$("#bt3").click(function(){
+				alert(" Value: " + $("#text1").val());
+			});
+			// attribute
+			$("#bt4").click(function(){
+				alert($("#hr").attr("href"));
+			});
+		});
+	</script>
+</head>
+<body>
+	<p id="text">Nguyễn <b>Đăng</b> Tỉnh</p>
+	<button id="bt1">Show Text</button>
+	<button id="bt2">Show HTML</button>
+	<br><br>
+
+	<input type="text" id="text1"value="Nguyen Dang Tinh">
+	<button id="bt3">Show Value</button>
+	<br><br>
+
+	<a href="http://www.facebook.com" id="hr">Facebook</a>
+	<button id="bt4">Show Href</button>
+</body>
+</html>

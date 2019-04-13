@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		// Programmed by kaypooma
+
+function callTime() {
+  var date = new Date();
+  var hour = date.getHours();
+  var m = date.getMinutes();
+  var s = date.getSeconds();
+  var period;
+
+  if (m<10) {
+    m = '0' + m  
+  }
+
+  if (s<10) {
+    s = '0' + s  
+  }
+
+  if (hour==1 || hour==2 || hour==3 || hour==4 || hour==5 || hour==6 || hour==7 || hour==8 || hour==9 || hour==10 || hour==11) {
+    period = 'AM'
+  } else if (hour==0) {
+    hour = 12
+    period = 'AM'
+  } else if (hour==13) {
+    hour = 1
+    period = 'PM';
+  } else if (hour==14) {
+    hour = 2
+    period = 'PM';
+  } else if (hour==15) {
+    hour = 3
+    period = 'PM';
+  } else if (hour==16) {
+    hour = 4
+    period = 'PM';
+  } else if (hour==17) {
+    hour = 5
+    period = 'PM';
+  } else if (hour==18) {
+    hour = 6
+    period = 'PM';
+  } else if (hour==19) {
+    hour = 7
+    period = 'PM';
+  } else if (hour==20) {
+    hour = 8
+    period = 'PM';
+  } else if (hour==21) {
+    hour = 9
+    period = 'PM';
+  } else if (hour==22) {
+    hour = 10
+    period = 'PM';
+  } else if (hour==23) {
+    hour = 11
+    period = 'PM';
+  } else if (hour==24) {
+    hour = 12
+    period = 'PM';
+  }  
+
+  $('.time').text(hour + ':' + m + ':' + s + ' ' + period);  
+}
+
+$(document).ready(function() {
+  callTime();
+});
+
+setInterval(callTime, 1000);
+	</script>
+	<style>
+	@import url(http://fonts.googleapis.com/css?family=Andika);
+
+::selection {
+  background: black;
+  color: white;
+}
+
+::-moz-selection {
+  background: black;
+  color: white;
+}
+
+body {
+  background: #333;
+  font-family: Helvetica;
+}
+
+.time, .date {
+  font-family: 'Andika', monospace;
+  font-size: 60px;
+  text-align: center;
+  background: #222;
+  box-shadow: 0 0 30px #000 inset;
+  border-radius: 20px;
+  width: 600px;
+  height: 110px;
+  margin: 0 auto;
+  line-height: 105px;
+  color: #111;
+  text-shadow: 0 1px 0 #333;
+}
+
+.footer {
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+  position: fixed;
+  left: 5px;
+  bottom: 5px;
+  box-shadow: 0 0 30px #000 inset;
+  padding: 10px;
+  border-radius: 10px;
+  color: #111;
+  text-shadow: 0 1px 0 #333;
+  font-size: 13px;
+}
+
+.dis {
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-size: 10px;
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  box-shadow: 0 0 30px #000 inset;
+  padding: 10px;
+  border-radius: 10px;
+  color: #111;
+  text-shadow: 0 1px 0 #333;
+  font-size: 13px;
+}
+	</style>
+</head>
+<body>
+	<div class="time"></div>
+<br />
+<div class="footer">kaypooma</div>
+</body>
+</html>

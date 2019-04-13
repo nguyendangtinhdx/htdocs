@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<style> 
+	input[type=text],input[type=password] {
+
+		width: 130px;
+		box-sizing: border-box;
+		border: 2px solid #ccc;
+		border-radius: 4px;
+		font-size: 16px;
+		background-color: white;
+		background-image: url('searchicon.png');
+		background-position: 10px 10px; 
+		background-repeat: no-repeat;
+		padding: 12px 20px 12px 10px;
+		-webkit-transition: width 0.3s ease-in-out;
+		transition: width 0.3s ease-in-out;
+	}
+	input[type=text]:focus {
+		width: 50%;
+	}
+}
+</style>
+<body>
+	<form action="action_page.php">
+		<select name="cars">
+			<option>Means</option>
+			<optgroup label="Slow">
+				<option value="XeDap">Bicycle</option>
+				<option value="MoTo" selected>Motocycle</option>
+			</optgroup>
+			<optgroup label="Fast">
+				<option value="MayBay">Plane</option>
+				<option value="Thuyen">Ship</option>
+				<option value="TauLua">Train</option>
+			</optgroup>
+		</select>
+		<input type="submit"><br>
+
+		<input list="my">
+		<datalist id="my">
+			<option value="America">
+			<option value="France">
+			<option value="Japan">
+			<option value="China">
+		</datalist>
+		<input type="submit"><br>
+		<details style="color: red">
+			<summary>Type</summary>
+			<li>nguyen</li>
+			<option>Dance</option>
+			<option>Sing</option>
+			<option>Opera</option>
+			<option>Comedy</option>
+		</details>
+	Log in: <input type="text" name="log in" placeholder="Phone or Email" maxlength="10" size="40">
+	Password: <input type="password" name="password" placeholder="tối thiểu 8 kí tự">
+	<input type="submit"><br>
+	Number:
+	<input type="number" name="quantity" min="1" max="5">
+	<input type="submit"><br>
+
+	Quantity:
+	<input type="number" name="points" min="0" max="100" step="10" value="30">
+	<input type="submit"><br>
+
+	Range:
+	<input type="range" name="points" min="0" max="10">
+	<input type="submit"><br>
+
+	Date:
+	<input type="date" name="bday">
+	<input type="datetime-local" name="bday">	<!-- 	Ngày giờ: datetime-local -->
+	<input type="submit"><br>
+
+	E-mail:
+	<input type="email" name="email">
+	<input type="submit"><br>
+
+	Search:
+	<input type="search" name="googlesearch" value="tìm" required> <!-- readonly: không thay đổi đc # required -->
+	<input type="submit"><br>
+
+	URL:
+	<input type="url" name="homepage">
+	<input type="submit"><br>
+
+	File:
+	<input type="file" name="file" value="open file"><br>
+	keygen: 
+	<keygen name="security">
+	</form>
+</body>
+</html>

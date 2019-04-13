@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$('.has-a-go-to').on('click', 'a', function(e){
+			e.preventDefault();
+			$(this).parent().toggleClass('clicked');
+		});
+	</script>
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Dosis:400,600);
+		body {
+			height: 2000px;
+			background: cornsilk;
+		}
+
+		.fixed-pagination {
+			position: fixed;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		@media (max-width: 640px) {
+			.fixed-pagination {
+				top: auto;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				transform: none;
+				text-align: center;
+			}
+			.fixed-pagination ul {
+				display: table;
+				width: 100%;
+			}
+			.fixed-pagination ul li {
+				display: inline-block;
+				border-left: 2px solid transparent;
+			}
+		}
+		.fixed-pagination ul {
+			list-style: none;
+			margin: 0;
+		}
+		.fixed-pagination ul li {
+			box-sizing: border-box;
+			transition: .2s all ease-in-out;
+			border-bottom: 2px solid transparent;
+		}
+		.fixed-pagination ul li.has-a-go-to {
+			position: relative;
+		}
+		.fixed-pagination ul li.has-a-go-to .go-to-page {
+			clip: auto;
+			position: absolute;
+			display: none;
+			left: 100%;
+			padding-left: 2px;
+			top: 0;
+			width: 10rem;
+			visibility: hidden;
+		}
+		.fixed-pagination ul li.has-a-go-to .go-to-page input {
+			padding: 0 0 0 .25rem;
+			line-height: 2;
+			border: none;
+			box-shadow: none;
+			outline: none;
+			background: rgba(255, 99, 71, 0.5);
+			height: auto;
+			margin-bottom: 0;
+			border-radius: 2px;
+		}
+		.fixed-pagination ul li.has-a-go-to .go-to-page input:focus, .fixed-pagination ul li.has-a-go-to .go-to-page input:hover {
+			border: none;
+			box-shadow: none;
+			outline: none;
+			background: rgba(255, 99, 71, 0.5);
+		}
+		.fixed-pagination ul li.has-a-go-to.clicked .go-to-page, .fixed-pagination ul li.has-a-go-to:focus .go-to-page, .fixed-pagination ul li.has-a-go-to:hover .go-to-page {
+			display: block;
+			visibility: visible;
+		}
+		@media (max-width: 640px) {
+			.fixed-pagination ul li.has-a-go-to.clicked .go-to-page, .fixed-pagination ul li.has-a-go-to:focus .go-to-page, .fixed-pagination ul li.has-a-go-to:hover .go-to-page {
+				left: auto;
+				top: auto;
+				bottom: 100%;
+				margin-bottom: 2px;
+				margin-left: 1rem;
+				transform: translateX(-50%);
+			}
+		}
+		.fixed-pagination ul li.active a {
+			position: relative;
+			background: #ff3814;
+		}
+		@media (min-width: 640px) {
+			.fixed-pagination ul li.active a:hover:after {
+				content: "You Are Here";
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 110%;
+				background: rgba(255, 99, 71, 0.5);
+				padding: .25rem;
+				white-space: nowrap;
+				border-radius: 2px;
+			}
+		}
+		.fixed-pagination ul li.disabled a {
+			pointer-events: none;
+			opacity: .7;
+		}
+		.fixed-pagination ul li a {
+			font-family: 'Dosis', sans-serif;
+			display: block;
+			padding: 0 .525rem;
+			line-height: 2;
+			background: tomato;
+			color: white;
+			text-align: center;
+		}
+		.fixed-pagination ul li a:hover {
+			background: #ff3814;
+		}
+		.fixed-pagination ul li a.next {
+			position: relative;
+		}
+		@media (min-width: 640px) {
+			.fixed-pagination ul li a.next:hover:after {
+				content: "Next Page";
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 110%;
+				background: rgba(255, 99, 71, 0.5);
+				padding: .25rem;
+				white-space: nowrap;
+				border-radius: 2px;
+			}
+		}
+		@media (max-width: 640px) {
+			.fixed-pagination ul li a.next {
+				transform: rotate(-180deg);
+			}
+		}
+		.fixed-pagination ul li a.previous {
+			position: relative;
+		}
+		@media (min-width: 640px) {
+			.fixed-pagination ul li a.previous:hover:after {
+				content: "Previous Page";
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 110%;
+				background: rgba(255, 99, 71, 0.5);
+				padding: .25rem;
+				white-space: nowrap;
+				border-radius: 2px;
+			}
+		}
+		@media (max-width: 640px) {
+			.fixed-pagination ul li a.previous {
+				transform: rotate(-180deg);
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div class="fixed-pagination">
+		<ul>
+			<li><a href="#" class="next">&gt;</a></li>
+			<li><a href="#">1</a></li>
+			<li class="active"><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li class="has-a-go-to"><a href="#">...</a>
+				<div class="go-to-page">
+					<form action="">
+						<input type="text" placeholder="Go to page" />
+						<button type="submit" class="hide">GO</button>
+					</form>
+				</div>
+			</li>
+			<li><a href="#">12</a></li>
+			<li><a href="#">13</a></li>
+			<li><a href="#">14</a></li>
+			<!-- Disabled for unavailable -->
+			<!-- <li class="disabled"><a href="#" class="previous">&lt;</a></li> -->
+			<li><a href="#" class="previous">&lt;</a></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1 onclick="this.innerHTML='Nguyễn Đăng Tỉnh'"> Quách Tỉnh</h1>
+	<h1 onclick="change(this)">Click Me</h1>
+
+	Nhập để chuyển thành in HOA: 
+	<input type="text" id="name" onchange="my()">
+
+	<div onmouseover="over(this)" onmouseout="out(this)">Tỉnh</div> <!-- để chuột vào -->
+
+	<div onmousedown="down(this)" onmouseup"up(this)">Mystery</div>	<!-- click vào -->
+
+	<div onmouseover="style.color='orange'" onmouseout="style.color='blue'">Shock</div>
+
+	<script>
+	function change(x) {
+		x.innerHTML = "Tỉnh Bi"
+	};
+
+	function my() {
+		var x = document.getElementById("name");
+		x.value = x.value.toUpperCase();	/*viết hoa*/
+	};
+
+	function over(x) {
+		x.innerHTML = "Nguyễn Đăng Tỉnh"
+	};
+	function out(x) {
+		x.innerHTML = "Tỉnh Bi";
+	};
+
+	function down(y) {
+		y.style.color = "red";
+		y.style.background="lightgray"
+		y.innerHTML = "Lớp 11/11"
+	};
+	function up(y) {
+		y.style.background="lightblue";
+		y.innerHTML = "NTC Group";
+	};
+	</script>
+
+
+</body>
+</html>

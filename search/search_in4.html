@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		// ADD THIS TO end of <footcode> enclosed by <script> tags
+// see .pcf source of school-leadership/courses/index.pcf for example
+// set breakpoints as appropriate
+
+// initialize footable and set breakpoints
+// on tables with class="footable"
+$(function() {
+  $('table.footable').footable
+});
+
+$(function() {
+  $('table.footable').bind('footable_breakpoint', function() {
+    $('table.footable').trigger('footable_expand_first_row');
+  }).footable();
+});
+	</script>
+	<style>
+	th {
+  background-color: #808080;
+  color: white;
+  text-align: center;
+}
+
+td {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+font-style: italic;
+
+}
+th {
+  background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+  border-left: 1px solid #555;
+  border-right: 1px solid #777;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #333;
+  box-shadow: inset 0 1px 0 #999;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 15px;
+  position: relative;
+  text-shadow: 0 1px 0 #000;
+}
+th:after {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .08));
+  content: '';
+  display: block;
+  height: 25%;
+  left: 0;
+  margin: 1px 0 0 0;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+}
+th:first-child {
+  border-left: 1px solid #777;
+  box-shadow: inset 1px 1px 0 #999;
+}
+th:last-child {
+  box-shadow: inset -1px 1px 0 #999;
+}
+td {
+  border-right: 1px solid #fff;
+  border-left: 1px solid #e8e8e8;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 10px 15px;
+  position: relative;
+  transition: all 500ms;
+}
+td:first-child {
+  box-shadow: inset 1px 0 0 #fff;
+}
+td:last-child {
+  border-right: 1px solid #e8e8e8;
+  box-shadow: inset -1px 0 0 #fff;
+}
+tr {
+  background: url(http://jackrugile.com/images/misc/noise-diagonal.png);
+}
+tr:nth-child(odd) td {
+  background: #f1f1f1 url(http://jackrugile.com/images/misc/noise-diagonal.png);
+}
+tr:last-of-type td {
+  box-shadow: inset 0 -1px 0 #fff;
+}
+tr:last-of-type td:first-child {
+  box-shadow: inset 1px -1px 0 #fff;
+}
+tr:last-of-type td:last-child {
+  box-shadow: inset -1px -1px 0 #fff;
+}
+tbody:hover td {
+  color: solid;
+  text-shadow: 0 0 3px #aaa;
+}
+tbody:hover tr:hover td {
+  color: #444;
+  text-shadow: 0 1px 0 #fff;
+}
+overflow-y: auto;
+height: 400px;
+body {
+  font: 1.2em normal Arial, Calibri;
+  color: #34495E;
+}
+h1 {
+  text-align: left;
+  text-transform: case;
+  letter-spacing: -2px;
+  font-size: 2.5em;
+  margin: 20px;
+}
+tbody tr:nth-child(even) {
+  background: #ECF0F1;
+}
+table {
+  width: 100%;
+  display: table;
+}
+tbody td,
+thead th {
+  width: 15%;
+  /* Optional */
+}
+td {
+  width: auto;
+  height: auto;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+th {
+  border: 2px solid #ccc;
+}
+body {
+  padding: 1rem;
+}
+tbody {
+  table layout: relative;
+  overflow-y: scroll;
+  height: 25px;
+  width: 2500px;
+}
+thead,
+tbody {
+  display: table-cells;
+}
+	</style>
+</head>
+<body>
+	<!-- Standard UTC Stylesheet, gets added by site templates -->
+<link rel="stylesheet" type="text/css" href="//www.utc.edu/_resources/css/kickstrap.css?ver=2.3.1.10" media="all">
+
+<!-- FooTable Core Stylesheet ADD THIS TO <headcode> - better to use
+     asset tags for the local utc.edu sources -->
+<link rel="stylesheet" type="text/css" href="//www.utc.edu/_resources/Kickstrap/apps/footable/css/footable.core.min.css" media="all">
+<!-- jQuery, default loaded by utc.edu - 
+     no need to add this on utc.edu -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+<!-- FooTable Javascript ADD THIS TO <footcode> - better to use
+     asset tags for the local utc.edu sources -->
+<script src="//www.utc.edu/_resources/Kickstrap/apps/footable/js/footable.js" type="text/javascript"></script>
+
+<!-- Footable plugins -->
+<script src="//www.utc.edu/_resources/Kickstrap/apps/footable/js/footable.sort.js" type="text/javascript"></script>
+<script src="//www.utc.edu/_resources/Kickstrap/apps/footable/js/footable.filter.js" type="text/javascript"></script>
+
+
+<!-- footable class initiates javascript
+     bootstrap classes are compatible with footable
+     DO NOT use <tbody> tags!
+     read footable docs for explanations
+     of the data-attributes -->
+<p>Search / Filter by keywords:</p>
+<input id="filter" type="text" />
+<table class="table table-bordered footable toggle-square-filled" data-filter="#filter">
+  <thead>
+    <tr>
+      <th data-toggle="true">OLD GL Natural</th>
+      <th>OLD Activity Code</th>
+      <th data-hide="phone,tablet">Account Description</th>
+      <th>FAMs</th>
+      <th>Firm Administrative Matters Description</th>
+      <th data-hide="phone,tablet">Cost Code</th>
+    </tr>
+
+    <tbody>
+      <tr>
+        <td>68300</td>
+        <td>xxx</td>
+        <td>March Partner/Firm Meeting</td>
+        <td>497000-0001</td>
+        <td>March Partner Meeting</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>66840</td>
+        <td>xxx</td>
+        <td>First Year Academy</td>
+        <td>497000-0004</td>
+        <td>First Year Academy</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>68330</td>
+        <td>xxx</td>
+        <td>Third Year Academy</td>
+        <td>497000-0005</td>
+        <td>Third Year Academy</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>68350</td>
+        <td>xxx</td>
+        <td>Fifth Year Academy</td>
+        <td>497000-0006</td>
+        <td>Fifth Year Academy</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>66340</td>
+        <td>xxx</td>
+        <td>LWU Summer Academy</td>
+        <td>497000-0007</td>
+        <td>LWU Summer Academy</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>69150</td>
+        <td>xxx</td>
+        <td>Associates Committe</td>
+        <td>400000-0003</td>
+        <td>Associates Committe</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>69650</td>
+        <td>xxx</td>
+        <td>Pro Bono Committee</td>
+        <td>400000-0013</td>
+        <td>Pro Bono Committee</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>69900</td>
+        <td>xxx</td>
+        <td>Diversity Committee</td>
+        <td>400000-0017</td>
+        <td>Diversity Committee</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>70850</td>
+        <td>xxx</td>
+        <td>Legal Prof & Paralegal - Committee Meetings</td>
+        <td>400000-0021</td>
+        <td>Paralegal Administration Committee</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>70910</td>
+        <td>xxx</td>
+        <td>Capital Markets National Office - Attorney Dev</td>
+        <td>400000-0023</td>
+        <td>Capital Markets National Office</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>69910</td>
+        <td>xxx</td>
+        <td>Knowledge Management</td>
+        <td>400000-0024</td>
+        <td>Knowledge Management</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>69070</td>
+        <td>xxx</td>
+        <td>Office Managing Partner</td>
+        <td>4DDLLL-0100</td>
+        <td>Office Managing Partner</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>70150</td>
+        <td>xxx</td>
+        <td>Corporate Department</td>
+        <td>4DDLLL-0500</td>
+        <td>Corporate Department</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>70350</td>
+        <td>xxx</td>
+        <td>Finance Department</td>
+        <td>4DDLLL-0550</td>
+        <td>Finance Department</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>70450</td>
+        <td>xxx</td>
+        <td>Litigation Department</td>
+        <td>4DDLLL-0600</td>
+        <td>Litigation Department</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>70650</td>
+        <td>xxx</td>
+        <td>Tax Department</td>
+        <td>4DDLLL-0650</td>
+        <td>Tax Department</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>70950</td>
+        <td>xxx</td>
+        <td>Environmental Land & Resources</td>
+        <td>4DDLLL-0700</td>
+        <td>Environment Department</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>69400</td>
+        <td>xxx</td>
+        <td>Attorney Office Integration</td>
+        <td>4DDLLL-0950</td>
+        <td>Attorney Office Integration</td>
+        <td>Hxxxx</td>
+
+      </tr>
+      <tr>
+        <td>66800</td>
+        <td>xxx</td>
+        <td>Associate Relations</td>
+        <td>4DDLLL-1000</td>
+        <td>Associate Relations</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66820</td>
+        <td>031</td>
+        <td>Associate Mentoring</td>
+        <td>4DDLLL-1001</td>
+        <td>Associate Mentoring</td>
+        <td>H0031|H0130</td>
+
+      </tr>
+      <tr>
+        <td>68150</td>
+        <td>xxx</td>
+        <td>Monthly Partner/Attorney Meetings</td>
+        <td>4DDLLL-1005</td>
+        <td>Monthly Partner/Attorney Meetings</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>68250</td>
+        <td>xxx</td>
+        <td>Interoffice Retreats</td>
+        <td>4DDLLL-1015</td>
+        <td>Interoffice Retreat</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65710</td>
+        <td>xxx</td>
+        <td>BD - Women's Initiative</td>
+        <td>4DDLLL-1070</td>
+        <td>WEB/Women Enriching Business</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66510</td>
+        <td>xxx</td>
+        <td>Fall Candidate - Practice Office Expense</td>
+        <td>4DDLLL-1110</td>
+        <td>Candiate Interview</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66530</td>
+        <td>xxx</td>
+        <td>Candidate - Interview Expenses</td>
+        <td>4DDLLL-1110</td>
+        <td>Candidate Interview</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66410</td>
+        <td>xxx</td>
+        <td>OCI/JF Attorney Expenses</td>
+        <td>4DDLLL-1120</td>
+        <td>On Campus Interviews</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66420</td>
+        <td>000</td>
+        <td>OCI/JF Pl'mt Fees/Interview</td>
+        <td>4DDLLL-1120</td>
+        <td>On Campus Interviews</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66430</td>
+        <td>000</td>
+        <td>OCI/JF Parties & Miscellaneous</td>
+        <td>4DDLLL-1120</td>
+        <td>On Campus Interviews</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66610</td>
+        <td>xxx</td>
+        <td>Trainee Program - Travel</td>
+        <td>4DDLLL-1133</td>
+        <td>Trainee Program</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66620</td>
+        <td>xxx</td>
+        <td>Trainee Program - Entertainment</td>
+        <td>4DDLLL-1133</td>
+        <td>Trainee Program</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66640</td>
+        <td>xxx</td>
+        <td>Trainee Program - Overseas Costs</td>
+        <td>4DDLLL-1133</td>
+        <td>Trainee Program</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66660</td>
+        <td>xxx</td>
+        <td>Trainee Program - Law Fairs & Pub/Advertising</td>
+        <td>4DDLLL-1133</td>
+        <td>Trainee Program</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66210</td>
+        <td>xxx</td>
+        <td>Summer program - Practice Office Expense</td>
+        <td>4DDLLL-1140</td>
+        <td>Summer Program Office Expenses</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66230</td>
+        <td>032</td>
+        <td>Summer Program - Ground Transportation</td>
+        <td>4DDLLL-1140</td>
+        <td>Summer Program Office Expenses</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66300</td>
+        <td>xxx</td>
+        <td>Summer Program - Travel Relocation</td>
+        <td>4DDLLL-1140</td>
+        <td>Summer Program Office Expenses</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66100</td>
+        <td>xxx</td>
+        <td>lateral Partner Hires</td>
+        <td>4DDLLL-1150</td>
+        <td>Lateral Partner Hires</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66150</td>
+        <td>xxx</td>
+        <td>Lateral Assoc Hires</td>
+        <td>4DDLLL-1160</td>
+        <td>Lateral Associate Hires</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66180</td>
+        <td>000</td>
+        <td>Lat Assoc-P'ment Fee</td>
+        <td>4DDLLL-1160</td>
+        <td>Lateral Associate Hires</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>66700</td>
+        <td>xxx</td>
+        <td>Counsel Hires</td>
+        <td>4DDLLL-1170</td>
+        <td>Lateral Counsel Hires</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>64100</td>
+        <td>xxx</td>
+        <td>Bar Meetings</td>
+        <td>4DDLLL-1300</td>
+        <td>Bar Meeting</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>64400</td>
+        <td>000</td>
+        <td>Bar Exam & Admission Fees</td>
+        <td>4DDLLL-1301</td>
+        <td>Bar Review and Exam</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>64450</td>
+        <td>000</td>
+        <td>Bar Review Expenses</td>
+        <td>400xxx-1301</td>
+        <td>Bar Review and Exam</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>76700</td>
+        <td>xxx</td>
+        <td>Lectures and Publications</td>
+        <td>4DDLLL-1302</td>
+        <td>Lectures & Publications</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>64300</td>
+        <td>xxx</td>
+        <td>Annual Bar Dues</td>
+        <td>4DDLLL-1310</td>
+        <td>Attorney Dues and Memberships</td>
+        <td>H0154</td>
+
+      </tr>
+      <tr>
+        <td>64200</td>
+        <td>xxx</td>
+        <td>Cont. Educ - Attys</td>
+        <td>4DDLLL-1350</td>
+        <td>Continuing Education Attorneys</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65695</td>
+        <td>xxx</td>
+        <td>BD Training For lawyers</td>
+        <td>460099-1355</td>
+        <td>Business Development Training for Lawyers</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>71250</td>
+        <td>xxx</td>
+        <td>Legal Prof & Paralegal Meetings</td>
+        <td>4DDLLL-1820</td>
+        <td>Paralegal Meetings/Outings</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>65600</td>
+        <td>xxx</td>
+        <td>Client Entertainment & Gifts</td>
+        <td>4DDLLL-2000</td>
+        <td>Business Development Meals</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65670</td>
+        <td>xxx</td>
+        <td>FBus/Dev-Tables/Recep</td>
+        <td>4DDLLL-2000</td>
+        <td>Business Development Meals</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65760</td>
+        <td>xxx</td>
+        <td>Client Pitches & Proposals</td>
+        <td>4DDLLL-2200</td>
+        <td>Pitches & Proposals</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65960</td>
+        <td>xxx</td>
+        <td>Professional Trade Conference - Associations</td>
+        <td>4DDLLL-2240</td>
+        <td>Professional Trade Conference & Associations</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65310</td>
+        <td>xxx</td>
+        <td>Seminars & Sponsorships - corporate</td>
+        <td>4DDLLL-2310</td>
+        <td>Seminars & Sponsorships - corporate</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65320</td>
+        <td>xxx</td>
+        <td>Seminars & Sponsorships - L&T Dept</td>
+        <td>4DDLLL-2315</td>
+        <td>Seminars & Sponsorships - Litigation</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65330</td>
+        <td>xxx</td>
+        <td>Seminar & Sponsorship - Tax</td>
+        <td>4DDLLL-2320</td>
+        <td>Seminar & Sponsorship - Tax</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65350</td>
+        <td>xxx</td>
+        <td>Seminar & Sponsorship - Finance</td>
+        <td>4DDLLL-2325</td>
+        <td>Seminar & Sponsorship - Finance</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65370</td>
+        <td>xxx</td>
+        <td>Seminar & Sponsorship - Industry Technology</td>
+        <td>4DDLLL-2335</td>
+        <td>Seminars & Sponsorship-Industry-Technology Group</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65371</td>
+        <td>xxx</td>
+        <td>Industry Energy & Natural Resources</td>
+        <td>4DDLLL-2340</td>
+        <td>Seminars & Sponsorship - Industry Energy & Natural Gas</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65373</td>
+        <td>xxx</td>
+        <td>Industry Financial Institutions</td>
+        <td>4DDLLL-2350</td>
+        <td>Industry-Financial Institutions</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65430</td>
+        <td>982</td>
+        <td>Adv & Directories</td>
+        <td>4DDLLL-2500</td>
+        <td>Public Relations General Matter</td>
+        <td>H0201</td>
+
+      </tr>
+      <tr>
+        <td>65450</td>
+        <td>000</td>
+        <td>Public Relations</td>
+        <td>4DDLLL-2500</td>
+        <td>Public Relations General Matter</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65440</td>
+        <td>xxx</td>
+        <td>Marketing Collateral/Web Design</td>
+        <td>4DDLLL-2530</td>
+        <td>Marketing Collateral & Web Design</td>
+        <td>H0034</td>
+      </tr>
+
+      <tr>
+        <td>56750</td>
+        <td>040</td>
+        <td>Parking Garage Payments</td>
+        <td>4DDLLL-5000</td>
+        <td>General Operating</td>
+        <td>H0040, H0133</td>
+
+      </tr>
+      <tr>
+        <td>62200</td>
+        <td>000</td>
+        <td>Utilities</td>
+        <td>4DDLLL-5000</td>
+        <td>General Operating</td>
+        <td>H0259</td>
+
+      </tr>
+      <tr>
+        <td>62300</td>
+        <td>000</td>
+        <td>Plant Maintenance</td>
+        <td>4DDLLL-5000</td>
+        <td>General Operating</td>
+        <td>H0139</td>
+
+      </tr>
+      <tr>
+        <td>74100</td>
+        <td>034</td>
+        <td>Office Supplies</td>
+        <td>4DDLLL-5000</td>
+        <td>General Operating</td>
+        <td>H0034</td>
+
+      </tr>
+      <tr>
+        <td>74120</td>
+        <td>034</td>
+        <td>Wp/PC Supplies-Services</td>
+        <td>4DDLLL-5000</td>
+        <td>General Operating</td>
+        <td>H0034</td>
+
+      </tr>
+      <tr>
+        <td>74350</td>
+        <td>036</td>
+        <td>Postage</td>
+        <td>4DDLLL-5000</td>
+        <td>General Operating</td>
+        <td>H0036</td>
+
+      </tr>
+      <tr>
+        <td>74550</td>
+        <td>xxx</td>
+        <td>Pouch Service</td>
+        <td>4DDLLL-5000</td>
+        <td>General Operating</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>74650</td>
+        <td>xxx</td>
+        <td>Messenger Service</td>
+        <td>4DDLLL-5000</td>
+        <td>General Operating</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>75100</td>
+        <td>003</td>
+        <td>Telephone - Local SVC</td>
+        <td>4DDLLL-5000</td>
+        <td>General Operating</td>
+        <td>H0003, H0252</td>
+
+      </tr>
+      <tr>
+        <td>75300</td>
+        <td>003</td>
+        <td>Long Distance Service</td>
+        <td>4DDLLL-5000</td>
+        <td>General Operating</td>
+        <td>H0003, H0252</td>
+
+      </tr>
+      <tr>
+        <td>75400</td>
+        <td>000</td>
+        <td>ISP Service contracts</td>
+        <td>4DDLLL-5002</td>
+        <td>General Operating</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>74730</td>
+        <td>xxx</td>
+        <td>Food & Beverage</td>
+        <td>4DDLLL-5002</td>
+        <td>Office Food & Beverage</td>
+        <td>H0031, H0130</td>
+
+      </tr>
+      <tr>
+        <td>74740</td>
+        <td>xxx</td>
+        <td>Kitchen Supplies</td>
+        <td>4DDLLL-5002</td>
+        <td>Office Food & Beverage</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>61100</td>
+        <td>997</td>
+        <td>Rent</td>
+        <td>4DDLLL-5008</td>
+        <td>Facility</td>
+        <td>H0242</td>
+
+      </tr>
+      <tr>
+        <td>61200</td>
+        <td>059</td>
+        <td>Storage Space</td>
+        <td>4DDLLL-5008</td>
+        <td>Facility</td>
+        <td>H0059</td>
+
+      </tr>
+      <tr>
+        <td>62350</td>
+        <td>000</td>
+        <td>Minor Items F&F/Non-Technology Equipment</td>
+        <td>4DDLLL-5008</td>
+        <td>Facility</td>
+        <td>H0208</td>
+
+      </tr>
+      <tr>
+        <td>63200</td>
+        <td>000</td>
+        <td>Facilities Maintenance</td>
+        <td>4DDLLL-5008</td>
+        <td>Facility</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>63250</td>
+        <td>000</td>
+        <td>Minor Repairs</td>
+        <td>4DDLLL-5008</td>
+        <td>Facility</td>
+        <td>H0214</td>
+      </tr>
+
+      <tr>
+        <td>67150</td>
+        <td>000</td>
+        <td>Office Move</td>
+        <td>4DDLLL-5009</td>
+        <td>Office Moves</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>56310</td>
+        <td>000</td>
+        <td>Contract Mail/Messenger</td>
+        <td>4DDLLL-5030</td>
+        <td>Contract Mail/Messenger</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>56360</td>
+        <td>000</td>
+        <td>Contract Technology</td>
+        <td>4DDLLL-5030</td>
+        <td>Contract Mail/Messenger</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>56450</td>
+        <td>999</td>
+        <td>Temp Word Processing</td>
+        <td>4DDLLL-5030</td>
+        <td>Contract Mail/Messenger</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>56500</td>
+        <td>000</td>
+        <td>Security Services</td>
+        <td>4DDLLL-5030</td>
+        <td>Contract Mail/Messenger</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>76600</td>
+        <td>xxx</td>
+        <td>P&CR Contributions</td>
+        <td>4DDLLL-5040</td>
+        <td>P&CR Contributions</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>76610</td>
+        <td>xxx</td>
+        <td>O/Charitable Contributions</td>
+        <td>4DDLLL-5042</td>
+        <td>Other Charitable Contributions</td>
+        <td>H0012,H0217</td>
+
+      </tr>
+      <tr>
+        <td>76630</td>
+        <td>xxx</td>
+        <td>Pro Bono Charitable Contributions</td>
+        <td>4DDLLL-5045</td>
+        <td>Pro Bono Contributions</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>65400</td>
+        <td>000</td>
+        <td>Blue Book/Face Book Production</td>
+        <td>4DDLLL-5085</td>
+        <td>Bluebook/Facebook</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>56940</td>
+        <td>989</td>
+        <td>Flowers/Service Awards</td>
+        <td>4DDLLL-5090</td>
+        <td>Flowers/Service Awards</td>
+        <td>H0204</td>
+      </tr>
+      <tr>
+        <td>69960</td>
+        <td>xxx</td>
+        <td>Staff and Other Administrative Travel</td>
+        <td>4DDLLL-5100</td>
+        <td>Staff & Other Administrative Travel</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>64350</td>
+        <td>986</td>
+        <td>Professional Dues/Memberships</td>
+        <td>4DDLLL-5110</td>
+        <td>Professional Organization & Dues</td>
+        <td>H0154, H0265</td>
+
+      </tr>
+      <tr>
+        <td>71000</td>
+        <td>xxx</td>
+        <td>Staff-Professional Organization & Dues</td>
+        <td>4DDLLL-5110</td>
+        <td>Staff-Professional Organization & Dues</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>71300</td>
+        <td>xxx</td>
+        <td>New Emp Orientation</td>
+        <td>4DDLLL-5110</td>
+        <td>Staff-Professional Organization & Dues</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>71050</td>
+        <td>xxx</td>
+        <td>Cont Educ Staff</td>
+        <td>4DDLLL-5115</td>
+        <td>Staff Continuing Education</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>71070</td>
+        <td>xxx</td>
+        <td>Training & Development</td>
+        <td>4DDLLL-5117</td>
+        <td>Staff-Training Development</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>71100</td>
+        <td>xxx</td>
+        <td>Staff Meeting</td>
+        <td>4DDLLL-5120</td>
+        <td>Staff-Meetings</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>71120</td>
+        <td>xxx</td>
+        <td>Global Manager Meetings</td>
+        <td>4DDLLL-5120</td>
+        <td>Staff-Meeting</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>71150</td>
+        <td>xxx</td>
+        <td>Office Outing & Party</td>
+        <td>4DDLLL-5120</td>
+        <td>Staff-Meetings</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>56800</td>
+        <td>031</td>
+        <td>Overtime Meal Allowance</td>
+        <td>4DDLLL-5130</td>
+        <td>Staff-Overtime Related Expenses</td>
+        <td>H0031, H0130</td>
+
+      </tr>
+      <tr>
+        <td>56850</td>
+        <td>032</td>
+        <td>Taxi Reimbursement</td>
+        <td>4DDLLL-5130</td>
+        <td>Staff-Overtime Related Expenses</td>
+        <td>H0131</td>
+
+      </tr>
+      <tr>
+        <td>56870</td>
+        <td>040</td>
+        <td>Parking Reimb.(OT)</td>
+        <td>4DDLLL-5130</td>
+        <td>Staff-Overtime Related Expenses</td>
+        <td>H0133</td>
+      </tr>
+
+      <tr>
+        <td>56910</td>
+        <td>064</td>
+        <td>Mileage Reimb.</td>
+        <td>4DDLLL-5130</td>
+        <td>Staff-Overtime Related Expenses</td>
+        <td>H0132|H0064</td>
+      </tr>
+
+      <tr>
+        <td>75500</td>
+        <td>xxx</td>
+        <td>Remote Support and Wireless</td>
+        <td>4DDLLL-5140</td>
+        <td>Remote Support and Wireless</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>56600</td>
+        <td>000</td>
+        <td>Placement Fees Staff</td>
+        <td>4DDLLL-5220</td>
+        <td>Staff Recruiting</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>56650</td>
+        <td>982</td>
+        <td>Staff Recruiting</td>
+        <td>4DDLLL-5220</td>
+        <td>Staff Recruiting</td>
+        <td>H0201</td>
+        <tr>
+          <td>56700</td>
+          <td>000</td>
+          <td>Staff Referral Fees</td>
+          <td>4DDLLL-5220</td>
+          <td>Staff Recruiting</td>
+          <td></td>
+
+        </tr>
+        <tr>
+          <td>56730</td>
+          <td>031</td>
+          <td>Transportation Allow</td>
+          <td>4DDLLL-5235</td>
+          <td>Transportation Allowance</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>56150</td>
+          <td>000</td>
+          <td>Partner Annual Medical Exam</td>
+          <td>4DDLLL-5305</td>
+          <td>Partner Annual Medical Exam</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>56080</td>
+          <td>000</td>
+          <td>Wellness Program</td>
+          <td>4DDLLL-5310</td>
+          <td>Wellness Program</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>63170</td>
+          <td>000</td>
+          <td>System Security</td>
+          <td>400xxx-5500</td>
+          <td>Office Technology Department General Matter</td>
+          <td>H0213</td>
+          <tr>
+            <td>77160</td>
+            <td>xxx</td>
+            <td>Technology Print Expense</td>
+            <td>4DDLLL-5500</td>
+            <td>Office Technology Department General Matter</td>
+            <td>H0229</td>
+          </tr>
+
+          <tr>
+            <td>72000</td>
+            <td>xxx</td>
+            <td>Print Renewal</td>
+            <td>4DDLLL-6000</td>
+            <td>Library Administration</td>
+            <td>H0029</td>
+
+          </tr>
+
+          <tr>
+            <td>72200</td>
+            <td>xxx</td>
+            <td>Print Acquisitions</td>
+            <td>4DDLLL-6000</td>
+            <td>Library Administration</td>
+            <td>H0029</td>
+          </tr>
+          <tr>
+            <td>72300</td>
+            <td>xxx</td>
+            <td>Print Office Copies</td>
+            <td>4DDLLL-6000</td>
+            <td>Library Administration</td>
+            <td>H0220</td>
+          </tr>
+
+          <tr>
+            <td>72400</td>
+            <td>xxx</td>
+            <td>Electronic Subscription Renewal</td>
+            <td>4DDLLL-6000</td>
+            <td>Library Administration</td>
+            <td>H0268</td>
+
+          </tr>
+
+          <tr>
+            <td>72450</td>
+            <td>xxx</td>
+            <td>New Electronic Subscription</td>
+            <td>4DDLLL-6000</td>
+            <td>Library Administration</td>
+            <td>H0221</td>
+
+          </tr>
+
+          <tr>
+            <td>72810</td>
+            <td>034</td>
+            <td>Library Admin</td>
+            <td>4DDLLL-6000</td>
+            <td>Library Administration</td>
+            <td>H0034</td>
+
+          </tr>
+
+          <tr>
+            <td>73000</td>
+            <td>xxx</td>
+            <td>Lexis</td>
+            <td>4DDLLL-6000</td>
+            <td>Library Administration</td>
+            <td>H0037</td>
+
+          </tr>
+
+          <tr>
+            <td>73150</td>
+            <td>xxx</td>
+            <td>Westlaw</td>
+            <td>4DDLLL-6000</td>
+            <td>Library Administration</td>
+            <td>H0066</td>
+
+          </tr>
+
+          <tr>
+            <td>73250</td>
+            <td>xxx</td>
+            <td>Document Retrieval</td>
+            <td>4DDLLL-6000</td>
+            <td>Library Administration</td>
+            <td>H0067</td>
+
+          </tr>
+
+          <tr>
+            <td>73300</td>
+            <td>xxx</td>
+            <td>Other Databases</td>
+            <td>4DDLLL-6000</td>
+            <td>Library Administration</td>
+            <td>H0077</td>
+
+          </tr>
+
+          <tr>
+            <td>62120</td>
+            <td>000</td>
+            <td>Records Operations</td>
+            <td>4DDLLL-6300</td>
+            <td>Records Services</td>
+            <td>H0007|H0093|H0094</td>
+
+          </tr>
+
+          <tr>
+            <td>62140</td>
+            <td>000</td>
+            <td>Shredding</td>
+            <td>4DDLLL-6300</td>
+            <td>Records Services</td>
+            <td>H0206</td>
+
+          </tr>
+
+          <tr>
+            <td>74450</td>
+            <td>xxx</td>
+            <td>Litigation Services Chargers</td>
+            <td>4DDLLL-6000</td>
+            <td>Litigation Services</td>
+            <td></td>
+
+          </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button  id="name">Click Me</button>
+	<p>first</p>
+	<p>second</p>
+	<p id="1"></p>
+	<button onclick="my1()" >Kích vào để tô background các thẻ p </button>
+	<script>
+	document.getElementById('name').addEventListener("click",my);
+
+	function my() {
+		alert ("Nguyễn Đăng Tỉnh");
+	};
+
+	var x = document.getElementsByTagName("p");
+	document.getElementById('1').innerHTML = x.length;/*đếm thẻ p*/
+	function my1() {
+		var y = document.getElementsByTagName('p');
+		for(i=0;i<y.length;i++)
+			x[i].style.background = "green";
+	};
+	</script>
+</body>
+</html>

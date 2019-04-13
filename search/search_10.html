@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		function overall() {
+  search = $('#searching').val();
+  document.getElementById("searching").value;
+  $.getJSON("https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=" + search + "&callback=?", function(data) {
+    console.log(data);
+   
+      $("#results1").html('<h1>' + data.query.search[0].title + '</h1><p>' + data.query.search[0].snippet + '</p>') ;
+    $("#results2").html('<h1>' + data.query.search[1].title + '</h1><p>' + data.query.search[1].snippet + '</p>') ;
+     $("#results3").html('<h1>' + data.query.search[2].title + '</h1><p>' + data.query.search[2].snippet + '</p>') ;
+     $("#results4").html('<h1>' + data.query.search[3].title + '</h1><p>' + data.query.search[3].snippet + '</p>') ;
+     $("#results5").html('<h1>' + data.query.search[4].title + '</h1><p>' + data.query.search[4].snippet + '</p>') ;
+
+$(link1).attr("href", "https://en.wikipedia.org/wiki/" + data.query.search[0].title);
+    $(link2).attr("href", "https://en.wikipedia.org/wiki/" + data.query.search[1].title);
+    $(link3).attr("href", "https://en.wikipedia.org/wiki/" + data.query.search[2].title);
+    $(link4).attr("href", "https://en.wikipedia.org/wiki/" + data.query.search[3].title);
+    $(link5).attr("href", "https://en.wikipedia.org/wiki/" + data.query.search[4].title);
+    
+   $(".wikirand").remove();
+    return false; 
+
+  });
+
+}
+
+	</script>
+	<style>
+	body {
+  margin: 0 auto;
+  font-family: "Arvo";
+  background-color: #590406;
+}
+
+.wikirand {
+  display: block;
+  margin: 0 auto;
+}
+
+a:hover {
+ text-decoration: none;
+}
+
+a:focus {
+  text-decoration: none;
+}
+.jumbotron {
+  background-color: #590406;
+}
+
+.searchbar {
+  display:inline-block;
+  margin: 0 auto;
+  text-align: center;
+
+}
+#swi {
+  font-size: 20px;
+  margin-bottom: 0px;
+  color: #E8D8DC;
+}
+
+#searching {
+  border-radius: 10%;
+  color: #590406;
+  font-weight: bold;
+}
+
+#button {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-radius: 14%;
+  color: #590406;
+  font-size: 20px;
+  padding: 5px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+input:focus {
+  outline: none;
+}
+#button:hover {
+  background-color: #590406; 
+  color: white;
+}
+
+#results1 {
+  background-color: #210404;
+  box-shadow: 0 10px 6px -6px black;
+  border-left: 20px solid #210404;
+}
+
+#results1:hover {
+  border-left: 20px solid white;
+}
+
+#results1 h1 {
+  font-size: 30px;
+  text-align: center;
+  color: #E8D8DC;
+  text-shadow: 1px 1px 1px #E8D8DC;
+  margin: 20px;
+  padding-top: 25px;
+}
+
+#results1 p {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #E8D8DC;
+  padding-bottom: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#results5 {
+  background-color: #210404;
+  box-shadow: 0 10px 6px -6px black;
+  border-left: 20px solid #210404;
+}
+
+#results5 h1 {
+  font-size: 30px;
+  text-align: center;
+  color: #E8D8DC;
+  text-shadow: 1px 1px 1px #E8D8DC;
+  margin: 20px;
+  padding-top: 25px;
+}
+
+#results5 p {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #E8D8DC;
+  padding-bottom: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#results2 {
+  background-color: #210404;
+  box-shadow: 0 10px 6px -6px black;
+  border-left: 20px solid #210404;
+}
+
+#results2 h1 {
+  font-size: 30px;
+  text-align: center;
+  color: #E8D8DC;
+  text-shadow: 1px 1px 1px #E8D8DC;
+  margin: 20px;
+  padding-top: 25px;
+}
+
+#results2 p {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #E8D8DC;
+  padding-bottom: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#results3 {
+  background-color: #210404;
+  box-shadow: 0 10px 6px -6px black;
+  border-left: 20px solid #210404;
+}
+
+#results3 h1 {
+  font-size: 30px;
+  text-align: center;
+  color: #E8D8DC;
+  text-shadow: 1px 1px 1px #E8D8DC;
+  margin: 20px;
+  padding-top: 25px;
+}
+
+#results3 p {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #E8D8DC;
+  padding-bottom: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#results4 {
+  background-color: #210404;
+  box-shadow: 0 10px 6px -6px black;
+  border-left: 20px solid #210404;
+}
+
+#results4 h1 {
+  font-size: 30px;
+  text-align: center;
+  color: #E8D8DC;
+  text-shadow: 1px 1px 1px #E8D8DC;
+  margin: 20px;
+  padding-top: 25px;
+}
+
+#results4 p {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #E8D8DC;
+  padding-bottom: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#results2:hover {
+  border-left: 20px solid white;
+}
+
+#results3:hover {
+  border-left: 20px solid white;
+}
+
+#results4:hover {
+  border-left: 20px solid white;
+}
+
+#results5:hover {
+  border-left: 20px solid white;
+}
+	</style>
+</head>
+<body>
+	<body>
+  <div class="container-fluid">
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-xs-12 searchbar">
+          <form>
+            <p id="swi">Search Wikipedia:</p> <br><input type="text" name="fname" id="searching"><br>
+            <input type="submit" value="Search" onclick="overall(); return false;" id="button" onclick="removewiki()">
+          </form>
+        </div>
+      </div>
+      <a href="" id="link1" target="_blank">
+        <div id="results1"></div>
+      </a>
+      <a href="" id="link2" target="_blank">
+        <div id="results2"></div>
+      </a>
+      <a href="" id="link3" target="_blank">
+        <div id="results3"></div>
+      </a>
+      <a href="" id="link4" target="_blank">
+        <div id="results4"></div>
+      </a>
+      <a href="" id="link5" target="_blank">
+        <div id="results5"></div>
+      </a>
+      <div class="row">
+        <div class="col-xs-12">
+          <a href="http://wikipedia.org/wiki/Special:Random" target="_blank"><img class="img-responsive wikirand" src=" http://crossorigin.me/http://i.imgur.com/2FCZnwA.png"/></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		//1. toogle input field
+//2. hover text over icons for info
+//3. keyup function
+//4. append data to the body
+
+$(document).ready (function () {
+  
+  //toggle input field
+   $('#search-button').click(function(){
+     $('#search').toggle('slow');               });
+  
+  
+  // to display hover text over icons
+  $('.hover').mousemove(function (e) {
+   var hovertext = $(this).attr('hovertext');
+   $('.hoverDiv').text(hovertext).show();
+   $('.hoverDiv').css('top', e.clientY+10).css('left', e.clientX+10); 
+  }).mouseout(function () {
+    $('.hoverDiv').hide();
+  });
+  
+  
+  // keyup event to store and display input
+  $('#search').keyup(function () {
+    var searchField = $('#search');
+    var input = searchField.val();
+    var url = 'https://en.wikipedia.org/w/api.php?'
+    + 'action=query&list=search&format=json&srprop=snippet'
+    + '&srsearch=' + input + '&callback=?';
+    
+    
+    
+ function displayResults(data) {
+   var searchHTML= '<div id="main-section">';
+    $.each(data.query.search, function (i, item) {
+       searchHTML += '<div id="sub-section">';
+   searchHTML += '<ul><li class="title">';
+   searchHTML +='<a href="https://en.wikipedia.org/wiki/'+item.title+ '"'; 
+   searchHTML +=' target="_blank">'+item.title+'</li></a>';
+   searchHTML += '<li class="snippet">'+item.snippet+'...</li>';
+     searchHTML += '</ul>';
+      searchHTML += '</div>';
+      }) // end each
+      searchHTML += '</div>'; 
+ $('#result').html(searchHTML);
+} // end function displayResults
+    
+    // get json
+    $.getJSON(url, displayResults);
+  });// END CLICK   
+}); // end ready
+	</script>
+	<style>
+	body {
+  background-color: #4c3f54;
+  font-family: 'Lato', sans-serif;
+}
+.hoverDiv {
+  display: none;
+  position: absolute;
+  font-size: 14px;
+  background-color: white;
+  color: #404040;
+  border: 1px solid #999;
+  padding: 7px;
+}
+#search {
+  display: none;
+  color: black;
+  margin-top:150px;
+  margin-bottom:50px;
+  width: 300px;
+  padding:5px;
+  border-radius:5px;
+}
+h1{
+  margin-bottom:50px;
+  color: white;
+  font-family: 'Lobster Two', sans-serif;
+}
+.random {
+  margin-left:20px;
+  color: white;
+}
+li {
+  color: #000b29;
+  list-style: none;
+  font-size:1.2em;
+}
+a{
+  color: black;
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+  color: white;
+}
+#sub-section{
+  margin:20px;
+  background-color: #fef2e4;
+  padding-top:10px;
+  padding-bottom:10px;
+  border-radius: 5px;
+  
+}
+#sub-section:hover {
+  background-color: #ce5a57;
+  border-left: 5px solid white;
+  
+}
+.title {
+  font-size:2em;
+  font-family: 'Lobster Two',sans-serif;
+}
+footer {
+  text-align:center;
+  margin-top:50px;
+  color: white;
+}
+
+	</style>
+</head>
+<body>
+	<link href='https://fonts.googleapis.com/css?family=Lato|Lobster+Two' rel='stylesheet' type='text/css'>
+
+
+<div class="container text-center">
+  <h1>Wikipedia Viewer</h1>
+<input type="text" placeholder="Search..." id="search">
+ <button class="btn btn-default hover" id="search-button" hovertext="Click me and I'll surprise You!!!"><i class="glyphicon glyphicon-search"></i></button>
+
+
+<a target="_blank" href="https://en.wikipedia.org/wiki/Special:Random">
+<i class="fa fa-random fa-w fa-2x hover random" hovertext="Feeling lazy? Click me for a random article."></i></a>
+  <div class="hoverDiv"></div>
+  </div> 
+<div class="container">
+<div id="result"></div>
+ </div>
+<footer>
+  <p>&copy;Copyright &hearts; Tushar Singh 2016.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<style>
+	.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+body {
+  background: #fbfcf6;
+  color: #8170cf;
+  font-family: 'Source Code Pro';
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 56px;
+}
+
+.icons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+.icons i {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.icons + .icons {
+  margin-top: 50px;
+}
+
+.fa {
+  font-size: 50px;
+  cursor: pointer;
+  color: #302369;
+  text-shadow: -1px -1px 0 transparent,  1px -1px 0 transparent, -1px 1px 0 transparent, 1px 1px 0 transparent;
+  -webkit-transition: 0.6s ease;
+  transition: 0.6s ease;
+}
+.fa:hover {
+  color: #fbfcf6;
+  text-shadow: -1px -1px 0 #302369, 1px -1px 0 #302369, -1px 1px 0 #302369, 1px 1px 0 #302369;
+}
+.fa + .fa {
+  margin-left: 10px;
+}
+
+p {
+  margin-bottom: 25px;
+}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+  <h1>Icon Font outline hover-effect</h1>
+  <p>Playing around today and discovered that text-shadow on an icon font creates a really cool outline effect on hover.</p>
+  <div class="icons">
+    <i class="fa fa-facebook"></i>
+    <i class="fa fa-drupal"></i>
+    <i class="fa fa-empire"></i>
+    <i class="fa fa-facebook"></i>
+    <i class="fa fa-facebook-square"></i>
+    <i class="fa fa-flickr"></i>
+    <i class="fa fa-foursquare"></i>
+    <i class="fa fa-ge"></i>
+    <i class="fa fa-git"></i>
+    <i class="fa fa-git-square"></i>
+    <i class="fa fa-github"></i>
+    <i class="fa fa-github-alt"></i>
+    <i class="fa fa-github-square"></i>
+    <i class="fa fa-gittip"></i>
+    <i class="fa fa-google"></i>
+    <i class="fa fa-google-plus"></i>
+    <i class="fa fa-google-plus-square"></i>
+    <i class="fa fa-google-wallet"></i>
+    <i class="fa fa-pied-piper"></i> 
+  </div>
+  <div class="icons">
+    <i class="fa fa-pied-piper-alt"></i>
+    <i class="fa fa-pinterest"></i>
+    <i class="fa fa-pinterest-square"></i>
+    <i class="fa fa-qq"></i>
+    <i class="fa fa-ra"></i>
+    <i class="fa fa-rebel"></i>
+    <i class="fa fa-reddit"></i>
+    <i class="fa fa-reddit-square"></i>
+    <i class="fa fa-renren"></i>
+    <i class="fa fa-share-alt"></i>
+    <i class="fa fa-share-alt-square"></i>
+    <i class="fa fa-skype"></i>
+    <i class="fa fa-slack"></i>
+    <i class="fa fa-slideshare"></i>
+    <i class="fa fa-soundcloud"></i>
+    <i class="fa fa-spotify"></i>
+    <i class="fa fa-stack-exchange"></i>
+    <i class="fa fa-stack-overflow"></i>
+    <i class="fa fa-steam"></i>      
+  </div>
+</div>
+</body>
+</html>

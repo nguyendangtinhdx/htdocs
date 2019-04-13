@@ -1,0 +1,474 @@
+*{
+	margin:0;
+	padding:0;
+}
+ol, ul { list-style: none; }
+img { border: none; vertical-align: top; }
+a:hover{color: #000;text-decoration: none;}
+#banner {
+	background-image: url('../icon/banner.jpg');
+	height: 100px;
+	width:80%;
+	margin: auto;
+	background-repeat: no-repeat;
+}
+#menu {
+	height:35px;
+	width: 80%;
+	margin: auto;
+}
+#content {
+	width: 80%;
+	height: auto;
+	margin:auto;
+}
+#content_main {
+	width: 80%;
+	height: auto;
+	margin:auto;
+}
+#footer_main {
+	background-color: #1E1A1F;
+	height: 80px;
+	width: 80%;
+	margin: auto;
+}
+.uppercase{
+	 text-transform: uppercase;
+}
+.banner_left {
+    float: left;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+.banner_right {
+    float: right;
+	margin-top:50px;
+}
+#date{
+	font-family: Cursive, Arial, Helvetica, sans-serif;
+	color: green;
+}
+#tinchinh{
+	width:40%;
+	height:auto;
+	float:left;
+}
+.search{  
+	font-family: Cursive, Arial, Helvetica, sans-serif;
+	color: yellow
+}
+.anh_chinh{
+	width:100%; 
+	height:250px;
+	float:left;
+	margin: 0 15px 10px 0;
+}
+.tieudetinchinh{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top:0;
+	font-weight: bold;
+}
+.tieudetinchinh a{
+	font-size: 18px;
+}
+.tieudetinchinh a:hover{
+	text-decoration:none;
+	color: #78B43D;
+}
+.noidungtinchinh{
+	font-size:14px;
+    font-family: Arial, Helvetica, sans-serif;
+/*    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;*/
+}
+.tinxemthem{
+	font-size:12px; 
+	margin-left:15px;
+	float: left;
+}
+.tincungloai{
+	font-size:12px; 
+	float: left;
+}
+.tin_tincungloai{
+	float: left;
+	width: 195px;
+}
+.tieudetincungloai{
+	width: 185px;
+	margin-top: 10px;
+	font-weight: bold;
+	color: #000;
+}
+.tieudetincungloai:hover{
+	color: #78B43D;
+}
+.tinxemthem li{list-style: url('../icon/arrow-list.png');}
+.tinxemthem li a{color:#666;}
+.tinxemthem li a:hover{text-decoration: underline;}
+.clear{clear:both;}
+#tinmoi_quangcao{
+	width: 59%;
+	float: right;
+}
+#tintruot{
+	width: 50%;
+	float: left;
+	height: 455px;
+	border-right: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+}
+.tin_cot{
+	margin: 15px 10px 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #000;
+	font-size: 12px;
+	/*border-bottom: 1px dotted #CCC;*/
+}
+.tin_cot a img{float: left; margin-right: 8px;}
+.tin_cot a:hover{text-decoration: underline;}
+#tinlienquan{
+	width: 49%;
+	float: right;
+	height: 455px;
+}
+.hr{width: 80%; margin: auto; margin-top: 10px; margin-bottom: 10px}
+/*slide_video*/
+.thongtin-title{}
+.thongtin-content { 
+	background:#F4F4F4; 
+	border:1px solid #CCC;
+	border-radius: 3px;
+	overflow:hidden;
+	}
+.thongtin-content img{ padding: 5px 20px;
+ }
+/*slide_tintuc*/
+#mygallery{background:#E2E2E2;}
+.stepcarousel{
+	position: relative; /*leave this value alone*/
+	border:1px solid #CCC;
+	border-radius:5px;
+	overflow: scroll; /*leave this value alone*/
+	width: 100%; /*Width of Carousel Viewer itself*/
+	height: 300px; /*Height should enough to fit largest content's height*/
+	-webkit-box-sizing: border-box; /* set box model so container width and height value includes any padding/border defined */
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.stepcarousel .belt{
+	position: absolute; /*leave this value alone*/
+	left: 0;
+	top: 0;
+}
+.belt img{
+	height:130px; 
+	padding:10px 25px;
+	background:#E2E2E2;
+}
+.tieudeslide{
+	background:#E2E2E2;
+	font-size:12px;
+	margin-left:30px;
+	font-weight:bold;
+    color: #A61732;
+}
+.noidungslide{
+	margin-left:30px;
+	font-size:12px;
+}
+.noidungslide:hover{
+	overflow: visible;
+    white-space: pre-line;
+}
+.belt a{text-decoration:none;color:#C00}
+.stepcarousel .panel{
+	float: left; /*leave this value alone*/
+	overflow: hidden; /*clip content that go outside dimensions of holding panel DIV*/
+	margin: 0px; /*margin around each panel*/
+	width: 212px; /*Width of each panel holding each content. If removed, widths should be individually defined on each content DIV then. */
+	background:#E2E2E2;
+}
+span.paginatecircle{ /* CSS for paginate circle spans. Required */
+	background: white;
+	border: 2px solid black;
+	border-radius: 10px;
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+	display: inline-block;
+	margin-right: 4px;
+
+}
+div#pag{	
+	text-align: center;
+	margin-top: 270px;
+}
+span.paginatecircle:hover{
+	background: gray;
+}
+
+span.paginatecircle.selected{
+	background: black;
+}
+/*path*/
+.path{
+	color: green;
+	font-family: Arial, Helvetica, sans-serif;
+}
+/*danhsachtin*/
+#danhsachtin{
+	width:75%;
+	float:left;
+	/*border-right:1px solid #CCC;*/
+}
+.icon{
+	background-image:url(../icon/tieude.png);
+	background-repeat:no-repeat;
+	border-bottom: 2px solid #8DC642;
+	margin-bottom: 10px;
+	height: 15px;
+}
+.tin{
+	float:left; 
+	margin-right: 23px;
+	width: 180px;
+}
+.tieudetin {
+	margin-top: 20px;
+	color: #000;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.tieudetin:hover{
+	color: #78B43D;
+}
+.noidungtin{
+	font-size: 13px;
+	height: 90px;
+	overflow:hidden; 
+	font-family: Arial, Helvetica, sans-serif;
+}
+.xemcactinkhac{
+	color: #A61732; 
+	text-decoration: underline;
+	font-size: 12px;
+	font-weight: bold;
+}
+.cacvideokhac{
+	color: #A61732; 
+	text-decoration: underline;
+	font-size: 12px;
+	font-weight: bold;
+}
+.solanxemtin{
+	color: #A61732; 
+	font-size: 12px;
+	font-weight: bold;
+}
+.tin ul{
+	color: #666;
+	font-size: 12px;
+}
+.tin ul li{
+	list-style: url('../icon/arrow-list.png');
+	margin-bottom: 5px;
+	margin-left: 15px;
+}
+.tin ul li a{
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.tin ul li a:hover{
+	text-decoration: underline;
+	color: #666;
+}
+#quangcao{
+	width:24%;
+	float:right;
+	top: 0;
+}
+.underline{border-bottom: 1px dashed #CCC}
+#quangcao1 img{
+	margin-bottom: 10px;
+	border: 1px solid #CCC;
+}
+#quangcao2 img{
+	margin-bottom: 10px;
+}
+.box-cat {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.chitiettin{font-family: Arial, Helvetica, sans-serif;}
+.title{color: #ED1D24; font-size: 25px}
+.title a:hover{
+	color: #8DC642;
+}
+.box-cat img{
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.chitietvideo{font-family: Arial, Helvetica, sans-serif;}
+/*video*/
+#video{margin-top: 20px;}
+.icon_video{
+	background-image:url(../icon/tieude.png);
+	background-repeat:no-repeat;
+	border-bottom: 2px solid #8DC642;
+	height: 25px;
+}
+.icon_video div{
+	margin-left: 10px;
+	font-weight: bold;
+	color: #FFF;
+}
+#thongtinvideo{
+	width: 40%;
+	float: left;
+}
+#filevideo{
+	width: 58%;
+	float: right;
+}
+.tieudevideo{
+	font-size: 20px;
+	margin: 10px 0;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.tieudevideo a:hover{
+	color: #78B43D;
+}
+.noidungvideo{
+	font-size: 15px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#slide_video{
+	margin-top: 20px;
+	box-shadow: 5px 5px 10px #CCC;
+}
+/*footer_menu*/
+#footer_menu{
+	background: #E2E2E2;
+	height: 200px;
+	font-family: Arial, Helvetica, sans-serif;
+	border-bottom: 10px solid #CCC;
+	width: 80%;
+	margin: auto;
+}
+#footer_menu ul{
+	float: left;
+	margin: 10px 0px 0 5px;
+	padding-right: 25px;
+	width: 175px;
+	height: auto;
+}
+#footer_menu ul li a:hover{
+	font-weight: bold;
+}
+#footer_menu ul li{
+	font-size: 12px;
+	padding: 2px;
+}
+/*footer_main*/
+.footer_left{
+	float: left;
+	margin-left: 15px;
+}
+.footer_right{
+	float: right;
+}
+.footer_left div{
+	margin-top: 10px;
+	color: #FFF;
+	font-size: 13px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.footer_left a:hover{
+	color: #8DC642
+}
+
+/*thongke*/
+.thongke{
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 10px;
+	margin-right: 25px;
+}
+.soluong{
+	color: #9ACD32;
+}
+/*tim kiem*/
+.timkiem{
+	font-weight: bold;
+	color: #FD0000;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.dem{
+	color: #9ACD32;
+}
+.tukhoa{
+	color: #9ACD32;
+}
+/*scrollbar*/
+body::-webkit-scrollbar {
+    width: 6px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ body::-webkit-scrollbar-thumb {
+  background-color: #8DC642;
+}
+/*to_top*/
+#bttop{
+	position:fixed;
+	bottom:30px;
+	right:15px;
+	cursor:pointer;
+}
+#bttop img:hover{
+	box-shadow: 5px 5px 30px red;
+}
+#pagination{text-align: center;}
+
+
+@media only screen and (max-width: 1353px) {
+	/*#footer_menu{height: 370px;}*/
+}
+/*@media only screen and (max-width: 688px) {
+	#footer_menu{height: 480px;}
+	#footer_main{height: 150px;}
+}*/
+@media only screen and (max-width: 480px) {
+
+	#banner{width: 90%;}
+	#content{width: 90%;}
+	#tinchinh{width:100%;}
+	#tinmoi_quangcao{width:100%;}
+	#tintruot{width:100%;}
+	.tin_cot{float: left}
+	#tinlienquan{display: none;}
+	#danhsachtin{width: 100%;border-right: none;}
+	#content_main{width: 90%;}
+	.hr{width: 90%;}
+	.box_tin{width: 100%;}
+	.tin{width: 100%;}
+	.tin img{width: 100%;}
+	#quangcao{visibility: hidden;}
+	#thongtinvideo{width: 100%;}
+	#filevideo{width: 100%;}
+	.cacvideokhac{display: none;}
+	#slide_video{display: none;}
+	/*#footer_menu{width: 90%;height: 950px;}*/
+	/*#footer_menu ul{border-right: none;width: 100%;}*/
+	#footer_main{width: 90%; height: 150px;}
+	#footer_menu{display: none;}
+}
+}
+
+
+
+

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		$(document).ready( function(){
+
+    $('#submenu').click( function(event){
+        event.stopPropagation();
+        $('#drop').toggle();
+    });
+    
+    $(document).click( function(){
+        $('#drop').hide();
+    });
+  
+});
+
+    
+	</script>
+	<style>
+	@import url(http://weloveiconfonts.com/api/?family=entypo);
+/*reset*/ul{list-style:none;}a{text-decoration:none;}ul,li,a{margin:0;padding:0;}
+
+/***** basic styles *****/
+
+body { background: #E0E0E0 url('http://subtlepatterns.com/patterns/creampaper.png');}
+
+.container {
+  position: relative;  	
+  width: 800px;
+  margin: 30px auto;
+}
+
+.nav-container {
+  width: 650px;
+  margin: 0 100px;
+}
+
+p {
+  font-family: Georgia;
+  color: #333;
+}
+
+a {
+  font-family: 'Helvetica', 'Arial', san-serif;
+  color: #333;
+}
+
+/***** menu *****/
+#navmenu {  
+  display: inline-block;
+  height: 30px;
+  padding: 5px 0;
+  
+  border: solid 1px #A3A3A3;
+  border-radius: 7px;
+  box-shadow:  2px 2px 5px #ccc;
+}
+
+#navmenu > li { 
+  border-color: #ADADAD;
+  
+  border-right: solid 1px #A3A3A3; 
+  padding: 0 10px;
+}
+
+#navmenu li {
+  float: left;
+  position: relative;
+  line-height: 30px; /* must match height of ul */
+}
+
+#navmenu li:hover span { color: #C89292; }
+.nav-link {
+  display: inline;
+  margin: 0 10px 0 50px;
+}
+
+/* icon font */
+[class*="entypo-"] { font-family: 'Entypo', sans-serif; }
+
+#navmenu span[class*="entypo-"] {
+  position: absolute;
+  left: 15px;
+  
+  color: #8f8f8f;
+  font-size: 1.5em;
+}
+
+/***** submenu *****/
+
+/* submenu container */
+#drop {
+  opacity: 0;
+  position: absolute;
+  top: 35px;
+  left: 0px;
+  width: 150px;
+  background: #333;
+}
+
+/* submenu links */
+#drop li a { 
+  background: #333; 
+  color: #E0E0E0;
+  font-size: 0.8em;
+  margin-left: 10px;
+}
+
+/* height of submenu links */
+#navmenu li:hover ul li {
+  height: 30px;
+  line-height: 30px;
+}
+
+/* submenu positioning */
+#navmenu li:hover ul { opacity: 1; }
+#drop li {
+  float: none;
+  position: static;
+  height: 0;
+  line-height: 0;
+  background: none;
+}
+
+/* submenu transitions */
+#navmenu li { transition: all 0.2s; }
+#navmenu li a { transition: all 0.5s; }
+#drop { transition: all 1s; }
+#drop li { transition: height 0.5s; }
+	</style>
+</head>
+<body>
+	<div class = "container">
+  <div class = "nav-container">
+    <ul id="navmenu">
+      <li><a href="#"><span class = "entypo-home"></span><span class = "nav-link">Home</span></a></li>
+      <li><a href="#"><span class = "entypo-lamp"></span><span class = "nav-link">About</span></a></li>
+      <li><a href="#" id = "submenu"><span class = "entypo-book-open"></span><span class = "nav-link">Products</span></a>
+        <ul id = "drop" >
+          <li><a href="#">Widgets</a></li>
+          <li><a href="#">Thingamabobs</a></li>
+          <li><a href="#">Doohickies</a></li>
+        </ul>
+      </li>
+      <li><a href="#"><span class = "entypo-mail"></span><span class = "nav-link">
+        Contact</span></a></li>
+    </ul>
+  </div>
+  
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+  </p>
+</div>
+</body>
+</html>

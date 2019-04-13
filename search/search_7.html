@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+  var api = "";
+  var text = "";
+  var info = "";
+  var title = "";
+  var about = "";
+  var link = "";
+  
+  
+  $('#txt_name').keypress(function (e) {
+  if (e.which == 13) {
+    $(".box").css("margin","5% auto");
+    info = "";
+    text = $("#txt_name").val();
+    api = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch="+text+"&utf8="+"&format=json";
+    console.log(text);
+    $.ajax({
+    url: api,
+ 
+    jsonp: "callback",
+    dataType: "jsonp",
+    data: {
+        q: "I don't    know what to put here",
+        format: "json"
+    },
+ 
+     success: function(response) {
+        console.log(response);
+       if(response.query.search.length == 0) {
+        info = "<div class=\"block center\"><p>Not found</p></div>"
+       } else {
+       for(var i = 0; i < response.query.search.length; i++) {
+        title = response.query.search[i].title;
+        about = response.query.search[i].snippet + "...";
+        link = "<a target=\"_blank\" href=\""+"https://en.wikipedia.org/wiki/"+title +"\">";
+        info =  info +"<div class=\"block\">"+link+"<p>"+title+"</p>"+about+"</a></div>";
+       }
+       }
+        
+       $("#info").html(info);
+    }
+   
+    });
+ 
+    return false;    //<---- Add this line
+  }
+});
+  
+  $("#random").on("click",function(){
+ window.open("https://en.wikipedia.org/wiki/Special:Random");
+  });
+  
+  $("#headline").on("click",function(){
+    
+    location.reload(true);
+    
+  });
+  
+  
+  $("#button").on("click",function(){
+    $(".box").css("margin","5% auto");
+    info = "";
+    text = $("#txt_name").val();
+    api = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch="+text+"&utf8="+"&format=json";
+    console.log(text);
+    $.ajax({
+    url: api,
+ 
+    jsonp: "callback",
+    dataType: "jsonp",
+    data: {
+        q: "I don't know what to put here",
+        format: "json"
+    },
+ 
+     success: function(response) {
+        console.log(response); 
+       for(var i = 0; i < response.query.search.length; i++) {
+        title = response.query.search[i].title;
+        about = response.query.search[i].snippet + "...";
+        link = "<a target=\"_blank\" href=\""+"https://en.wikipedia.org/wiki/"+title +"\">";
+        info = info +"<div class=\"block\">"+link+"<p>"+title+"</p>"+about+"</a></div>";
+       }
+       
+        
+       $("#info").html(info);
+    }
+   
+    });
+
+  });
+});
+	</script>
+	<style>
+
+	@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
+body {
+	background-color: #ebebeb;
+  font-family: 'Open Sans', sans-serif;
+     
+}
+
+.box {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 15% auto;
+ 
+  
+}
+
+#random {
+ 
+  
+  
+}
+.headline {
+  
+	text-align: center;
+  font-size:30px;
+  font-family:'Open Sans', sans-serif;
+  font-weight: bold;
+  
+}
+.search {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+  max-width:500px;
+  
+
+  
+}
+.inside {
+  margin-left:10px;
+  margin-right:10px;
+}
+.form-control {
+  color:#181818;
+}
+input {
+    
+    height:30px;
+    font-size:22px; 
+    border-style: solid;
+    border-radius:5px;
+    padding:3px;
+    font-family:'Open Sans', sans-serif;;
+   
+}
+p {
+  font-family:'Open Sans', sans-serif;;
+  font-size: 16px;
+  color:#165c91;
+  font-weight: bold;
+  
+}
+#info {
+  position:absolute;
+  left:0;
+  right:0;
+  max-width:500px;
+  margin: 50px auto;
+  
+}
+a {
+  display: block;
+  text-decoration: none;
+  color:#000;
+}
+a:hover {
+    text-decoration: none;
+    color:#000;
+}
+a:visited {
+  text-decoration: none;
+  color:#000;
+}
+a:link {
+  text-decoration: none;
+  color:#000;
+}
+a:active {
+  text-decoration: none;
+  color:#000;
+}
+.block {
+  background-color:#ffffff;
+  padding:20px;
+  margin: 10px;
+  font-family:'Open Sans', sans-serif;;
+}
+.center {
+  text-align:center;
+}
+.block:hover {
+  background-color:#f9f9f9;
+}
+
+
+	</style>
+</head>
+<body>
+	<div class="box">
+  <div class="headline">
+    <a id="headline"  href="#"><div style="color:#333">WikiSearch</div></a>
+  </div>
+  <div class="search">
+    <div class="inside">
+  	  <div class="input-group">
+      <span class="input-group-btn">
+        
+        <button class="btn btn-default" id="random" type="button"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></button>
+        <button class="btn btn-default" id="button" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        
+      </span>
+      <input type="text" id="txt_name"  class="form-control" placeholder="Search for...">
+        
+     </div>
+    </div>
+    
+     
+    
+    
+  </div>
+  
+  <div id="info"></div>
+</div>
+
+</body>
+</html>

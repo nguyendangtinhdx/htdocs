@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(function() {
+  var $btn = $('.list-search').find('button[type="submit"]');
+  var $input = $('.list-search').find('input[name="keywords"]');
+
+    $btn.on('click', function(e) {
+      e.preventDefault();
+			$input.toggleClass('show-search');
+    });
+});
+	</script>
+	<style>
+	body {
+  background-color: #444;
+}
+
+.list-search {
+  list-style-type: none;
+  display: inline-block;
+  margin: 32px auto;
+  max-width: 256px;
+}
+.list-search button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  -moz-transition: color, 0.2s, ease-in-out;
+  -o-transition: color, 0.2s, ease-in-out;
+  -webkit-transition: color, 0.2s, ease-in-out;
+  transition: color, 0.2s, ease-in-out;
+}
+.list-search button:active {
+  background-color: transparent;
+  color: purple;
+  box-shadow: none;
+}
+.list-search button:focus {
+  outline: none;
+  background-color: transparent;
+  color: white;
+}
+.list-search button:hover {
+  color: purple;
+  background-color: transparent;
+}
+.list-search button:visited {
+  color: white;
+}
+.list-search input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid lightgray;
+  box-shadow: none;
+  border-radius: 0;
+  width: 0 !important;
+  padding: 0;
+  color: white;
+  -moz-transition: width, 0.25s, ease-in-out;
+  -o-transition: width, 0.25s, ease-in-out;
+  -webkit-transition: width, 0.25s, ease-in-out;
+  transition: width, 0.25s, ease-in-out;
+}
+.list-search input:focus {
+  outline: none;
+}
+.list-search input:focus {
+  outline: none;
+}
+.list-search input.show-search {
+  width: 100% !important;
+  padding: 6px 12px;
+}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+  <li class="list-search">
+    <div class="input-group">
+      <span class="input-group-btn tca">
+    <button class="btn btn-default" type="submit">
+      <span class="glyphicon glyphicon-search"></span>
+      </button>
+      </span>
+      <input class="search-box form-control show-search" type="search" name="keywords" id="keywords" placeholder="Search the site..." />
+    </div>
+  </li>
+</div>
+</body>
+</html>

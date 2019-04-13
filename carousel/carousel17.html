@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$("#brand").click(function(e) {
+  e.preventDefault();
+});
+
+$("#thumb-2").click(function(e) {
+  e.preventDefault();
+});
+
+$("#btn-phone").click(function(e) {
+  e.preventDefault();
+});
+
+$(document).ready(function() {
+  $('[data-toggle="popover"]').popover();
+
+
+ $(".left").click(function(){
+  $("#home-carousel-1").carousel("prev");
+    });
+$(".right").click(function(){
+  $("#home-carousel-1").carousel("next");
+    });
+$("#home-carousel-1").carousel({interval: 2000, wrap: true});
+$("#home-carousel-1").carousel();
+$("#portfolio-carousel-1").carousel({interval: 1500, wrap: true});
+$("#portfolio-carousel-1").carousel();
+});
+
+	</script>
+	<style>
+	body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+#home-lower-p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+#Home {
+  padding-top: 50px;
+  height: 500px;
+}
+
+#About {
+  padding-top: 50px;
+  height: 500px;
+}
+
+#Portfolio {
+  padding-top: 50px;
+  height: 500px;
+}
+
+#Contact {
+  padding-top: 50px;
+  height: 500px;
+}
+
+#brand {
+  font-family: serif, Sans-serif;
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px -2px 2px #0FF;
+}
+
+.navbar {
+  background-size: cover;
+  background-attachment: fixed;
+  /*opacity: 0.4;
+  filter:alpha(opacity=40)*/
+}
+
+#bck-img {
+  background: url("https://t2.ftcdn.net/jpg/00/95/12/21/240_F_95122112_VcLc3ZCIcfTFXwVmE8akfdLn59yXyIQK.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 102%;
+  width: 100%;
+  position: absolute;
+  z-index: -10;
+  opacity: 0.4;
+}
+
+.btn-default {
+  outline-style: outset;
+  border-style: ridge;
+  color: #FFF;
+  text-shadow: 3px -2px 3px #48D;
+  background-image: url("http://forums.crackberry.com/attachments/blackberry-passport-f434/308994d1414160564t-some-blackberry-passport-wallpapers-1024x1024_edit.jpg");
+}
+
+#h-home {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#photo-me {
+  height: 70px;
+  width: 4%;
+  margin-right: 20px;
+}
+
+#photo-me2 {
+  height: 70px;
+  width: 4%;
+  margin-left: 20px;
+}
+
+#row-about-head {
+  margin-left: auto;
+  text-align: center;
+}
+
+#row-home {
+  margin-left: 22%;
+}
+
+#row-contact {
+  margin-left: 32%;
+  margin-top: 20px;
+}
+
+p {
+  background-color: #FDE;
+  width: auto;
+  padding: 10px;
+  border: 3px solid;
+  border-color: #0064ff;
+  margin: auto;
+}
+
+#p-about {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 18px;
+}
+
+#row-about {
+  margin-top: auto;
+  margin-left: auto;
+}
+
+#row-about-btns {
+  margin-left: 310px;
+  padding-top: 70px;
+}
+
+#p-portfolio {
+  margin-top: 20px;
+}
+
+#indicators li {
+  background-color: #000;
+}
+
+#indicators {
+  bottom: -50px;
+}
+
+.portfolio-carousel-img {
+  width: 300px;
+  height: 250px !important;
+}
+
+.home-carousel-img {
+  width: 600px;
+  height: 300px !important;
+}
+
+.carousel .glyphicon-chevron-right {
+  display: none;
+}
+
+	</style>
+</head>
+<body>
+	<!--Portfolio Page
+Created By: DevOps-redteam-->
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <div id="bck-img"></div>
+  
+<!--Header Navigation Bar-->
+  <nav class="navbar navbar-inverse navbar-fixed-top animated-fadeIn" id="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" id="brand" href="#">Tyler Moore</a>
+    </div>
+      <div>
+       <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#Home">Home</a></li>
+          <li><a href="#About">About</a></li>
+          <li><a href="#Portfolio">Portfolio</a></li>
+          <li><a href="#Contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>    
+  
+<!--Webpage content-->
+  
+<!--Home Section-->
+<div id="Home" class="container-fluid">
+  <h1 id="h-home"><center>Faulty webpages driving you crazy?</center></h1>
+  <!--Carousel1-->
+ <center> <div class="container-fluid">
+  <br>
+  <div id="home-carousel-1" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#home-carousel-1" data-slide-to="0" class="active"></li>
+      <li data-target="#home-carousel-1" data-slide-to="1"></li>
+      <li data-target="#home-carousel-1" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="http://reactiongifs.me/wp-content/uploads/2013/09/computer-smash-other-guys-Mark-Wahlberg-angry.gif" class="home-carousel-img">
+      </div>
+      <div class="item">
+        <img src="http://reactiongifs.me/wp-content/uploads/2014/06/it-crowd-maurice-moss-frustration-fuck-this.gif" class="home-carousel-img">
+      </div>
+      <div class="item">
+        <img src="http://cdn.makeagif.com/media/7-02-2015/rEzlu6.gif" class="home-carousel-img">
+      </div>
+      </div>
+   </div></center>
+    <a class="left carousel-control" href="#home-carousel-1" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#home-carousel-1" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+   </div></div></center>
+
+  <center><div class="row" id="row-home"></div>
+    <div class="container" id="home-lower-p">
+    DevOps-redteam can help </h1><span class="glyphicon glyphicon-thumbs-up"></span></div></center>
+
+<!--About Section-->
+<center><div class="container-fluid" id="About">
+  <div class="row" id="row-about-head">
+  <h1><img src="https://scontent-iad3-1.xx.fbcdn.net/hphotos-xlf1/v/t1.0-9/12986920_10207096781881277_8191490498665768679_n.jpg?oh=738b5a93720bfae2e34257924d5eab00&oe=57AD12FC" class="img-thumbnail" id="photo-me"></img><span id="span-about">About Me</span><img src="https://scontent-iad3-1.xx.fbcdn.net/hphotos-xlf1/v/t1.0-9/12986920_10207096781881277_8191490498665768679_n.jpg?oh=738b5a93720bfae2e34257924d5eab00&oe=57AD12FC" class="img-thumbnail" id="photo-me2"></img></h1>
+  </div>
+<div class="row" id="row-about">
+  <p id="p-about">My name is Tyler and I love working with technology! I started working with electronics when I joined the ARMY in 2011. There I troubleshot, diagnosed, and repaired various medical devices and got my first taste of the technology world. I liked it so much I started my career civilian-side as a computer technician and worked various jobs in techinical support for about 3 years. As I rose up in the department, I realized I wanted more than the support world could offer me, so I quickly hit the books and went back to college! I am still attending classes and working on my degree in computer science, striving to become an expert software engineer and cyber security expert. I work on web development projects as a hobby (one of my favorite) besides staying active, and will continue to bring to you amazing web designs that will most certainly emit unto your eyes a visual orgasm. I will also be bringing into this world software to make your day just that much better, as I progress through my training and education, so please stay tuned! Follow me on my instagram if you like motivation in your life and visit my linkedin profile if you have an ingenious idea you would like me to bring to life for your company. </p></div>
+
+  <div class="row" id="row-about-btns">
+  <div class="col-md-2">
+    <a href="https://www.linkedin.com/in/tylermathieu" target="_blank" id="btn-linkedin" type="button" class="btn btn-default btn-block">LinkedIn</a></div>
+    <div class="col-md-2">
+    <a href="https://www.instagram.com/tyler.mathieu" target="_blank" id="btn-instagram" type="button" class="btn btn-default btn-block">Instagram</a></div>
+    <div class="col-md-2">
+    <a href="https://github.com/DevOps-redteam" target="_blank" id="btn-github" type="button" class="btn btn-default btn-block">GitHub</a></div>
+    <div class="col-md-2">
+    <a href="https://www.freecodecamp.com/tylermoore58" target="_blank" id="btn-freecodecamp" type="button" class="btn btn-default btn-block">FreeCodeCamp</a></div></div></div></center>
+
+<!--Portfolio Section-->
+<div id="Portfolio" class="container-fluid">
+  <center><div class="row">
+    <p id="p-portfolio">I WORK WITH VARIOUS TECHNOLOGIES:</P>
+  <h1><a href="https://codepen.io/DevOps-redteam/" target="_blank" class="btn btn-primary">see my projects here</a></h1></div>
+    <br>
+  <div id="portfolio-carousel-1" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators" id="indicators">
+      <li data-target="#portfolio-carousel-1" data-slide-to="0" class="active"></li>
+      <li data-target="#portfolio-carousel-1" data-slide-to="1"></li>
+      <li data-target="#portfolio-carousel-1" data-slide-to="2"></li>
+      <li data-target="#portfolio-carousel-1" data-slide-to="3"></li>
+      <li data-target="#portfolio-carousel-1" data-slide-to="4"></li>
+      <li data-target="#portfolio-carousel-1" data-slide-to="5"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="http://i.imgur.com/dLx8nrg.jpg" class="portfolio-carousel-img">
+      </div>
+      <div class="item">
+        <img src="http://putracode.com/wp-content/uploads/2015/02/java8_logo-225x225.png" class="portfolio-carousel-img">
+      </div>
+      <div class="item">
+        <img src="https://realpython.com/learn/python-first-steps/images/pythonlogo.jpg" class="portfolio-carousel-img">
+      </div>
+      <div class="item">
+        <img src="http://bighow.org/images/pic/c6.jpg" class="portfolio-carousel-img">
+      </div>
+      <div class="item">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/Raspberry_Pi_Logo.svg/512px-Raspberry_Pi_Logo.svg.png" class="portfolio-carousel-img">
+      </div>
+       <div class="item">
+        <img src="http://www.knowledgepia.com/images/articles/SQL.png" class="portfolio-carousel-img">
+      </div>
+      </div>
+   </div></center>
+    <a class="left carousel-control" href="#portfolio-carousel-1" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#portfolio-carousel-1" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+   </div></div></center>
+</div></center>
+<!--Contact Section-->
+<div class="row" id="Contact">
+    <h1 class="text-center">Contact Me</h1>
+  <div class="row"></div>
+   <div class="row container-fluid" id="row-contact">
+    <div class="col-md-2">
+    <a href="skype:ty.mathieu?call" target="_blank" id="btn-skype" type="button" class="btn btn-default btn-block">Skype</a></div>
+    <div class="col-md-2">
+    <a href="mailto:tyler.mathieu@yahoo.com" target="_blank" id="btn-email" type="button" class="btn btn-default btn-block">Email</a></div>
+    <div class="col-md-2">
+    <a href="#" data-toggle="popover" title="(248)909-2769" id="btn-phone" type="button" class="btn btn-default btn-block">Phone</a></div></div></div></div></div>
+</body>
+</body>
+</html>

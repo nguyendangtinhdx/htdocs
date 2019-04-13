@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var suitcase = { shorts: "Hawaiian"};
+		if(suitcase==true)
+		{
+			console.log(suitcase.hasOwnProperty("shorts"));}
+			else
+				{console.log(suitcase.shorts = "gdf")}
+	</script>
+
+	<script>
+		// original classes
+		function Animal(name, numLegs) {
+			this.name = name;
+			this.numLegs = numLegs;
+			this.isAlive = true;
+		}
+		function Penguin(name) {
+			this.name = name;
+			this.numLegs = 2;
+		}
+		function Emperor(name) {
+			this.name = name;
+			this.saying = "Waddle waddle";
+		}
+
+		// set up the prototype chain
+		Penguin.prototype = new Animal();				// kế thừa
+		Emperor.prototype = new Penguin();
+
+		var myEmperor = new Emperor("Jules");
+
+		console.log( myEmperor.saying ); // should print "Waddle waddle"
+		console.log(  myEmperor.numLegs); // should print 2
+		console.log( myEmperor.isAlive); // should print true
+	</script>
+
+	<script>
+		function StudentReport() {
+			this.grade1 = 4;
+			this.grade2 = 2;
+			this.grade3 = 1;
+			this.getGPA = function() {
+				return (this.grade1 + this.grade2 + this.grade3) / 3;
+			};
+		}
+
+		var myStudentReport = new StudentReport();
+
+		for(var x in myStudentReport) {
+			if(typeof myStudentReport[x] !== "function") {
+				console.log("Muahaha! " + myStudentReport[x]);
+			}
+		}
+
+		console.log("Your overall GPA is " + myStudentReport.getGPA()); 		// in trung bình cộng
+	</script>
+
+
+	<script>
+		var cashRegister = {
+    total: 0,
+//insert the add method here    
+    add: function(itemCost)
+    {this.total += itemCost},
+    
+    scan: function (item) {
+        switch (item) { 
+        case "eggs": 
+            this.add(0.98); 
+            break;
+        
+        case "milk": 
+            this.add(1.23); 
+            break;
+        
+        //Add other 2 items here
+         case "magazine": 
+            this.add(4.99); 
+            break;
+             case "chocolate": 
+            this.add(0.45); 
+            break;
+        
+        }
+        return true;
+		    }
+		};
+
+		//Scan 2 eggs and 3 magazines
+		cashRegister.scan("eggs", 2);
+		cashRegister.scan("eggs", 2);
+		cashRegister.scan("magazine", 3);
+		cashRegister.scan("magazine", 3);
+		cashRegister.scan("magazine", 3);
+		//Show the total bill
+		console.log('Your bill is '+cashRegister.total);	
+	</script>
+
+
+	<script>
+		function StaffMember(name,discountPercent){
+			this.name = name;
+			this.discountPercent = discountPercent;
+		}
+
+		var sally = new StaffMember("Sally",5);
+		var bob = new StaffMember("Bob",10);
+
+	// Create yourself again as 'me' with a staff discount of 20%
+
+
+	var cashRegister = {
+		total:0,
+		lastTransactionAmount: 0,
+		add: function(itemCost){
+			this.total += (itemCost || 0);
+			this.lastTransactionAmount = itemCost;
+		},
+		scan: function(item,quantity){
+			switch (item){
+				case "eggs": this.add(0.98 * quantity); break;
+				case "milk": this.add(1.23 * quantity); break;
+				case "magazine": this.add(4.99 * quantity); break;
+				case "chocolate": this.add(0.45 * quantity); break;
+			}
+			return true;
+		},
+		voidLastTransaction : function(){
+			this.total -= this.lastTransactionAmount;
+			this.lastTransactionAmount = 0;
+		},
+	    // Create a new method applyStaffDiscount here
+	    
+	    
+	};
+
+	cashRegister.scan('eggs',1);
+	cashRegister.scan('milk',1);
+	cashRegister.scan('magazine',3);
+	// Apply your staff discount by passing the 'me' object 
+	// to applyStaffDiscount
+
+
+	// Show the total bill
+	console.log('Your bill is '+cashRegister.total.toFixed(2));
+</script>
+</body>
+</html>

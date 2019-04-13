@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<style>
+/* advanced styling version */
+* {
+  transition: background .5s;
+}
+body {
+  background: url("http://subtlepatterns.com/patterns/debut_dark.png");
+}
+ul {
+  font: 14px/14px Helvetica,Arial,sans-serif;
+  background: #87240F;
+  box-shadow: 0 3px 3px rgba(0,0,0,.5);
+}
+li {
+  position: relative;
+  display: inline-block;
+  list-style: none;
+}
+li a {
+  display: block;
+  padding: 10px 15px;
+  color: #ccc;
+  text-decoration: none;
+  border-radius: 3px;
+}
+li a:hover {
+  color: white;
+  background: #71200f;
+}
+.top-level {
+  border-bottom: 1px solid #71200f;
+}
+.second-level,
+.third-level {
+  width: 150px;
+  border: 1px solid #71200f;
+  border-radius: 4px;
+}
+
+
+/*dropdown menu styles*/
+/*first level*/
+.top-level li:hover .second-level {
+  left: 0;
+}
+.second-level:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 15px;
+  border-bottom: 8px solid #71200f;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.second-level {
+  position: absolute;
+  top: 100%;
+  left: -9999em;
+}
+.second-level li {
+  position: relative;
+  display: block;
+}
+.second-level li a {
+  margin: 0;
+}
+
+/*second level*/
+.second-level li:hover .third-level {
+  left: 100%;
+}
+.third-level:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -8px;
+  border-bottom: 8px solid transparent;
+  border-top: 8px solid transparent;
+  border-right: 8px solid #71200f;
+}
+.third-level {
+  position: absolute;
+  left: -9999em;
+  top: 0;
+}
+	</style>
+</head>
+<body>
+	<!-- nav menu top level -->
+<ul class="top-level">
+  <li><a href="javascript:;">Home</a></li>
+  <li><a href="javascript:;">About Us</a>
+    <!-- dropdown menu first level -->
+    <ul class="second-level">
+      <li><a href="javascript:;">The Business</a></li>
+      <li><a href="javascript:;">The Products</a>
+        <!-- dropdown menu second level -->
+        <ul class="third-level">
+          <li><a href="javascript:;">Marketing</a></li>
+          <li><a href="javascript:;">Shipping</a></li>
+          <li><a href="javascript:;">FAQ</a></li>
+        </ul></li>
+      <li><a href="javascript:;">The People</a>
+        <ul class="third-level">
+          <li><a href="javascript:;">Steve</a></li>
+          <li><a href="javascript:;">Angie</a></li>
+          <li><a href="javascript:;">Mark</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="javascript:;">Shop</a>
+    <ul class="second-level">
+      <li><a href="javascript:;">Mousepads</a></li>
+      <li><a href="javascript:;">Lamps</a></li>
+      <li><a href="javascript:;">Pencil Holders</a></li>
+    </ul>
+  </li>
+  <li><a href="javascript:;">Forums</a></li>
+  <li><a href="javascript:;">Contact Us</a></li>
+</ul>
+</body>
+</html>

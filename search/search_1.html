@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		'use strict';
+
+function updateLinks(data) {
+    var topic, desc, link, resultHtml = "";
+    // 1 - Topic, 2 = Short desc, 3 = Links
+    for (var idx = 0; idx < data[1].length; idx++) {
+        topic = data[1][idx];
+        desc = data[2][idx];
+        link = data[3][idx];        
+        
+        var content = "";
+        content += "<div class='well' onClick='window.open(\""+ link +"\");'>";
+        content += "\t<h4>" + topic + "</h4>";
+        content += "\t<p class='wiki-link-desc'>" + desc + "</p>";
+        content += "</div>";
+        resultHtml += content;
+    }
+    
+    console.log(resultHtml);
+    $("#wiki-links").html(resultHtml);
+}
+
+function search() {
+    var ENG_WIKI_API_LINK = "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=?&search=",
+        textToSearch = $("#input-search").val(),
+        request = ENG_WIKI_API_LINK + textToSearch;
+
+    $.ajax({
+        type: "GET",
+        url: request,
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        dataType: "json",
+        success: function (data, textStatus, jqXHR) {
+            updateLinks(data);
+        },
+        error: function (errorMessage) {}
+    });
+
+}
+
+function handleSearch() {
+    var wikiLinksElement = $("#wiki-links");
+    search();
+
+    if (wikiLinksElement.css('visibility') === 'hidden') {
+        wikiLinksElement.css('visibility', 'visible');
+    }
+}
+
+$(document).ready(function () {
+
+    var KEY_ENTER_ID = 13,
+        wikiLinksElement = $("#wiki-links");
+
+    // Impl of search input clear icon
+    $("#search-clear").on('click', function () {
+        $("#input-search").val('');
+
+        // hide wiki-links
+        if (wikiLinksElement.css('visibility') === 'visible') {
+            wikiLinksElement.css('visibility', 'hidden');
+        }
+        
+        // clear wiki-links content
+        wikiLinksElement.html();
+    });
+
+    // impl of the search button
+    $("#search-button").on('click', function () {
+        handleSearch();
+    });
+
+    // Enter key handling while input is selected
+    $("#input-search").keypress(function (ev) {
+        if (ev.which === KEY_ENTER_ID) {
+            handleSearch();
+        }
+    });
+});
+	</script>
+	<style>
+	body {
+    background-color: #263678;
+}
+#main {
+    font-family: 'Inconsolata', Arial, monospace;
+    font-weight: 400;
+    margin-top: 100px;
+    color: white;
+}
+#wiki-search {
+    margin-top:100px;
+}
+
+#search-clear {
+    position: absolute;
+    right: 180px;
+    top: 0;
+    bottom: 0;
+    height: 14px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #000 !important;
+    z-index: 10;
+}
+
+#search-clear:hover {
+    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+#gl-test {
+    color:green;
+}
+
+#wikiLinks {
+    margin-top: 50px;
+    color: #000;
+}
+
+#wiki-links {
+    margin-top: 50px;
+    color: #000;
+    visibility: hidden;
+}
+
+.wiki-link-desc:hover {
+    box-shadow: 0 0 20px 20px #fff;
+    cursor: pointer;
+}
+
+	</style>
+</head>
+<body>
+	<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wikipedia Viewer for FreeCodeCamp</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata:700' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container" id="main">
+        <h1 class="text-center">Wikipedia Viewer for FreeCodeCamp</h1>
+        <div class="input-group" id="wiki-search">
+            <input type="search" class="form-control" placeholder="Enter Wikipedia page name" id="input-search">
+            <i id="search-clear" class="glyphicon glyphicon-remove"></i>
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="button" id="search-button">Search</button>
+                <button class="btn btn-default" onClick="window.open('http://en.wikipedia.org/wiki/Special:Random');">Random Page</button>
+            </div>
+        </div>
+        <div id="wiki-links">
+        </div>
+    </div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.pagination {
+  display: block;
+  font-family: verdana;
+  font-size: 16px;
+  position: relative;
+  text-align: center;
+}
+.pagination span:not(.pages), .pagination .pages a {
+  background: #e0d3b1;
+  color: #000;
+  display: inline-block;
+  margin: 2px 2px 2px 0;
+  padding: 6px 9px 5px 9px;
+  text-decoration: none;
+  width: auto;
+}
+.pagination .pages a:nth-child(4n+1):hover, .pagination .pages .active:nth-child(4n+1) {
+  background: #f3bc29;
+}
+.pagination .pages a:nth-child(4n+2):hover, .pagination .pages .active:nth-child(4n+2) {
+  background: #ac0b5e;
+}
+.pagination .pages a:nth-child(4n+3):hover, .pagination .pages .active:nth-child(4n+3) {
+  background: #0b97ac;
+}
+.pagination .pages a:nth-child(4n+4):hover, .pagination .pages .active:nth-child(4n+4) {
+  background: #1b9b5a;
+}
+
+	</style>
+</head>
+<body>
+	<div class="pagination">
+  <span>Page 1 of 10</span>
+  <span class="pages">
+    <a href="#" class="first" title="First Page">&laquo;</a>
+    <a href="#" class="prev" title="Previous Page">&lsaquo;</a>
+    <span class="active">1</span>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">6</a>
+    <a href="#">7</a>
+    <a href="#">8</a>
+    <a href="#">9</a>
+    <a href="#">10</a>
+    <a href="#" class="next" title="Next Page">&rsaquo;</a>
+    <a href="#" class="last" title="Last Page">&raquo;</a>
+  </span>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+
+	function clock() {
+		var d = new Date(),
+				h = d.getHours(),
+				m = d.getMinutes(),
+				s = d.getSeconds();
+
+		if (h < 10) { h = '0' + h };
+		if (m < 10) { m = '0' + m };
+		if (s < 10) { s = '0' + s };
+
+		$('.hour').text(h);
+		$('.min').text(m);
+		$('.sec').text(s);
+
+		setTimeout(clock, 1000);
+	}
+
+	clock();
+});
+	</script>
+	<style>
+	*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: #222;
+  font-family: Roboto, sans-serif;
+}
+
+.date {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 30vmin;
+  font-weight: 300;
+  color: #fff;
+}
+.date .sec {
+  font-size: 0.5em;
+}
+.date .min::before,
+.date .sec::before {
+  content: ':';
+}
+
+@supports (-webkit-background-clip: text) {
+  .date {
+    background: url(http://i.imgur.com/m6mUMQI.gif) center/cover, url(https://unsplash.it/1920/1080/?image=814) center/cover, #777;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+	</style>
+</head>
+<body>
+	
+<div class="date"><span class="hour"></span><span class="min"></span><span class="sec"></span></div>
+</body>
+</html>

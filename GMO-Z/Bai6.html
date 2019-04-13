@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 6</title>
+</head>
+<script type="text/javascript">
+    var slideimages = new Array() // create new array to preload images
+    slideimages[0] = new Image() // create new instance of image object
+    slideimages[0].src = "http://s23.postimage.org/t57meexkb/horse_1.png" // set image src property to image path, preloading image in the process
+    slideimages[1] = new Image()
+    slideimages[1].src = "http://s23.postimage.org/i86apnasr/horse_2.png"
+    slideimages[2] = new Image()
+    slideimages[2].src = "http://s23.postimage.org/6kc8v3lnv/horse_3.png"
+    slideimages[3] = new Image()
+    slideimages[3].src = "http://s23.postimage.org/w4ej1j71n/horse_4.png"
+    slideimages[4] = new Image()
+    slideimages[4].src = "http://s23.postimage.org/ddclrdch7/horse_5.png"
+    slideimages[5] = new Image()
+    slideimages[5].src = "http://s23.postimage.org/nbxkdulwr/horse_6.png"
+    slideimages[6] = new Image()
+    slideimages[6].src = "http://s23.postimage.org/phrv8cpd7/horse_7.png"
+    slideimages[7] = new Image()
+    slideimages[7].src = "http://s23.postimage.org/n1un88wob/horse_8.png"  
+    slideimages[8] = new Image()
+    slideimages[8].src = "http://s23.postimage.org/9yz0oz6gb/horse_9.png"
+</script>
+<body style="margin: auto; width: 500px">
+    <img id="slide"  />
+    <script type="text/javascript">
+        var step=0
+        function slideit(){
+            if (!document.images)
+                return
+            document.getElementById('slide').src = slideimages[step].src
+            if (step<8)
+                step++
+            else
+                step=0
+            setTimeout("slideit()",50)
+        }
+        slideit()
+    </script>
+</body>
+</html>

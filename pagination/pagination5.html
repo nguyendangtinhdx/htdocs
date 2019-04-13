@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.pagination,
+		.pagination li a {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.pagination li { background-color: lightseagreen; }
+
+		.pagination a {
+			font-weight: 300;
+			padding-top: 1px;
+			text-decoration:none;  
+			border: 1px solid rgba(0,0,0,.25);
+			border-left-width: 0;
+			min-width:44px;
+			min-height:44px;
+			color: rgba(255,255,255,.85);  
+			box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.35);
+		}
+
+		.pagination li:not([class*="current"]) a:hover { 
+			background-color: rgba(255,255,255,.2);
+			border-top-color: rgba(0,0,0,.35);
+			border-bottom-color: rgba(0,0,0,.5);
+		}
+
+		.pagination li:not([class*="current"]) a:focus,
+		.pagination li:not([class*="current"]) a:active {;
+			box-shadow: 0px 0px 10px 1px rgba(0,0,0,.25);
+			border-left-width:1px;
+		}
+
+		.pagination li:first-of-type a {
+			border-left-width: 1px;
+		}
+
+		.pagination li:first-of-type span,
+		.pagination li:last-of-type span,
+		.pagination li:nth-of-type(2) span,
+		.pagination li:nth-last-of-type(2) span { 
+			/* screen readers only */
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+		.pagination li:first-child a::before,
+		.pagination li:last-child a::after,
+		.pagination li:nth-of-type(2) a::before,
+		.pagination li:nth-last-of-type(2) a::after {  
+			display: inline-block;
+			font-family: Fontawesome;  
+			font-size: inherit;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			transform: translate(0, 0);
+		}
+
+		.pagination li:first-child a::before,
+		.pagination li:last-child a::after { content: "\f100"; }
+
+		.pagination li:nth-of-type(2) a::before,
+		.pagination li:nth-last-of-type(2) a::after { content: "\f104"; }
+
+		.pagination li:last-child a::after,
+		.pagination li:nth-last-of-type(2) a::after { transform: rotate(180deg); }
+
+		.pagination li.current a { 
+			padding-top:.25em;
+			color: rgba(255,255,255,1);
+			background-color: rgba(255,255,255,.15);
+			box-shadow: inset 0px 2px 1px 0px rgba(0,0,0,.25);
+			cursor: default;
+			pointer-events: none;
+		}
+
+		@media only screen and ( max-width: 64.063em ) {  
+			.pagination li:first-child,
+			.pagination li:last-child {
+				/* screen readers only */
+				position: absolute;
+				top: -9999px;
+				left: -9999px;
+			}
+
+			.pagination li:nth-of-type(2) a { border-left-width: 1px; }
+
+		}
+
+		@media only screen and ( max-width: 40.063em ) {  
+			.pagination li {
+				/* screen readers only */
+				position: absolute;
+				top: -9999px;
+				left: -9999px;
+			}
+
+			.pagination li.current,
+			.pagination li:first-of-type,
+			.pagination li:last-of-type,
+			.pagination li:nth-of-type(2),
+			.pagination li:nth-last-of-type(2){
+				position: initial;
+				top: initial;
+				left: initial;
+			}
+
+			.pagination li:nth-of-type(2) a { border-left-width: 0; }
+
+		}
+
+		@media only screen and ( max-width: 30.063em ) {  
+			
+			h1 { font-size: 1.35em !important; }
+			
+			.pagination li:first-child,
+			.pagination li:last-child {
+				/* screen readers only */
+				position: absolute;
+				top: -9999px;
+				left: -9999px;
+			}
+
+			.pagination li:nth-of-type(2) a { border-left-width: 1px; }
+
+		}
+
+		@media only screen and ( max-width: 15.063em ) {  /* For watches? */
+			
+			.pagination li { width: 50%;}
+			
+			.pagination li.current { 
+				order: 2;
+				width: 100%;
+				border-left-width: 1px;
+				
+			}  
+
+		}
+
+		/* Just Setting a few defaults */
+
+		html {  
+			overflow-y: scroll; 
+			box-sizing: border-box;  
+			font-size: 100%;
+			line-height: 1.4236;
+			font-family: 'Roboto', sans-serif;
+			background-color: lightseagreen;
+			color: #444;
+		}
+
+		*,
+		*:before,
+		*:after {
+			-webkit-box-sizing: inherit;
+			-moz-box-sizing: inherit;
+			box-sizing: inherit;
+		}
+
+		body {  
+			font-size: 1.382rem;
+		}
+
+		.wrapper {
+			display: flex;
+			flex-direction: column;
+			min-height: 50vh;
+			box-shadow: 0px .5vh 5px 0px rgba(0,0,0,.25);
+			padding:1em;
+			background-color:#fff;
+			max-width: 53rem;
+			margin: 1em auto;
+			justify-content: center;
+			align-items: center;
+		}
+
+		h1 { font-size: 2em; }
+
+		h1,
+		p { margin-bottom: 1rem; }
+	</style>
+</head>
+<body>
+	<!-- Go ahead and squeeze me! -->
+
+	<div class="wrapper">
+		
+		<h1>Responsive Pagination</h1>
+		
+		<p>I'm a responsive page link menu built with Flexbox!</p>
+		
+		<ul class="pagination" role="menubar" aria-label="Pagination">
+			<li><a href=""><span>First</span></a></li>
+			<li><a href=""><span>Previous</span></a></li>
+			<li><a href="">1</a></li>
+			<li><a href="">2</a></li>
+			<li><a href="">3</a></li>
+			<li class="current"><a href="">4</a></li>
+			<li><a href="">5</a></li>
+			<li><a href="">6</a></li>
+			<li><a href="">7</a></li>
+			<li><a href="">8</a></li>
+			<li><a href="">9</a></li>
+			<li><a href="">10</a></li>
+			<li><a href=""><span>Next</span></a></li>
+			<li><a href=""><span>Last</span></a></li>
+		</ul>  
+		
+	</div>
+
+	<!-- Stuff that Makes Awesome Stuff Awesomer -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</body>
+</html>

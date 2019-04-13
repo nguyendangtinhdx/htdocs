@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*,
+		*:before,
+		*:after {
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		body {
+			text-align: center;
+			max-width: 800px;
+			margin: 2em auto;
+			font-size: 16px;
+		}
+
+		.wrap {
+			text-align: left;
+			/*border: 1px solid red;*/
+		}
+
+		.pagination {
+			text-align: center;
+			overflow: hidden;
+		}
+		.pagination:before {
+			content: '';
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+			margin-right: -0.25em;
+			/* Adjusts for spacing */
+		}
+		.pagination .pagination-inner {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.pagination a, .pagination span {
+			color: #FFF;
+			display: block;
+			float: left;
+			width: 44px;
+			height: 44px;
+			line-height: 44px;
+			margin-right: 4px;
+		}
+		.pagination a:last-child, .pagination span:last-child {
+			margin-right: 0;
+		}
+		.pagination a {
+			text-decoration: none;
+			background: #959595;
+		}
+		.pagination span {
+			background: #F5891F;
+		}
+		.pagination .next, .pagination .prev {
+			background: #212121;
+		}
+		.pagination .next:hover, .pagination .prev:hover {
+			background: #959595;
+		}
+		.pagination a:hover {
+			background: #212121;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		
+		<nav class="pagination">
+			<div class="pagination-inner">
+				<a href="#" class="prev">&laquo;</a>
+				<a href="#">1</a>
+				<span>2</span>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">5</a>
+				<a href="#" class="next">&raquo;</a>
+			</div>
+		</nav>
+
+	</div>
+</body>
+</html>

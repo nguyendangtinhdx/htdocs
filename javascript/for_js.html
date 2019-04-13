@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<button onclick="my()">Click Me</button>
+	<p id="1"></p>
+	<p id="2"></p>
+	<p id="3"></p>
+	<p id="4"></p>
+	<script>
+		function my()
+		{
+			s = ["Nguyen","Dang","Tinh"];
+			t="";
+			for(i=0;i<s.length;i++)								/*for*/
+			{
+				t += s[i] + "<br>";
+			}
+		/*	list:   <=> for
+			{													
+				t += s[0] + "<br>";
+				t += s[1] + "<br>";
+				t += s[2] + "<br>";
+				t += s[3] + "<br>";
+			}*/
+			document.getElementById("1").innerHTML = t;
+		}
+
+		r = {name:"Bi", age:"18",high:"173cm"};
+		l="";
+		for(x in r)	/*<=> foreach*/					
+		{
+			l += r[x] + " ";
+		}
+		document.getElementById('2').innerHTML = l;
+
+		i=0;
+		m="";
+		while(i<10)	/*while <=> do while*/
+		{
+			if(i==4) break;/*continue: bỏ qua giá trị đó và tiếp tục*/
+			m += i + "<br>";
+			i++;
+		}
+		document.getElementById('3').innerHTML = m;
+	</script>
+</body>
+</html>

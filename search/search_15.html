@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		var html;
+$(document).ready(function(){
+  $("#search-value").keyup(function(event){
+    if(event.keyCode == 13 ){
+      console.log("Enter Pressed");
+      $.ajax({
+        url: 'https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=' + $("#search-value").val(), 
+        dataType: 'jsonp',
+        type: 'POST',
+        headers: { 'Api-User-Agent': 'Example/1.0' },
+        success: function(data){
+          $('.results').empty();
+          var dataArr = data.query.search;
+          
+          for(var linkData in dataArr) {
+            html = '<div id="articles" class="well"><a href=https://en.wikipedia.org/wiki/' + dataArr[linkData].title + '"target="_blank"><h3>' + dataArr[linkData].title + '</h3><p>' +  dataArr[linkData].snippet + '</p></a></div>';
+            $('.results').append(html);
+          }
+        }
+      });
+    }
+  });
+});
+	</script>
+	<style>
+	body{
+  background-color: rgb(51,0,26);
+}
+
+#wiki-viewer {
+  color: white;
+  font-family: garamond, cursive;
+}
+
+#search-value {
+  border-radius: 50px;
+  background-color: rgba(0,0,0,0);
+  border: 2px solid white;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+
+#random-search {
+  font-family: verdana;
+  color: white;
+  font-weight: bold;
+}
+
+.random-div {
+  margin-top: 20px;
+}
+
+#search-value:focus{
+  outline: none;
+}
+
+.results {
+  margin-top: 40px;
+}
+	</style>
+</head>
+<body>
+	<div class="container">
+  <h1 class="text-center" id="wiki-viewer">WIKIPEDIA VIEWER</h1>
+  <div class="text-center">
+    <input type="text" id="search-value" placeholder="Type and press enter"></input>
+  </div>
+  
+  <div class="text-center random-div">
+    <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" id="random-search">CLICK HERE FOR A RANDOM SEARCH</a>
+  </div>
+
+  <article class="results">
+  </article>
+
+  
+  
+</div>
+</body>
+</html>

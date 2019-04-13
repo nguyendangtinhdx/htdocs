@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<!-- độ chậm -->
+	
+	<!-- <script>
+		new SmoothScroll();
+	
+		function SmoothScroll(el) {
+			var t = this, h = document.documentElement;
+			el = el || window;
+			t.rAF = false;
+			t.target = 0;
+			t.scroll = 0;
+			t.animate = function() {
+				t.scroll += (t.target - t.scroll) * 0.1;
+				if (Math.abs(t.scroll.toFixed(5) - t.target) <= 0.47131) {
+					cancelAnimationFrame(t.rAF);
+					t.rAF = false;
+				}
+				if (el == window) scrollTo(0, t.scroll);
+				else el.scrollTop = t.scroll;
+				if (t.rAF) t.rAF = requestAnimationFrame(t.animate);
+			};
+			el.onmousewheel = function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				var scrollEnd = (el == window) ? h.scrollHeight - h.clientHeight : el.scrollHeight - el.clientHeight;
+				t.target += (e.wheelDelta > 0) ? -70 : 70;
+				if (t.target < 0) t.target = 0;
+				if (t.target > scrollEnd) t.target = scrollEnd;
+				if (!t.rAF) t.rAF = requestAnimationFrame(t.animate);
+			};
+			el.onscroll = function() {
+				if (t.rAF) return;
+				t.target = (el == window) ? pageYOffset || h.scrollTop : el.scrollTop;
+				t.scroll = t.target;
+			};
+		}
+	</script> -->
+	<style>
+		body {
+			padding: 10px 30px;
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			text-align: center;
+			font: 30px "Helvetica Neue", Helvetica, Arial, sans-serif;
+			color: #999;
+			background: #1d1f20;
+			overflow-x: hidden;
+			-webkit-font-smoothing: antialiased;
+		}
+		h1 {
+			width: 70vw;
+			font-weight: bold;
+			font-size: 100px;
+		}
+		div {
+			margin-bottom: 70px;
+			width: 70vw;
+		}
+		::-webkit-scrollbar { width: 10px; }
+		::-webkit-scrollbar-thumb {
+			border-right: solid 5px #1d1f20;
+			background: #5f5f5f;
+		}
+		::-webkit-scrollbar-track {
+			border: none;
+			background: #1d1f20;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>SMOOTH SCROLLING</h1>
+	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam velit velit, congue et mollis nec, imperdiet non augue. Ut ut ligula pretium, elementum nibh ac, tincidunt leo. Vestibulum tempus, velit vel vulputate eleifend, mauris elit rhoncus mauris, eu commodo turpis erat id metus. Mauris laoreet rutrum augue, in hendrerit est mollis sollicitudin. Morbi pulvinar blandit justo, tincidunt malesuada ipsum ultrices quis. Mauris et libero vulputate, congue arcu luctus, sagittis orci. Fusce tincidunt enim nec rutrum tristique. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec eu vulputate purus. Phasellus vitae molestie ligula. Nunc placerat porttitor sem. Duis id nulla blandit, euismod mauris sed, finibus leo.
+		<br><br>
+		Mauris faucibus, odio eu fermentum imperdiet, augue ligula mattis ipsum, quis sollicitudin odio urna eget dolor. Morbi et leo et tellus porttitor porta eget ac ante. Donec blandit nisl orci, non semper augue laoreet non. Fusce nec nibh non nisi dapibus consectetur. Quisque quis sagittis arcu. Sed varius neque ac enim accumsan efficitur. Sed auctor orci nibh, eu rhoncus sem tincidunt et.
+		<br><br>
+		Donec a sollicitudin diam. Nunc vehicula ac purus ac efficitur. Mauris enim mauris, posuere consequat arcu non, molestie porta purus. Curabitur in luctus augue. Vestibulum at massa porttitor, volutpat libero rhoncus, suscipit elit. Suspendisse vulputate ante massa, non faucibus metus hendrerit aliquam. Fusce sit amet diam iaculis, egestas augue nec, imperdiet ante. Quisque ultricies id mi eu dictum. Sed id odio vel urna rutrum laoreet. Morbi eget congue orci, quis luctus lacus. Nulla quis est nec leo interdum fringilla nec suscipit ex.
+		<br><br>
+		Etiam tincidunt, erat at pharetra tincidunt, lectus neque pretium lorem, a feugiat elit ante a sapien. Vestibulum iaculis sollicitudin ornare. Nullam et ullamcorper odio, non dictum mi. Vivamus maximus pellentesque odio. Nullam faucibus, erat mollis ultrices dignissim, risus elit eleifend risus, ultrices scelerisque justo mi eget nisi. Donec interdum convallis congue. Fusce eu enim viverra, sagittis est eu, hendrerit sapien. Proin consequat dictum urna. Sed vehicula est nisl. Maecenas ultricies, libero eu varius vehicula, sapien sem placerat lectus, ac placerat orci nisl ac ipsum. Nam laoreet dolor non ex bibendum, ut congue felis imperdiet. Nam fringilla ligula massa, in eleifend massa bibendum commodo. Curabitur elementum accumsan sem non sagittis. Phasellus ornare ac purus in consequat.
+		<br><br>
+		In hac habitasse platea dictumst. Duis mollis cursus neque, eu iaculis dui pellentesque sed. Curabitur facilisis in tortor et cursus. Aliquam erat volutpat. Donec lobortis lobortis metus in venenatis. Cras pretium risus sem, sit amet congue nunc imperdiet in. Morbi malesuada orci vitae ipsum rutrum, nec tempor purus fermentum. Donec mattis ultricies tortor. Pellentesque turpis nisl, convallis tempus metus eget, consequat dignissim turpis. Maecenas tincidunt porttitor tortor commodo tincidunt. Sed ornare facilisis magna at blandit. Mauris luctus justo at euismod consectetur. Donec neque urna, iaculis nec nulla eget, vestibulum tempus lectus. Praesent pulvinar sem libero, in pellentesque elit vestibulum nec. Cras tincidunt fringilla odio, eu tempus leo faucibus ac. Maecenas posuere iaculis odio eget dictum.</div>
+	</body>
+	</html>

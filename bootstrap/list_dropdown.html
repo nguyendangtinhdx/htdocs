@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		1 list-group-item
+		<ul class="list-group">
+			<a href="#" class="list-group-item active">One</a>
+			<a href="#" class="list-group-item disabled">True</a>
+			<a href="#" class="list-group-item">Three</a>
+			<a href="#" class="list-group-item list-group-item-success">Four</a>
+		</ul>
+
+		2 panel panel-primary
+		<div class="panel panel-primary" style="width: 50%">
+			<div class="panel-heading">panel-heading</div>
+			<div class="panel-body">panel-body</div>
+			<div class="panel-body">panel-body</div>
+			<div class="panel-footer">panel-footer</div>
+		</div>
+		3 dropdown(divider)
+		<div class="dropdown">
+			<button class="btn btn-success dropdown-toggle" data-toggle="dropdown">Dropdown
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="1">HTML</a></li>
+				<li><a href="2">CSS</a></li>
+				<li class="divider"></li>
+				<li><a href="3">JavaScript</a></li>
+			</ul>
+		</div>
+		4 dropup(dropdown-header)
+		<div class="dropup">
+			<button class="btn btn-success dropdown-toggle" data-toggle="dropdown">Dropdown
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li class="dropdown-header">Dropdown-header 1</li>
+				<li><a href="1">HTML</a></li>
+				<li><a href="2">CSS</a></li>
+				<li class="divider"></li>
+				<li class="dropdown-header">Dropdown-header 2</li>
+				<li><a href="3">JavaScript</a></li>
+			</ul>
+		</div>
+		5 list_dropdown
+		<div class="panel-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" href="#collapse1">Collapsible list group</a>
+					</h4>
+				</div>
+				<div id="collapse1" class="panel-collapse collapse">
+					<ul class="list-group">
+						<li class="list-group-item">One</li>
+						<li class="list-group-item">Two</li>
+						<li class="list-group-item">Three</li>
+					</ul>
+					<div class="panel-footer">Footer</div>
+				</div>
+			</div>
+		</div>
+		6 list_dropdwon 2
+		<style>
+			/* Icon when the collapsible content is shown */
+			.btn:after {
+				font-family: "Glyphicons Halflings";
+				content: "\e114";
+				float: right;
+				margin-left: 15px;
+			}
+			/* Icon when the collapsible content is hidden */
+			.btn.collapsed:after {
+				content: "\e080";
+			}
+		</style>
+		<div class="container">
+			<h2>Simple Collapsible</h2>
+			<button type="button" class="btn btn-lg btn-info collapsed" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+			<div id="demo" class="collapse">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			</div>
+		</div>
+	</div>	
+</body>
+</html>

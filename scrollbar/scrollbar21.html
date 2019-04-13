@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div, span {display: block;}
+div {float: left; margin: 10px; overflow-y: scroll; width: 200px; height: 200px; padding: 10px;}
+span {height: 400px;}
+.box1 {background: #eee;}
+
+/* BOX 1 SCROLL */
+.box1::-webkit-scrollbar-thumb:vertical {border:3px solid #ffffff;height:12px; background-color:#00dcf4;}
+.box1::-webkit-scrollbar-thumb:horizontal {background-color:#00dcf4;}
+.box1::-webkit-scrollbar {background-color:#00dcf4;height:7px;width:12px;border:5px solid #ffffff;}
+.box1::-webkit-scrollbar-button:start:decrement, 
+.box1::-webkit-scrollbar-button:end:increment{background-color:#00dcf4;display:block;height:8px;border-right:2px solid #ffffff;border-left:2px solid #ffffff;}
+    </style>
+</head>
+<body>
+    <div class="box1">Scroll 1<span></span></div>
+
+</body>
+</html>

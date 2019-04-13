@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<script>
+		var months = [
+  "JAN", "FED", "MAR", "APR",
+  "MAY", "JUN", "JUL", "AUG", 
+  "SEPT", "OCT", "NOV", "DEC"
+];
+
+(function() {
+  var getTime = function() {
+    var now = new Date();
+    return {
+      seconds: ('0' + now.getSeconds()).slice(-2),
+      minutes: ('0' + now.getMinutes()).slice(-2),
+      hours: now.getHours(),
+      day: now.getDate(),
+      month: now.getMonth(),
+      year: now.getFullYear()
+    };
+  }
+  var updateTime = function(time) {
+    var hourBar = document.getElementById("hour");
+    var hourRatio = (time.hours / 24);
+    var minutesBar = document.getElementById("minutes");
+    var minutesRatio = (time.minutes / 60);
+    var secondsBar = document.getElementById("seconds");
+    var secondsRatio = (time.seconds / 60);
+    document.getElementById("date").innerHTML = 
+      months[time.month] + " " + 
+      time.day + ", " + time.year + 
+      " " + time.hours + ":" +
+      time.minutes + ":" + time.seconds;
+    hourBar.style.width = hourRatio * 100 + "%";
+    hourBar.style.backgroundColor = "hsl(" + ((1 - hourRatio) * 100) + ",50%,50%)";
+    minutesBar.style.width = minutesRatio * 100 + "%";
+    minutesBar.style.backgroundColor = "hsl(" + ((1 - minutesRatio) * 100) + ",50%,50%)";
+    secondsBar.style.width = secondsRatio * 100 + "%";
+    secondsBar.style.backgroundColor = "hsl(" + ((1 - secondsRatio) * 100) + ",50%,50%)";
+  }
+  
+  setInterval(function() {
+    return updateTime(getTime());
+  }, 1000);
+})();
+	</script>
+	<style>
+/* Imports */
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+/* Breakpoints */
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  animation: fadeIn 2s 0.5s ease-in both;
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 100px 18px 0;
+  position: relative;
+  width: 100%;
+}
+.container div {
+  height: 36px;
+  margin-bottom: 18px;
+}
+@media screen and (min-width: 920px) {
+  .container div {
+    height: 48px;
+  }
+}
+.container div:before {
+  animation: fadeIn 2s 2s ease-in both;
+  background: rgba(0, 0, 0, 0.2);
+  content: " ";
+  height: 36px;
+  left: 18px;
+  position: absolute;
+  right: 18px;
+}
+@media screen and (min-width: 920px) {
+  .container div:before {
+    height: 48px;
+  }
+}
+
+body {
+  background: darkslategray;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 100;
+}
+
+h1 {
+  font-family: "Poiret One", sans-serif;
+  font-size: 40px;
+  font-weight: 100;
+}
+@media screen and (min-width: 640px) {
+  h1 {
+    font-size: 56px;
+  }
+}
+@media screen and (min-width: 920px) {
+  h1 {
+    font-size: 72px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  h1 {
+    font-size: 90px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+  <div id="hour"></div>
+  <div id="minutes"></div>
+  <div id="seconds"></div>
+  <h1 id="date"></h1>
+</div>
+
+</body>
+</html>

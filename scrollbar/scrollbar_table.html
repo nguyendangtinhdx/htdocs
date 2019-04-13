@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	/* http://dabblet.com/gist/5648624 scrolling table ?, Yep! */
+#blocTableaux {
+font-size:16px;
+width:92em;
+height:320px;			/* set height here */
+margin:3em  auto;position:relative;padding:0;border:1em solid transparent;box-shadow:0 0 5px;border-radius:0.25em;text-align:center}
+#blocG, #blocD{display:inline-block;width:45.45em;height:100%;margin:0 0.1em;overflow-y:scroll;box-shadow:0 0 0 1px;background:#ddd}
+#tabG, #tabD {text-align:center;
+font-size :10px; 		/* !!! */
+width:100%;table-layout:fixed;}
+thead, tfoot {background-color : #159;color : #ddd;}
+tbody {background-color : #def;}
+						/* copy of thead to overlap it and remain on container top. 
+						It brings no weird extra content .GCyrillus */
+tfoot {table-layout:fixed;position:absolute;top:0px;left:auto;
+width:70.9em;			/* => [45.25 - 1em (scrollbar)] x 1.6 (16px/10px)  */
+display:table;background:#def;margin-left:-1px;box-shadow:0px 3px 5px   #ccc}
+tfoot th { box-shadow:0 0 0 1px #ddd; background:#159;}
+						/* largeur de colonnes via class */
+#blocTableaux  .t1th1, 
+#blocTableaux  .t1th2, 
+#blocTableaux  .t2th1 
+{width:1.9em;}
+#blocTableaux  .t1th6,
+#blocTableaux  .t1th7 
+{width:3em;}
+#blocTableaux  .t1th9 
+{width:4em;}
+#blocTableaux  .t2th10 
+{width:4.4em;}
+#blocTableaux  .t2th6 
+{width:5em;}
+#blocTableaux  .t1th11 
+{width:5.1em}
+.t1th11 +th 
+{width:5.25em;}
+#blocTableaux  .t1th3, 
+#blocTableaux  .t1th4, 
+#blocTableaux  .t2th2,
+#blocTableaux  .t2th4, 
+#blocTableaux  .t2th7, 
+#blocTableaux  .t2th8 
+{width:6em;}
+#blocTableaux  .t2th5
+{width:6.25em;}
+#blocTableaux .t2th9 
+{width:9em;} 
+#blocTableaux .t1th8 
+{width:12.3em;}
+#blocTableaux .t1th5
+{width:12.35em;}
+#blocTableaux .t1th10
+{width:16em;}
+#blocTableaux .t2th3
+{width:20.70em;}
+						/* extra makup for the fun */
+:empty {background:linear-gradient(-30deg,transparent 48% ,#999,transparent 52% ),linear-gradient(30deg,#def 48% ,#999,#def 52% ) ;}
+td b , th span{display:inline-block;color:#87BB40;}
+td b+b {color:#D81900;}
+tr:nth-child(odd) b+b {color:#87BB40;}
+tr:nth-child(odd) b:first-of-type {color:#D81900}
+tr:nth-child(4n) b+b {color:blue;}
+tr:nth-child(4n) b {color:orange;}
+tr:nth-child(8n) b {color:blue;}
+tr:nth-child(8n) b+b {color:orange;}
+th span {line-height:1em;font-size:1.2em;color:white;sborder:solid 1px;padding:0 0.25em;border-radius:1em;background:#87BB40 linear-gradient(180deg, #87BB40,#87BB40,green);box-shadow:0 0 1px 1px white;}
+tr input {transform:rotate(45deg);}
+	</style>
+</head>
+<body>
+	<p>reponse au sujet identiques des forums de: <a href="http://www.developpez.net/forums/d1346476/css/coordonner-taille-tableau-div/">developpez.com </a> et <a href="http://www.siteduzero.com/forum/sujet/css-coordonner-taille-tableau-et-taille-div">siteduzero.com</a>.</p>
+<div id="blocTableaux">
+	<div id="blocG">
+		<table id="tabG">
+			<thead>
+				<tr>
+					<th rowspan="2" class="t1th1"></th>
+					<th rowspan="2" class="t1th2"><span>?</span></th>
+					<th rowspan="2" class="t1th3">Num OF</th>
+					<th rowspan="2" class="t1th4">Seq OF</th>
+					<th rowspan="2" class="t1th5">Article</th>
+					<th rowspan="2" class="t1th6">Qté prévue</th>
+					<th rowspan="2" class="t1th7">Qté revue</th>
+					<th rowspan="2" class="t1th8">Composant</th>
+					<th rowspan="2" class="t1th9">Restant à assigner</th>
+					<th colspan="3" class="t1th10">Assignation HU</th>
+				</tr>
+				
+				<tr>
+					<th>Qté totale</th>
+					<th class="t1th11">N° HU</th>
+					<th>Quantité</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td>
+					<td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936 " value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td>
+					<td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+				<tr>
+					<td id="tabG_tdCb1003212" class="tabG_checkB donneesOF 1003212" rowspan="1"><input id="cb1003212" type="checkbox" /></td>
+					<td class="tabG_commence donneesOF 1003212 "><b>✓</b><b>✗</b></td>
+					<td id="1003212" class="tabG_numOF donneesOF 1003212 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212","1003212");" select="n" title="ceci est une infobulle" rowspan="1">1003212</td>
+					<td id="seqOF1003212" class="tabG_seqOF donneesOF 1003212" value="10/04 20:03" select="n" rowspan="1">10/04 20:03</td><td id="art1003212" class="tabG_art donneesOF 1003212" value="310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34" select="n" onClick="onClick_cellule("310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34","310009987_NOKIMATE_F790_MISTRAL_HZD_3.4*1800_D34","310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34");" rowspan="1">310009987 NOKIMATE F790 MISTRAL HZD 3.4*1800 D34</td>
+					<td id="qteP1003212" class="tabG_qtePrevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="qteR1003212" class="tabG_qteRevue donneesOF 1003212" value="150" select="n" rowspan="1">150</td><td id="comp1003212" class="tabG_composant donneesOF 1003212 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850","1003212");" select="n" rowspan="1">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="restant1003212" class="tabG_restant donneesOF 1003212" value="-2,60" select="n" rowspan="1">-2,60</td><td id="qteT1003212_1" class="tabG_qteTotale donneesOF 1003212" value="0" select="n">0</td><td id="numHU1003212_1" class="tabG_numHU donneesOF 1003212 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936","1003212");" select="n">640055936</td><td id="qteHU1003212_1" class="tabG_qteHU donneesOF 1003212" value="0" select="n">0</td>		
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th rowspan="2" class="t1th1"></th>
+					<th rowspan="2" class="t1th2"><span>?</span></th>
+					<th rowspan="2" class="t1th3">Num OF</th>
+					<th rowspan="2" class="t1th4">Seq OF</th>
+					<th rowspan="2" class="t1th5">Article</th>
+					<th rowspan="2" class="t1th6">Qté prévue</th>
+					<th rowspan="2" class="t1th7">Qté revue</th>
+					<th rowspan="2" class="t1th8">Composant</th>
+					<th rowspan="2" class="t1th9">Restant à assigner</th>
+					<th colspan="3" class="t1th10">Assignation HU</th>
+				</tr>
+				
+				<tr>
+					<th>Qté totale</th>
+					<th class="t1th11">N° HU</th>
+					<th>Quantité</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+	<div id="blocD">
+		<table id="tabD">
+			<thead>
+				<tr>
+					<th rowspan="2" class="t2th1"></th>
+					<th rowspan="2" class="t2th2">Num HU</th>
+					<th rowspan="2" class="t2th3">Besoin composant</th>
+					<th rowspan="2" class="t2th4">Date entree lot</th>
+					<th rowspan="2" class="t2th5">Num lot</th>
+					<th rowspan="2" class="t2th6">Disponible</th>
+					<th rowspan="2" class="t2th7">Qte totale</th>
+					<th rowspan="2" class="t2th8">Qte restante</th>
+					<th colspan="2" class="t2th9">Assignation HU</th>
+				</tr>
+				
+				<tr>
+					<th class="t2th10">Num OF</th>
+					<th>Qte OF</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tabD_checkB donneesHU 640059227" value="n" rowspan="1"><span select="n"><input id="cb640059227" type="checkbox" name="cb640059227" onclick="onClick_CheckBoxD("640059227");" /></span></td>
+					<td id="640059227" class="tabD_numHU donneesHU 640059227 640059227" value="640059227" onClick="onClick_cellule("640059227","640059227");" select="n" title="Ceci est une infobulle" rowspan="1">640059227</td>
+					<td id="tabD_composant640059227" class="tabD_composant donneesHU 640059227 310053701_ENV_EC_REC_25PA2050DY" value="310053701 ENV EC REC 25PA2050DY" onClick="onClick_cellule("310053701 ENV EC REC 25PA2050DY","310053701_ENV_EC_REC_25PA2050DY");" rowspan="1">310053701 ENV EC REC 25PA2050DY</td>
+					<td id="tabD_dateEntree640059227" class="tabD_dateEntreeLot donneesHU 640059227" value="24/02/2012" rowspan="1">24/02/2012</td>
+					<td id="tabD_numLot640059227" class="tabD_numLot donneesHU 640059227" value="17088" onClick="onClick_cellule("17088","17088");" rowspan="1">17088</td>
+					<td id="tabD_dispo640059227" class="tabD_dispo donneesHU 640059227" value="Oui" rowspan="1">Oui</td>
+					<td id="tabD_qteInit640059227" class="tabD_qteInit donneesHU 640059227" value="0" rowspan="1">0</td><td id="tabD_qteRestante640059227" class="tabD_qteRestante donneesHU 640059227" value="0" rowspan="1">0</td>
+					<td id="tabD_numOF640059227_1" class="tabD_numOF donneesHU 640059227 " value="" onClick="onClick_cellule("","");"></td>
+					<td id="tabD_qteOF640059227_1" class="tabD_qteOF donneesHU 640059227" value=""></td>
+				</tr>
+				<tr>
+					<td class="tabD_checkB donneesHU 640055936" value="n" rowspan="3"><span select="n"><input id="cb640055936" type="checkbox" name="cb640055936" onclick="onClick_CheckBoxD("640055936");" /></span></td>
+					<td id="640055936" class="tabD_numHU donneesHU 640055936 640055936" value="640055936" onClick="onClick_cellule("640055936","640055936");" select="n" title="Ceci est une infobulle" rowspan="3">640055936</td>
+					<td id="tabD_composant640055936" class="tabD_composant donneesHU 640055936 310048158_NOKIMATE_MISTRAL_F790_HZD_L1850" value="310048158 NOKIMATE MISTRAL F790 HZD L1850" onClick="onClick_cellule("310048158 NOKIMATE MISTRAL F790 HZD L1850","310048158_NOKIMATE_MISTRAL_F790_HZD_L1850");" rowspan="3">310048158 NOKIMATE MISTRAL F790 HZD L1850</td>
+					<td id="tabD_dateEntree640055936" class="tabD_dateEntreeLot donneesHU 640055936" value="24/02/2012" rowspan="3">24/02/2012</td>
+					<td id="tabD_numLot640055936" class="tabD_numLot donneesHU 640055936" value="942314" onClick="onClick_cellule("942314","942314");" rowspan="3">942314</td>
+					<td id="tabD_dispo640055936" class="tabD_dispo donneesHU 640055936" value="Oui" rowspan="3">Oui</td><td id="tabD_qteInit640055936" class="tabD_qteInit donneesHU 640055936" value="620,60" rowspan="3">620,60</td>
+					<td id="tabD_qteRestante640055936" class="tabD_qteRestante donneesHU 640055936" value="620,60" rowspan="3">620,60</td>
+					<td id="tabD_numOF640055936_1" class="tabD_numOF donneesHU 640055936 1001967" value="1001967" onClick="onClick_cellule("1001967","1001967");">1001967</td>
+					<td id="tabD_qteOF640055936_1" class="tabD_qteOF donneesHU 640055936" value="0">0</td>
+				</tr>
+				<tr>
+					<td id="tabD_numOF640055936_2" class="tabD_numOF donneesHU 640055936 1002726" value="1002726" onClick="onClick_cellule("1002726","1002726");">1002726</td>
+					<td id="tabD_qteOF640055936_2" class="tabD_qteOF donneesHU 640055936" value="0">0</td>
+				</tr>
+				<tr>
+					<td id="tabD_numOF640055936_3" class="tabD_numOF donneesHU 640055936 1003212" value="1003212" onClick="onClick_cellule("1003212","1003212");">1003212</td>
+					<td id="tabD_qteOF640055936_3" class="tabD_qteOF donneesHU 640055936" value="0">0</td>
+				</tr>
+				<tr>
+					<td class="tabD_checkB donneesHU 640050199" value="n" rowspan="1"><span select="n"><input id="cb640050199" type="checkbox" name="cb640050199" onclick="onClick_CheckBoxD("640050199");" /></span></td>
+					<td id="640050199" class="tabD_numHU donneesHU 640050199 640050199" value="640050199" onClick="onClick_cellule("640050199","640050199");" select="n" title="Ceci est une infobulle" rowspan="1">640050199</td>
+					<td id="tabD_composant640050199" class="tabD_composant donneesHU 640050199 300195829_HORS_PISTE_F992_FXX_L1900" value="300195829 HORS PISTE F992 FXX L1900" onClick="onClick_cellule("300195829 HORS PISTE F992 FXX L1900","300195829_HORS_PISTE_F992_FXX_L1900");" rowspan="1">300195829 HORS PISTE F992 FXX L1900</td>
+					<td id="tabD_dateEntree640050199" class="tabD_dateEntreeLot donneesHU 640050199" value="24/02/2012" rowspan="1">24/02/2012</td>
+					<td id="tabD_numLot640050199" class="tabD_numLot donneesHU 640050199" value="100780001" onClick="onClick_cellule("100780001","100780001");" rowspan="1">100780001</td><td id="tabD_dispo640050199" class="tabD_dispo donneesHU 640050199" value="Oui" rowspan="1">Oui</td>
+					<td id="tabD_qteInit640050199" class="tabD_qteInit donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_qteRestante640050199" class="tabD_qteRestante donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_numOF640050199_1" class="tabD_numOF donneesHU 640050199 " value="" onClick="onClick_cellule("","");"></td>
+					<td id="tabD_qteOF640050199_1" class="tabD_qteOF donneesHU 640050199" value=""></td>
+				</tr>
+				<tr>
+					<td class="tabD_checkB donneesHU 640050199" value="n" rowspan="1"><span select="n"><input id="cb640050199" type="checkbox" name="cb640050199" onclick="onClick_CheckBoxD("640050199");" /></span></td>
+					<td id="640050199" class="tabD_numHU donneesHU 640050199 640050199" value="640050199" onClick="onClick_cellule("640050199","640050199");" select="n" title="Ceci est une infobulle" rowspan="1">640050199</td>
+					<td id="tabD_composant640050199" class="tabD_composant donneesHU 640050199 300195829_HORS_PISTE_F992_FXX_L1900" value="300195829 HORS PISTE F992 FXX L1900" onClick="onClick_cellule("300195829 HORS PISTE F992 FXX L1900","300195829_HORS_PISTE_F992_FXX_L1900");" rowspan="1">300195829 HORS PISTE F992 FXX L1900</td>
+					<td id="tabD_dateEntree640050199" class="tabD_dateEntreeLot donneesHU 640050199" value="24/02/2012" rowspan="1">24/02/2012</td>
+					<td id="tabD_numLot640050199" class="tabD_numLot donneesHU 640050199" value="100780001" onClick="onClick_cellule("100780001","100780001");" rowspan="1">100780001</td><td id="tabD_dispo640050199" class="tabD_dispo donneesHU 640050199" value="Oui" rowspan="1">Oui</td>
+					<td id="tabD_qteInit640050199" class="tabD_qteInit donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_qteRestante640050199" class="tabD_qteRestante donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_numOF640050199_1" class="tabD_numOF donneesHU 640050199 " value="" onClick="onClick_cellule("","");"></td>
+					<td id="tabD_qteOF640050199_1" class="tabD_qteOF donneesHU 640050199" value=""></td>
+				</tr>
+				<tr>
+					<td class="tabD_checkB donneesHU 640050199" value="n" rowspan="1"><span select="n"><input id="cb640050199" type="checkbox" name="cb640050199" onclick="onClick_CheckBoxD("640050199");" /></span></td>
+					<td id="640050199" class="tabD_numHU donneesHU 640050199 640050199" value="640050199" onClick="onClick_cellule("640050199","640050199");" select="n" title="Ceci est une infobulle" rowspan="1">640050199</td>
+					<td id="tabD_composant640050199" class="tabD_composant donneesHU 640050199 300195829_HORS_PISTE_F992_FXX_L1900" value="300195829 HORS PISTE F992 FXX L1900" onClick="onClick_cellule("300195829 HORS PISTE F992 FXX L1900","300195829_HORS_PISTE_F992_FXX_L1900");" rowspan="1">300195829 HORS PISTE F992 FXX L1900</td>
+					<td id="tabD_dateEntree640050199" class="tabD_dateEntreeLot donneesHU 640050199" value="24/02/2012" rowspan="1">24/02/2012</td>
+					<td id="tabD_numLot640050199" class="tabD_numLot donneesHU 640050199" value="100780001" onClick="onClick_cellule("100780001","100780001");" rowspan="1">100780001</td><td id="tabD_dispo640050199" class="tabD_dispo donneesHU 640050199" value="Oui" rowspan="1">Oui</td>
+					<td id="tabD_qteInit640050199" class="tabD_qteInit donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_qteRestante640050199" class="tabD_qteRestante donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_numOF640050199_1" class="tabD_numOF donneesHU 640050199 " value="" onClick="onClick_cellule("","");"></td>
+					<td id="tabD_qteOF640050199_1" class="tabD_qteOF donneesHU 640050199" value=""></td>
+				</tr>
+				<tr>
+					<td class="tabD_checkB donneesHU 640050199" value="n" rowspan="1"><span select="n"><input id="cb640050199" type="checkbox" name="cb640050199" onclick="onClick_CheckBoxD("640050199");" /></span></td>
+					<td id="640050199" class="tabD_numHU donneesHU 640050199 640050199" value="640050199" onClick="onClick_cellule("640050199","640050199");" select="n" title="Ceci est une infobulle" rowspan="1">640050199</td>
+					<td id="tabD_composant640050199" class="tabD_composant donneesHU 640050199 300195829_HORS_PISTE_F992_FXX_L1900" value="300195829 HORS PISTE F992 FXX L1900" onClick="onClick_cellule("300195829 HORS PISTE F992 FXX L1900","300195829_HORS_PISTE_F992_FXX_L1900");" rowspan="1">300195829 HORS PISTE F992 FXX L1900</td>
+					<td id="tabD_dateEntree640050199" class="tabD_dateEntreeLot donneesHU 640050199" value="24/02/2012" rowspan="1">24/02/2012</td>
+					<td id="tabD_numLot640050199" class="tabD_numLot donneesHU 640050199" value="100780001" onClick="onClick_cellule("100780001","100780001");" rowspan="1">100780001</td><td id="tabD_dispo640050199" class="tabD_dispo donneesHU 640050199" value="Oui" rowspan="1">Oui</td>
+					<td id="tabD_qteInit640050199" class="tabD_qteInit donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_qteRestante640050199" class="tabD_qteRestante donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_numOF640050199_1" class="tabD_numOF donneesHU 640050199 " value="" onClick="onClick_cellule("","");"></td>
+					<td id="tabD_qteOF640050199_1" class="tabD_qteOF donneesHU 640050199" value=""></td>
+				</tr>
+				<tr>
+					<td class="tabD_checkB donneesHU 640050199" value="n" rowspan="1"><span select="n"><input id="cb640050199" type="checkbox" name="cb640050199" onclick="onClick_CheckBoxD("640050199");" /></span></td>
+					<td id="640050199" class="tabD_numHU donneesHU 640050199 640050199" value="640050199" onClick="onClick_cellule("640050199","640050199");" select="n" title="Ceci est une infobulle" rowspan="1">640050199</td>
+					<td id="tabD_composant640050199" class="tabD_composant donneesHU 640050199 300195829_HORS_PISTE_F992_FXX_L1900" value="300195829 HORS PISTE F992 FXX L1900" onClick="onClick_cellule("300195829 HORS PISTE F992 FXX L1900","300195829_HORS_PISTE_F992_FXX_L1900");" rowspan="1">300195829 HORS PISTE F992 FXX L1900</td>
+					<td id="tabD_dateEntree640050199" class="tabD_dateEntreeLot donneesHU 640050199" value="24/02/2012" rowspan="1">24/02/2012</td>
+					<td id="tabD_numLot640050199" class="tabD_numLot donneesHU 640050199" value="100780001" onClick="onClick_cellule("100780001","100780001");" rowspan="1">100780001</td><td id="tabD_dispo640050199" class="tabD_dispo donneesHU 640050199" value="Oui" rowspan="1">Oui</td>
+					<td id="tabD_qteInit640050199" class="tabD_qteInit donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_qteRestante640050199" class="tabD_qteRestante donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_numOF640050199_1" class="tabD_numOF donneesHU 640050199 " value="" onClick="onClick_cellule("","");"></td>
+					<td id="tabD_qteOF640050199_1" class="tabD_qteOF donneesHU 640050199" value=""></td>
+				</tr>
+				<tr>
+					<td class="tabD_checkB donneesHU 640050199" value="n" rowspan="1"><span select="n"><input id="cb640050199" type="checkbox" name="cb640050199" onclick="onClick_CheckBoxD("640050199");" /></span></td>
+					<td id="640050199" class="tabD_numHU donneesHU 640050199 640050199" value="640050199" onClick="onClick_cellule("640050199","640050199");" select="n" title="Ceci est une infobulle" rowspan="1">640050199</td>
+					<td id="tabD_composant640050199" class="tabD_composant donneesHU 640050199 300195829_HORS_PISTE_F992_FXX_L1900" value="300195829 HORS PISTE F992 FXX L1900" onClick="onClick_cellule("300195829 HORS PISTE F992 FXX L1900","300195829_HORS_PISTE_F992_FXX_L1900");" rowspan="1">300195829 HORS PISTE F992 FXX L1900</td>
+					<td id="tabD_dateEntree640050199" class="tabD_dateEntreeLot donneesHU 640050199" value="24/02/2012" rowspan="1">24/02/2012</td>
+					<td id="tabD_numLot640050199" class="tabD_numLot donneesHU 640050199" value="100780001" onClick="onClick_cellule("100780001","100780001");" rowspan="1">100780001</td><td id="tabD_dispo640050199" class="tabD_dispo donneesHU 640050199" value="Oui" rowspan="1">Oui</td>
+					<td id="tabD_qteInit640050199" class="tabD_qteInit donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_qteRestante640050199" class="tabD_qteRestante donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_numOF640050199_1" class="tabD_numOF donneesHU 640050199 " value="" onClick="onClick_cellule("","");"></td>
+					<td id="tabD_qteOF640050199_1" class="tabD_qteOF donneesHU 640050199" value=""></td>
+				</tr>
+				<tr>
+					<td class="tabD_checkB donneesHU 640050199" value="n" rowspan="1"><span select="n"><input id="cb640050199" type="checkbox" name="cb640050199" onclick="onClick_CheckBoxD("640050199");" /></span></td>
+					<td id="640050199" class="tabD_numHU donneesHU 640050199 640050199" value="640050199" onClick="onClick_cellule("640050199","640050199");" select="n" title="Ceci est une infobulle" rowspan="1">640050199</td>
+					<td id="tabD_composant640050199" class="tabD_composant donneesHU 640050199 300195829_HORS_PISTE_F992_FXX_L1900" value="300195829 HORS PISTE F992 FXX L1900" onClick="onClick_cellule("300195829 HORS PISTE F992 FXX L1900","300195829_HORS_PISTE_F992_FXX_L1900");" rowspan="1">300195829 HORS PISTE F992 FXX L1900</td>
+					<td id="tabD_dateEntree640050199" class="tabD_dateEntreeLot donneesHU 640050199" value="24/02/2012" rowspan="1">24/02/2012</td>
+					<td id="tabD_numLot640050199" class="tabD_numLot donneesHU 640050199" value="100780001" onClick="onClick_cellule("100780001","100780001");" rowspan="1">100780001</td><td id="tabD_dispo640050199" class="tabD_dispo donneesHU 640050199" value="Oui" rowspan="1">Oui</td>
+					<td id="tabD_qteInit640050199" class="tabD_qteInit donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_qteRestante640050199" class="tabD_qteRestante donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_numOF640050199_1" class="tabD_numOF donneesHU 640050199 " value="" onClick="onClick_cellule("","");"></td>
+					<td id="tabD_qteOF640050199_1" class="tabD_qteOF donneesHU 640050199" value=""></td>
+				</tr>
+				<tr>
+					<td class="tabD_checkB donneesHU 640050199" value="n" rowspan="1"><span select="n"><input id="cb640050199" type="checkbox" name="cb640050199" onclick="onClick_CheckBoxD("640050199");" /></span></td>
+					<td id="640050199" class="tabD_numHU donneesHU 640050199 640050199" value="640050199" onClick="onClick_cellule("640050199","640050199");" select="n" title="Ceci est une infobulle" rowspan="1">640050199</td>
+					<td id="tabD_composant640050199" class="tabD_composant donneesHU 640050199 300195829_HORS_PISTE_F992_FXX_L1900" value="300195829 HORS PISTE F992 FXX L1900" onClick="onClick_cellule("300195829 HORS PISTE F992 FXX L1900","300195829_HORS_PISTE_F992_FXX_L1900");" rowspan="1">300195829 HORS PISTE F992 FXX L1900</td>
+					<td id="tabD_dateEntree640050199" class="tabD_dateEntreeLot donneesHU 640050199" value="24/02/2012" rowspan="1">24/02/2012</td>
+					<td id="tabD_numLot640050199" class="tabD_numLot donneesHU 640050199" value="100780001" onClick="onClick_cellule("100780001","100780001");" rowspan="1">100780001</td><td id="tabD_dispo640050199" class="tabD_dispo donneesHU 640050199" value="Oui" rowspan="1">Oui</td>
+					<td id="tabD_qteInit640050199" class="tabD_qteInit donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_qteRestante640050199" class="tabD_qteRestante donneesHU 640050199" value="0" rowspan="1">0</td>
+					<td id="tabD_numOF640050199_1" class="tabD_numOF donneesHU 640050199 " value="" onClick="onClick_cellule("","");"></td>
+					<td id="tabD_qteOF640050199_1" class="tabD_qteOF donneesHU 640050199" value=""></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th rowspan="2" class="t2th1"></th>
+					<th rowspan="2" class="t2th2">Num HU</th>
+					<th rowspan="2" class="t2th3">Besoin composant</th>
+					<th rowspan="2" class="t2th4">Date entree lot</th>
+					<th rowspan="2" class="t2th5">Num lot</th>
+					<th rowspan="2" class="t2th6">Disponible</th>
+					<th rowspan="2" class="t2th7">Qte totale</th>
+					<th rowspan="2" class="t2th8">Qte restante</th>
+					<th colspan="2" class="t2th9">Assignation HU</th>
+				</tr>
+				
+				<tr>
+					<th class="t2th10">Num OF</th>
+					<th>Qte OF</th>
+				</tr>
+			</foot>
+		</table>
+	</div>
+</div>
+</body>
+</html>

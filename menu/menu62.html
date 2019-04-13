@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+  box-sizing: border-box;
+}
+
+nav{
+  display: table;
+  margin: 2em auto;
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav > li{
+  float: left;
+  position: relative;
+}
+
+.main-nav a{
+  background: #11130F;
+  color: #F7F7F4;
+  padding: .8em 1.5em;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all .2s ease;    /* prefix dibutuhkan */
+}
+
+.main-nav > li:first-child a{
+  border-radius: 5px 0 0 5px;
+}
+
+.main-nav > li:last-child a{
+  border-radius: 0 5px  5px 0;
+}
+
+.main-nav a:hover{
+  background: #4A8938;
+}
+
+.sub-nav{
+  display: none;
+  position: absolute;
+}
+
+.sub-nav li{
+  width: 100%;
+}
+
+.sub-nav a{
+  background: #21251D;
+  border-bottom: solid 1px #363636;
+  display: block;
+}
+
+.sub-nav > li:last-child a{
+  border-radius: 0 0 5px 5px;
+}
+
+.main-nav > li:hover .sub-nav{
+  display: block;
+}
+	</style>
+</head>
+<body>
+	<nav>
+  <ul class="main-nav">
+    <li><a href="#">home</a></li>
+    <li>
+      <a href="#">tutorial</a>
+      <ul class="sub-nav">
+        <li><a href="#">HTML5</a></li>
+        <li><a href="#">CSS3</a></li>
+        <li><a href="#">jQuery</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">design</a>
+      <ul class="sub-nav">
+        <li><a href="#">graphic</a></li>
+        <li><a href="#">icon</a></li>
+        <li><a href="#">wallpaper</a></li>
+        <li><a href="#">poster</a></li>
+        <li><a href="#">advertisement</a></li>
+      </ul>
+    </li>
+    <li><a href="#">gallery</a></li>
+    <li><a href="#">about</a></li>
+  </ul>
+</nav>
+</body>
+</html>

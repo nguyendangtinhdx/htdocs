@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+			background-image: url("bgdesert.jpg");
+			background-repeat: repeat-x;
+			background-position: right top;
+			margin-right: 200px;
+		}
+		h1{ text-decoration: overline;}
+		h2{ text-decoration: line-through;
+			text-shadow: 3px 2px lime;
+		}
+		h3{ text-decoration: underline;}
+		p#uppercase{text-transform: uppercase;}
+		p.italic{font-style: italic;}
+		p{font-family: Impact;
+			word-spacing: 10px;
+			text-indent: 10px;
+		}
+		p {font-weight:bold; /*font rộng rõ nét*/
+			text-transform:capitalize; /*viết hoa mỗi từ đầu trong đoạn văn*/
+			text-transform:uppercase; /*viết hoa tất cả : */
+			/*lowercase*/	
+		}
+		p::first-letter {
+			font-size: 200%;	/*Viết hoa chữ đầu đoạn văn*/
+			color: #8A2BE2;
+		}
+		p::first-line {
+			background-color: yellow;	/*Tô màu dòng đâu*/
+		}
+	</style>
+</head>
+<body>
+	<h1>Hello World!</h1>
+	<h2>Nguyen Dang Tinh</h2>
+	<h3>Mystery</h3>
+	<p id="uppercase">Viet Hoa</p>
+	<p class="italic">Thuoc lui vao</p>
+
+</body>
+</html>

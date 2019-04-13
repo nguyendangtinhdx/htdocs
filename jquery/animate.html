@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../bootstrap/js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#button1").click(function(){
+				$("#div1").animate({
+					left: '250px',
+					opacity: 0.5,
+					height: '+=150px',
+					width: '+=150px'
+					// height: 'toggle'
+			});
+			});
+		});
+		$(document).ready(function(){
+			$("#button2").click(function(){
+				var d = $("#div2");
+				d.animate({height:'300px',opacity:'0.4'},"slow");
+				d.animate({width:'300px',opacity:'0.8'},"slow");
+				d.animate({height:'100px',opacity:'0.4'},"slow");
+				d.animate({width:'100px',opacity:'0.8'},"slow");
+			});
+		});
+		$(document).ready(function(){
+			$("#button3").click(function(){
+				var d = $("#div3");
+				d.animate({left: '200px'},"slow");
+				d.animate({fontSize:'5em'},"slow");
+			});
+		});
+	</script>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<button id="button1">Click Me 1</button><br><br>
+	<button id="button2">Click Me 2</button><br><br>
+	<button id="button3">Click Me 3</button><br><br>
+	<div id="div1" style="background: #98bf21; height: 100px;width: 100px; position: absolute;"></div><br><br><br><br><br><br><br>
+
+	<div id="div2" style="background: #98bf21; height: 100px;width: 100px; position: absolute;"></div><br><br><br><br><br><br><br>
+
+	<div id="div3" style="background: #98bf21; height: 100px;width: 200px; position: absolute;">Hello</div>
+</body>
+</html>

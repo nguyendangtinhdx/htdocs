@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+@import url("http://fonts.googleapis.com/css?family=Lato");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:before,
+:after {
+  content: '';
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px/1 Lato, sans-serif;
+  color: #555;
+  background: #eee;
+}
+
+ul {
+  list-style: none;
+}
+
+header {
+  border-top: solid 4px #59d;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+nav {
+  width: 700px;
+  margin: -4px auto 0;
+  background: #fff;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav li {
+  flex: 1;
+}
+nav a {
+  padding: 30px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #555;
+}
+
+nav ul li {
+  position: relative;
+}
+nav ul a {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+nav ul a:before {
+  z-index: -1;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 105%;
+  border-bottom: solid 4px #59d;
+  transition: .2s ease;
+}
+nav ul a:hover:before {
+  top: 0;
+}
+
+h1 {
+  margin: 50px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+	</style>
+</head>
+<body>
+	<header>
+  <nav>
+    <ul>
+      <li>
+        <a>Dashboard</a>
+      </li>
+      <li>
+        <a>Statistics</a>
+      </li>
+      <li>
+        <a>Roadmap</a>
+      </li>
+      <li>
+        <a>Milestones</a>
+      </li>
+      <li>
+        <a>Settings</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<h1>
+  Animated Menu
+</h1>
+</body>
+</html>

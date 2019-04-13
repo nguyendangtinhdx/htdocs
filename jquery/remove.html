@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			// remove
+			$("#bt1").click(function(){
+				$("#div1").remove();
+			});
+			// empty
+			$("#bt2").click(function(){
+				$("#div2").empty();
+			});
+			// remove 1
+			$("#bt3").click(function(){
+				$("p").remove(".p1,.p2");
+			})
+		});
+	</script>
+</head>
+<body>
+	<!-- remove -->
+	<div id="div1" style="height:100px;width:300px;border:1px solid black;background-color:yellow;">
+		<p>Nguyễn Đăng Tỉnh</p>
+		<p>Nguyễn Đăng Tỉnh</p>
+	</div>
+	<button id="bt1">Remove</button>
+	<!-- empty -->
+	<div id="div2" style="height:100px;width:300px;border:1px solid black;background-color:yellow;">
+		<p>Nguyễn Đăng Tỉnh</p>
+		<p>Nguyễn Đăng Tỉnh</p>
+	</div>
+	<button id="bt2">Empty</button>
+	<br><br>
+
+	<p class="p1">Nguyễn Đăng Tỉnh p1</p>
+	<p class="p2">Nguyễn Đăng Tỉnh p2</p>
+	<button id="bt3">Remove class="p1" and class="p2"</button>
+</body>
+</html>

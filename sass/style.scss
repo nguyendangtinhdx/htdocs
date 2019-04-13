@@ -1,0 +1,62 @@
+/* 1 nested: long nhau*/ 
+#menu{
+	width: 100px;
+	ul{
+		background: blue;
+		li{
+			color: red;
+			max-width: 2px;
+			&:hover{
+				color: green;
+			}
+		}
+	}
+}
+/* 2 variable: bien*/ 
+$name : blue;
+body{
+	color: $name;
+}
+h1,h2{
+	color: $name;
+}
+/* 3 mixin: goi lai*/ 
+@mixin button($color){
+	padding: 10px;
+	color: $color;
+}
+.button{
+	@include button(green);
+}
+a{
+	@include button(blue);
+}
+/* 4 extend: ke thua */
+.button{
+	padding: 10px;
+	color: green;
+}
+.button_2{
+	@extend .button;
+	background: yellow;
+}
+/*  5 % khong in ra */
+%button{
+	padding: 10px;
+	color: green;
+}
+.button_2{
+	@extend %button;
+	background: yellow;
+}
+/* 6 condition: dieu kien */
+$res: true;
+@if $res == true{
+	@media all and(max-width: 320px){
+		body{
+			font-size: 20px;
+		}
+	}
+}
+ /* 7 goi file ngoai */
+ @import "file";

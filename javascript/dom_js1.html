@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1 id="1" style="color: green">Nguyễn Đăng Tỉnh</h1>
+	<button onclick="document.getElementById('1').style.color='red'">Change Color</button><br>
+	 <!-- style.backgroudColor || style.textAlign ||style.visibility="hidden": giấu -->
+	<img id="i" src="1.jpg" alt="NĐT" height="120" width="160">
+	<p id="2"></p>
+	<script>
+		var x = document.getElementById('1');
+		x.innerHTML = "Quách Tỉnh"; /*thay đổi giá trị của thẻ h1*/
+		document.getElementById('i').src = "6.jpg"; /*thay đôi ảnh*/
+		var y = document.getElementById("1").style.color;
+		document.getElementById('2').innerHTML = y;
+		// hiển thị tính chất màu
+	</script>
+</body>
+</html>

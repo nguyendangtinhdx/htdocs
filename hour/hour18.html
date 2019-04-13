@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		
+    $(document).ready(function() {
+
+      $('*[data-jquery-clock]').each(function(){
+        var t = $(this);
+
+        var seconds = new Date().getSeconds(),
+        hours = new Date().getHours(),
+        mins = new Date().getMinutes(),
+        sdegree = seconds * 6,            
+        hdegree = hours * 30 + (mins / 2),           
+        mdegree = mins * 6;
+
+        var updateWatch = function() {
+          sdegree += 6;
+          if ( sdegree % 360 == 0 ) {
+            mdegree += 6;
+          }
+          hdegree += (0.1 / 12);
+
+
+          var srotate = "rotate(" + sdegree + "deg)",
+          hrotate = "rotate(" + hdegree + "deg)" ,
+          mrotate = "rotate(" + mdegree + "deg)";
+
+          $(".jquery-clock-sec", t).css({"-moz-transform" : srotate, "-webkit-transform" : srotate, '-ms-transform' : srotate });
+          $(".jquery-clock-hour", t).css({"-moz-transform" : hrotate, "-webkit-transform" : hrotate, '-ms-transform' : hrotate });
+          $(".jquery-clock-min", t).css({"-moz-transform" : mrotate, "-webkit-transform" : mrotate, '-ms-transform' : mrotate });
+
+
+        }
+        updateWatch(); 
+
+        setInterval(function(){
+          $(".jquery-clock-sec, .jquery-clock-hour, .jquery-clock-min").addClass('jquery-clock-transitions');
+          updateWatch();
+        }, 1000);
+
+        $(window).focus(function() {
+          $(".jquery-clock-sec, .jquery-clock-hour, .jquery-clock-min").addClass('jquery-clock-transitions');
+        });
+
+        $(window).blur(function() {
+          $(".jquery-clock-sec, .jquery-clock-hour, .jquery-clock-min").removeClass('jquery-clock-transitions');
+        });    
+
+      });
+
+
+
+
+
+
+
+
+
+
+
+
+}); 
+	</script>
+	<style>
+	
+    html, body
+    {
+    height: 100%;
+    margin: 0;  
+    }
+
+    .table-fixed {
+      table-layout: fixed;
+    }
+
+
+    #main {
+    	height: 100%;	    	
+    }
+    #main td {
+    	text-align: center;	
+    }
+
+    .dark-bg {
+    	background: url(http://pietrasiak.com/images/bg-dark.jpg) #1c1c1c;
+    	color: #fff;
+    }
+
+    .transitions {
+    	-webkit-transition: 	1s all;
+    	-moz-transition: 	1s all;
+    	-ms-transition: 	1s all;
+    	-o-transition: 	1s all;
+    	transition: 	1s all;
+    }
+
+    .half-width {
+    	width: 50%;
+    }
+
+    .half-width.opened {
+    	width: 80%;	
+    }
+
+    .pos-rel {
+    	position: relative;	
+    }
+
+    .abs-bottom {
+    	position: absolute;	
+    	bottom: 30px;	
+    	left: 0;	
+    	right: 0;	
+    }
+
+
+    .jquery-clock {
+     position: relative;
+     width: 600px;
+     height: 600px;
+     background-image: url(http://pietrasiak.com/images/clock.png);
+     -webkit-background-size: cover;
+     background-size: cover;
+     list-style: none;
+     padding: 0;
+     margin: auto;
+   }
+
+   .jquery-clock.medium {
+    width: 300px;
+    height: 300px;
+  }
+
+  .jquery-clock.small {
+    width: 200px;
+    height: 200px;
+  }
+
+  .jquery-clock-sec, .jquery-clock-min, .jquery-clock-hour {
+   position: absolute;
+   width: 10%;
+   height: 100%;
+   top: 0px;
+   left: 45%;
+   background-position: center;
+   -webkit-background-size: contain;
+   background-size: contain;
+   background-repeat: no-repeat;
+ }
+
+ .jquery-clock-sec {
+   background-image: url(http://pietrasiak.com/images/sechand.png);
+   z-index: 3;
+ }
+
+ .jquery-clock-min {
+   background-image: url(http://pietrasiak.com/images/minhand.png);
+   z-index: 2;
+ }
+
+ .jquery-clock-hour {
+   background-image: url(http://pietrasiak.com/images/hourhand.png);
+   z-index: 1;
+ }
+
+ .jquery-clock.white {
+  background-image: url(http://pietrasiak.com/images/clock-white.png);
+}
+.jquery-clock.white .jquery-clock-sec {
+ background-image: url(http://pietrasiak.com/images/sechand-white.png);
+ z-index: 3;
+}
+
+.jquery-clock.white .jquery-clock-min {
+ background-image: url(http://pietrasiak.com/images/minhand-white.png);
+ z-index: 2;
+}
+
+.jquery-clock.white .jquery-clock-hour {
+ background-image: url(http://pietrasiak.com/images/hourhand-white.png);
+ z-index: 1;
+}
+
+
+.jquery-clock-pin {
+  position: absolute;
+  background: #fff;
+  left: 50%;
+  top: 50%;
+  height: 3%;
+  width: 3%;
+  z-index: 10;
+  border-radius: 50%;
+  margin: -1.5%;
+}
+
+.jquery-clock.white .jquery-clock-pin {
+  background-color: #000;
+}
+
+
+.jquery-clock-transitions {
+  -webkit-transition: all 1s cubic-bezier(.01,1.81,0,.88) ;
+  -moz-transition: all 1s cubic-bezier(.01,1.81,0,.88) ;
+  -o-transition: all 1s cubic-bezier(.01,1.81,0,.88) ;    
+
+
+
+
+}
+.pos-rel:hover{
+  -webkit-opacity: 0.2;
+}
+	</style>
+</head>
+<body>
+	<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <link href='../fonts.googleapis.com/cssd2d5.css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <title>Adam Pietrasiak</title>
+  <script src="jquery-1.10.2.min.js" type="text/javascript"></script>
+  <link href="bootstrap.css" rel="stylesheet" />
+  <link href="jquery.clock.css" rel="stylesheet" />
+  <link href="site.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body>
+  <table id="main" class="table-fixed" id="myTable" width="100%">
+    <tbody>
+      <tr>
+        <td class="dark-bg">
+          <ul class="jquery-clock small white" data-jquery-clock="">
+            <li class="jquery-clock-pin"></li>
+
+            <li class="jquery-clock-sec"></li>
+
+            <li class="jquery-clock-min"></li>
+
+            <li class="jquery-clock-hour"></li>
+          </ul>
+        </td>
+
+        <td class="transitions half-width pos-rel">
+          <h2>Simplistic Clock</h2>
+          <h2><small>Freddie Gray</small></h2>
+          <h4><small>graphic designer, programmer,  web developer - hire me: frozencatalyst101@gmail.com</small></h4>
+
+                  
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p id="1"></p>
+	<p id="2"></p>
+	<p id="3"></p>
+	<p id="4"></p>
+	<p id="5"></p>
+	<button onclick="my()">Click Me</button>
+	<script>
+			t = "Nguyen Dang Tinh";
+			x = new String("Hello")	/*object*/
+			document.getElementById("1").innerHTML=t.length;	/*độ dài*/
+			document.getElementById("4").innerHTML=t.slice(7,11);	/* phần chia <=> t.substring() */ 
+			/*t.slice(7) từ 7 ->  */
+			/*t.substr(7,6) 7: từ vị trí; 6: độ dài*/
+			/*t.replace("Tinh","Tan"); thay thế*/
+			/*t.toUpperCase(), t.toLowerCase() viết hoa và thưòng*/
+			/*t.concat(" ",x); nối x vào t*/
+			/*t.charCodeAt(6) 6: vị trí trong chuỗi.  trả về vị trí trong unicode*/			
+	    /*  c = "a,b,c,d";
+			a=c.split(,) dấu ',' để phân cách trong chuỗi 
+			document.getElementById("3").innerHTML = a[2]; */
+			function my()
+			{
+				x = document.getElementById("2").innerHTML;
+				t = x.search("locate");
+				document.getElementById("3").innerHTML = t;
+			}
+	/*		k=t.split("");
+			l="";
+			for(i=0;i<t.length;i++)
+			{															hiển thị theo chiều dọc
+				l += k[i] + "<br>";
+			}
+			document.getElementById("5").innerHTML = l;*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+
+
+$(function(){
+	var Accordion = function(el, multiple) {
+		this.el = el || {};
+		this.multiple = multiple || false;
+
+		// Variables
+		var link = this.el.find('.link');
+		// Eventos
+		link.on('click', {el: this.el, multiple: this.multiple},this.dropdown)
+	}
+
+	Accordion.prototype.dropdown = function(e) {
+		var $el = e.data.el;
+			$this = $(this),
+			$next = $this.next();
+
+		// Desencadena evento de apertura en los elementos siguientes a la clase link
+		$next.slideToggle();
+		// Agregar clase open a elemento padre del elemento con clase link = li
+		$this.parent().toggleClass('open');
+		
+		//Parametro inicial que permite ver 1 solo submenu abierto 
+		if(!e.data.multiple){
+			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+		}
+	}
+	// Elegir submenus multiples (true) submenus uno a la vez (false)
+	var accordion = new Accordion($('#accordion'), false);
+});
+	</script>
+	<style>
+body {
+	background: #2b2c41;
+	font-family: 'Open Sans', Helvetica, Arial, Verdana, sans-serif;
+}
+
+a {
+	color: #b63b4d;
+}
+
+/** ==========================
+* Conentendor Principal
+=============================
+**/
+
+.accordion {
+	width: 250px;
+	/*max-width: 360px;*/
+	/*margin: 3em auto 2em;*/
+	background: #FFF;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	list-style: none;
+}
+
+.accordion .link {
+	font-size: 0.85em;
+	font-weight: 700;
+	color: #4d4d4d;
+	
+	cursor: pointer;
+	padding: 15px 15px 15px 0;
+	border-bottom: 1px solid #ccc;
+	display: block;
+	/*position: relative;*/
+	-webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+.accordion li:last-child .link {
+	border-bottom: 0;
+}
+/** ========================
+* Diseño iconos font-awesome
+============================= **/
+
+.accordion li i {
+	/*position: absolute;*/
+	/*top: 12px;*/
+	/*left: 16px;*/
+
+	font-size: 1em;
+	color: #595959;
+
+	-webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+	right: 12px;
+	left: auto;
+
+	font-size: 1.2em;
+
+}
+/**===================================
+* Conf. clase link al estar activo submenu (con js)
+====================================**/
+.accordion li.open .link {
+	color: #b63b4d;
+}
+.accordion li.open i {
+	color: #b63b4d;
+}
+.accordion li.open i.fa-chevron-down {
+	-webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+/**=======================
+* Submenu
+==========================**/
+.submenu {
+	display: none;
+	background: #444359;
+	font-size: 0.95em;
+	list-style: none;
+}
+.submenu li {
+	border-bottom: 1px solid #4b4a5e;
+}
+.submenu a {
+	display: block;
+	text-decoration: none;
+	color: #d9d9d9;
+	padding: 12px;
+	-webkit-transition: all 0.25 ease;
+  -moz-transition: all 0.25 ease;
+	-o-transition: all 0.25 ease;
+	transition: all 0.25 ease;
+}
+.submenu a:hover {
+	background: #b63b4d;
+	color: #fff;
+}
+	</style>
+</head>
+<body>
+	<ul id="accordion" class="accordion">
+    		<li>
+    			<div class="link">
+            </i>Menu 1</i>
+          </div>
+    			<ul class="submenu">
+    				<li><a href="#">submenu 1</a></li>
+    				<li><a href="#">submenu 1</a></li>
+    				<li><a href="#">submenu 1</a></li>
+    				<li><a href="#">submenu 1</a></li>
+    			</ul>
+    		</li>
+    		<li>
+    			<div class="link">
+            </i>Menu 2</i>
+          </div>
+    			<ul class="submenu">
+    				<li><a href="#">submenu 2</a></li>
+    				<li><a href="#">submenu 2</a></li>
+    				<li><a href="#">submenu 2</a></li>
+    				<li><a href="#">submenu 2</a></li>
+    			</ul>
+    		</li>
+    		<li>
+    			<div class="link">
+                    </i>Menu 3</i>
+                </div>
+    			<ul class="submenu">
+    				<li><a href="#">submenu 3</a></li>
+    				<li><a href="#">submenu 3</a></li>
+    				<li><a href="#">submenu 3</a></li>
+    				<li><a href="#">submenu 3</a></li>
+    			</ul>
+    		</li>
+    		<li>
+    			<div class="link">
+                    </i>Menu 4</i>
+                </div>
+    			<ul class="submenu">
+    				<li><a href="#">submenu 4</a></li>
+    				<li><a href="#">submenu 4</a></li>
+    				<li><a href="#">submenu 4</a></li>
+    				<li><a href="#">submenu 4</a></li>
+    			</ul>
+    		</li>
+    	</ul>
+
+</body>
+</html>

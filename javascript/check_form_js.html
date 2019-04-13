@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function checkMandatory()
+		{
+			var error ="";
+			// check text field
+			if(window.document.form.text.value=="")
+			{
+				error += "You must give your name.\n";
+			}
+			// check scrollable list
+			if(window.document.form.state.selectedIndex < 0)
+			{
+				error += "You must select a state.\n ";
+			}
+			// check radio button
+			var rad="no";
+			for (var i = 0; i < window.document.form.gender.length; i++) 
+			{
+				if(window.document.form.gender[i].checked==true)
+				{
+					rad="yes";
+				}
+			}
+			if(rad=="no")
+			{
+				error+="You must select a gender.\n";
+			}
+			if(error=="")
+			{
+				return true;
+			}
+			else
+			{
+				error="We found the following ommisions in your form.\n" + error;
+				alert(error);
+				return false;
+			}
+		}
+	</script>
+	<form action="#" name="form" method="post" onsubmit="var result=checkMandatory(); return result;">
+		Name:
+		<input type="text" name="text"><br>
+		State you live in: <br>
+		<select name="state" size="3">
+			<option value="danang">Đà Nẵng</option>
+			<option value="quangnam">Quảng Nam</option>
+			<option value="hue">Huế</option>
+			<option value="quangngai">Quảng Ngãi</option>
+		</select>
+		<br>
+		Gender: 
+		<input type="radio" name="gender">Male 
+		<input type="radio" name="gender">Female <br>
+		<input type="submit">
+	</form>
+</body>
+</html>

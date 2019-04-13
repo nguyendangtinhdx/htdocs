@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../bootstrap/js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			// append
+			$("#bt1").click(function(){
+				$("#p1").append("<b> append </b>" );
+			});
+			$("#bt2").click(function(){
+				$("#ol").append("<li> append </li>" );
+			});
+			// prepend
+			$("#bt3").click(function(){
+				$("#p1").prepend("<b> append </b>" );
+			});
+			$("#bt4").click(function(){
+				$("#ol").prepend("<li> append </li>" );
+			});
+		});
+	</script>
+	<script>
+		function appendText()
+		{
+			var t1 = "<p>Text</p>";	// HTML
+			var t2 = $("<p></p>").text("Text"); // Jquery
+			var t3 = document.createElement("p");
+			t3.innerHTML = "Text";		// DOM
+			$("body").append(t1,t2,t3); //append element
+		}
+	</script>
+	<script>
+		$(document).ready(function(){
+			$("#bt5").click(function(){
+				$("img").before("<b> before </b>");
+			});
+			$("#bt6").click(function(){
+				$("img").after("<i> before </i>");
+			});
+		});
+
+		function afterText()
+		{
+			var t1 = "<b> I </b>"; // HTML
+			var t2 = $("<i></i>").text("Love"); // Jquery
+			var t3 = document.createElement("u"); 
+			t3.innerHTML = "You";   // DOM
+			$("img").after(t1,t2,t3);	
+		}
+	</script>
+</head>
+<body>
+	<p id="p1">Nguyễn Đăng Tỉnh</p>
+	<ol id="ol">
+		<li>List 1</li>
+		<li>List 2</li>
+		<li>List 3</li>
+	</ol>
+	<button id="bt1">Append (p)</button>
+	<button id="bt2">Append (ol)</button>
+	<br><br>
+	<button id="bt3">Prepend (p)</button>
+	<button id="bt4">Prepend (ol)</button>
+	<br><br>
+
+	<!-- append Text -->
+	<button onclick="appendText()">appendText</button>
+	<br><br>
+	<!-- img -->
+	<img src="../img/compman.gif" width="100" height="100"><br>
+	<button id="bt5">Before</button>
+	<button id="bt6">Before</button>
+	<br><br>
+	<button onclick="afterText()">Insert after</button>
+</body>
+</html>

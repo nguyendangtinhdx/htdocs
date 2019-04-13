@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<style>
+		#pagewrap {
+			padding: 5px;
+			width: 960px;
+			margin: 20px auto;
+		}
+		#header {
+			height: 180px;
+			background: lightblue;
+		}
+		#content {
+			width: 600px;
+			float: left;
+			background: lightgray;
+		}
+		#sidebar {
+			width: 300px;
+			float: right;
+			background: lightgreen;
+		}
+		#footer {
+			clear: both;
+			background: lightyellow;
+		}
+		@media screen and (max-width: 980px) {
+			#pagewrap {
+				width: 94%;
+			}
+			#content {
+				width: 65%;
+			}
+			#sidebar {
+				width: 30%;
+			}
+		}
+		@media screen and (max-width: 700px) {
+			#content {
+				width: auto;
+				float: none;
+			}
+			#sidebar {
+				width: auto;
+				float: none;
+			}
+		}
+		@media screen and (max-width: 480px) {
+			#header {
+				height: auto;
+			}
+			h1 {
+				font-size: 24px;
+			}
+			#sidebar {
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="pagewrap">
+		<div id="header">
+			<h1>Header</h1>
+		</div>
+		<div id="content">
+			<h2>Content</h2>
+		</div>
+		<div id="sidebar">
+			<h3>Sidebar</h3>
+		</div>
+		<div id="footer">
+			<h4>Footer</h4>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p id="1"></p>
+	<p id="2"></p>
+	<p id="3"></p>
+	<p id="4"></p>
+	<script>
+		/*  n = 165;
+			n.toString(16) Hexadecimal
+			n.toString(8) Ontal 
+			n.toString(2) Binary */
+			s = 100/"tinh";
+			document.getElementById("1").innerHTML = isNaN(s);
+		/*  n.toEponential(2) hàm mũ lấy tròn 2 số*/
+		/*	n.toFixed(4)  lấy tròn 4 số*/
+		/*	n.toPrecision(2) lấy tròn chính xác*/
+		/*	parseInt("10.33")  chỉ số đầu tiên dc trả về -> 10;   parseFloat(10.33) -> 10.33 */
+
+			document.getElementById("2").innerHTML = Math.random();
+		/*	Math.max(6,-5,100,74); Math.min(6,-5,100,74);
+			Math.round(4.4) -> 4  tròn
+			Math.ceil(4.1) -> 5 làm tròn lên 
+			Math.floor(4.9) -> 4 làm tròn xuống*/
+			document.getElementById("3").innerHTML = Math.floor(Math.random()*6); 
+			Math.sqrt(9);
+		/*	Math.E; Math.PI; Math.SQRT2; Math.SQRT1_2; Math.LN2; Math.LN10; Math.LOG2E; Math.LOG10E;*/
+			d = new Date();
+			day = ["Sunday","Monday","Tuesday","Webnesday","Thursday","Friday","Saturday"];
+			document.getElementById("4").innerHTML = day[d.getDay()];
+	</script>
+</body>
+</html>

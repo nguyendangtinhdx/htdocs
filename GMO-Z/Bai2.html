@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bài 2</title>
+	<link rel="stylesheet" href="css/styleBai2.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<script src="js/jquery.min.js"></script>
+</head>
+
+<script type="text/javascript">
+	// hàm hiển thị nội dung nhập
+	function addText() {
+		olist = document.getElementById('list');
+		op = document.createElement('p');
+		var string = document.getElementById('textarea-input').value;
+		var array = ["<3",":)",":D",":(",":'(",":P","o:","3:",":l",":poo"];
+		var arrayImg = ["img/heart.png","img/smile.png","img/big-smile.png","img/emoticon.png","img/cry.png","img/tongue.png",
+		"img/angel.png","img/devil.png","img/like.png","img/poop.png"];
+		for (var i = 0; i < array.length; i++) {
+			if (substr(string.toString().trim(),array[i]) == 0) {
+				op.innerHTML = string.replace(array[i],"<img src='" + arrayImg[i] + "' >"); // thay thế icon bằng ảnh
+				break;
+			}
+			else{
+				op.innerHTML = string; // thêm nội dung tiếp theo
+			}
+		}
+
+		// alert("nguyendangtinh".replace(new RegExp("n", 'g'),"N"));
+		// if (substr(string.toString().trim(),":)".trim()) == 0) {
+		// 	alert(string.replace(new RegExp(":)", 'g'),"a"));
+		// 	var x = string + "";
+		// 	alert(x.replace(new RegExp(":)", 'g'),"N"));
+		// 	op.innerHTML = string.replace(new RegExp(":)", 'g'),"N"); // thay thế icon bằng ảnh
+		// 	alert("replaced");
+
+		// }
+		// else{
+		// 	op.innerHTML = string; // thêm nội dung tiếp theo
+		// }
+
+		ocontent = document.getElementById('content');
+		ocontent.appendChild(op);
+
+		olist.scrollTop = olist.scrollHeight;
+		document.getElementById('textarea-input').value = "";
+	}
+
+	function substr(a, b) {
+		if (a.toString().includes(b.toString())) return 0;
+		return -1;
+	}
+
+	// xử lý keypress
+	$(document).ready(function () {
+		$("#textarea-input").keyup(function (e) {
+			if (e.keyCode == 13) {
+				addText();
+			}
+			if (e.keyCode == 17){
+				document.getElementById('textarea-input').value = document.getElementById('textarea-input').value + "\n";
+			}
+		});
+	});
+
+</script>
+<body>
+	<div class="container">
+		<div class="col-sm-3">
+			
+		</div>
+		<div class="col-sm-6">
+			<h2 align="center">Chat</h2>
+			<br>
+			<div id="list" class="row form-group">
+				<div id="content">
+				</div>
+			</div>
+			<div class="row form-group card-body card-block">
+				<div class="has-success form-group"><textarea id="textarea-input" rows="5" class="is-valid form-control-success form-control inputIsValid" placeholder="Nhập nội dung..."></textarea></div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			
+		</div>
+	</div>
+</body>
+</html>

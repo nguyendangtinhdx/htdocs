@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		1 collapse(button) <br>
+		<button class="btn btn-info" data-toggle="collapse" data-target="#name">Click để hiển thị và dấu(collapse in: dấu)</button>
+		<div id="name" class="collapse">Nguyễn Đăng Tỉnh</div><br>
+		<!-- dấu -->
+		<!-- <div id="name" class="collapse in">Nguyễn Đăng Tỉnh</div><br> -->
+
+		<!-- hoặc -->
+	<!--1 collapse(a) <br>
+		<a href="#name" class="btn btn-info" data-toggle="collapse">Click để hiển thị và dấu</a>
+		<div id="name" class="collapse">Nguyễn Đăng Tỉnh</div> -->
+
+		2 collapse: panel
+		<div class="panel-group">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a href="#name1" data-toggle="collapse">Collapse panel</a>
+					</h4>
+				</div>
+				<div id="name1" class="panel-collapse collapse">
+					<div class="panel-body">Body</div>
+					<div class="panel-footer">Footer</div>
+				</div>
+			</div>
+		</div>
+
+		3 collapse: group
+		<div class="panel-group">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a href="#name2"data-toggle="collapse">Collapse group</a>
+					</h4>
+				</div>
+				<div id="name2" class="panel-collapse collapse">
+					<ul class="list-group">
+						<li class="list-group-item">One</li>
+						<li class="list-group-item">True</li>
+						<li class="list-group-item">Three</li>
+					</ul>
+					<div class="panel-footer">Footer</div>
+				</div>
+			</div>
+		</div>
+		
+		4 collapse: accordion
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a href="#name3" data-toggle="collapse" data-parent="#accordion">Group 1</a>
+					</h4>
+				</div>
+				<div id="name3" class="panel-collapse collapse in">
+					<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni magnam itaque quas ex voluptatem adipisci id, nihil delectus, laboriosam! Autem voluptas numquam officiis natus neque saepe atque recusandae culpa accusamus.</div>
+				</div>
+			</div>
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a href="#name4" data-toggle="collapse" data-parent="#accordion">Group 2</a>
+					</h4>
+				</div>
+				<div id="name4" class="panel-collapse collapse">
+					<div class="panel-body"><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni magnam itaque quas ex voluptatem adipisci id, nihil delectus, laboriosam! Autem voluptas numquam officiis natus neque saepe atque recusandae culpa accusamus.</i></div>
+				</div>
+			</div>
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a href="#name5" data-toggle="collapse" data-parent="#accordion">Group 3</a>
+					</h4>
+				</div>
+				<div id="name5" class="panel-collapse collapse">
+					<div class="panel-body"><b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni magnam itaque quas ex voluptatem adipisci id, nihil delectus, laboriosam! Autem voluptas numquam officiis natus neque saepe atque recusandae culpa accusamus.</b></div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../bootstrap/js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#flip1").click(function(){
+				$("#panel1").slideDown("slow");
+			});
+			$("#flip2").click(function(){
+				$("#pane2l").slideUp("slow");
+			});
+			$("#flip3").click(function(){
+				$("#panel3").slideToggle("slow");
+			});
+		});
+	</script>
+	<style>
+		#flip3, #panel3{text-align: center;
+			padding: 5px;
+			background: #e5eecc;
+			border: 1px solid #c3c3c3;}
+		#panel3{padding: 50px;;
+			display: none;}
+	</style>
+</head>
+<body>
+	<div id="flip3">Click to slide down panel</div>
+	<div id="panel3">Hello Nguyễn Đăng Tỉnh</div>
+</body>
+</html>

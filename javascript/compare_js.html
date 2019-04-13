@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<input id="1" value="18"/>
+	<button onclick="my()">Check</button>
+	<button onclick="my1()">Check Date</button>
+	<p id="2"></p>
+	<p id="3"></p>
+	<script>
+		function my()
+		{
+			age = Number(document.getElementById("1").value);
+			if(isNaN(age))
+			{
+				t = "Error in input";
+			}
+			else
+			{
+				t = (age>=18)? "Enough age": "Not enough age";
+			}
+			document.getElementById('2').innerHTML = t ;
+		}
+		function my1()
+		{
+			h = new Date().getHours();
+			if(h<18)
+			{
+				t = "Good day";
+			}
+			else
+			{
+				t = "Good evening";
+			}
+			document.getElementById("3").innerHTML = t;
+		}
+	</script>
+</body>
+</html>

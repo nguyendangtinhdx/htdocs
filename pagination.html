@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<style>
+	.tin li{display: inline;
+		display: inline-block;}
+	.tin li a{color: red;
+		float: left;
+		padding: 8px 16px;
+		text-decoration: none;
+		border-radius: 5px;
+		border: 1px solid #ddd;
+		margin-left: 5px;
+		transition: background .5s;
+
+	}
+	.tin li a.active{
+		background: #4caf50;
+		color: white;
+		border-radius: 5px;
+	}
+	.tin li a:hover:not(.active){background: #ddd}
+	#my{text-align: center;}
+}
+</style>
+<body>
+	<div id="my">
+		<ul class="tin">
+			<li><a href="#">&laquo;</a></li>
+			<li><a href="#">1</a></li>
+			<li><a href="#" class="active">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+			<li><a href="#">&raquo;</a></li>
+			<form>
+				<button type="button" onclick="alert('Welcome to you with music start')">Welcome</button><br>
+			</form>
+		</ul>
+	</div>
+</body>
+</html>

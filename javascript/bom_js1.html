@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button onclick="my()">OK or Cancel</button>
+	<p id="1"></p>
+	<button onclick="my1()">Click Me</button>
+	<p id="2"></p>
+
+	<button onclick="setTimeout(my2,3000)">Click wait 3s</button>
+	<button onclick="clearTimeout(my2)">Stop it</button>
+	<script>
+	function my() {
+		var x;
+		if(confirm("Press a button !") == true)
+		{
+			x = " OK ";
+		}
+		else
+		{
+			x = "Cancel";
+		}
+		document.getElementById('1').innerHTML = x;
+	};
+
+	function my1() {
+		var y = prompt("Please inter\n your name: ","Nguyễn Đăng Tỉnh");
+		if(y!=null)
+			document.getElementById('2').innerHTML = "Hello " + y;
+	};
+
+	function my2() {
+		alert(" Hello");
+	};
+	</script>
+</body>
+</html>

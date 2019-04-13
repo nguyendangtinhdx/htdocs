@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p id ="1"></p>
+	
+	<input id="3" type="text" value="Apple">
+	<button onclick="my()">Check</button>
+	<p id ="2"></p>
+	<script>
+		switch(new Date().getDay())
+		{
+			case 0: day="Sunday";break;
+			case 1: day="Monday";break;
+			case 2: day="Tuesday";break;
+			case 3: day="Webnesday";break;
+			case 4: day="Thursday";break;
+			case 5: day="Friday";break;
+			case 6: day="Satuday";break;
+		}
+		document.getElementById('1').innerHTML = " To day is " + day;
+		
+		function my()
+		{
+			t=document.getElementById('3').value;
+			switch(t)
+			{
+				case "Apple": s="This is Apple";break;
+				case "Banana": s="This is Banana";break;
+				case "Orange": s="This is Orange";break;
+				default: s="Not found";
+			}
+			document.getElementById('2').innerHTML = s;
+		}
+	</script>
+
+</body>
+</html>

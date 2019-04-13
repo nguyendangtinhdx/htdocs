@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		(function($) {
+
+	$.fn.slideNav = function(options) {
+		
+		var self = this;
+		var settings = $.extend( {
+
+    }, options);
+    
+    this.offsetArray = [];
+    this.currentIndex = 0;
+    this.containerWidth = 0;
+    this.sliderOffset = {left: 0, right: 0};
+		
+		this.createSlider = function() {
+		  self.addClass('slide-nav');
+      
+      var output = '<a href="#" class="slide-nav-prev">◀</a>';
+      output += '<div class="slide-nav-slider">';
+      
+      var count = 0;
+      
+      self.children('a').each(function(){
+        output += '<a href="#" data-index="' + count + '">';
+        output += $(this).html();
+        output += '</a>';
+        count++;
+      });
+      output += '</div>';
+      output += '<a href="#" class="slide-nav-next">▶</a>';
+      
+      self.html(output);
+      
+      self.find('.slide-nav-slider a').click(function(e){
+        e.preventDefault();
+        self.gotoIndex($(this).data('index'));
+      });
+      
+      self.find('.slide-nav-prev').click(function(e){
+        e.preventDefault();
+        if(self.currentIndex <= 0) {
+          self.gotoIndex(self.offsetArray.length - 1);
+        }
+        else {
+          self.gotoIndex(self.currentIndex - 1);
+        }
+      });
+      
+      self.find('.slide-nav-next').click(function(e){
+        e.preventDefault();
+        if(self.currentIndex >= (self.offsetArray.length -1)) {
+          self.gotoIndex(0);
+        }
+        else {
+          self.gotoIndex(self.currentIndex + 1);
+        }
+      });
+		};
+    
+    this.createOffsets = function() {
+		  var totalWidth = 0;
+      self.find('.slide-nav-slider a').each(function() {
+        var itemOffsset = {};
+        itemOffsset.left = totalWidth;
+        totalWidth += $(this).outerWidth(true);
+        itemOffsset.right = totalWidth;
+        self.offsetArray.push(itemOffsset);
+      });
+      self.children('.slide-nav-slider').width(totalWidth);
+		};
+    
+    this.gotoIndex = function(index) {
+      self.currentIndex = index;
+      self.find('.slide-nav-slider .active').removeClass('active');
+      self.find('.slide-nav-slider a[data-index="' + index + '"]').addClass('active');
+      
+      var leftDelta = -self.offsetArray[index].left;
+      
+      
+      self.children('.slide-nav-slider').css('left', leftDelta);
+     
+    }
+		
+    
+    self.createSlider();  
+    self.createOffsets();
+    self.gotoIndex(self.currentIndex);
+    
+		return this;
+	};
+})(jQuery);
+
+
+$(document).ready(function(){
+  $('#main-slide-nav').slideNav();
+});
+	</script>
+	<style>
+	@import "http://fonts.googleapis.com/css?family=Open+Sans:400, 600,700)";
+a {
+  text-decoration: none;
+}
+
+body {
+  background: #f3f3f3;
+  font-size: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.slide-nav {
+  border: none;
+  border-radius: 3px;
+  padding: 6px 46px 9px;
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.08);
+  color: #314161;
+  width: 600px;
+  margin: 30px auto;
+  position: relative;
+  overflow: hidden;
+  height: 30px;
+}
+.slide-nav .slide-nav-slider {
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  -webkit-transition: left .2s ease-in-out;
+  -moz-transition: left .2s ease-in-out;
+  -ms-transition: left .2s ease-in-out;
+  -o-transition: left .2s ease-in-out;
+  transition: left .2s ease-in-out;
+}
+.slide-nav a {
+  display: inline-block;
+  color: #6c6c6c;
+  padding: 6px 12px;
+  text-shadow: 0 1px 1px white;
+  margin: 0px 8px;
+  font-weight: 700;
+}
+.slide-nav a:hover, .slide-nav a:active {
+  color: #5e5e5e;
+}
+.slide-nav a.active {
+  color: #5e5e5e;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  box-shadow: inset 0 6px 10px 2px rgba(0, 0, 0, 0.06);
+}
+.slide-nav a.slide-nav-prev, .slide-nav a.slide-nav-next {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  padding: 12px 0 0 16px;
+  width: 30px;
+  height: 45px;
+  background: #5e5e5e;
+  color: #fff;
+  margin: 0;
+}
+.slide-nav a.slide-nav-next {
+  left: auto;
+  right: 0;
+  background-position: right -45px;
+}
+
+	</style>
+</head>
+<body>
+	<div id="main-slide-nav" class="slide-nav sliding-nav">
+  <a href="#" class="active" data-index="0">Menu Item</a>
+  <a href="#" data-index="0">This Is Another</a>
+  <a href="#" data-index="0">Let's Make Anothert</a>
+  <a href="#" data-index="0">Option 1</a>
+  <a href="#" data-index="0">Option B</a>
+  <a href="#" data-index="0">Option III</a>
+</div>
+</body>
+</html>

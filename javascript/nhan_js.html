@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function my() 
+		{
+			var x = window.document.form.one.value;
+			var y = window.document.form.true.value;
+			var z = x * y;
+		//	confirm(x + " nhân " + y + " = " + z);	
+			window.document.form.answer.value = z;
+		}
+
+	</script>
+	<form name="form">
+		Number 1: <input type="text" name="one">
+		Number 2: <input type="text" name="true"><br>
+		Answer: <input type="text" name="answer"><br>
+		<button onclick="my(); return false">Nhân</button>
+	</form>
+</body>
+</html>

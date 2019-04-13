@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+  var CLASS_DISABLED = "disabled",
+      CLASS_ACTIVE = "active",
+      CLASS_SIBLING_ACTIVE = "active-sibling",
+      DATA_KEY = "pagination";
+  
+  $(".pagination").each(initPagination);
+  
+  function initPagination() {
+    var $this = $(this);
+    
+    $this.data(DATA_KEY, $this.find("li").index(".active"));
+    
+    $this.find(".prev").on("click", navigateSinglePage);
+    $this.find(".next").on("click", navigateSinglePage);
+    $this.find("li").on("click", function() {
+      var $parent = $(this).closest(".pagination");
+      $parent.data(DATA_KEY, $parent.find("li").index(this));
+      changePage.apply($parent);
+    });
+  }
+  
+  function navigateSinglePage() {
+    if(!$(this).hasClass(CLASS_DISABLED)) {
+      var $parent = $(this).closest(".pagination"),
+          currActive = parseInt($parent.data("pagination"), 10);
+      
+      currActive += 1 * ($(this).hasClass("prev") ? -1 : 1);
+      $parent.data(DATA_KEY, currActive);
+      
+      changePage.apply($parent);
+    }
+  }
+  
+  function changePage(currActive) {
+    var $list = $(this).find("li"),
+        currActive = parseInt($(this).data(DATA_KEY), 10);
+    
+    $list.filter("."+CLASS_ACTIVE).removeClass(CLASS_ACTIVE);
+    $list.filter("."+CLASS_SIBLING_ACTIVE).removeClass(CLASS_SIBLING_ACTIVE);
+    
+    $list.eq(currActive).addClass(CLASS_ACTIVE);
+      
+    if(currActive === 0) {
+      $(this).find(".prev").addClass(CLASS_DISABLED);
+    } else {
+      $list.eq(currActive-1).addClass(CLASS_SIBLING_ACTIVE);
+      $(this).find(".prev").removeClass(CLASS_DISABLED);
+    }
+
+    if(currActive == ($list.length - 1)) {
+      $(this).find(".next").addClass(CLASS_DISABLED);
+    } else {
+      $(this).find(".next").removeClass(CLASS_DISABLED);
+    }
+  }
+});
+	</script>
+	<style>
+	@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+body {
+  font-family: 'Lato', sans-serif;
+  background: #333;
+  color: #ddd;
+  font-weight: 300;
+  margin: 0;
+}
+
+textarea, input, button {
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+textarea, input {
+  border: none;
+  margin: 20px 0;
+}
+
+button {
+  font-weight: bold;
+}
+
+body {
+  padding: 0 20px;
+}
+
+h1 {
+  font-weight: 200;
+}
+
+hr {
+  border-top: 1px solid #ddd;
+  border-bottom: 0;
+  margin: 20px 0;
+}
+
+.pagination {
+  margin: 20px 0 0;
+  font-size: 0;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  display: inline-block;
+  background: #ccc;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+li {
+  display: inline-block;
+  margin: 0 2.5px;
+}
+li.active a {
+  background: #fff;
+}
+li.active a:hover {
+  text-decoration: none;
+  cursor: default;
+}
+
+.prev.disabled, .next.disabled {
+  cursor: default;
+  background: #ccc;
+  color: #888;
+  border-color: #888;
+}
+.prev.disabled:hover, .next.disabled:hover {
+  cursor: default;
+  text-decoration: none;
+}
+
+.prev {
+  margin-right: 2.5px;
+}
+
+.next {
+  margin-left: 2.5px;
+}
+
+@media (max-width: 767px) {
+  li:first-child, li.active, li.active-sibling:nth-last-child(2), li:last-child {
+    display: inline-block !important;
+  }
+  li:first-child:nth-last-child(n+6) ~ li {
+    display: none;
+  }
+  li:first-child:nth-last-child(n+6) ~ li:nth-last-child(-n+3) {
+    display: inline-block;
+  }
+  li:first-child:nth-last-child(n+6) ~ li:nth-last-child(3):before {
+    content: "\2026";
+    font-size: 24px;
+    display: inline-block;
+    margin-right: 2.5px;
+  }
+  li:first-child:nth-last-child(n+6).active:before, li:first-child:nth-last-child(n+6) ~ li.active:before {
+    content: "\2026";
+    font-size: 24px;
+    display: inline-block;
+    margin-right: 2.5px;
+  }
+  li:first-child:nth-last-child(n+6).active:after, li:first-child:nth-last-child(n+6) ~ li.active:after {
+    content: "\2026";
+    font-size: 24px;
+    display: inline-block;
+    margin-left: 2.5px;
+  }
+  li:first-child:nth-last-child(n+6).active:nth-child(-n+2):before, li:first-child:nth-last-child(n+6).active:nth-child(-n+2):after, li:first-child:nth-last-child(n+6).active:nth-last-child(-n+2):before, li:first-child:nth-last-child(n+6).active:nth-last-child(-n+2):after, li:first-child:nth-last-child(n+6) ~ li.active:nth-child(-n+2):before, li:first-child:nth-last-child(n+6) ~ li.active:nth-child(-n+2):after, li:first-child:nth-last-child(n+6) ~ li.active:nth-last-child(-n+2):before, li:first-child:nth-last-child(n+6) ~ li.active:nth-last-child(-n+2):after {
+    display: none;
+  }
+  li:first-child:nth-last-child(n+6).active ~ li:nth-last-child(-n+3), li:first-child:nth-last-child(n+6) ~ li.active ~ li:nth-last-child(-n+3) {
+    display: none;
+  }
+  li:first-child:nth-last-child(n+6).active ~ li:nth-child(-n+3), li:first-child:nth-last-child(n+6) ~ li.active ~ li:nth-child(-n+3) {
+    display: inline-block;
+  }
+  li:first-child:nth-last-child(n+6).active ~ li:nth-child(-n+2):after, li:first-child:nth-last-child(n+6) ~ li.active ~ li:nth-child(-n+2):after {
+    display: none;
+  }
+  li:first-child:nth-last-child(n+6).active ~ li:nth-child(3):after, li:first-child:nth-last-child(n+6) ~ li.active ~ li:nth-child(3):after {
+    content: "\2026";
+    font-size: 24px;
+    display: inline-block;
+    margin-left: 2.5px;
+  }
+}
+@media (min-width: 768px) {
+  li:first-child, li.active-sibling, li.active, li.active + li, li:last-child {
+    display: inline-block !important;
+  }
+  li:first-child:nth-last-child(n+8) ~ li {
+    display: none;
+  }
+  li:first-child:nth-last-child(n+8) ~ li.active-sibling:before {
+    content: "\2026";
+    font-size: 24px;
+    display: inline-block;
+    margin-right: 2.5px;
+  }
+  li:first-child:nth-last-child(n+8) ~ li.active + li:after {
+    content: "\2026";
+    font-size: 24px;
+    display: inline-block;
+    margin-left: 2.5px;
+  }
+  li:first-child:nth-last-child(n+8) ~ li:nth-last-child(-n+5) {
+    display: inline-block;
+  }
+  li:first-child:nth-last-child(n+8) ~ li:nth-last-child(5):before {
+    content: "\2026";
+    font-size: 24px;
+    display: inline-block;
+    margin-right: 2.5px;
+  }
+  li:first-child:nth-last-child(n+8) ~ li:nth-child(-n+2):before, li:first-child:nth-last-child(n+8) ~ li:nth-child(-n+2):after, li:first-child:nth-last-child(n+8) ~ li:nth-last-child(-n+2):before, li:first-child:nth-last-child(n+8) ~ li:nth-last-child(-n+2):after, li:first-child:nth-last-child(n+8) ~ li.active-sibling:nth-last-child(-n+4):before, li:first-child:nth-last-child(n+8) ~ li.active-sibling:nth-last-child(-n+4):after {
+    display: none !important;
+  }
+  li:first-child:nth-last-child(n+8).active ~ li:nth-last-child(-n+5), li:first-child:nth-last-child(n+8) ~ li.active ~ li:nth-last-child(-n+5) {
+    display: none;
+  }
+  li:first-child:nth-last-child(n+8).active ~ li:nth-last-child(-n+5):before, li:first-child:nth-last-child(n+8) ~ li.active ~ li:nth-last-child(-n+5):before {
+    display: none;
+  }
+  li:first-child:nth-last-child(n+8).active ~ li:nth-child(-n+5), li:first-child:nth-last-child(n+8) ~ li.active ~ li:nth-child(-n+5) {
+    display: inline-block;
+  }
+  li:first-child:nth-last-child(n+8).active ~ li:nth-child(-n+4):after, li:first-child:nth-last-child(n+8) ~ li.active ~ li:nth-child(-n+4):after {
+    display: none;
+  }
+  li:first-child:nth-last-child(n+8).active ~ li:nth-child(5):after, li:first-child:nth-last-child(n+8) ~ li.active ~ li:nth-child(5):after {
+    content: "\2026";
+    font-size: 24px;
+    display: inline-block;
+    margin-left: 2.5px;
+  }
+  li:first-child:nth-last-child(n+8).active:before, li:first-child:nth-last-child(n+8).active:after, li:first-child:nth-last-child(n+8) ~ li.active:before, li:first-child:nth-last-child(n+8) ~ li.active:after {
+    display: none;
+  }
+}
+
+	</style>
+</head>
+<body>
+	<aside><p>Mobile breakpoint is under 767px wide, scale down to view.</p></aside>
+
+<h1>12 Elements</h1>
+<p>Desktop should truncate, Mobile should truncate</p>
+<div class="pagination">
+  <a href="#" class="prev disabled">Previous</a>
+  <ol>
+    <li class="active"><a href="#1">1</a></li>
+    <li><a href="#2">2</a></li>
+    <li><a href="#3">3</a></li>
+    <li><a href="#4">4</a></li>
+    <li><a href="#5">5</a></li>
+    <li><a href="#6">6</a></li>
+    <li><a href="#7">7</a></li>
+    <li><a href="#8">8</a></li>
+    <li><a href="#9">9</a></li>
+    <li><a href="#10">10</a></li>
+    <li><a href="#11">11</a></li>
+    <li><a href="#12">12</a></li>
+  </ol>
+  <a href="#" class="next">Next</a>
+</div>
+
+<hr />
+
+<h1>8 Elements</h1>
+<p>Desktop should truncate, Mobile should truncate</p>
+<div class="pagination">
+  <a href="#" class="prev disabled">Previous</a>
+  <ol>
+    <li class="active"><a href="#1">1</a></li>
+    <li><a href="#2">2</a></li>
+    <li><a href="#3">3</a></li>
+    <li><a href="#4">4</a></li>
+    <li><a href="#5">5</a></li>
+    <li><a href="#6">6</a></li>
+    <li><a href="#7">7</a></li>
+    <li><a href="#8">8</a></li>
+  </ol>
+  <a href="#" class="next">Next</a>
+</div>
+
+<hr />
+
+<h1>7 Elements</h1>
+<p>Desktop should <strong>not</strong> truncate, Mobile should truncate</p>
+<div class="pagination">
+  <a href="#" class="prev disabled">Previous</a>
+  <ol>
+    <li class="active"><a href="#1">1</a></li>
+    <li><a href="#2">2</a></li>
+    <li><a href="#3">3</a></li>
+    <li><a href="#4">4</a></li>
+    <li><a href="#5">5</a></li>
+    <li><a href="#6">6</a></li>
+    <li><a href="#7">7</a></li>
+  </ol>
+  <a href="#" class="next">Next</a>
+</div>
+
+<hr />
+
+<h1>5 Elements</h1>
+<p>Desktop should <strong>not</strong> truncate, Mobile should <strong>not</strong> truncate</p>
+<div class="pagination">
+  <a href="#" class="prev disabled">Previous</a>
+  <ol>
+    <li class="active"><a href="#1">1</a></li>
+    <li><a href="#2">2</a></li>
+    <li><a href="#3">3</a></li>
+    <li><a href="#4">4</a></li>
+    <li><a href="#5">5</a></li>
+  </ol>
+  <a href="#" class="next">Next</a>
+</div>
+</body>
+</html>

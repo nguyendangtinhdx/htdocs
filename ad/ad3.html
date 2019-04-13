@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,
+html {
+  background: #CCC;
+}
+.ad-container {
+  float: left;
+  width: 270px;
+  height: 338px;
+  position: relative;
+  border-radius: 3px;
+}
+.ad-container:before,
+.ad-container:after {
+  bottom: 12px;
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.5);
+  content: "";
+  height: 20%;
+  position: absolute;
+  width: 50%;
+  z-index: -1;
+}
+.ad-container:before {
+  left: 2%;
+  -webkit-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.ad-container:after {
+  right: 2%;
+  -webkit-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+.ad-container .ad1 {
+  width: 270px;
+  height: 338px;
+  background-image: url('http://i.imgur.com/Qu3v6Cd.png');
+  overflow: hidden;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #eee;
+}
+.ad-container .ad1:hover > .ad-font {
+  top: 0px;
+}
+.ad-container .ad1:hover > .ad-font a {
+  left: 0px;
+}
+.ad-container .ad1 .ad-font {
+  position: relative;
+  background: rgba(28, 176, 206, 0.74);
+  color: white;
+  text-align: left;
+  top: 251px;
+  padding-left: 3px;
+  text-align: center;
+  border-top: 2px solid #CCC;
+  transition: all 600ms ease-in-out;
+  height: 100%;
+}
+.ad-container .ad1 .ad-font h1 {
+  font-size: 25px;
+  color: white;
+  margin-top: 8px;
+}
+.ad-container .ad1 .ad-font a {
+  color: #1cb0ce;
+  position: relative;
+  background: white;
+  font-weight: bold;
+  top: 25px;
+  padding: 20px;
+  left: 250px;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.27);
+  -webkit-transition: left 1s ease-in-out, background 300ms ease-in-out;
+  -moz-transition: left 1s ease-in-out, background 300ms ease-in-out;
+  -ms-transition: left 1s ease-in-out, background 300ms ease-in-out;
+  -o-transition: left 1s ease-in-out, background 300ms ease-in-out;
+  transition: left 1s ease-in-out, background 300ms ease-in-out;
+}
+.ad-container .ad1 .ad-font a:active {
+  box-shadow: 0px 0px;
+  top: 29px;
+}
+.ad-container .ad1 .ad-font a:hover {
+  background: rgba(255, 255, 255, 0.67);
+}
+.ad-container2 {
+  width: 270px;
+  height: 338px;
+  position: relative;
+  border-radius: 3px;
+  float: left;
+  margin-left: 20px;
+}
+.ad-container2:before,
+.ad-container2:after {
+  bottom: 12px;
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.5);
+  content: "";
+  height: 20%;
+  position: absolute;
+  width: 50%;
+  z-index: -1;
+}
+.ad-container2:before {
+  left: 2%;
+  -webkit-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.ad-container2:after {
+  right: 2%;
+  -webkit-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+.ad-container2 .ad2 {
+  width: 270px;
+  height: 338px;
+  background-image: url('http://i.imgur.com/drPY8D0.png');
+  overflow: hidden;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #eee;
+}
+.ad-container2 .ad2:hover > .ad-text2 {
+  top: 0px;
+}
+.ad-container2 .ad2:hover > .ad-text2 a {
+  opacity: 1;
+}
+.ad-container2 .ad2 .ad-text2 {
+  width: 400px;
+  top: 250px;
+  left: -68px;
+  height: 400px;
+  border-radius: 400px;
+  margin: 0 auto;
+  background: rgba(28, 176, 206, 0.74);
+  position: relative;
+  border: solid 2px #CCC;
+  transition: all 600ms ease-in-out;
+}
+.ad-container2 .ad2 .ad-text2 p {
+  color: white;
+  padding: 70px;
+  text-align: center;
+  margin-top: -30px;
+}
+.ad-container2 .ad2 .ad-text2 h1 {
+  color: white;
+  margin: 0 auto;
+  position: relative;
+  left: 125px;
+  top: 20px;
+}
+.ad-container2 .ad2 .ad-text2 h2 {
+  color: white;
+  margin: 0 auto;
+  position: relative;
+  left: 80px;
+  top: 20px;
+}
+.ad-container2 .ad2 .ad-text2 a {
+  color: #1cb0ce;
+  position: relative;
+  background: white;
+  font-weight: bold;
+  bottom: 30px;
+  padding: 20px;
+  left: 90px;
+  opacity: 0;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.27);
+  -webkit-transition: opacity 1.5s ease-in-out, background 300ms ease-in-out;
+  -moz-transition: opacity 1.5s ease-in-out, background 300ms ease-in-out;
+  -ms-transition: opacity 1.5s ease-in-out, background 300ms ease-in-out;
+  -o-transition: opacity 1.5s ease-in-out, background 300ms ease-in-out;
+  transition: opacity 1.5s ease-in-out, background 300ms ease-in-out;
+}
+.ad-container2 .ad2 .ad-text2 a:active {
+  box-shadow: 0px 0px;
+  bottom: 26px;
+}
+.ad-container2 .ad2 .ad-text2 a:hover {
+  background: rgba(255, 255, 255, 0.67);
+}
+.ad-container3 {
+  width: 270px;
+  height: 338px;
+  position: relative;
+  border-radius: 3px;
+  float: left;
+  margin-left: 20px;
+}
+.ad-container3:before,
+.ad-container3:after {
+  bottom: 12px;
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.5);
+  content: "";
+  height: 20%;
+  position: absolute;
+  width: 50%;
+  z-index: -1;
+}
+.ad-container3:before {
+  left: 2%;
+  -webkit-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.ad-container3:after {
+  right: 2%;
+  -webkit-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+.ad-container3 .ad3 {
+  width: 270px;
+  height: 338px;
+  background-image: url('http://i.imgur.com/nUFhFWg.png');
+  overflow: hidden;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #eee;
+}
+.ad-container3 .ad3:hover > .ad-text3-top {
+  bottom: 80px;
+}
+.ad-container3 .ad3:hover > .ad-text3-bottom {
+  top: -136px;
+}
+.ad-container3 .ad3:hover > .ad-text3-bottom h1 {
+  opacity: 0;
+}
+.ad-container3 .ad3 .ad-text3-top {
+  width: 100%;
+  height: 60px;
+  background-color: rgba(28, 176, 206, 0.74);
+  position: relative;
+  bottom: 16px;
+  border-bottom: 2px solid #EEE;
+  -webkit-transition: all 600ms ease-in-out;
+  -moz-transition: all 600ms ease-in-out;
+  -ms-transition: all 600ms ease-in-out;
+  -o-transition: all 600ms ease-in-out;
+  transition: all 600ms ease-in-out;
+}
+.ad-container3 .ad3 .ad-text3-top h1 {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  position: relative;
+  top: 2px;
+}
+.ad-container3 .ad3 .ad-text3-bottom {
+  width: 100%;
+  height: 800px;
+  background-color: rgba(28, 176, 206, 0.74);
+  position: relative;
+  top: 198px;
+  border-top: 2px solid #EEE;
+  -webkit-transition: all 600ms ease-in-out;
+  -moz-transition: all 600ms ease-in-out;
+  -ms-transition: all 600ms ease-in-out;
+  -o-transition: all 600ms ease-in-out;
+  transition: all 600ms ease-in-out;
+}
+.ad-container3 .ad3 .ad-text3-bottom h1 {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  position: relative;
+  -webkit-transition: all 600ms ease-in-out;
+  -moz-transition: all 600ms ease-in-out;
+  -ms-transition: all 600ms ease-in-out;
+  -o-transition: all 600ms ease-in-out;
+  transition: all 600ms ease-in-out;
+}
+.ad-container3 .ad3 .ad-text3-bottom h2 {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  position: relative;
+}
+.ad-container3 .ad3 .ad-text3-bottom p {
+  color: white;
+  padding: 5px;
+  text-align: center;
+}
+.ad-container3 .ad3 .ad-text3-bottom a {
+  color: #1cb0ce;
+  position: relative;
+  background: white;
+  font-weight: bold;
+  padding: 20px;
+  top: 35px;
+  left: 25px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.27);
+  -webkit-transition: background 300ms ease-in-out;
+  -moz-transition: background 300ms ease-in-out;
+  -ms-transition: background 300ms ease-in-out;
+  -o-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+}
+.ad-container3 .ad3 .ad-text3-bottom a:active {
+  box-shadow: 0px 0px;
+  top: 39px;
+}
+.ad-container3 .ad3 .ad-text3-bottom a:hover {
+  background: rgba(255, 255, 255, 0.67);
+}
+
+	</style>
+</head>
+<body>
+	<div class="ad-container">
+    <div class="ad1">
+        <div class="ad-font">
+            <h1>
+                Plastic Surgery<br>
+                Service By Residents
+            </h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eligendi sapiente nam eius natus voluptatibus corrupti fugit quasi assumenda sit aspernatur repellat ipsam ut id?
+            </p><a href="#">Click here to find out more</a>
+        </div>
+    </div>
+</div>
+<div class="ad-container2">
+    <div class="ad2">
+        <div class="ad-text2">
+            <h1>
+                USU Health
+            </h1>
+            <h2>
+                Plastic Surgery Services
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eligendi sapiente nam eius natus voluptatibus corrupti fugit quasi assumenda sit aspernatur repellat ipsam ut id?
+            </p><a href="#">Click here to find out more</a>
+        </div>
+    </div>
+</div>
+<div class="ad-container3">
+    <div class="ad3">
+        <div class="ad-text3-top">
+            <h1>
+                USU Health<br>
+                Plastic Surgery Services
+            </h1>
+        </div>
+        <div class="ad-text3-bottom">
+            <h1>
+                FIND OUT MORE
+            </h1>
+            <h2>
+                USU Health<br>
+                Plastic Surgery Services
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eligendi sapiente nam eius natus voluptatibus corrupti fugit quasi assumenda sit aspernatur repellat ipsam ut id? Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p><a href="#">Click here to find out more</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

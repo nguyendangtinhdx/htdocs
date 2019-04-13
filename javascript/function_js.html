@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+	
+	<p id="1"></p>
+	<p id="2"></p>
+	<p id="3"></p>
+	<p id="4"></p>
+	<p id="5"></p>
+	<script>
+	/*  window.alert("Nguyen Dang Tinh");  <=> confirm('Hello');
+		document.write(11111);
+		console.log(2+6);  */
+		prompt('Hello') // dấu nhắc lệnh
+		console.log("January".substring(0,2));	// in ra kí tự thứ 0 -> 2
+		z = 5+4;
+		t = 'Nguyen Dang Tinh';
+		document.getElementById('1').innerHTML = t + "<br>" + typeof(z);
+
+		function my(a,b)
+		{
+			return a*b;  // return arguments.length:  độ dài = 2
+		}
+		document.getElementById('2').innerHTML=my(3,4);
+
+		x={name:'tinh', age: 18, high: 173};
+		document.getElementById('3').innerHTML= x.name + x.age+ x.high;		/*  x["name"]  */
+
+		t={name:'tinh',
+			 age: 18,
+			 high: function()
+			 {
+			 	return this.age + " " + this.name;
+			 }
+		};
+		document.getElementById('4').innerHTML = t.high();
+
+	</script>
+</body>
+</html>

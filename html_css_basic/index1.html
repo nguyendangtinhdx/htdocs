@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="vi" lang="vi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tiêu đề trang web</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="screen,print" />
+<div id="divAdRight" style="DISPLAY: none; POSITION: absolute; TOP: 0px">     
+
+<a href="http://www.chiase69.com"><img src="http://3.bp.blogspot.com/-DFWCRf2oANg/UmDs8ZxWtiI/AAAAAAAAFC0/0Ecu36I5MgI/s1600/fptarena1.png" width="125" /></a>
+
+</div>     
+
+<div id="divAdLeft" style="DISPLAY: none; POSITION: absolute; TOP: 0px">     
+
+<a href="www.chiase69.com"><img src="http://3.bp.blogspot.com/-DFWCRf2oANg/UmDs8ZxWtiI/AAAAAAAAFC0/0Ecu36I5MgI/s1600/fptarena1.png" width="125" /></a>     
+
+</div>
+
+     
+
+<script>     
+
+    function FloatTopDiv()     
+
+    {     
+
+        startLX = ((document.body.clientWidth -MainContentW)/2)-LeftBannerW-LeftAdjust , startLY = TopAdjust+80;     
+
+        startRX = ((document.body.clientWidth -MainContentW)/2)+MainContentW+RightAdjust , startRY = TopAdjust+80;     
+
+        var d = document;     
+
+        function ml(id)     
+
+        {     
+
+            var el=d.getElementById?d.getElementById(id):d.all?d.all[id]:d.layers[id];     
+
+            el.sP=function(x,y){this.style.left=x + 'px';this.style.top=y + 'px';};     
+
+            el.x = startRX;     
+
+            el.y = startRY;     
+
+            return el;     
+
+        }     
+
+        function m2(id)     
+
+        {     
+
+            var e2=d.getElementById?d.getElementById(id):d.all?d.all[id]:d.layers[id];    
+
+            e2.sP=function(x,y){this.style.left=x + 'px';this.style.top=y + 'px';};     
+
+            e2.x = startLX;     
+
+            e2.y = startLY;     
+
+            return e2;     
+
+        }     
+
+        window.stayTopLeft=function()     
+
+        {     
+
+            if (document.documentElement && document.documentElement.scrollTop)     
+
+                var pY =  document.documentElement.scrollTop;     
+
+            else if (document.body)     
+
+                var pY =  document.body.scrollTop;     
+
+             if (document.body.scrollTop > 30){startLY = 3;startRY = 3;} else  {startLY = TopAdjust;startRY = TopAdjust;};     
+
+            ftlObj.y += (pY+startRY-ftlObj.y)/16;     
+
+            ftlObj.sP(ftlObj.x, ftlObj.y);     
+
+            ftlObj2.y += (pY+startLY-ftlObj2.y)/16;     
+
+            ftlObj2.sP(ftlObj2.x, ftlObj2.y);     
+
+            setTimeout("stayTopLeft()", 1);     
+
+        }     
+
+        ftlObj = ml("divAdRight");     
+
+        //stayTopLeft();     
+
+        ftlObj2 = m2("divAdLeft");     
+
+        stayTopLeft();     
+
+    }     
+
+    function ShowAdDiv()     
+
+    {     
+
+        var objAdDivRight = document.getElementById("divAdRight");     
+
+        var objAdDivLeft = document.getElementById("divAdLeft");       
+
+        if (document.body.clientWidth < 1000)     
+
+        {     
+
+            objAdDivRight.style.display = "none";     
+
+            objAdDivLeft.style.display = "none";     
+
+        }     
+
+        else     
+
+        {     
+
+            objAdDivRight.style.display = "block";     
+
+            objAdDivLeft.style.display = "block";     
+
+            FloatTopDiv();     
+
+        }     
+
+    } 
+
+</script>     
+
+<script>     
+
+document.write("<script type='text/javascript' language='javascript'>MainContentW = 1000;LeftBannerW = 125;RightBannerW = 125;LeftAdjust = 50;RightAdjust = 33;TopAdjust = 10;ShowAdDiv();window.onresize=ShowAdDiv;;<\/script>");     
+
+</script>
+
+</head>
+
+<body>
+<div id="layout">
+<div id="header">
+<div class="hLeft">
+<h1><img src="images/img_logo.gif" alt="" /></h1>
+<p>www.hocwebchuan.com</p>
+<!-- / class hLeft --></div>
+
+<div class="hRight">
+<ul class="hButton">
+<li><a href="#"><img src="images/btn_name01.gif" alt="" /></a></li>
+<li class="last"><a href="#"><img src="images/btn_name02.gif" alt="" /></a></li>
+</ul>
+<ul class="hNav">
+<li><a href="#">link 01</a></li>
+<li><a href="#">link 02</a></li>
+<li><a href="#">link 03</a></li>
+<li class="last"><a href="#">link 04</a></li>
+</ul>
+<!-- / class hRight --></div>
+<!-- / id header --></div>
+
+<div id="gNav">
+<ul>
+<li><a href="#">TRANG CHỦ</a></li>
+<li><a href="#">GIỚI THIỆU</a></li>
+<li><a href="#">SẢN PHẨM</a></li>
+<li><a href="#">DỊCH VỤ</a></li>
+<li class="last"><a href="#">LIÊN HỆ</a></li>
+</ul>
+<!-- / id gNav --></div>
+
+<div id="pageBody">
+<div id="content">
+<h2>Sản phẩm mới</h2>
+<div class="newProduct">
+<p class="image"><img src="images/img_products_new01.jpg" alt="" /></p>
+<div>
+<h3>Tên sản phẩm</h3>
+<p>Text giới thiệu sản phẩm text giới thiệu sản phẩm text giới thiệu sản phẩm text giới thiệu sản phẩm text giới thiệu sản phẩm text giới thiệu sản phẩm.</p>
+</div>
+<!-- / class newProduct --></div>
+
+<ul class="thumbList">
+<li><a href="#"><img src="images/img_products01.jpg" alt="" /></a></li>
+<li><a href="#"><img src="images/img_products02.jpg" alt="" /></a></li>
+<li><a href="#"><img src="images/img_products03.jpg" alt="" /></a></li>
+<li><a href="#"><img src="images/img_products04.jpg" alt="" /></a></li>
+<li><a href="#"><img src="images/img_products05.jpg" alt="" /></a></li>
+<li class="last"><a href="#"><img src="images/img_products06.jpg" alt="" /></a></li>
+</ul>
+
+<h2>Tin tức</h2>
+<dl class="news">
+<dt>07/05/2012</dt>
+<dd><a href="#">Tin mới tin mới tin mới tin mới tin mới tin mới tin mới.</a></dd>
+
+<dt>07/05/2012</dt>
+<dd><a href="#">Tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới.</a></dd>
+
+<dt>07/05/2012</dt>
+<dd class="last"><a href="#">Tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới tin mới.</a></dd>
+</dl>
+
+<p class="banner"><a href="#"><img src="images/bnr_name01.gif" alt="" /></a></p>
+<!-- / id content --></div>
+
+<div id="sidebar">
+<h2>Link liên quan</h2>
+<ul class="linkList">
+<li><a href="#">Link liên quan 01</a></li>
+<li><a href="#">Link liên quan 02</a></li>
+<li><a href="#">Link liên quan 03</a></li>
+<li><a href="#">Link liên quan 04</a></li>
+<li><a href="#">Link liên quan 05</a></li>
+<li class="last"><a href="#">Link liên quan 06</a></li>
+</ul>
+
+<h2>Link liên quan</h2>
+<ul class="bannerList">
+<li><a href="#"><img src="images/bnr_name02.gif" alt="" /></a></li>
+<li><a href="#"><img src="images/bnr_name03.gif" alt="" /></a></li>
+<li class="last"><a href="#"><img src="images/bnr_name04.gif" alt="" /></a></li>
+</ul> <!-- / id sidebar --></div>
+<!-- / id pageBody --></div>
+
+<div id="footer">
+<div class="fLeft">
+<p>TÊN CÔNG TY</p>
+<p>Địa chỉ: 123 abc, phường X, quận Y, tp.Z<br />
+Điện thoại: 012.3456789</p>
+<p>Email: <a href="mailto:support@hocwebchuan.com">support@hocwebchuan.com</a></p>
+<!-- / class fLeft --></div>
+
+<div class="fRight">
+<ul>
+<li><a href="#">Link 01</a></li>
+<li><a href="#">Link 02</a></li>
+<li><a href="#">Link 03</a></li>
+<li class="last"><a href="#">Link 04</a></li>
+</ul>
+<p>Copyright (c) 2012 Tên công ty</p>
+<!-- / class fRight --></div>
+<!-- / id footer --></div>
+<!-- / id layout --></div>
+<!--
+Noi dung nay thuoc ve www.hocwebchuan.com, nham giup ban hieu ro hon ve bai tap.
+Ban co the tu do chia se, tuy nhien hay ghi ro nguon khi chia se.
+Ban khong duoc thuong mai hoa noi dung nay duoi moi hinh thuc.
+Moi thac mac hay lien he: support@hocwebchuan.com
+Chuc ban hoan thanh tot bai tap
+-->
+</body>
+</html>

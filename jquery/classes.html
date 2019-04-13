@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/jquery.min.js"></script>
+	<style>
+	.blue{color: blue;}
+	.green{color: green;font-size: xx-large;}
+	.red{color: red;font-size: x-large;}
+	.important{font-weight: bold;
+		font-size: xx-large;}
+	</style>
+	<script>
+		$(document).ready(function(){
+			// addClass
+			$("#bt1").click(function(){
+				$("h1,h2,p").addClass("blue");
+				$("#div1").addClass("important green");
+			});
+			// removeClass
+			$("#bt2").click(function(){
+				$(".green").removeClass("green");
+			});
+			// toggle
+			$("#bt3").click(function(){
+				$(".toggle").toggleClass("red");
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Heading 1</h1>
+	<h2>Heading 2</h2>
+	<p>Paragraph</p>
+	<div id="div1">This is some inportant text</div>
+	<button id="bt1">AddClass</button>
+	<!-- removeClass -->
+	<div class="green">This is some inportant text</div>
+	<button id="bt2">RemoveClass</button>
+	<!-- toggle -->
+	<div class="toggle">This is some inportant text</div>
+	<button id="bt3">Toggle</button>
+</body>
+</html>

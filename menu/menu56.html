@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		function lineIndicatorWidth() {
+  var l = $('#lineIndicator'),
+      o = $('.selectedTab');
+  l.css({
+    width: o.outerWidth(),
+    left: o.position().left,
+    opacity: '1' // remove this
+  });
+}
+
+$(document).ready(function() {
+  lineIndicatorWidth();
+});
+
+$(window).resize(lineIndicatorWidth);
+
+$(document).ready(function() {
+  var m = $('.ns-Members_Link');
+  m.on('click', function() {
+    $(this).siblings().removeClass("selectedTab");
+    $(this).addClass("selectedTab");
+    lineIndicatorWidth();
+  });
+});
+	</script>
+	<style>
+	* {
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: #fcfcfc;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  background-color: #14805e;
+  min-height: 44px;
+}
+
+.ns-Members {
+  padding: 0 11px;
+  background-color: #eee;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  z-index: 0;
+  position: relative;
+  overflow-style: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: overflow-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ns-Members::-webkit-scrollbar {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.ns-Members_Links {
+  position: relative;
+  background-color: #eee;
+  min-height: 44px;
+  width: 100%;
+  font-size: 0;
+  text-align: center;
+}
+
+.needsha .ns-Members_Links {
+  -webkit-transform: translateZ(0);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+}
+
+.ns-Members_Link {
+  font-size: 15px;
+  color: #545454;
+  height: 44px;
+  line-height: 44px;
+  display: inline-block;
+  margin-right: 22px;
+  cursor: pointer;
+}
+
+.ns-Members_Link:last-child {
+  margin-right: 0;
+}
+
+.ns-Members_Link.selectedTab {
+  color: #14805e;
+}
+
+.ns-Members_CurrentIndicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #14805e;
+  opacity: 0;
+}
+
+.ns-Members_CurrentIndicatorAnimate {
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+}
+
+	</style>
+</head>
+<body>
+	<div id="header"></div>
+
+<div id="Tabs" class="ns-Members">
+  <ul class="scrollcontainer horizontal tabs ns-Members_Links">
+    <li id="Tab_1" class="ns-Members_Link"><span>Bank</span></li>
+    <li id="Tab_2" class="ns-Members_Link selectedTab"><span>Account Details</span></li>
+    <li id="Tab_3" class="ns-Members_Link"><span>History</span></li>
+    <li id="Tab_4" class="ns-Members_Link"><span>Offers</span></li>
+    <li id="Tab_5" class="ns-Members_Link"><span>Messages</span></li>
+   
+    <li id="lineIndicator" class="ns-Members_CurrentIndicator ns-Members_CurrentIndicatorAnimate"></li></ul>
+</div>
+</body>
+</html>

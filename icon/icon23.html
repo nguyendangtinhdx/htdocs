@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	@import url(https://fonts.googleapis.com/css?family=Open+Sans:400);
+div.buttons {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+}
+div.holder {
+  display: block;
+  float: left;
+  margin: 4px;
+  -webkit-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+}
+a.btn {
+  background: #0096a0;
+  border-radius: 2px;
+  background-clip: padding-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
+  padding: 8px 40px 8px 50px;
+  position: relative;
+  text-decoration: none;
+  -webkit-transition: all 0.15s ease;
+  -moz-transition: all 0.15s ease;
+  -ms-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+a.btn span.icon {
+  background: #008c96;
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 2px;
+  -webkit-border-top-left-radius: 2px;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 2px;
+  -moz-border-radius-topleft: 2px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  background-clip: padding-box;
+  -webkit-clip-path: url(#clipThis);
+          clip-path: url(#clipThis);
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 37px;
+}
+a.btn span.icon svg {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate3d(10%, -50%, 0);
+          transform: translate3d(10%, -50%, 0);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  width: 16px;
+  z-index: 10;
+}
+a.btn span.icon:before {
+  background: rgba(0, 140, 150, 0.4);
+  content: "";
+  height: 102%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transform: rotate(12deg);
+          transform: rotate(12deg);
+  width: 2px;
+  z-index: 20;
+}
+a.btn:hover {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.15);
+  -webkit-transform: translate3d(0, 0, 80px);
+          transform: translate3d(0, 0, 80px);
+}
+a.btn:hover span.icon svg {
+  -webkit-transform: translate3d(-30%, -50%, 0);
+          transform: translate3d(-30%, -50%, 0);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+a.btn:active {
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.35), 0 0px 1px rgba(0, 0, 0, 0.4);
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
+          transform: translate3d(0, 0, 0) scale(1);
+}
+a.btn:active span.icon svg {
+  -webkit-transform: translate3d(-30%, -50%, 0);
+          transform: translate3d(-30%, -50%, 0);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+	</style>
+</head>
+<body>
+	<div class="buttons">
+
+
+  <div class="holder">
+    <a href="#" class="btn btn-icon">
+      <span class="icon">
+        <svg x="0px" y="0px"	 viewBox="0 0 14 14" xml:space="preserve">
+          <polygon fill="#FFFFFF" points="7,0 0,7 1,8 2,7 2,14 6,14 6,10 8,10 8,14 12,14 12,7 12,7 13,8 14,7 "/>
+        </svg>
+      </span>
+      <span class="label">
+        Home
+      </span>
+    </a>
+  </div>
+  
+  
+  <div class="holder">
+    <a href="#" class="btn btn-icon">
+      <span class="icon">
+
+      <svg x="0px" y="0px"viewBox="0 0 14 14" xml:space="preserve">
+      <g>
+        <path fill="#FFFFFF" d="M11,2V0H9v2H5V0H3v2H0v12h14V2H11z M12,12H2V5h10V12z"/>
+        <rect fill="#FFFFFF" x="3" y="6" width="2" height="2"/>
+        <rect fill="#FFFFFF" x="3" y="9" width="2" height="2"/>
+        <rect fill="#FFFFFF" x="6" y="6" width="2" height="2"/>
+        <rect fill="#FFFFFF" x="6" y="9" width="2" height="2"/>
+        <rect fill="#FFFFFF" x="9" y="6" width="2" height="2"/>
+        <rect fill="#FFFFFF" x="9" y="9" width="2" height="2"/>
+      </g>
+      </svg>
+      </span>
+      <span class="label">
+        Calendar
+      </span>
+    </a>
+  </div>
+  
+  
+  <div class="holder">
+    <a href="#" class="btn btn-icon">
+      <span class="icon">
+        <svg x="0px" y="0px" viewBox="0 0 13.4 14" xml:space="preserve">
+        <path fill="#FFFFFF" d="M11.9,7c0-0.3,0-0.6-0.1-0.8l1.5-1.3c-0.3-1-0.8-1.9-1.5-2.6L10,3C9.5,2.6,9.1,2.3,8.5,2.1L8.2,0.2
+          C7.7,0.1,7.2,0,6.7,0c-0.5,0-1,0.1-1.5,0.2L4.8,2.1C4.3,2.3,3.8,2.6,3.4,3L1.5,2.3C0.8,3,0.3,3.9,0,4.9l1.5,1.3
+          c0,0.3-0.1,0.6-0.1,0.9c0,0.3,0,0.6,0.1,0.9L0,9.1c0.3,1,0.8,1.9,1.5,2.6L3.4,11c0.4,0.4,0.9,0.7,1.5,0.9l0.3,1.9
+          c0.5,0.1,1,0.2,1.5,0.2c0.5,0,1-0.1,1.5-0.2l0.3-1.9c0.5-0.2,1-0.5,1.5-0.9l1.8,0.7c0.7-0.7,1.2-1.6,1.5-2.6l-1.5-1.3
+          C11.9,7.6,11.9,7.3,11.9,7z M6.7,9.6C5.2,9.6,4,8.5,4,7c0-1.5,1.2-2.6,2.6-2.6c1.5,0,2.6,1.2,2.6,2.6C9.3,8.5,8.1,9.6,6.7,9.6z"/>
+        </svg>
+      </span>
+      <span class="label">
+        Settings
+      </span>
+    </a>
+  </div>
+  
+  <div class="holder">
+    <a href="#" class="btn btn-icon">
+      <span class="icon">
+        <svg x="0px" y="0px" viewBox="0 0 14 14" xml:space="preserve">
+           <path fill="#FFFFFF" d="M12.3,8h-0.8C11.8,7.4,12,6.7,12,6c0-2.2-1.8-4-4-4C6.1,2,4.5,3.3,4.1,5.1C3.9,5,3.7,5,3.5,5
+           C1.6,5,0,6.6,0,8.5S1.6,12,3.5,12c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0h8.6c0.9,0,1.7-0.9,1.7-2C14,8.9,13.2,8,12.3,8z"/>
+        </svg>
+      </span>
+      <span class="label">
+        Cloud
+      </span>
+    </a>
+  </div>
+  <div class="holder">
+    <a href="#" class="btn btn-icon">
+      <span class="icon">
+        <svg x="0px" y="0px" viewBox="0 0 14 14" xml:space="preserve">
+          <path fill="#FFFFFF" d="M8.5,0C5.5,0,3,2.5,3,5.5c0,1,0.3,1.9,0.7,2.8L0,12l2,2l3.7-3.7C6.6,10.7,7.5,11,8.5,11c3,0,5.5-2.5,5.5-5.5
+          C14,2.5,11.5,0,8.5,0z M8.5,9C6.6,9,5,7.4,5,5.5S6.6,2,8.5,2S12,3.6,12,5.5S10.4,9,8.5,9z"/>
+        </svg>
+      </span>
+      <span class="label">
+        Search
+      </span>
+    </a>
+  </div>
+
+</div>
+
+<svg width="0" height="0">
+  <defs>
+    <clipPath id="clipThis">
+      <polygon points="37,0 0,0 0,38 29,38"/>
+    </clipPath>
+  </defs>
+</svg>
+</body>
+</html>

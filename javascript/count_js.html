@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Count</title>
+</head>
+<body>
+	<button onclick="my()">Count</button>
+	<button onclick="my1()">Count1</button>
+	<p id ="1"></p>
+	<p id ="2"></p>
+	<script>
+		count = 0;
+		function add()
+		{
+			return count += 1;
+		}
+		function my()
+		{
+			document.getElementById('1').innerHTML = add();
+		}
+
+		var add1=(function()
+		{
+			dem=0;
+			return function(){return dem++;}
+		})();
+		function my1()
+		{
+			document.getElementById('2').innerHTML = add1();
+		}
+	</script>
+</body>
+</html>

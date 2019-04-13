@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+body {
+	background: #7BB7FA; 
+  font-family: 'Roboto', sans-serif;
+}
+h1, input{
+  color: #444;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+h1{
+  border-bottom: 1px solid #8FC4FF;
+  padding-bottom: 10px;
+}
+form{
+	padding: 0;
+  margin: 0;
+}
+/* Expandable search box */
+/* Note: don't change 0.8s in transition. */
+/* --------------------- */
+input.search-text {
+	color: #222;
+	position:relative;
+	z-index:5;
+	transition: z-index 0.8s, width 0.5s, background 0.3s ease, border 0.3s;
+	height: 45px;
+	width: 0;
+	margin: 0;
+	padding: 5px 0 5px 40px;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-size: 1rem;
+	cursor: pointer;
+	border-radius: 30px;
+	border: 2px solid transparent;
+	/*background: url(search.png) no-repeat left 9px center transparent;*/
+	background: url(https://dl.dropboxusercontent.com/u/6624374/opensource-projects/codepen/search.svg) no-repeat left 9px center transparent;
+  background-size:24px;
+}
+input.search-text:focus {
+	z-index:3; 
+	width: 270px;
+	border: 1px solid #376200;  
+	background-color: #E4FFCE;
+	outline: none;
+	cursor:auto;
+	padding-right: 10px;
+}
+
+input.search-submit {
+	position: relative;
+	z-index: 4;
+	top:17px;
+	left: 49px;
+	width: 45px;
+	height: 45px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	border-radius: 30px;
+	cursor: pointer; 
+	background: none;
+}
+
+input.search-text::-webkit-search-cancel-button {
+	cursor:pointer;
+}
+	</style>
+</head>
+<body>
+	<h1>Expandable Search Box</h1>
+<form action="https://duckduckgo.com/" role="search" class="search-form">
+		<input type="submit" value="" class="search-submit"> 
+		<input type="search" name="q" class="search-text" placeholder="Search..." autocomplete="off">
+</form>
+</body>
+</html>

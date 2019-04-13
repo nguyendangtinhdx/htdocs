@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	@import url('http://fonts.googleapis.com/css?family=Wendy+One|Petrona');
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html { overflow-y: scroll; }
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 62.5%;
+  line-height: 1;
+  color: #414141;
+  background: #eee;
+}
+
+br { display: block; line-height: 1.6em; }
+
+::selection { background: #cfdfef; }
+::-moz-selection { background: #cfdfef; }
+::-webkit-selection { background: #cfdfef; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ol, ul { list-style: none; }
+
+input, textarea { 
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none; 
+}
+
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+strong, b { font-weight: bold; }
+em, i { font-style: italic; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0; max-width: 100%; }
+
+h1 {
+  font-family: 'Petrona', 'Trebuchet MS', 'Times New Roman', serif;
+  font-size: 3.9em;
+  line-height: 1.2em;
+  font-weight: normal;
+  margin-bottom: 12px;
+  color: #2d2d2d;
+}
+
+h2 {
+  font-family: 'Petrona', 'Trebuchet MS', 'Times New Roman', serif;
+  font-size: 2.2em;
+  line-height: 1.2em;
+  font-weight: normal;
+  margin-bottom: 10px;
+  color: #414141;
+}
+
+h3 {
+  font-size: 1.4em;
+  line-height: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.45em;
+  line-height: 1.4em;
+  color: #515151;
+  margin-bottom: 16px;
+}
+
+
+a { color: #5084ba; }
+a:hover { color: #5d96d0; }
+
+
+/** page structure **/
+#w {
+  display: block;
+  width: 100%;
+}
+
+#top {
+  display: block;
+  width: 100%;
+  height: 65px;
+  margin-bottom: 25px;
+  background-color: #2f2f2f;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2f2f2f), to(#515151));
+  background-image: -webkit-linear-gradient(top, #2f2f2f, #515151);
+  background-image: -moz-linear-gradient(top, #2f2f2f, #515151);
+  background-image: -ms-linear-gradient(top, #2f2f2f, #515151);
+  background-image: -o-linear-gradient(top, #2f2f2f, #515151);
+  background-image: linear-gradient(top, #2f2f2f, #515151);
+}
+
+.container {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 7px;
+}
+
+
+/** top navbar **/
+#logo {
+  display: block;
+  float: left;
+  color: #fefefe;
+  font-family: 'Wendy One', Tahoma, sans-serif;
+  font-weight: normal;
+  font-size: 3.35em;
+  line-height: 60px;
+  cursor: pointer;
+}
+
+#navwrap {
+  display: block;
+  width: 100%;
+}
+
+#navigation {
+  display: block;
+  float: right;
+}
+
+#navigation ul li { 
+  display: block;
+  float: left;
+}
+#navigation ul li a {
+  display: block;
+  float: left;
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 65px;
+  padding: 0 16px;
+  color: #fff;
+  text-decoration: none;
+}
+#navigation ul li a:hover {
+  color: #bdcff4;
+}
+
+
+/** main content **/
+#content {
+  display: block;
+  padding: 15px 20px;
+  margin-bottom: 25px;
+  background: #fff;
+  -webkit-box-shadow: 1px 1px 3px #bebebe;
+  -moz-box-shadow: 1px 1px 3px #bebebe;
+  box-shadow: 1px 1px 3px #bebebe;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+
+.byline {
+ font-size: 1.4em;
+ line-height: 18px;
+ font-style: italic;
+ color: #676767;
+}
+.byline .twitter {
+  margin-left: 6px;
+  padding-left: 18px;
+  background: url('http://i.imgur.com/7XXSQ05.png') 0px -1px no-repeat;
+}
+
+.byline a {
+ text-decoration: none;
+}
+
+#post-container {
+    margin-right: -250px;
+    float:left;
+    width:100%;
+}
+#post {
+  margin-right: 260px;
+}
+
+#sidebar {
+  display: block;
+  float: left;
+  width: 250px;
+}
+
+.adblock {
+  display: block;
+  margin-bottom: 15px;
+}
+
+#recent-posts {
+  display: block;
+}
+#recent-posts li {
+  display: block;
+  font-family: 'Petrona', 'Trebuchet MS', 'Times New Roman', serif;
+  margin-bottom: 15px;
+}
+
+#recent-posts li a {
+  display: block;
+  font-size: 1.7em;
+  line-height: 1.3em;
+  color: #666;
+  text-decoration: none;
+}
+#recent-posts li a:hover {
+  color: #8a8a8a;
+}
+#recent-posts li a:hover img {
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+  filter: alpha(opacity=75);
+  opacity: 0.75;
+}
+
+#recent-posts li a img {
+  float: left;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+#recent-posts li a h4 {
+  display: block;
+  width: 160px;
+  float: left;
+}
+
+#featuredimg {
+  display: block;
+  position: relative;
+  height: auto;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+#featuredimg figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 1.2em;
+  padding: 4px 7px;
+  background: rgba(255,255,255,0.9);
+}
+#featuredimg figcaption a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #54759e;
+}
+
+
+/** bottom responsive nav menu **/
+#mobilenav {
+  display: none;
+  width: 100%;
+  padding: 8px 12px;
+  -webkit-border-top-left-radius: 7px;
+  -webkit-border-top-right-radius: 7px;
+  -moz-border-radius-topleft: 7px;
+  -moz-border-radius-topright: 7px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+#mobilenav ul li a {
+  display: block;
+  padding: 6px 0;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+#mobilenav ul li a:hover {
+  text-decoration: none;
+  background: rgba(255,255,255,0.15);
+}
+
+/** clearfix **/
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+ 
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+
+
+/** media queries **/
+@media screen and (max-width: 710px) {
+  #logo { float: none; width: 100%; text-align: center; }
+  #navigation { display: none; }
+  
+  #sidebar { display: none; }
+  #post-container { margin-right: 0; float: none; }
+  #post { margin-right: 0; }
+
+  #mobilenav { display: block; background: #393939; }
+
+  p { line-height: 1.7em; }
+}
+
+@media screen and (max-width: 420px) {
+  #logo { font-size: 2.7em; }
+  
+  h1 { font-size: 3.0em; }
+  .byline { font-size: 1.1em; }
+}
+	</style>
+</head>
+<body>
+	<body>
+  <header id="top">
+    <div class="container">
+      <div id="navwrap" class="clearfix">
+        <div id="logo">MyMagazine Logo</div>
+    
+        <nav id="navigation">
+          <ul>
+            <li><a href="javascript:void(0)">News</a></li>
+            <li><a href="javascript:void(0)">Culture</a></li>
+            <li><a href="javascript:void(0)">Business</a></li>
+            <li><a href="javascript:void(0)">Tech</a></li>
+            <li><a href="javascript:void(0)">Offbeat</a></li>
+          </ul>
+        </nav><!-- @end #navigation -->
+      </div><!-- @end .clearfix -->
+    </div><!-- @end .container -->
+  </header><!-- @end #top -->
+  
+  <div class="container">
+    <article id="content" class="clearfix">
+      <h1>The hottest new web design tips &amp; tricks for captivating your visitors</h1>
+      <p class="byline">Written by <a href="javascript:void(0)">Jake Rocheleau</a> on January 15, 2014 <span class="twitter"><a href="javascript:void(0)">@jakerocheleau</a></span></p>
+      <div id="post-container">
+        <section id="post">
+          <figure id="featuredimg">
+            <img src="http://i.imgur.com/YqYadek.png" alt="featured img">
+            <figcaption><a href="http://www.flickr.com/photos/flysi/104526773/">photo credit</a></figcaption>
+          </figure>
+          
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sit amet arcu arcu. Ut dolor lacus, malesuada sollicitudin varius bibendum, dapibus eget dui. Mauris ut leo augue. Fusce nec interdum leo. Morbi sodales lorem at nisi rhoncus, nec sagittis neque varius.</p>
+          
+          <p>Curabitur ligula tellus, laoreet sit amet tortor eget, facilisis bibendum nulla. Vestibulum id leo at sapien ornare suscipit in ac ligula. Cras auctor elit sed sapien blandit, tincidunt fringilla felis interdum. Nullam facilisis euismod sollicitudin.</p>
+          
+          <p>Quisque rhoncus odio et orci pharetra, vitae laoreet diam lobortis. Morbi nec lacinia leo. Nam ac massa ante. Curabitur imperdiet orci eget mattis cursus.</p>
+          
+          <p>Fusce cursus ligula vel turpis ornare, et posuere sapien molestie. Aliquam vel elit condimentum, dignissim lorem ut, pretium diam.</p>
+          
+          <p>Vivamus pharetra nunc urna, at porttitor augue gravida quis. Suspendisse potenti. Mauris nunc tortor, congue vel odio non, ultricies sagittis dolor. Curabitur pharetra posuere leo, at dapibus augue tempor sed. Aliquam accumsan, purus quis sodales viverra, risus mi condimentum nisl, eu posuere justo justo non quam.</p>
+          
+          <p>Aenean consectetur, nisi eget sodales pretium, lectus lectus tempor dui, at vulputate augue arcu eget nunc. Maecenas imperdiet tincidunt erat, non tempor sapien viverra vel. Duis vel felis ut risus gravida tempus at eu felis. Etiam ac purus vestibulum, tempus enim vitae, rhoncus nisl.</p>
+          
+          <p>Sed sem lacus, ultricies vel lobortis at, tempus fermentum nulla.</p>
+          
+          <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In tristique aliquam neque, in molestie odio iaculis lobortis. Aenean sapien lacus, malesuada non volutpat eu, scelerisque eget elit. Nulla facilisi.</p>
+          
+          <h2>Comments are closed.</h2>
+        </section>
+      </div><!-- @end #post-container -->
+      
+      <aside id="sidebar">
+        <h3>Advertisers</h3>
+        <div class="adblock"><img src="http://i.imgur.com/WNWzCEr.png" alt="mailgun advertisement"></div>
+        
+        <div class="adblock"><img src="http://i.imgur.com/1llf3X3.png" alt="twiends advertisement"></div>
+        
+        <br class="spacer">
+                
+        <h3>Recent Posts</h3>
+        <ul id="recent-posts">
+          <li><a href="javascript:void(0)" class="clearfix"><img src="http://placehold.it/70x40"><h4>Popular tools for cloud-based IDEs</h4></a></li>
+          <li><a href="javascript:void(0)" class="clearfix"><img src="http://placehold.it/70x40"><h4>30 free PSDs released in 2014</h4></a></li>
+          <li><a href="javascript:void(0)" class="clearfix"><img src="http://placehold.it/70x40"><h4>How to break into freelance web design</h4></a></li>
+          <li><a href="javascript:void(0)" class="clearfix"><img src="http://placehold.it/70x40"><h4>Best free open source jQuery plugins</h4></a></li>
+        </ul>
+      </aside><!-- @end #sidebar -->
+    </article><!-- @end #content -->
+    
+    <footer id="mobilenav">
+      <ul>
+        <li><a href="javascript:void(0)">Home</a></li>
+        <li><a href="javascript:void(0)">News</a></li>
+        <li><a href="javascript:void(0)">Culture</a></li>
+        <li><a href="javascript:void(0)">Business</a></li>
+        <li><a href="javascript:void(0)">Tech</a></li>
+        <li><a href="javascript:void(0)">Offbeat</a></li>
+      </ul>    
+    </footer>
+  </div><!-- @end #container -->
+</body>
+</body>
+</html>

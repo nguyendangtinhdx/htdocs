@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(event) {
+	var secondHandle = document.getElementById("second"),
+        minuteHandle = document.getElementById("minute"),
+        hourHandle = document.getElementById("hour"),
+        minilines = document.getElementById("minilines"),
+        microlines = document.getElementById("microlines"),
+        digiClock = document.getElementById("digital-clock").childNodes;
+
+    function setClock() {
+        var date = new Date(/*"December 25, 1995 00:15:00"*/),
+        	dateHours = date.getHours(),
+	        hour = dateHours < 12 ? dateHours : dateHours - 12,
+	        minute = date.getMinutes(),
+	        secondAngle = date.getSeconds() * (360/60),
+	        minuteAngle = (minute * (360/60)) + (secondAngle / 60),
+	        hourAngle = (hour * (360/12)) + (minuteAngle / 12);
+
+	    // Change clock handles
+	    secondHandle.setAttribute("transform", "rotate(" + secondAngle + " 100,100)");
+	    minuteHandle.setAttribute("transform", "rotate(" + minuteAngle + " 100,100)");
+	    hourHandle.setAttribute("transform", "rotate(" + hourAngle + " 100,100)");
+
+	    // Change digital clock
+	    digiClock[0].innerHTML = dateHours < 10 ? "0" + dateHours : dateHours;
+	    digiClock[1].innerHTML = minute < 10 ? "0" + minute : minute;
+
+        setTimeout(setClock, 1000);
+    }
+
+    // Append mini lines
+    for (var i = 0; i < 12; i++) {
+		var el = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+		el.setAttribute('x1', '100');
+		el.setAttribute('y1', '15');
+		el.setAttribute('x2', '100');
+		el.setAttribute('y2', '30');
+		el.setAttribute('transform', 'rotate(' + (i * 360 / 12) + ' 100 100)');
+		minilines.appendChild(el);
+    }
+
+    // Append micro lines
+    for (var i = 0; i < 60; i++) {
+		var el = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+		el.setAttribute('x1', '100');
+		el.setAttribute('y1', '15');
+		el.setAttribute('x2', '100');
+		el.setAttribute('y2', '20');
+		el.setAttribute('transform', 'rotate(' + (i * 360 / 60) + ' 100 100)');
+		microlines.appendChild(el);
+    }
+
+    // Run the clock
+    setClock();
+});
+	</script>
+	<style>
+	div.top, div.bottom {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+svg line {
+  stroke-linecap: round;
+}
+svg #minilines {
+  stroke: #FFF;
+  stroke-width: 1px;
+}
+svg #microlines {
+  stroke: #aaa;
+  stroke-width: 1px;
+}
+svg #second {
+  stroke: #C00;
+  stroke-width: 1px;
+}
+svg #minute {
+  stroke: #0A0;
+  stroke-width: 2px;
+}
+svg #hour {
+  stroke-width: 3px;
+  stroke: #eee;
+}
+
+div.bottom {
+  background: #000;
+}
+
+#digital-clock {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+#digital-clock span {
+  display: inline-block;
+  width: 200px;
+  height: 160px;
+  background: #FFF;
+  color: #000;
+  margin-left: 20px;
+  font-size: 140px;
+  text-align: center;
+  line-height: 160px;
+  font-family: Rajdhani, sans-serif;
+  font-weight: bold;
+}
+#digital-clock span:first-of-type {
+  margin-left: 0;
+}
+
+a.iprodev {
+  line-height: normal;
+  font-family: Varela Round, sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 13px;
+  color: #A7AAAE;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  border: 1px solid #A7AAAE;
+  padding: 12px 20px 10px;
+  border-radius: 50px;
+  transition: all .1s ease-in-out;
+  text-transform: uppercase;
+}
+a.iprodev:hover {
+  background: #A7AAAE;
+  color: #fff;
+}
+
+	</style>
+</head>
+<body>
+	<div class="top">
+	<svg width="200" height="200" >
+	    <filter id="innerShadow" x="-20%" y="-20%" width="140%" height="140%">
+	        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+	        <feOffset in="blur" dx="0" dy="1"/>
+	    </filter>
+		<!-- Background and Shadow -->
+	    <g>
+		    <circle id="shadow" style="fill:rgba(0,0,0,0.2)" cx="100" cy="101" r="100" filter="url(#innerShadow)"></circle>
+			<circle cx="100" cy="100" r="96" style="fill: #000" ></circle> 
+		</g>
+		<!-- Microlines -->
+		<g id="microlines"></g>
+		<!-- Minilines -->
+		<g id="minilines"></g>
+
+		<!-- Handles -->
+		<line x1="100" y1="100" x2="100" y2="50" id="hour"></line>
+		<line x1="100" y1="100" x2="100" y2="32" id="minute"></line>
+		<line x1="100" y1="115" x2="100" y2="15" id="second"></line>
+
+		<!-- Micro circle -->
+		<circle cx="100" cy="100" r="4" style="fill: #F00"></circle>
+		<circle cx="100" cy="100" r="2" style="fill: #000"></circle>
+	</svg>
+</div>
+<div class="bottom">
+	<div id="digital-clock"><span>00</span><span>00</span></div>
+</div>
+
+<a href="http://iprodev.com" target="_blank" class="iprodev">iprodev.com</a>
+</body>
+</html>

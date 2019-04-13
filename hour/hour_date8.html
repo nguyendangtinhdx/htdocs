@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+  var currTime;
+  var hour;
+  var minute;
+  var second;
+  var day;
+  var month;
+  var monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var secOfDay;
+  var year;
+  var secColor;
+  
+  function putTime(){
+    currTime = new Date();
+   // $('#time').text(currTime);
+    hour = currTime.getHours();
+    minute = currTime.getMinutes();
+    second = currTime.getSeconds();
+    day = currTime.getDate();
+    month = monthList[currTime.getMonth()];
+    year = currTime.getFullYear();
+    secOfDay = hour*3600 + minute*60 + second;
+    if (minute < 10){
+      minute = "0" + minute;
+    }
+    if (second < 10){
+      second = "0" + second;
+    }
+    $('#hour').text(hour);
+    $('#minute').text(minute);
+    $('#second').text(second);
+    $('#day').text(day);
+    $('#month').text(month);
+    $('#year').text(year);
+    $('#secOfDay').text(secOfDay);
+    secColor = '#0' + secOfDay;
+    $('#secOfDay').text(secColor);
+    $('#secOfDay').css({"background-color" : secColor});
+  }
+  
+  var intervalID = setInterval(putTime, 1000);
+  
+});
+	</script>
+	<style>
+	@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+#time {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+#time .time-unit {
+  float: left;
+  font-size: 900%;
+}
+#time #secOfDay {
+  font-size: 120%;
+  position: absolute;
+  left: 50%;
+  top: 125%;
+  transform: translate(-50%);
+  padding: 2em;
+}
+#time #date-block {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+}
+#time .date-unit {
+  float: left;
+  font-size: 200%;
+}
+#time #hour::after, #time #minute::after {
+  content: ':';
+}
+#time #day::after, #time #month::after {
+  content: '\00a0';
+}
+
+	</style>
+</head>
+<body>
+	<div id='time'>
+  <div id='time-block'>
+    <div class='time-unit' id='hour'>
+    </div>
+    <div class='time-unit' id='minute'>
+    </div>
+    <div class='time-unit' id='second'>
+    </div>
+  </div>
+  <div id='date-block'>
+    <div class='date-unit' id='day'>
+    </div>
+    <div class='date-unit' id='month'>
+    </div>
+    <div class='date-unit' id='year'>
+    </div>
+  </div>
+  <div id='secOfDay'>
+  </div>
+</div>
+</body>
+</html>

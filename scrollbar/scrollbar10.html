@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.silly_scrollbar {
+    height:300px;
+    width:350px;
+    border:1px solid #222;
+    -webkit-box-shadow:0 0 3px #333;
+    margin:50px auto 0;
+	-webkit-box-sizing: border-box;
+    padding:0 14px;
+    overflow:auto;
+}
+
+.silly_scrollbar::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+.silly_scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+.silly_scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.silly_scrollbar::-webkit-scrollbar-thumb:hover {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+}
+
+p {
+    margin-bottom:8px;
+    font:normal 300 16px 'Signika';
+}
+
+span {
+    font-weight:600;
+}
+	</style>
+</head>
+<body>
+	<div class="silly_scrollbar">
+  <p><span>:horizontal</span> – The horizontal pseudo-class applies to any scrollbar pieces that have a horizontal orientation.</p>
+
+    <p><span>:vertical</span> – The vertical pseudo-class applies to any scrollbar pieces that have a vertical orientation.</p>
+
+    <p><span>:decrement</span> – The decrement pseudo-class applies to buttons and track pieces. It indicates whether or not the button or track piece will decrement the view’s position when used (e.g., up on a vertical scrollbar, left on a horizontal scrollbar).</p>
+
+    <p><span>:increment</span> – The increment pseudo-class applies to buttons and track pieces. It indicates whether or not a button or track piece will increment the view’s position when used (e.g., down on a vertical scrollbar, right on a horizontal scrollbar).</p>
+
+    <p><span>:start</span> – The start pseudo-class applies to buttons and track pieces. It indicates whether the object is placed before the thumb.</p>
+
+    <p><span>:end</span> – The end pseudo-class applies to buttons and track pieces. It indicates whether the object is placed after the thumb.</p>
+
+    <p><span>:double-button</span> – The double-button pseudo-class applies to buttons and track pieces. It is used to detect whether a button is part of a pair of buttons that are together at the same end of a scrollbar. For track pieces it indicates whether the track piece abuts a pair of buttons.</p>
+
+    <p><span>:single-button</span> – The single-button pseudo-class applies to buttons and track pieces. It is used to detect whether a button is by itself at the end of a scrollbar. For track pieces it indicates whether the track piece abuts a singleton button.</p>
+
+    <p><span>:no-button</span> – Applies to track pieces and indicates whether or not the track piece runs to the edge of the scrollbar, i.e., there is no button at that end of the track.</p>
+
+    <p><span>:corner-present</span> – Applies to all scrollbar pieces and indicates whether or not a scrollbar corner is present.</p>
+
+    <p><span>:window-inactive</span> – Applies to all scrollbar pieces and indicates whether or not the window containing the scrollbar is currently active. (In recent nightlies, this pseudo-class now applies to ::selection as well. We plan to extend it to work with any content and to propose it as a new standard pseudo-class.)</p>
+</div>
+</body>
+</html>

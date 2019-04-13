@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$('.carousel').carousel();
+	</script>
+	<style>
+.carousel,.item,.active{height:300px;}
+.carousel-inner{height:300px;}
+.fill{width:100%;height:300px;background-position:center;background-size:cover;}
+
+/* faster sliding speed */
+.carousel-inner > .item {
+    -webkit-transition: 0.3s ease-in-out left;
+    -moz-transition: 0.3s ease-in-out left;
+    -o-transition: 0.3s ease-in-out left;
+    transition: 0.3s ease-in-out left;
+}
+
+/* keep full widget on smaller screens */
+@media (max-width: 767px) { 
+	body {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+#banner {position: relative;}
+
+#quote {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 30%;
+    margin: auto;
+}
+		</style>
+</head>
+<body>
+	<div class="container fill">
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+   
+    <div class="active item">
+       <div id="banner">
+      <div class="fill" style="background-image:url('http://upload.wikimedia.org/wikipedia/commons/8/80/NGC_2818_by_the_Hubble_Space_Telescope.jpg');"> 
+        <div class="container"> <div id="quote">I am a quote</div>
+        </div>
+      </div>
+      </div></div>
+    
+    <div class="item">
+       <div id="banner">
+      <div class="fill" style="background-image:url('http://fc03.deviantart.net/fs10/i/2006/103/a/0/Studios_Fantasmic_Elements_2_by_Disney_Stock.jpg');"> 
+        <div class="container"> <div id="quote">I am also a quote</div>
+          
+        </div>
+      </div>
+       </div></div>
+   
+    <div class="item">
+       <div id="banner">
+      <div class="fill" style="background-image:url('http://upload.wikimedia.org/wikipedia/commons/f/fc/Kyoto-Ryoan-Ji_MG_4512.jpg');"> 
+        <div class="container">
+          <div id="quote">I, too, am a quote</div>
+        </div>
+      </div>
+      </div></div>
+     <div class="item">
+        <div id="banner">
+      <div class="fill" style="background-image:url('http://farm3.staticflickr.com/2847/10947762305_a2f0842e11_o.jpg');"> 
+        <div class="container"> 
+          <div id="quote">I think, therefore I am a quote.</div>
+        </div>
+      </div>
+      </div></div>
+  </div>
+  <div class="pull-center">
+	<a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+	<a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+  </div>
+</div>
+</div>
+</body>
+</html>

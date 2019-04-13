@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script><link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		$(document).ready(function(){
+  
+  var $searchTrigger = $('[data-ic-class="search-trigger"]'),
+      $searchInput = $('[data-ic-class="search-input"]'),
+      $searchClear = $('[data-ic-class="search-clear"]');
+  
+  $searchTrigger.click(function(){
+    
+    var $this = $('[data-ic-class="search-trigger"]');
+    $this.addClass('active');
+    $searchInput.focus();
+    
+  });
+  
+  $searchInput.blur(function(){
+    
+    if($searchInput.val().length > 0){
+      
+      return false;
+      
+    } else {
+      
+      $searchTrigger.removeClass('active');
+      
+    }
+    
+  });
+  
+  $searchClear.click(function(){
+    $searchInput.val('');
+  });
+  
+  $searchInput.focus(function(){
+    $searchTrigger.addClass('active');
+  });
+  
+});
+	</script>
+	<style>
+	* {
+  box-sizing: border-box;
+}
+*,
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+.wrapper {
+  text-align: center;
+  margin: 100px auto;
+}
+.icon-search-container {
+  display: inline-block;
+  border: 2px solid #d9d9d9;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  transition: width 0.4s ease-out;
+  backface-visibility: hidden;
+}
+.icon-search-container.active {
+  width: 285px;
+}
+.icon-search-container.active .fa-times-circle {
+  opacity: 1;
+}
+.icon-search-container.active .search-input {
+  width: 200px;
+}
+.icon-search-container .fa-search {
+  color: #2980b9;
+  font-size: 30px;
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  cursor: pointer;
+}
+.icon-search-container .fa-times-circle {
+  opacity: 0;
+  color: #d9d9d9;
+  font-size: 20px;
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  transition: opacity 0.4s ease-out;
+  cursor: pointer;
+}
+.icon-search-container .search-input {
+  position: absolute;
+  cursor: default;
+  left: 45px;
+  top: 6px;
+  width: 0;
+  padding: 5px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  line-height: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  transition: width 0.4s ease-out;
+}
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+  <div class="icon-search-container" data-ic-class="search-trigger">
+    <span class="fa fa-search"></span>
+    <input type="text" class="search-input" data-ic-class="search-input" placeholder="Search"/>
+    <span class="fa fa-times-circle" data-ic-class="search-clear"></span>
+  </div>
+</div>
+</body>
+</html>

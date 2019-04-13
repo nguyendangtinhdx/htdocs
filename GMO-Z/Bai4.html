@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>Bài 4</title>
+    <link href="css/Bai4.css" rel="stylesheet" />
+    <link href="css/styleBai4.css" rel="stylesheet" />
+    <style>
+    body {
+        background-color: #3498db;
+    }
+    .slider {
+        width: 600px;
+        margin: 0 auto;
+    }
+    .title {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .slick-dots li button:before {
+        font-size: 20px;
+    }
+    .slider h1 {
+        color: #3498db;
+        font-size: 36px;
+        line-height: 100px;
+        margin: 10px;
+        padding: 2%;
+        position: relative;
+        text-align: center;
+        height: 100%;
+    }
+    .slider img {
+        color: #3498db;
+        font-size: 36px;
+        line-height: 100px;
+        margin: auto;
+        padding: 2%;
+        position: relative;
+        text-align: center;
+        height: 120px;
+        width: 530px;
+    }
+
+
+</style>
+
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/Bai4.min.js"></script>
+<script>
+    $(document).ready(function () {
+            $('.autoplay').slick({
+                dots: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 1000,
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div class="slider autoplay" role="toolbar">
+        <div><h1><img src="img/1.jpg" alt=""></h1></div>
+        <div><h1><img src="img/2.jpg" alt=""></h1></div>
+        <div><h1><img src="img/3.jpg" alt=""></h1></div>
+        <div><h1><img src="img/4.jpg" alt=""></h1></div>
+        <div><h1><img src="img/5.jpg" alt=""></h1></div>
+        <div><h1><img src="img/6.jpg" alt=""></h1></div>
+        <div><h1><img src="img/7.jpg" alt=""></h1></div>
+        <div><h1><img src="img/8.jpg" alt=""></h1></div>
+        <div><h1><img src="img/9.jpg" alt=""></h1></div>
+        <div><h1><img src="img/10.jpg" alt=""></h1></div>
+    </div>
+
+
+</body>
+</html>

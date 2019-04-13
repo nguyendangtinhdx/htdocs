@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<style>
+		@keyframes pulse {
+			0% {
+				transform: scaleX(1) scaleY(1);
+			}
+			10% {
+				transform: scaleX(0.85) scaleY(0.85);
+			}
+			20% {
+				transform: scaleX(1) scaleY(1);
+			}
+			30% {
+				transform: scaleX(0.85) scaleY(0.85);
+			}
+			40% {
+				transform: scaleX(1) scaleY(1);
+			}
+			50% {
+				transform: scaleX(0.85) scaleY(0.85);
+			}
+			60% {
+				transform: scaleX(1) scaleY(1);
+			}
+			70% {
+				transform: scaleX(0.85) scaleY(0.85);
+			}
+			80% {
+				transform: scaleX(1) scaleY(1);
+			}
+			90% {
+				transform: scaleX(0.85) scaleY(0.85);
+			}
+			100% {
+				transform: scaleX(1) scaleY(1);
+			}
+		}
+		@keyframes shake {
+			0% {
+				transform: rotateZ(0);
+			}
+			10% {
+				transform: rotateZ(-30deg);
+			}
+			20% {
+				transform: rotateZ(15deg);
+			}
+			30% {
+				transform: rotateZ(-10deg);
+			}
+			40% {
+				transform: rotateZ(7.5deg);
+			}
+			50% {
+				transform: rotateZ(-6deg);
+			}
+			60% {
+				transform: rotateZ(5deg);
+			}
+			70% {
+				transform: rotateZ(-4.28571deg);
+			}
+			80% {
+				transform: rotateZ(3.75deg);
+			}
+			90% {
+				transform: rotateZ(-3.33333deg);
+			}
+			100% {
+				transform: rotateZ(0);
+			}
+		}
+		@keyframes spin {
+			to {
+				transform: rotateZ(720deg);
+			}
+		}
+		body {
+			background-color: #262626;
+			margin: 20px;
+		}
+
+		.wrap {
+			background-color: #8c4646;
+			color: #f2e394;
+			margin: 20px;
+			padding: 20px;
+			display: inline-block;
+			box-shadow: -1px -1px 4px #f2ae72;
+			-webkit-backface-visibility: hidden;
+		}
+
+		div[class*=icon] {
+			text-shadow: 2px 2px 4px #333;
+			display: inline-block;
+			-webkit-backface-visibility: hidden;
+		}
+
+		.container {
+			position: relative;
+			perspective: 100px;
+			transform-style: preserve-3d;
+			width: 80%;
+		}
+
+		#phoneicon {
+			display: inline-block;
+			color: #ff6f69;
+		}
+
+		#phonewrap:hover > div {
+			animation: shake 1200ms;
+		}
+
+		#bellicon {
+			display: inline-block;
+			transform-origin: 50% 0%;
+			color: #fa9600;
+		}
+
+		#bellwrap:hover > div {
+			animation: shake 1300ms;
+		}
+
+		#asteriskicon {
+			display: inline-block;
+			transform-origin: 50% 50%;
+		}
+
+		#asteriskwrap:hover > div {
+			animation: spin 3000ms;
+		}
+
+		#headphonesicon {
+			display: inline-block;
+			transform-origin: 50% 50%;
+			color: #f2ae72;
+		}
+
+		#headphoneswrap:hover > div {
+			animation: pulse 1500ms;
+		}
+
+		#hearticon {
+			display: inline-block;
+			transform-origin: 50% 50%;
+			color: #ff6f69;
+		}
+
+		#heartwrap:hover > div {
+			animation: pulse 1500ms;
+		}
+
+	</style>
+</head>
+<body>
+	<div class='container'>
+		<div class='wrap' id='phonewrap'>
+			<div class='fa fa-home' id='phoneicon'></div>
+		</div>
+		<div class='wrap' id='bellwrap'>
+			<div class='fa fa-facebook' id='bellicon'></div>
+		</div>
+		<div class='wrap' id='headphoneswrap'>
+			<div class='fa fa-youtube' id='headphonesicon'></div>
+		</div>
+		<div class='wrap' id='asteriskwrap'>
+			<div class='fa fa-skype' id='asteriskicon'></div>
+		</div>
+		<div class='wrap' id='heartwrap'>
+			<div class='fa fa-google-plus' id='hearticon'></div>
+		</div>
+	</div>
+</body>
+</html>

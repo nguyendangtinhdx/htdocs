@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *, *::before, *::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+body {
+  background-color: #333;
+}
+
+.flex-centered {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fixed-height-container {
+  width: 500px;
+  height: 500px;
+  box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.3), 0 0 1.2em rgba(255, 255, 255, 0.2);
+  overflow: auto;
+  color: grey;
+  padding: 1.2em;
+}
+
+    </style>
+</head>
+<body>
+    
+<div class="flex-centered">
+    <div class="fixed-height-container">
+        <p class="overflow-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac erat euismod nunc sollicitudin faucibus quis quis mi. Mauris ut pretium mi, eu interdum metus. Quisque metus ligula, suscipit eget vehicula sit amet, egestas eu quam. Nulla nec accumsan libero. Phasellus sodales enim id egestas volutpat. In congue tempus nisl, vitae dapibus nibh placerat sit amet. Vivamus congue lacinia maximus.
+
+Sed a auctor nulla. Ut imperdiet elit vitae justo finibus, vel efficitur diam suscipit. Cras molestie tincidunt felis, vel aliquam ligula auctor vel. Maecenas sit amet tincidunt nulla. Sed quis lorem ac lacus imperdiet sollicitudin ut eget risus. Maecenas eget sapien at dolor consequat pharetra at non tortor. Sed maximus consequat magna sit amet posuere. Phasellus ultrices, metus a efficitur posuere, eros sem sodales mi, sit amet ultrices ligula turpis at diam. Praesent purus felis, aliquam a fringilla non, pellentesque ac arcu. Maecenas posuere mauris non erat dapibus, eu aliquet risus vestibulum. In tincidunt efficitur justo eu sodales. Suspendisse ornare nulla ac diam volutpat, vel pellentesque arcu bibendum. Fusce imperdiet mollis orci non venenatis. Praesent non sapien massa.
+
+Proin ligula ligula, fermentum ac neque in, ultrices viverra ex. Phasellus vitae suscipit leo. Nam lobortis nibh aliquam, fermentum lacus at, pellentesque enim. Cras rhoncus felis a eros lobortis convallis. Aenean vulputate porta enim quis dictum. Aenean pellentesque diam sit amet feugiat viverra. Nunc aliquam, odio quis elementum ultrices, metus purus auctor elit, eu condimentum ex tellus et mi. Proin vehicula maximus hendrerit. Aenean orci felis, iaculis eget justo vitae, aliquet interdum arcu.
+
+Vestibulum vestibulum vel risus non interdum. Cras feugiat efficitur sollicitudin. Curabitur tincidunt eleifend condimentum. Quisque malesuada pretium odio, a sagittis orci imperdiet at. Maecenas volutpat ipsum non sem ornare tincidunt. Pellentesque eu accumsan dui, vitae scelerisque erat. Etiam non cursus ex. Integer sollicitudin, metus vel maximus commodo, enim nisi interdum justo, vitae viverra augue justo vel nibh. Aliquam egestas sollicitudin nisl, id congue risus ultrices vel. Proin bibendum bibendum risus a condimentum. Integer vel leo auctor ligula laoreet venenatis. Aenean id nisl purus. Nunc dignissim, sapien id consequat ullamcorper, quam dolor tempus risus, at imperdiet dolor purus a mauris. Praesent pulvinar, turpis id dignissim iaculis, sapien lacus tincidunt magna, non dictum lacus velit in ipsum. Integer non augue luctus, venenatis tortor sed, elementum metus. Morbi id est libero.
+
+Quisque a nunc sapien. Sed gravida est eu urna sodales elementum. Quisque quam augue, suscipit vitae dapibus ac, vehicula sit amet nisl. Nam vel venenatis libero, nec tincidunt metus. Donec lacinia nisi lobortis lectus tincidunt faucibus. Morbi et libero at eros dignissim pellentesque. Fusce sit amet augue nisl. Mauris at mollis risus. Donec eget interdum justo, sit amet porta magna. Aliquam vel arcu nec sem luctus elementum vel at metus. Ut ut purus eu dui malesuada consequat sed eget tellus. Aliquam at nunc vulputate, dignissim diam eu, pharetra diam. Integer in libero sed quam varius efficitur. Fusce vel rhoncus lorem, non pretium odio.
+        </p>
+    </div>
+</div>
+</body>
+</html>

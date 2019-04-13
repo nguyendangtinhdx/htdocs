@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+	searchThis();
+	
+});
+var searchTerm;
+var api;
+
+function searchThis() {
+	
+	$('#searchText').keypress(function(event){
+		if (event.which == 13) {
+		searchTerm = $('#searchText').val();
+		findWiki(searchTerm);
+		} else {	
+		}
+	});
+};
+
+function findWiki(text) {
+  
+    api = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + encodeURIComponent(searchTerm) + '&limit=10&namespace=0&format=json';
+    console.log(api);
+  	$.ajax({
+		url: api,
+		dataType: "jsonp",
+	    
+		success: function (data) {
+			//clear previous results
+			$('#searchResults').html("");
+
+				for (var i = 0; i < 10; i++) {
+					$('#searchResults').append(
+						//add link to results to whole div + title
+						'<a href="' + data[3][i] + '" id="searchResults" target="_blank"><h3 id="searchResults">' + data[1][i] + '</h3>',
+						//add summary
+						'<p id="searchResults">' + data[2][i] + '</p></a>'
+					);
+				}
+        }
+	});
+  };
+	</script>
+	<style>
+	body {
+	background-color: #292929;
+	background: url(http://thumb1.shutterstock.com/display_pic_with_logo/1366267/258410078/stock-vector-seamless-mystic-pattern-with-occult-symbols-and-pentacles-on-black-background-halloween-set-258410078.jpg) no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	color: white;
+	font-family: Alegreya;
+}
+
+#wikiMain {
+	margin-top: 33px;
+	background-color: #303030;
+	border-radius: 17px;
+}
+
+h1, #wikiMain {
+	text-transform: uppercase;
+	text-align: center;
+}
+
+a {
+	color: #696969;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #2F8522;
+}
+
+#searchText {
+	color: black;
+}
+
+#searchResults {
+	color: white;
+}
+
+#searchResults h3 {
+	color: #2F8522;
+}
+
+#searchResults p {
+  text-transform: lowercase;
+}
+
+input {
+	outline: none;
+}
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; 
+}
+
+
+input[type=search] {
+	background: #ededed url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 9px 10px 9px 32px;
+	width: 55px;
+	
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #686868;
+	
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+
+
+input:-moz-placeholder {
+	color: #999;
+}
+input::-webkit-input-placeholder {
+	color: #999;
+}
+	</style>
+</head>
+<body>
+	<link href='https://fonts.googleapis.com/css?family=Alegreya:400,700' rel='stylesheet' type='text/css'>
+
+<div class="container-fluid">
+		<div class="row">
+  			<div class="col-xs-12 col-sm-2"></div>
+  			<div class="col-xs-12 col-sm-8" id="wikiMain">
+  				  <h1>WikiApp</h1>
+    						<div>
+		      					<p>
+		      					<input id="searchText" type="search" placeholder="Search...">
+		      					</input>
+		      					</p>
+		    				</div>
+		    				</br>
+		    				<div id="searchResults">
+		  				  </div>
+		    				</br>
+		  				  <p id="random">
+		    					<a href="http://en.wikipedia.org/wiki/Special:Random" target="_blank">
+		    						<button type="button" class="btn btn-default">Random article here</button>
+		  					  </a>
+		    				</p>
+		  				  <div>
+							      <p>Made by <a href="http://www.codeneophyte.com" target="_blank">CodeNeophyte</a></p>
+    						</div>
+  			</div>
+  			<div class="col-xs-12 col-sm-2"></div>
+		</div>
+</div>
+</body>
+</html>

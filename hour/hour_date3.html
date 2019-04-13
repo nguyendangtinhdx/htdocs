@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+var days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+var months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "mowember", "december"];
+
+var IOSBack = function() {
+    this.time = 0;
+    this.blobs = [];
+    this.interval = Math.round(Math.random() * 50) + 100;
+    this.container = $('.back');
+    this.maxOpacity = .3;
+    this.startBlobs = 6;
+    this.colors = ["#9EE4F0","#E1CFE8", "#B8E6F7"];
+    this.xOffset = 0;
+    
+    this.init = function() {
+        var self = this;
+        
+        this.addMouseEvents();
+        
+        this.generateStartDots();
+        
+        (function animloop(){
+            requestAnimFrame(animloop);
+            self.tick();
+        })();
+    }
+    
+    this.addMouseEvents = function() {
+        var self = this;
+        $('.container').on('mousemove', function(e) {
+            var mouseX = e.clientX;
+            self.xOffset = (mouseX - 277) / 100;
+        });
+    }
+    
+    this.generateStartDots = function() {
+        for (var i = 0; i < this.startBlobs ; i++) {
+            this.addBlob();
+        }
+    }
+    
+    this.tick = function() {
+    	this.updateClock();
+
+        this.time++;
+        if(this.time % this.interval == 0) {
+            this.interval = Math.round(Math.random() * 100) + 100;
+            this.addBlob();
+        }
+        
+        this.animateBlobs();
+    }
+
+    this.updateClock = function() {
+    	var date = new Date();
+    	var hours = date.getHours();
+    	var minutes = date.getMinutes();
+    	var day = date.getDay();
+    	var curDate = date.getDate();
+    	var month = date.getMonth();
+    	hours = hours < 10 ? "0" + hours : hours;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+
+    	$('.hours').text(hours);
+    	$('.minutes').text(minutes);
+
+    	if( month == 4 && curDate == 5) {
+    		$('.date').text("Holy crap it's cinqo de Mayo!");
+    	} else {
+    		$('.date').text(days[day - 1] + " " + curDate + " " + months[month]);
+    	}
+    	
+    	
+    }
+    
+    this.addBlob = function() {
+        var self = this;
+        var newSpan = $('<span />');
+        
+        var blob = {
+            $element: newSpan,
+            size: Math.round(Math.random() * 150) + 20,
+            posX: Math.round(Math.random() * 554),
+            posY: Math.round(Math.random() * 985),
+            speedX: Math.random() * .5 - .25,
+            speedY: Math.random() *.5 - .25,
+            opacity: 0,
+            hold: Math.round(Math.random() * 500),
+            currentHold: 0,
+            color: this.colors[Math.floor(Math.random() * this.colors.length)],
+            fading: true
+        }
+        
+        newSpan.css(self.setStyles({
+            top: blob.posX,
+            left: blob.posY,
+            width: blob.size,
+            height: blob.size,
+            background: blob.color,
+            blur: blob.size / 10,
+            opacity: blob.opacity
+        }));
+        
+        this.container.append(newSpan);
+
+        this.blobs.push(blob);        
+        
+    }
+    
+    this.animateBlobs = function() {
+        
+        for ( var i = 0, l = this.blobs.length ; i < l ; i++ ) {
+            var currentBlob = this.blobs[i];
+            
+            if(currentBlob) {
+                currentBlob.posX += currentBlob.speedX;
+                currentBlob.posY += currentBlob.speedY;
+
+                if (currentBlob.opacity < 0) {
+                    this.removeBlob( i );   
+                } else {
+                    if (currentBlob.opacity > this.maxOpacity) {
+                      currentBlob.currentHold++;
+                      currentBlob.fading = !(currentBlob.fading);
+
+                        if(currentBlob.currentHold >= currentBlob.hold ) {
+                            currentBlob.opacity = this.maxOpacity - .01;
+                            currentBlob.fading = false;
+                        }
+                
+                    } else {
+                        if (!(currentBlob.fading)) {
+                            currentBlob.opacity -= .003; 
+                    
+                        } else {
+                            currentBlob.opacity += .003;   
+                        }
+                    }
+            
+                    currentBlob.$element.css(this.setStyles({
+                        top: currentBlob.posX + ( this.xOffset * (currentBlob.size - (currentBlob.size / 10)) / 10),
+                        left: currentBlob.posY,
+                        width: currentBlob.size,
+                        height: currentBlob.size,
+                        background: currentBlob.color,
+                        opacity: currentBlob.opacity
+                    }));
+                }
+            }
+        }
+    }
+    
+    this.setStyles = function( params ) {
+        return {
+            "-webkit-transform": "translateX(" + params.top + "px)" + "translateY(" + params.left + "px)" + "translateZ(" + 2 + "px)",
+          "-moz-transform": "translateX(" + params.top + "px)" + "translateY(" + params.left + "px)" + "translateZ(" + 2 + "px)",
+          "-o-transform": "translateX(" + params.top + "px)" + "translateY(" + params.left + "px)" + "translateZ(" + 2 + "px)",
+          "-ms-transform": "translateX(" + params.top + "px)" + "translateY(" + params.left + "px)" + "translateZ(" + 2 + "px)",
+          "transform": "translateX(" + params.top + "px)" + "translateY(" + params.left + "px)" + "translateZ(" + 2 + "px)",
+            width: params.width,
+            height: params.height,
+            background: params.background,
+            "-webkit-filter" : "blur(" + ( 15 - params.blur) + "px)",
+          "-moz-filter" : "blur(" + ( 15 - params.blur) + "px)",
+          "-o-filter" : "blur(" + ( 15 - params.blur) + "px)",
+          "-ms-filter" : "blur(" + ( 15 - params.blur) + "px)",
+          "filter" : "blur(" + ( 15 - params.blur) + "px)",
+            opacity: params.opacity
+        }
+    }
+    
+    this.removeBlob = function( index ) {
+       
+       this.blobs[index].$element.remove();
+       this.blobs.splice(index, 1);
+       
+    }
+    
+    this.init();
+    
+}
+
+var iOsBack = new IOSBack();
+	</script>
+	<style>
+	.container {
+    width: 554px;
+    height: 985px;
+    position: relative;
+  margin: 0 auto;
+
+}
+
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background:rgb(91,145,179);
+background:-webkit-gradient(linear, 0 0, 0 100%, from(rgba(91,145,179,1)), color-stop(0.5, rgba(146,187,219,1)), color-stop(0.75, rgba(118,137,196,1)), to(rgba(37,67,127,1)));
+background:-webkit-linear-gradient(rgba(91,145,179,1) 0%, rgba(146,187,219,1) 50%, rgba(118,137,196,1) 75%, rgba(37,67,127,1) 100%);
+background:-moz-linear-gradient(rgba(91,145,179,1) 0%, rgba(146,187,219,1) 50%, rgba(118,137,196,1) 75%, rgba(37,67,127,1) 100%);
+background:-o-linear-gradient(rgba(91,145,179,1) 0%, rgba(146,187,219,1) 50%, rgba(118,137,196,1) 75%, rgba(37,67,127,1) 100%);
+background:linear-gradient(rgba(91,145,179,1) 0%, rgba(146,187,219,1) 50%, rgba(118,137,196,1) 75%, rgba(37,67,127,1) 100%);
+filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b91b3', endColorstr='#25437f',GradientType=0 );
+}
+
+.back span {
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.content {
+  display: block;
+  color: white;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: Helvetica Neue, Helvetica, Arial;
+  font-weight: 100;
+}
+
+.hour {
+  font-size: 120px;
+  line-height: 100px;
+  margin: 30px 0 0 0;
+  padding: 0;
+  font-weight: inherit;
+}
+
+.date {
+  font-size: 20px;
+}
+
+.top-bar {
+  padding: 10px 5px;
+  width: 100%;
+  text-align: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.signal {
+  float: left;
+}
+
+.battery {
+  display: block;
+  float: right;
+  width: 25px;
+  height: 8px;
+  outline: 1px solid white;
+  outline-offset: 1px;
+  border-radius: 1px;
+  background: white;
+  position: relative;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.battery:after {
+  content: " ";
+  position: absolute;
+  right: -6px;
+  width: 3px;
+  height: 6px;
+  top: 1px;
+  background: white;
+  display: block;
+  border-radius: 0 50% 50% 0;
+}
+
+
+.slide-container {
+  position: absolute;
+  bottom: 100px;
+  font-size: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+.slide {
+  display: block;
+  width: 100%;
+  background: -webkit-gradient(linear,left top,right top,color-stop(0, rgba(255,255,255,.5)),color-stop(0.4, rgba(255,255,255,.8)),color-stop(0.5, rgba(255,255,255,1)),color-stop(0.6, rgba(255,255,255,.5)),color-stop(1, rgba(255,255,255,.5)));
+-moz-background-clip: text;
+-webkit-background-clip: text;
+-moz-text-fill-color: transparent;
+-webkit-text-fill-color: transparent;
+-webkit-animation: slidetounlock 5s infinite linear;
+background-position: -600px;
+
+}
+
+
+
+
+@-webkit-keyframes slidetounlock {
+	0% {
+		background-position: -600px 0;
+	}
+	100%{
+		background-position: 600px 0;
+	}
+}
+	</style>
+</head>
+<body>
+	<div class="container">
+  <div class="back">
+    &nbsp;
+  </div>
+  <div class="content">
+    <div class="top-bar">
+      <div class="signal">
+        <span>&#8226;&#8226;&#8226;&#8226;&#8226;</span>
+            Swisscom 4G
+      </div>
+      
+      <span class="battery">
+        
+      </span>
+    </div>
+    <h1 class="hour">
+      <span class="hours"></span>:<span class="minutes"></span>
+    </h1>
+    <p class="date"></p>
+    <div class="slide-container">
+      <span class="slide">> Slide to unlock</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

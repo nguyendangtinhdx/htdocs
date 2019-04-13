@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<p id="1"></p>
+	<p id="2"></p>
+	<p id="3"></p>
+	<p id="4"></p>
+	<p id="5"></p>
+<body>
+	<script>
+	(function()			// tự gọi
+	{
+		document.getElementById('1').innerHTML = " Nguyen Dang Tinh ";
+	})();
+
+	function findmax()		// Max
+	{
+		var max=0;
+		for(i=0;i<arguments.length;i++)
+		{
+			if(arguments[i]>max)
+				max=arguments[i];
+		}
+		return max;
+	};
+	document.getElementById('2').innerHTML = " Max = " + findmax(6,10,8);
+
+	function sumAll () 		// Sum
+	{
+		sum=0;
+		for(i=0;i<arguments.length;i++)
+		{
+			sum+=arguments[i];
+		}
+		return sum;
+	}
+	document.getElementById('3').innerHTML = " Sum = " + sumAll(100,200,300);
+
+	function array(a,b)		// Array
+	{
+		return a*b;
+	}
+	var x = array.call(x,10,2); // or  s=[10,2]; x=array.apply(x,s);
+	document.getElementById('4').innerHTML = x;
+	//	document.getElementById('4').innerHTML = array(4,5);
+
+	</script>
+</body>
+</html>

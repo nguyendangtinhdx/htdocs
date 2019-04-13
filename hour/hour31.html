@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(function() {
+ 
+      setInterval( function() {
+      var seconds = new Date().getSeconds();
+      var sdegree = seconds * 6;
+      var srotate = "rotate(" + sdegree + "deg)";
+      
+      $("#sec").css({ "transform": srotate });
+          
+      }, 1000 );
+      
+      setInterval( function() {
+      var hours = new Date().getHours();
+      var mins = new Date().getMinutes();
+      var hdegree = hours * 30 + (mins / 2);
+      var hrotate = "rotate(" + hdegree + "deg)";
+      
+      $("#hour").css({ "transform": hrotate});
+          
+      }, 1000 );
+
+      setInterval( function() {
+      var mins = new Date().getMinutes();
+      var mdegree = mins * 6;
+      var mrotate = "rotate(" + mdegree + "deg)";
+      
+      $("#min").css({ "transform" : mrotate });
+          
+      }, 1000 );
+ 
+});
+
+	</script>
+	<style>
+	#clock {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 20px auto 0 auto;
+  background: url(http://2.bp.blogspot.com/-0_iJJMk4NYA/U77a1dsS2fI/AAAAAAAAAMA/lLevVy59A0c/s1600/clockface.jpg) no-repeat;
+  list-style: none;
+}
+
+#sec, #min, #hour {
+  position: absolute;
+  width: 30px;
+  height: 600px;
+  top: 0px;
+  left: 285px;
+}
+
+#sec {
+  background: url(http://4.bp.blogspot.com/-gqh8n1EzScA/U77bKxt2_yI/AAAAAAAAAMI/ZIvrx3tKHGY/s1600/sechand.png);
+  z-index: 3;
+}
+   
+#min {
+  background: url(http://4.bp.blogspot.com/-6UfLbp7ty-U/U77be4ZW4VI/AAAAAAAAAMQ/z_0c74OoQrE/s1600/minhand.png);
+  z-index: 2;
+}
+   
+#hour {
+  background: url(http://2.bp.blogspot.com/-2WJch0emzKQ/U77bsdDppWI/AAAAAAAAAMY/nB_66qFlicI/s1600/hourhand.png);
+  z-index: 1;
+}
+	</style>
+</head>
+<body>
+	<ul id="clock">	
+  <li id="sec"></li>
+  <li id="hour"></li>
+  <li id="min"></li>
+</ul>
+</body>
+</html>

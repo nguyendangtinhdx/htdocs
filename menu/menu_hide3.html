@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var container = $('.container');
+			var main = $('#main');
+			var hamburger = $('.hamburger');
+
+  // FUNC ktra xem trạng thái sẽ nên thay đổi ntn
+  function toggleSidebar() {
+  	isShowingSidebar() ? hideSidebar() : showSidebar();
+  }
+
+  // FUNC hiển thị sidebar
+  function showSidebar() {
+  	container.addClass('show-sidebar');
+
+    // khi đã hiện sidebar thì khi nhấn vào mục nào có menu level 2 thì sẽ
+    $('.dropdown-nav').click(function() {
+      // tìm đến thẻ <ul> của các thẻ anh em của .dropdown-nav đang click để xóa đi .showDropdownNav nếu có
+      $(this).siblings().find('ul').removeClass('showDropdownNav');
+      // thực hiện toggleClass .showDropdownNav vào menu level2 đang đc click
+      $(this).find('ul').toggleClass('showDropdownNav');
+  }) 
+}
+
+  // FUNC hidden sidebar
+  function hideSidebar() {
+  	container.removeClass('show-sidebar');
+  }
+
+  // FUNC ktra xem trạng thái hiện tại của sidebar là show OR hidden
+  function isShowingSidebar() {
+  	return container.hasClass('show-sidebar');
+  }
+  // nhấn vào hamburger thì sẽ thực hiện FUNC toggleSidebar
+  hamburger.click(toggleSidebar);
+
+  /*click bất kỳ đâu ở container thì sidebar sẽ đóng*/
+  container.click(function(e) {
+    //console.log(isShowingSidebar());
+    //console.log($.contains(e.target, main));
+    //console.log(document.getElementById('main'));
+    if(isShowingSidebar() && $.contains(document.getElementById('main'), e.target)) {
+    	e.stopPropagation();
+    	hideSidebar();
+    }
+});
+});
+</script>
+<style>
+	/*Reset*/
+	* {margin: 0; padding: 0};
+
+	body {
+		background: #fff;
+		line-height: 1.5em;
+		color: #888;
+	}
+	/*dịnh dạng xóa đi scrollbar ngang*/
+	.container {
+		position: relative;
+		overflow-x: hidden;
+		height: 100%;
+		width: 100%;
+	}
+
+	.sidebar {
+		position: fixed;
+		z-index: 5;
+		top : 0;
+		left: 0;
+		height: 100%;
+		width: 260px;
+		background: #1d2127;
+		border-right: 3px solid #0f1114;
+		overflow: auto; /*tự động hiện thanh cuộn khi nd dài hơn browser*/
+		-webkit-transform: translate3d(-260px, 0, 0);
+		transform: translate3d(-260px, 0, 0);
+		transform-property: transform;
+	}
+	.sidebar, .sidebar a {
+		color: #abb4be;
+		padding: 1.3em 0;
+		font-weight: 600;
+		line-height: 1.125em;
+	}
+	.sidebar, .sidebar a:hover {color:#fff;}
+	/*dinh dang cho nav ngoai tru hambuger*/
+	.nav {
+		margin-top: 80px;
+	}
+
+	.nav-items {
+		list-style: none;
+		margin-bottom: 25px;
+	}
+	/*có 2 mục navtitle:page & More*/
+	.nav-title {
+		display: block;
+		padding: 10px 50px;
+		text-transform: uppercase;
+		font-weight:bold;
+		color: #465162;
+	}
+
+	/*li tag cấp 1*/
+	.nav-link {
+		display: block;
+		text-decoration: none;
+		position: absolute;
+		left:10px;
+	}
+
+	/*đương thẳng trong nav*/
+	.sidebar-separator {
+		margin: 20px;
+		height: 1px;
+		background-color: #2b313a;
+	}
+
+	/*hambuger icon*/
+	.hamburger {
+		display: block;
+		position: fixed;
+		left: 95px;
+		top: 20px;
+		cursor: pointer;
+		z-index: 6;
+		border-radius: 5px;
+		background-color: #3498db;
+		border: 2px solid #ddd;
+		padding: 10px 7px;
+		width: 30px;
+		height: 20px;
+		transition-property: background-color, border-color;
+	}
+	.bar {
+		display: block;
+		position: relative;
+		background-color: #ddd;
+		width: 100%;
+		height: 4px;
+		border-radius: 2px;
+		margin: 0 auto;
+		transition-property: transform, opacity, background-color, width;
+	}
+	.bar:first-child {top: 0;}
+	.bar:nth-child(2) {opacity: 1;}
+	.bar:last-child {bottom:0;}
+
+	.hamburger:hover {border-color: #fff;}
+	.hamburger:hover .bar {background-color: #fff;}
+	.bar + .bar {margin-top: 5px;}
+
+
+	/*hover effect*/
+	.list-hover-slide li {
+		position: relative;
+		overflow: hidden;
+	}
+	.list-hover-slide a {
+		display: block;
+		position: relative;
+		z-index: 1;
+		transition: .35s ease color;
+	}
+
+
+	.list-hover-slide a:not(.active):before {
+		content: '';
+		display: block;
+		z-index: -1;
+		position: absolute;
+		left: -106%; 
+		top: 0;
+		width: 98%;
+		height: 100%;
+		border-right: 5px solid #DF4500;
+		background: #3C3735;
+		transition: .35s ease left;
+	}
+	.list-hover-slide a:hover:before {
+		left: -10px;
+	}
+
+
+	/*thiết lập các giá trị chung của các animation*/
+	#main, .sidebar, .hamburger, .bar {
+		transition-duration: 0.3s;
+		transition-timing-function: ease-in-out;
+	}
+
+	/*show sidebar animation để lát dùng js*/
+	/*khi show thì hiệu ứng cho content .main: dịch chuyển từ 0->260px*/
+	.show-sidebar #main {
+		-webkit-transform: translate3d(260px, 0, 0);
+		transform: translate3d(260px, 0, 0);
+		background-color: #ccc;
+		opacity: 0.8;
+	}
+	/*khi show thì hiệu ứng cho sidebar: dịch chuyển từ -260px -> 0px*/
+	.show-sidebar .sidebar {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+
+	/*khi show thì màu nền của hamburger thay đổi*/
+	.show-sidebar .hamburger {
+		background-color: #282d36;
+		border-color: #0f1114;
+	}
+	/*khi show thì màu 3gach của hamburger thay đổi*/
+	.show-sidebar .bar {
+		background-color: #abb4be;
+	}
+
+	.show-sidebar .bar:first-child {
+		width: 120%;
+		-webkit-transform: rotate(45deg) translate(5px, 8px);
+		transform: rotate(45deg) translate(5px, 8px);
+	}
+	.show-sidebar .bar:nth-child(2) {
+		opacity: 0;
+	}
+	.show-sidebar .bar:last-child {
+		width: 120%;
+		-webkit-transform: rotate(-45deg) translate(4px, -8px);
+		transform: rotate(-45deg) translate(4px, -8px);
+	}
+
+
+
+
+
+
+
+
+
+	/* Main */
+
+	.main {
+		height: 100%;
+		position: relative;
+		transition-property: transform;
+	}
+	header {
+		background-color: #3498db;
+		background-image: -webkit-linear-gradient(to bottom, #3498db 0%, #217dbb 70%);
+		background-image: linear-gradient(to bottom, #3498db 0%, #217dbb 100%);
+		padding: 100px 50px;
+		text-align: center;
+	}
+	header h1 {
+		color: #fff;
+		font-size: 3em;
+		text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+	}
+	.content {
+		margin: 50px 50px;
+	}
+
+
+
+	/*subnav*/
+
+	/*icon*/
+	i.fa-caret-down {
+		padding-left: 1em;
+	}
+
+	.subnav {
+		position: static;
+		background-color:#252b33 ;
+		display: none;
+	}
+	/*ẩn menu cấp 2*/
+
+/* trường hợp muốn hover sẽ xổ ra dropdownNav thì mở khóa này, hiện tại ta đang thử dùng js để click parentNode để xổ ra
+
+.nav li.dropdown-nav:hover ul {
+  display: block;
+}*/
+.showDropdownNav {
+	display:block
+}
+
+.subnav > li > a {
+	text-decoration: none;
+	padding: 10px 25px!important;
+	
+}
+.subnav > li:not( :last-child) > a {
+	border-bottom: 1px dotted #cc470d;
+}
+
+.subnav > li > a:hover:before {
+	left: 0px;
+}
+
+
+/*active items*/
+.active {
+	color: #e43733!important;
+}
+
+
+
+</style>
+</head>
+<body>
+	<div class="container">
+		<aside class="sidebar">
+			<nav class="nav">
+				<ul class="nav-items list-hover-slide">
+					<li class="nav-title">Pages</li>
+					<li><a href="#" class="nav-link active">Home</a></li>
+					<li class="dropdown-nav"><a href="#" class="nav-link">Products<i class="fa fa-caret-down"></i></a>
+						<ul class="subnav">
+							<li><a class="active" href="#">Terrier</a></li>
+							<li><a href="#">Labrador</a></li>
+							<li><a href="#">Pitbull</a></li>
+							<li><a href="#">German Shephard</a></li>
+							<li><a href="#">Chihuahua</a></li>
+							<li><a href="#">Beagle</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-nav"><a href="#" class="nav-link">Services<i class="fa fa-caret-down"></i></a>
+						<ul class="subnav">
+							<li><a href="#">Persian</a></li>
+							<li><a href="#">Siamese</a></li>
+							<li><a href="#">Ragdoll</a></li>
+							<li><a href="#">Lion</a></li>
+							<li><a href="#">Tiger</a></li>
+						</ul>
+					</li>
+					<li><a href="#" class="nav-link">About</a></li>
+					<li class="dropdown-nav"><a href="#" class="nav-link">News<i class="fa fa-caret-down"></i></a>
+						<ul class="subnav">
+							<li><a href="#">Persian</a></li>
+							<li><a href="#">Siamese</a></li>
+							<li><a href="#">Ragdoll</a></li>
+							<li><a href="#">Lion</a></li>
+							<li><a href="#">Tiger</a></li>
+						</ul>
+					</li>
+				</ul>
+				<div class="sidebar-separator"></div>
+				<ul class="nav-items list-hover-slide">
+					<li class="nav-title">More</li>
+					<li><a href="#" class="nav-link">Contact</a></li>
+					<li><a href="#" class="nav-link">Support</a></li>
+					<li><a href="#" class="nav-link">Careers</a></li>
+				</ul>
+			</nav>
+		</aside>
+		<div class="hamburger">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>  
+		<main id="main" role="main">
+			<header>
+				<h1>Off-Canvas Menu</h1>
+			</header>
+			<section class="content">
+				<p>Ullamcorper inceptos in magna vestibulum penatibus aliquet tellus suspendisse nascetur convallis a id diam netus a a parturient posuere nam orci fermentum duis habitasse nam. Iaculis eros hendrerit rhoncus et enim commodo nulla vivamus consequat id rhoncus vestibulum a maecenas justo vestibulum mi vel purus id ullamcorper mus a. Potenti mattis placerat ligula a suspendisse ipsum mus elementum a himenaeos et aliquam inceptos euismod ad placerat sociosqu mauris vestibulum conubia condimentum semper penatibus ridiculus. Dictumst diam eros fames a elementum eros mus fusce feugiat vestibulum a dui parturient ad ullamcorper suspendisse eleifend vestibulum facilisi ridiculus. Condimentum felis sed laoreet aliquam proin dignissim eu mi ad vestibulum ut suspendisse volutpat nibh cras mi praesent morbi ad. Est libero facilisis vestibulum suspendisse rutrum fames a facilisi semper interdum consectetur consectetur a scelerisque parturient volutpat ad eros torquent tincidunt senectus risus adipiscing donec parturient. Maecenas mus suspendisse laoreet non morbi vestibulum eros dolor nam nullam nec parturient nascetur suspendisse tincidunt suspendisse convallis blandit.</p>
+
+				<p>Quam hendrerit id a netus porta dictumst eu sem adipiscing eleifend curae id euismod malesuada rhoncus ac vel. Conubia elit eleifend condimentum adipiscing volutpat diam in eget consectetur nascetur convallis est lorem adipiscing scelerisque. Id consequat adipiscing eros a eleifend lobortis nullam aliquet suscipit a nam malesuada accumsan risus ipsum curabitur a elit viverra adipiscing nam dictumst aliquam torquent non sociosqu venenatis. Ullamcorper vestibulum metus ullamcorper consectetur velit quisque hac a ac fermentum adipiscing mus mauris ac himenaeos scelerisque. Mi lorem mus euismod nunc erat turpis vel cum mi elementum proin venenatis ipsum dui placerat commodo interdum ipsum eu.</p>
+
+				<p>Ullamcorper inceptos in magna vestibulum penatibus aliquet tellus suspendisse nascetur convallis a id diam netus a a parturient posuere nam orci fermentum duis habitasse nam. Iaculis eros hendrerit rhoncus et enim commodo nulla vivamus consequat id rhoncus vestibulum a maecenas justo vestibulum mi vel purus id ullamcorper mus a. Potenti mattis placerat ligula a suspendisse ipsum mus elementum a himenaeos et aliquam inceptos euismod ad placerat sociosqu mauris vestibulum conubia condimentum semper penatibus ridiculus. Dictumst diam eros fames a elementum eros mus fusce feugiat vestibulum a dui parturient ad ullamcorper suspendisse eleifend vestibulum facilisi ridiculus. Condimentum felis sed laoreet aliquam proin dignissim eu mi ad vestibulum ut suspendisse volutpat nibh cras mi praesent morbi ad. Est libero facilisis vestibulum suspendisse rutrum fames a facilisi semper interdum consectetur consectetur a scelerisque parturient volutpat ad eros torquent tincidunt senectus risus adipiscing donec parturient. Maecenas mus suspendisse laoreet non morbi vestibulum eros dolor nam nullam nec parturient nascetur suspendisse tincidunt suspendisse convallis blandit.</p>
+				<p>Ullamcorper inceptos in magna vestibulum penatibus aliquet tellus suspendisse nascetur convallis a id diam netus a a parturient posuere nam orci fermentum duis habitasse nam. Iaculis eros hendrerit rhoncus et enim commodo nulla vivamus consequat id rhoncus vestibulum a maecenas justo vestibulum mi vel purus id ullamcorper mus a. Potenti mattis placerat ligula a suspendisse ipsum mus elementum a himenaeos et aliquam inceptos euismod ad placerat sociosqu mauris vestibulum conubia condimentum semper penatibus ridiculus. Dictumst diam eros fames a elementum eros mus fusce feugiat vestibulum a dui parturient ad ullamcorper suspendisse eleifend vestibulum facilisi ridiculus. Condimentum felis sed laoreet aliquam proin dignissim eu mi ad vestibulum ut suspendisse volutpat nibh cras mi praesent morbi ad. Est libero facilisis vestibulum suspendisse rutrum fames a facilisi semper interdum consectetur consectetur a scelerisque parturient volutpat ad eros torquent tincidunt senectus risus adipiscing donec parturient. Maecenas mus suspendisse laoreet non morbi vestibulum eros dolor nam nullam nec parturient nascetur suspendisse tincidunt suspendisse convallis blandit.</p>
+				<p>Ullamcorper inceptos in magna vestibulum penatibus aliquet tellus suspendisse nascetur convallis a id diam netus a a parturient posuere nam orci fermentum duis habitasse nam. Iaculis eros hendrerit rhoncus et enim commodo nulla vivamus consequat id rhoncus vestibulum a maecenas justo vestibulum mi vel purus id ullamcorper mus a. Potenti mattis placerat ligula a suspendisse ipsum mus elementum a himenaeos et aliquam inceptos euismod ad placerat sociosqu mauris vestibulum conubia condimentum semper penatibus ridiculus. Dictumst diam eros fames a elementum eros mus fusce feugiat vestibulum a dui parturient ad ullamcorper suspendisse eleifend vestibulum facilisi ridiculus. Condimentum felis sed laoreet aliquam proin dignissim eu mi ad vestibulum ut suspendisse volutpat nibh cras mi praesent morbi ad. Est libero facilisis vestibulum suspendisse rutrum fames a facilisi semper interdum consectetur consectetur a scelerisque parturient volutpat ad eros torquent tincidunt senectus risus adipiscing donec parturient. Maecenas mus suspendisse laoreet non morbi vestibulum eros dolor nam nullam nec parturient nascetur suspendisse tincidunt suspendisse convallis blandit.</p>
+				<p>Ullamcorper inceptos in magna vestibulum penatibus aliquet tellus suspendisse nascetur convallis a id diam netus a a parturient posuere nam orci fermentum duis habitasse nam. Iaculis eros hendrerit rhoncus et enim commodo nulla vivamus consequat id rhoncus vestibulum a maecenas justo vestibulum mi vel purus id ullamcorper mus a. Potenti mattis placerat ligula a suspendisse ipsum mus elementum a himenaeos et aliquam inceptos euismod ad placerat sociosqu mauris vestibulum conubia condimentum semper penatibus ridiculus. Dictumst diam eros fames a elementum eros mus fusce feugiat vestibulum a dui parturient ad ullamcorper suspendisse eleifend vestibulum facilisi ridiculus. Condimentum felis sed laoreet aliquam proin dignissim eu mi ad vestibulum ut suspendisse volutpat nibh cras mi praesent morbi ad. Est libero facilisis vestibulum suspendisse rutrum fames a facilisi semper interdum consectetur consectetur a scelerisque parturient volutpat ad eros torquent tincidunt senectus risus adipiscing donec parturient. Maecenas mus suspendisse laoreet non morbi vestibulum eros dolor nam nullam nec parturient nascetur suspendisse tincidunt suspendisse convallis blandit.</p>
+			</section>
+		</main>
+		
+	</div>
+</body>
+</html>

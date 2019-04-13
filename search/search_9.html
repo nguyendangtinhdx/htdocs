@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+
+$("#text").keypress(function(event) {
+  if (event.which === 13) {
+    doSearch($(this).val());
+    clearSearchBox();
+  }
+})
+
+$("#button").click(function(e) {
+  e.preventDefault();
+  doSearch($('#text').val());
+  clearSearchBox();
+})
+
+function clearSearchBox() {
+  $('#text').val('');
+}
+
+
+function doSearch(enteredSearch) {
+  $('#workspace').html('');
+ 
+  var api = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&generator=search&exsentences=1&exlimit=10&exintro=1&explaintext=1&gsrsearch=' + enteredSearch + '&gsrnamespace=0&gsrwhat=text&callback=?'
+
+  $.ajax({
+    url: api,
+    dataType: 'json',
+    type: 'GET',
+    contentType: 'application/json',
+    success: function(data) {
+       //console.log(JSON.stringify(data))
+      var keys = Object.keys(data.query.pages);
+//var linkID = "http://en.wikipedia.org/?curid=" + key + '"';
+//var curID = data.query.pages[keys];
+//console.log(keys);
+
+    
+      // console.log(data.query.pages[keys[0]])
+      keys.forEach(function(key) {
+        var linkID = "http://en.wikipedia.org/?curid=" + key + '"';
+        var entry = data.query.pages[key];
+        $('#workspace').append('<div id="format">' + '<h3 class="title">' + '<a href=' + linkID + '>' + entry.title + '</a>' + '</h3>' + '<hr class="break">' + '<p class="extract">' + entry.extract + '</p>' + '</div>');
+       // console.log(key);
+      })
+    }
+  });
+ }
+});
+	</script>
+	<style>
+	body {
+ background: #2B745E;
+}
+
+.center {
+  margin: 100px;
+  height: 50px;
+  text-align: center;
+}
+
+.extract {
+  width: 850px;
+  padding: 10px;
+  text-align: center;
+  height: auto;
+  font-size: 15px;
+  color: black;
+}
+
+h1 {
+  color: #070b7a;
+  margin-bottom: 30px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.title {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+
+#format {
+  margin: 50px auto;
+  width: 850px;
+  background: #305073;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 10px;
+}
+
+#text{
+  padding: 5px 12px;
+}
+
+
+#button{
+  margin-left: 10px;
+  width: 100px;
+}
+
+.random{
+  margin-top: 10px;
+}
+
+.break{
+  width: 33%;
+  margin-top: 10px;
+  }
+.random a:hover{
+  color: #0f1616 ;
+}
+.random a{
+  color: #7f0e37;
+}
+
+.title a {
+  color: white;
+}
+
+.title a:hover{
+  color: black;
+}
+	</style>
+</head>
+<body>
+	<div class="container text-center">
+  <div class='center'>
+    <h1>Wikipedia Search</h1>
+    <input type="textbox" id="text" placeholder="Search Wikipedia">
+    <input type="button" id="button" class="btn btn-primary" value="Search">
+      <div class="random">
+        <a href="http://en.wikipedia.org/wiki/Special:Random">Click Here For a Random Page</a>
+      </div>  
+  </div>
+  <div id="workspace">
+
+  </div>
+</div>
+</body>
+</html>

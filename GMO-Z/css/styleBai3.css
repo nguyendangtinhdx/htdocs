@@ -1,0 +1,19 @@
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 800px;
+	margin: auto;
+}
+
+td, th {
+	text-align: left;
+	padding: 8px;
+	border: 1px solid #dddddd;
+}
+#btnDeleteAll{
+	float: left;
+}
+#btnAdd{
+	float: right;
+	width: 105px;
+}

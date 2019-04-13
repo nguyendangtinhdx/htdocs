@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+
+			$("#search-text").keyup(function () {
+     //$(this).addClass('hidden');
+     
+     var searchTerm = $("#search-text").val();
+     var listItem = $('#list').children('li');
+     
+     $("#list li").not(":contains('" + searchTerm + "')").each(function(e)   {
+     	$(this).addClass('hiding out').removeClass('in');
+     	setTimeout(function() {
+     		$('.out').addClass('hidden');
+     	}, 300);
+     });
+     
+     $("#list li:contains('" + searchTerm + "')").each(function(e) {
+     	$(this).removeClass('hidden out').addClass('in');
+     	setTimeout(function() {
+     		$('.in').removeClass('hiding');
+     	}, 1);
+     });
+ });
+			
+			
+			
+     /*             
+ function searchList() {                
+    //array of list items
+    var listArray = [];
+  
+     $("#list li").each(function() {
+    var listText = $(this).text().trim();
+      listArray.push(listText);
+    });
+    
+    $('#search-text').autocomplete({
+        source: listArray
+    });
+    
+    
+  }
+                                   
+  searchList();
+  */
+  
+  
+});
+
+
+
+
+
+
+
+
+</script>
+<style>
+	li {-webkit-transition:all .3s ease;  -moz-transition:all .3s ease;  -o-transition:all .3s ease;  transition:all .3s ease;}
+
+	.hiding {
+		margin-left:-100%;
+		opacity:0.5;
+	}
+
+	.hidden {
+		margin-left:-100%;
+		opacity:0.5;
+		display:none;
+	}
+
+	li {
+		float:left;
+		clear:left;
+		margin-left:0;
+	}
+
+	#search-btn {cursor:pointer;}
+</style>
+</head>
+<body>
+	<form>
+		<input type="text" id="search-text" placeholder="search">
+	</form>
+	
+	<span id="testarea"></span>
+	<ul id="list">
+		<li>test1</li>
+		<li>test2</li>
+		<li>banter</li>
+		<li>banana</li>
+		<li>test3</li>
+		<li>flavor</li>
+	</ul>
+</body>
+</html>

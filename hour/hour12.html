@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+  setInterval(function(){
+    var seconds = new Date().getSeconds();
+    var sdegree = seconds * 6;
+    $('.second').css({
+       'transform': 'rotate('+ sdegree + 'deg)'
+    });
+  }, 1000);
+    
+  setInterval( function() {
+    var mins = new Date().getMinutes();
+    var mdegree = mins * 6;
+    $('.minute').css({
+      'transform': 'rotate('+ mdegree + 'deg)'
+    });
+  }, 1000);
+  
+  setInterval( function() {
+    var hours = new Date().getHours();   
+    var mins = new Date().getMinutes();
+    var hdegree = hours * 30 + (mins / 2);    
+    
+    $('.hour').css({
+      'transform': 'rotate('+ hdegree + 'deg)'
+    });
+    
+}, 1000); 
+  
+});
+	</script>
+	<style>
+	body {
+  background: AntiqueWhite; 
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+
+.container {
+	margin:10px auto;
+	width:270px;
+	position:relative;
+}
+
+.face {
+  position: relative;
+  margin: 0 auto;
+  background: linen;
+  border: 8px solid goldenrod;  
+  border-radius: 50%;
+  width: 128px;
+  height: 128px;  
+  z-index: 2;
+  padding:3px;
+}
+
+.time {
+  position: absolute;
+  left: 50%;  
+  color: #666;
+  width: 2px;
+  margin-left: -1px;
+  height: 129px;  
+}
+
+.time-1-7 {
+  transform: rotate(30deg);
+  -webkit-transform: rotate(30deg) translate3d(0, 0, 0);  
+}
+
+.time-2-8 {
+  transform: rotate(60deg);
+  -webkit-transform: rotate(60deg) translate3d(0, 0, 0);
+}
+
+.time-3-9 {  
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg) translate3d(0, 0, 0);  
+}
+
+.time-4-10 {
+  transform: rotate(-60deg);
+  -webkit-transform: rotate(-60deg) translate3d(0, 0, 0);  
+}
+
+.time-5-11 {
+  transform: rotate(-30deg);
+  -webkit-transform: rotate(-30deg) translate3d(0, 0, 0);  
+}
+
+.time::before {
+	content:'XII';
+	font-size: 12px;
+	position: absolute;
+	left:-7px;
+	top:-3px;	
+}
+
+.time::after {
+	content:'VI';
+	font-size: 12px;
+	position: absolute;
+	left:-3px;
+	bottom:-3px;
+	-webkit-transform: rotate(180deg) translate3d(0, 0, 0);
+  transform: rotate(180deg) translate3d(0, 0, 0);
+  -webkit-transform-origin: 50%  51%;  	  	
+}
+
+.time-1-7::before {
+	content:'I';	
+	left:-1px;
+}
+
+.time-1-7::after {
+	content:'VII';	
+	left:-7px;
+}
+
+.time-2-8::before {
+	content:'II';
+	left:-3px;
+}
+
+.time-2-8::after {
+	content:'VIII';
+	left:-9px;
+}
+
+.time-3-9::before {
+	content:'III';	
+	left:-5px;
+}
+
+.time-3-9::after {
+	content:'IX';	
+	left:-5px;
+}
+
+.time-4-10::before {
+	content:'X';	
+	left:-3px;	
+}
+
+.time-4-10::after {
+	content:'IV';
+	left:-5px;
+}
+
+.time-5-11::before {
+	content:'XI';	
+	left:-5px;
+}
+
+.time-5-11::after {
+	content:'V';	
+	left:-3px;
+}
+
+.hour {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  margin-left: -4px; 
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;	
+  border-bottom: 40px solid #333;
+  transform-origin: bottom;
+  -webkit-transform-origin: bottom;			
+  z-index: 5;
+}
+
+.minute {
+	position: absolute;
+	top: 18px;
+	left: 50%;
+	margin-left: -4px; 
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;	
+	border-bottom: 50px solid #333;
+	transform-origin: bottom;
+	-webkit-transform-origin: bottom; 
+	z-index: 3;
+}
+
+.second {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  margin-left: -2px;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;	
+  border-bottom: 50px solid black;
+  transform-origin: bottom;
+  -webkit-transform-origin: bottom;	
+  z-index: 5;
+}
+
+.center {
+	position: absolute;
+	top: 50%;
+	margin-top: -6px;
+	left: 50%;
+	margin-left: -6px;
+	border-radius: 50%;
+	background: black;
+	width: 12px;
+	height: 12px;
+	z-index: 20;		
+}
+
+.clock-body,
+.clock-top-1,
+.clock-top-2,
+.clock-top-3,
+.clock-base,
+.clock-base-2 {
+	background-color: #6d5132;
+	margin:0 auto;
+}
+
+.clock-body {	
+	width:200px;
+	height:500px;
+	position:relative;		
+}
+
+.clock-top-2 {
+	width:230px;
+	height:10px;
+}
+
+.clock-top-3 {
+	width:220px;
+	height:20px;
+}
+
+.clock-top-1 {
+	width:180px;
+	height:160px;
+	border-radius: 50%;
+	margin-bottom: -120px;
+}
+
+.clock-base {
+	width:210px;
+	height:10px;	
+	margin:0 auto;
+}
+
+.clock-base-2 {
+	width:220px;
+	height: 10px;	
+}
+
+.clock-base-3 {
+	border-bottom: 100px solid #6d5132;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	width: 230px;
+}
+
+.foot-1, .foot-2  {
+	width:30px;
+	height: 30px;
+	background-color: #6d5132;
+	margin-top:-15px;
+	border-radius: 30%;
+}
+
+.foot-1 {
+	float:left;
+	margin-left:-5px;
+}
+
+.foot-2 {
+	float:right;
+	margin-right:-5px;
+}
+
+.pendulum-case {
+	width:80%;
+	height:60%;
+	position:absolute;
+	top:37%;
+	left:10%;
+	background-color: #271d12;
+	border-radius: 45% 45% 0 0
+}
+
+.pendulum-rod {
+	width:3px;
+	margin:0 auto;
+	height:75%;
+	background-color: #DAA520;
+}
+
+.pendulum {
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	background-color: #FFD700;
+	border-radius: 50%;
+}
+
+.pendulum-swing{  
+	-webkit-transform-origin:50% -40px;  
+	transform-origin:50% -40px;   
+	-webkit-animation: swing 1.5s ease-in-out infinite alternate;
+	animation: swing 1.5s ease-in-out infinite alternate;	
+	height:100%;
+	z-index:0;
+	position:absolute;
+	top:0;
+	left:55px;
+}
+
+@-webkit-keyframes swing {
+	from
+	{
+		-webkit-transform:rotate(-9deg);
+	}
+	to{
+		-webkit-transform:rotate(9deg);
+	}
+}
+ 
+@keyframes swing {
+	from{
+		transform:rotate(-9deg);
+	}
+	to{
+		transform:rotate(9deg);
+	}
+}
+	</style>
+</head>
+<body>
+	<link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+  
+<div class="container">
+		<div class="clock-top-1"></div>
+		<div class="clock-top-2"></div>
+		<div class="clock-top-3"></div>
+		<div class="clock-body">
+			 <div class="face">
+		        <div class="hour"></div>
+		        <div class="minute"></div>
+		        <div class="second"></div>
+		        <div class="center"></div>
+		        <div class="time time-12-6"></div>
+		        <div class="time time-3-9"></div>
+		        <div class="time time-1-7"></div>
+		        <div class="time time-5-11"></div>
+		        <div class="time time-2-8"></div>
+		        <div class="time time-4-10"></div>          
+		      </div>
+		      <div class="pendulum-case">
+		      	<div class="pendulum-swing">
+		      		<div class="pendulum-rod"></div>
+		      		<div class="pendulum"></div>		      		
+		      	</div>
+		      </div>
+		</div>
+		<div class="clock-base"></div>
+		<div class="clock-base-2"></div>
+		<div class="clock-base-3"></div>
+		<div class="foot-1"></div>
+		<div class="foot-2"></div>
+	</div>
+
+</body>
+</html>

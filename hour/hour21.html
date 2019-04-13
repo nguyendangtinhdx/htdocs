@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// When windows load, load getHour function
+		window.addEventListener("load",init,false);
+		// Content fuction
+		function init(){
+			getHour();
+			// Get stop button
+			stopContent = document.getElementById("stop");
+			// Stop button call clockOff fuction om click
+			stopContent.addEventListener("click",clockOff)
+			// Get Play button
+			playContent = document.getElementById("play");
+			// Play button call clockOn function
+			playContent.addEventListener("click", clockOn);
+		}
+		// Function to stop the time
+		function clockOff(){
+			clearInterval(interval);
+		}
+		// Function to play the time
+		function clockOn(){
+			interval = setInterval(getHour,1000);
+		}
+		// Get and write time
+		function getHour(){
+			// Clock vars
+			clock = new Date,minutes = clock.getMinutes(),seconds = clock.getSeconds();
+			// Getting html content with hour id
+			var hourContent = document.getElementById("hour");
+			// Transform minutes and second
+			if(minutes<10){
+				minutes="0"+minutes;
+			}
+			if(seconds<10){
+				seconds="0"+seconds;
+			}
+			// Printing in hourContent the clock
+			hourContent.innerHTML=clock.getHours()+":"+minutes+":"+seconds;
+		}
+		// Create interval
+		interval = setInterval(getHour,1000);
+	</script>
+	<style>
+	*{
+			margin: 0px;
+			padding: 0px;
+		}
+		body{
+			background-color: #3c3a45;
+		}
+		#content{
+			color: white;
+			font-family: 'Open Sans', sans-serif;
+			text-align: center;
+			font-size: 13px;
+			width: 300px;
+			margin: 0 auto;
+			margin-top:150px;
+		}
+			#hour{
+				font-weight:700;
+				font-size: 40px;
+				line-height: 0.8; 
+			}
+			#server{
+				font-weight: 400;
+				font-size: 24px;
+			}
+			#btn{
+				margin-top:5px;
+			}
+			#btn #stop,
+			#btn #play{
+				display: inline-block;
+				cursor: pointer;
+				border: solid 2px #74ebb5;
+				padding: 5px 10px;
+				border-radius: 3px;
+				text-transform: uppercase;
+				font-size: 11px;
+				margin: 0 3px;
+				transition: all 1s ease;
+			}
+			#btn #stop:hover,
+			#btn #play:hover{
+				background-color: #74ebb5;
+				color: white;
+			}
+	</style>
+</head>
+<body>
+	<div id="content">
+      <div id="hour"></div>
+      <div id="server">Your PC Time</div>
+      <div id="btn">
+        <div id="stop">stop</div>
+        <div id="play">play</div>
+      </div>
+	</div>
+</body>
+</html>

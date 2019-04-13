@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+    $("body").addClass("arise");
+  $(".submit").click(function(){
+    $(this).closest(".opening").toggleClass("flip");
+  });
+
+});
+	</script>
+	<style>
+
+	@import url(http://fonts.googleapis.com/css?family=Kreon:300,400,700);
+.price-table:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  background: -webkit-linear-gradient(-135deg, white 50%, transparent 50%) 0 50%, -webkit-linear-gradient(-45deg, white 50%, transparent 50%) 0 50%, transparent;
+  background-repeat: repeat-x;
+  background-size: 16px 16px, 16px 16px, cover, cover;
+  height: 16px;
+  width: 100%;
+}
+
+.head {
+  position: relative;
+}
+.head:after, .head:before {
+  content: "";
+  display: block;
+  width: 13px;
+  height: 13px;
+  background-color: #5d5d5d;
+  position: absolute;
+  right: -22px;
+  border-radius: 50%;
+  z-index: 2000;
+  bottom: -7px;
+}
+.head:after {
+  left: -22px;
+}
+
+button {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 0;
+  border: 2px solid #c5c5c5;
+  background: none;
+  text-align: center;
+  font-size: 1.35em;
+  transition: all 200ms;
+}
+button:hover {
+  border-radius: 3px;
+  background-color: #c5c5c5;
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Kreon', serif;
+  background-color: #5d5d5d;
+  color: #c5c5c5;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.page-container {
+  width: 880px;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.add-films h1 {
+  font-style: italic;
+  color: #e6e6e6;
+}
+.add-films .price-table {
+  padding-bottom: 18px;
+  text-align: right;
+}
+.add-films .dollar {
+  line-height: 2.5;
+}
+.add-films .year {
+  vertical-align: middle;
+  padding: 0 10px 0 10px;
+  font-size: .2em;
+}
+.add-films .contents {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 55px;
+  margin-bottom: 0;
+}
+.add-films a.proceed-anyway {
+  display: block;
+  color: #c5c5c5;
+}
+.add-films .price {
+  margin-bottom: 40px;
+  margin-top: -40px;
+  margin-left: 0;
+  text-align: center;
+}
+.add-films .price h2 {
+  line-height: 1.5em;
+}
+.add-films button {
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+.opening {
+  float: left;
+  margin-right: 40px;
+  perspective: 1000;
+}
+.opening:nth-child(2) .price-table {
+  transition-delay: 700ms;
+}
+.arise .opening {
+  border-bottom: 0;
+}
+
+.flip-me {
+  position: relative;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+}
+.flip .flip-me {
+  transform: rotateY(180deg);
+}
+
+.opening, .front, .back {
+  display: inline-block;
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.front {
+  z-index: 1;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(-180deg);
+}
+
+.price-table {
+  display: block;
+  position: relative;
+  width: 400px;
+  bottom: -1000px;
+  margin-bottom: 20px;
+  margin-right: 3%;
+  padding: 0 1em;
+  border-radius: 7px 7px 0px 0px;
+  background-color: white;
+  text-align: center;
+  transition: bottom 400ms 200ms ease-in-out;
+}
+.arise .price-table {
+  bottom: 0px;
+}
+
+.head {
+  padding: 25px 7px;
+  border-bottom: 1px solid #e6e6e6;
+  text-align: left;
+}
+
+h1 {
+  font-weight: 300;
+  line-height: 0;
+  font-size: 1.5em;
+  display: inline-block;
+}
+
+.fa-barcode {
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+h2 {
+  line-height: 2em;
+  margin: 0;
+}
+
+.dollar {
+  font-size: .5em;
+  vertical-align: top;
+  line-height: 3.3;
+}
+
+.year {
+  font-size: .3em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.price {
+  font-size: 70px;
+  color: #e6e6e6;
+  margin-left: 20px;
+  margin-bottom: -30px;
+}
+
+.submit {
+  margin-bottom: 30px;
+  color: #e6e6e6;
+}
+
+.contents {
+  text-align: left;
+  line-height: 2;
+  font-weight: 300;
+  color: #e6e6e6;
+  margin-bottom: 70px;
+}
+.contents li {
+  list-style: none;
+}
+.contents li:last-child {
+  margin-top: 1em;
+}
+.contents ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+	</style>
+</head>
+<body>
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+
+
+<div class="page-container">
+
+   <div class="opening">
+
+      <div class="flip-me">
+
+
+        <div class="front">
+          <div class="price-table">
+            <section class="head">
+              <h1><span class="bold">Average</span> Pass</h1>
+              <i class="fa fa-barcode"></i>
+            </section>
+            <section class="price">
+              <h2>
+                <span class="dollar">$</span>199<span class="year">/Year</span>
+              </h2>
+            </section>
+            <section class="contents">
+              <ul>
+                <li><span class="bold">Unlimited</span> Videos</li>
+                <li><span class="bold">Unlimited</span> Images</li>
+                <li><span class="bold">Unlimited</span> PSDs</li>
+                <li>A years worth of new releases</li>
+              </ul>
+            </section>
+            <button class="submit">Become a Member</button>
+          </div>
+        </div>
+      
+ 
+        <div class="back add-films">
+          <div class="price-table ">
+            <section class="head">
+              <h1>Make it <span class="bold">Ultimate</span></h1>
+              <i class="fa fa-barcode"></i>
+            </section>
+             <section class="contents">
+               <span class="ultimate">Add <span class="bold">Unlimited</span> Films</span>
+            </section>
+            <section class="price">
+           
+              <h2>
+                <span class="year">Only</span><span class="dollar">$</span>99<span class="year">more</span>
+              </h2>
+            </section>
+           
+            <button class="submit">+ Add Films</button>
+            <a href="#" class="proceed-anyway">Proceed without adding films &#8594;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+   <div class="opening">
+      <div class="price-table">
+        <section class="head">
+          <h1><span class="bold">Ultimate</span> Pass</h1>
+          <i class="fa fa-barcode"></i>
+        </section>
+        <section class="price">
+          <h2>
+            <span class="dollar">$</span>299<span class="year">/Year</span>
+          </h2>
+        </section>
+        <section class="contents">
+          <ul>
+            <li><span class="bold">Unlimited</span> Videos</li>
+            <li><span class="bold">Unlimited</span> Images</li>
+            <li><span class="bold">Unlimited</span> PSDs</li> 
+            <li><span class="bold">Unlimited</span> films</li>
+            <li>A years worth of new releases</li>
+          </ul>
+        </section>
+        <button class="submit">Become a Member</button>
+      </div>
+  </div>
+</div>
+</body>
+</html>

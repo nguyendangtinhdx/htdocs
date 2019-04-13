@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>	
+	@import url(https://fonts.googleapis.com/css?family=Old+Standard+TT);
+body {
+  background: #b8f2ef;
+  font-size: 14pt;
+  line-height: 1.2em;
+  font-family: 'Old Standard TT', serif;
+  font-weight: 300;
+}
+
+h1 {
+   font-family: 'Pacifico', cursive;
+}
+
+h2, h3 {
+  font-weight: 600;
+}
+
+h2 {
+  margin: 1em 0 0.5em;
+}
+li {
+  list-style: none;
+}
+strong {
+  font-weight: bold;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+header {
+  line-height: 3em;
+  background: #f4c0d7;
+}
+
+article {
+  padding-top: 1em;
+}
+
+nav {
+  width: 150px;
+  
+}
+
+nav li a {
+  text-decoration: none;
+  color: PURPLE;
+  padding: 5px 15px 5px 5px;
+  margin-left: -5px;
+  display: block;
+}
+nav li a:hover {
+  background: BRONZE;
+  color: WHITE;
+}
+
+footer {
+  font-size: 0.7em;
+  padding: 2em 0;
+}
+
+
+*{
+  box-sizing: border-box;
+}
+img {
+  max-width: 100%;
+}
+
+.row {
+  
+  width: 1920px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row .row {
+  margin-left: -10px;
+  margin-right: -10px;
+  width: auto;
+  max-width: none;
+}
+
+.col {
+  padding: 0 10px;
+  min-width: 0;
+  border: 1px dashed LIGHTGRAY;
+}
+
+@media screen and (min-width: 0) {
+  .small-vertical {
+    flex-direction: column;
+  }
+
+  .small-horizontal {
+    flex-direction: row;
+  }
+
+  .small-hidden {
+    display: none;
+  }
+
+  .small-auto {
+    display: block;
+    flex: 1;
+  }
+
+  .small-shrink {
+    display: block;
+    flex: 0 1 auto;
+  }
+
+  .small-1 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 1 );
+  }
+
+  .small-2 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 2 );
+  }
+
+  .small-3 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 3 );
+  }
+
+  .small-4 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 4 );
+  }
+
+  .small-5 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 5 );
+  }
+
+  .small-6 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 6 );
+  }
+
+  .small-7 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 7 );
+  }
+
+  .small-8 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 8 );
+  }
+
+  .small-9 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 9 );
+  }
+
+  .small-10 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 10 );
+  }
+
+  .small-11 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 11 );
+  }
+
+  .small-12 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 12 );
+  }
+}
+@media screen and (min-width: 500px) {
+  .medium-vertical {
+    flex-direction: column;
+  }
+
+  .medium-horizontal {
+    flex-direction: row;
+  }
+
+  .medium-hidden {
+    display: none;
+  }
+
+  .medium-auto {
+    display: block;
+    flex: 1;
+  }
+
+  .medium-shrink {
+    display: block;
+    flex: 0 1 auto;
+  }
+
+  .medium-1 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 1 );
+  }
+
+  .medium-2 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 2 );
+  }
+
+  .medium-3 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 3 );
+  }
+
+  .medium-4 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 4 );
+  }
+
+  .medium-5 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 5 );
+  }
+
+  .medium-6 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 6 );
+  }
+
+  .medium-7 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 7 );
+  }
+
+  .medium-8 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 8 );
+  }
+
+  .medium-9 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 9 );
+  }
+
+  .medium-10 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 10 );
+  }
+
+  .medium-11 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 11 );
+  }
+
+  .medium-12 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 12 );
+  }
+}
+@media screen and (min-width: 1000px) {
+  .large-vertical {
+    flex-direction: column;
+  }
+
+  .large-horizontal {
+    flex-direction: row;
+  }
+
+  .large-hidden {
+    display: none;
+  }
+
+  .large-auto {
+    display: block;
+    flex: 1;
+  }
+
+  .large-shrink {
+    display: block;
+    flex: 0 1 auto;
+  }
+
+  .large-1 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 1 );
+  }
+
+  .large-2 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 2 );
+  }
+
+  .large-3 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 3 );
+  }
+
+  .large-4 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 4 );
+  }
+
+  .large-5 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 5 );
+  }
+
+  .large-6 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 6 );
+  }
+
+  .large-7 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 7 );
+  }
+
+  .large-8 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 8 );
+  }
+
+  .large-9 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 9 );
+  }
+
+  .large-10 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 10 );
+  }
+
+  .large-11 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 11 );
+  }
+
+  .large-12 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 12 );
+  }
+}
+@media screen and (min-width: 1200px) {
+  .xlarge-vertical {
+    flex-direction: column;
+  }
+
+  .xlarge-horizontal {
+    flex-direction: row;
+  }
+
+  .xlarge-hidden {
+    display: none;
+  }
+
+  .xlarge-auto {
+    display: block;
+    flex: 1;
+  }
+
+  .xlarge-shrink {
+    display: block;
+    flex: 0 1 auto;
+  }
+
+  .xlarge-1 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 1 );
+  }
+
+  .xlarge-2 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 2 );
+  }
+
+  .xlarge-3 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 3 );
+  }
+
+  .xlarge-4 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 4 );
+  }
+
+  .xlarge-5 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 5 );
+  }
+
+  .xlarge-6 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 6 );
+  }
+
+  .xlarge-7 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 7 );
+  }
+
+  .xlarge-8 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 8 );
+  }
+
+  .xlarge-9 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 9 );
+  }
+
+  .xlarge-10 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 10 );
+  }
+
+  .xlarge-11 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 11 );
+  }
+
+  .xlarge-12 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 12 );
+  }
+}
+@media screen and (min-width: 1600px) {
+  .xxlarge-vertical {
+    flex-direction: column;
+  }
+
+  .xxlarge-horizontal {
+    flex-direction: row;
+  }
+
+  .xxlarge-hidden {
+    display: none;
+  }
+
+  .xxlarge-auto {
+    display: block;
+    flex: 1;
+  }
+
+  .xxlarge-shrink {
+    display: block;
+    flex: 0 1 auto;
+  }
+
+  .xxlarge-1 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 1 );
+  }
+
+  .xxlarge-2 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 2 );
+  }
+
+  .xxlarge-3 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 3 );
+  }
+
+  .xxlarge-4 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 4 );
+  }
+
+  .xxlarge-5 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 5 );
+  }
+
+  .xxlarge-6 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 6 );
+  }
+
+  .xxlarge-7 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 7 );
+  }
+
+  .xxlarge-8 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 8 );
+  }
+
+  .xxlarge-9 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 9 );
+  }
+
+  .xxlarge-10 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 10 );
+  }
+
+  .xxlarge-11 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 11 );
+  }
+
+  .xxlarge-12 {
+    display: block;
+    flex: 0 1 calc( 100% / 12 * 12 );
+  }
+}
+/* Block grid */
+.block-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.block-grid > * {
+  flex: 1;
+}
+
+@media screen and (min-width: 0) {
+  .block-grid.small-up-to-2 > * {
+    flex: 0 1 calc( 100% / 2 );
+  }
+
+  .block-grid.small-up-to-3 > * {
+    flex: 0 1 calc( 100% / 3 );
+  }
+
+  .block-grid.small-up-to-4 > * {
+    flex: 0 1 calc( 100% / 4 );
+  }
+
+  .block-grid.small-up-to-5 > * {
+    flex: 0 1 calc( 100% / 5 );
+  }
+
+  .block-grid.small-up-to-6 > * {
+    flex: 0 1 calc( 100% / 6 );
+  }
+
+  .block-grid.small-up-to-7 > * {
+    flex: 0 1 calc( 100% / 7 );
+  }
+
+  .block-grid.small-up-to-8 > * {
+    flex: 0 1 calc( 100% / 8 );
+  }
+
+  .block-grid.small-up-to-9 > * {
+    flex: 0 1 calc( 100% / 9 );
+  }
+
+  .block-grid.small-up-to-10 > * {
+    flex: 0 1 calc( 100% / 10 );
+  }
+}
+@media screen and (min-width: 500px) {
+  .block-grid.medium-up-to-2 > * {
+    flex: 0 1 calc( 100% / 2 );
+  }
+
+  .block-grid.medium-up-to-3 > * {
+    flex: 0 1 calc( 100% / 3 );
+  }
+
+  .block-grid.medium-up-to-4 > * {
+    flex: 0 1 calc( 100% / 4 );
+  }
+
+  .block-grid.medium-up-to-5 > * {
+    flex: 0 1 calc( 100% / 5 );
+  }
+
+  .block-grid.medium-up-to-6 > * {
+    flex: 0 1 calc( 100% / 6 );
+  }
+
+  .block-grid.medium-up-to-7 > * {
+    flex: 0 1 calc( 100% / 7 );
+  }
+
+  .block-grid.medium-up-to-8 > * {
+    flex: 0 1 calc( 100% / 8 );
+  }
+
+  .block-grid.medium-up-to-9 > * {
+    flex: 0 1 calc( 100% / 9 );
+  }
+
+  .block-grid.medium-up-to-10 > * {
+    flex: 0 1 calc( 100% / 10 );
+  }
+}
+@media screen and (min-width: 1000px) {
+  .block-grid.large-up-to-2 > * {
+    flex: 0 1 calc( 100% / 2 );
+  }
+
+  .block-grid.large-up-to-3 > * {
+    flex: 0 1 calc( 100% / 3 );
+  }
+
+  .block-grid.large-up-to-4 > * {
+    flex: 0 1 calc( 100% / 4 );
+  }
+
+  .block-grid.large-up-to-5 > * {
+    flex: 0 1 calc( 100% / 5 );
+  }
+
+  .block-grid.large-up-to-6 > * {
+    flex: 0 1 calc( 100% / 6 );
+  }
+
+  .block-grid.large-up-to-7 > * {
+    flex: 0 1 calc( 100% / 7 );
+  }
+
+  .block-grid.large-up-to-8 > * {
+    flex: 0 1 calc( 100% / 8 );
+  }
+
+  .block-grid.large-up-to-9 > * {
+    flex: 0 1 calc( 100% / 9 );
+  }
+
+  .block-grid.large-up-to-10 > * {
+    flex: 0 1 calc( 100% / 10 );
+  }
+}
+@media screen and (min-width: 1200px) {
+  .block-grid.xlarge-up-to-2 > * {
+    flex: 0 1 calc( 100% / 2 );
+  }
+
+  .block-grid.xlarge-up-to-3 > * {
+    flex: 0 1 calc( 100% / 3 );
+  }
+
+  .block-grid.xlarge-up-to-4 > * {
+    flex: 0 1 calc( 100% / 4 );
+  }
+
+  .block-grid.xlarge-up-to-5 > * {
+    flex: 0 1 calc( 100% / 5 );
+  }
+
+  .block-grid.xlarge-up-to-6 > * {
+    flex: 0 1 calc( 100% / 6 );
+  }
+
+  .block-grid.xlarge-up-to-7 > * {
+    flex: 0 1 calc( 100% / 7 );
+  }
+
+  .block-grid.xlarge-up-to-8 > * {
+    flex: 0 1 calc( 100% / 8 );
+  }
+
+  .block-grid.xlarge-up-to-9 > * {
+    flex: 0 1 calc( 100% / 9 );
+  }
+
+  .block-grid.xlarge-up-to-10 > * {
+    flex: 0 1 calc( 100% / 10 );
+  }
+}
+@media screen and (min-width: 1600px) {
+  .block-grid.xxlarge-up-to-2 > * {
+    flex: 0 1 calc( 100% / 2 );
+  }
+
+  .block-grid.xxlarge-up-to-3 > * {
+    flex: 0 1 calc( 100% / 3 );
+  }
+
+  .block-grid.xxlarge-up-to-4 > * {
+    flex: 0 1 calc( 100% / 4 );
+  }
+
+  .block-grid.xxlarge-up-to-5 > * {
+    flex: 0 1 calc( 100% / 5 );
+  }
+
+  .block-grid.xxlarge-up-to-6 > * {
+    flex: 0 1 calc( 100% / 6 );
+  }
+
+  .block-grid.xxlarge-up-to-7 > * {
+    flex: 0 1 calc( 100% / 7 );
+  }
+
+  .block-grid.xxlarge-up-to-8 > * {
+    flex: 0 1 calc( 100% / 8 );
+  }
+
+  .block-grid.xxlarge-up-to-9 > * {
+    flex: 0 1 calc( 100% / 9 );
+  }
+
+  .block-grid.xxlarge-up-to-10 > * {
+    flex: 0 1 calc( 100% / 10 );
+  }
+}
+/* Individual element’s style */
+figure {
+  padding: 5px;
+}
+figure img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+figure figcaption {
+  text-align: center;
+}
+
+----
+/*!
+* Simple CSS3 Image Slideshow
+* http://siamonh.com
+*/
+body {
+  background: #fafafa;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #2b2b2b;
+}
+.contant{
+	max-width: 960px;
+	margin: 0 auto;
+	position: relative;
+	padding: 1% 0;
+	overflow: hidden;
+}h1{
+  text-align: center; 
+}
+
+.intro{
+	position: relative;
+	width: 1000%;
+	height: 500px;
+	overflow: hidden;
+	background: #f0f0f0;
+	 -webkit-animation: slide 25s infinite alternate ease;
+	        animation: slide 25s infinite alternate ease;
+}.img-contant{
+	float:left;
+	width: 960px;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	background-position: 50% 50%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	
+}#photo-1{
+	background-image: url("http://i.imgur.com/Vy6GR1W.jpg");
+
+}
+#photo-2 {
+  background-image: url("http://i.imgur.com/gHTQLm5.jpg");
+}
+#photo-3{
+	background-image: url("http://i.imgur.com/qruhs1O.jpg");
+}
+#photo-4{
+	background-image: url("http://i.imgur.com/dBcCGn4.jpg");
+}
+@-webkit-keyframes slide {
+    0%   {margin-left: 0px;}
+    25%  {margin-left: -960px;}
+    50%  {margin-left: -1920px;}
+    75%  {margin-left: -2880px;}
+    100% {margin-left: 0px;}
+}
+@keyframes slide {
+    0%   {margin-left: 0px;}
+    25%  {margin-left: -960px;}
+    50%  {margin-left: -1920px;}
+    75%  {margin-left: -2900px;}
+    100% {margin-left: 0px;}
+}
+/** Helper **/
+.clear:before, .clear:after {
+    content: " ";
+    display: table
+}
+
+.clear:after {
+    clear: both
+}
+----
+	</style>
+</head>
+<body>
+	<header>
+  <div class="row">
+    <div class="small-12 col">
+      <center><h1><img src="http://i.imgur.com/8pO6r5D.jpg"></h1></center>
+    </div>
+  </div>
+</header>
+<div class="row">
+  <nav class="small-12 medium-shrink xxlarge-2 col">
+    <ul class="block-grid medium-vertical">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Gallery</a></li><li><a href="#">Praise</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>  
+  
+  <main class="small-12 medium-auto col">
+    <article>
+      
+      <p>
+         <article class="contant">
+    <h2>Welcome to RK's Cupcakes</h2>
+    	<section class="intro">
+          <figure class="img-contant" id="photo-1"></figure>
+          <figure class="img-contant" id="photo-2"></figure>
+          <figure class="img-contant" id="photo-3"></figure>
+          <figure class="img-contant" id="photo-4"></figure>
+    	</section>
+    	<!-- End intro -->
+    </article>
+ 
+      <p>RK’s Cupcakes creates amazing cupcakes delivering throughout the entire Bay Area. Our cupcakes are made to order and can cater for your imagination.
+RK’s Cupcakes can create desserts for:
+
+      <li>Wedding
+      <li>Birthdays
+      <li>Corporate Events
+      <li>Special Occasions
+      <br>
+      <br>  
+       Whether you want a five tier cupcake tower for your special day, or just an adorable sweet to snack on, RK’s Cupcakes can create a special memorable cupcake just for you.
+Click on one of the cupcake icons below and see which cake takes your fancy! There is something for everyone, and who doesn't like cake?
+
+      </p>
+      <h2>Follow Us on Social Media</h2>
+      <p><img src="http://i.imgur.com/rcoL4Ud.png"></p>
+    </article>
+  </main>
+  <div class="advertisement row">
+    <div class="small-hidden xlarge-shrink col">
+      <img src="http://placehold.it/160x600&text=ad." alt="Advertisement" />
+    </div>
+  </div>
+</div>  
+<footer>
+  <div class="row">
+    <div class="small-12 col">
+       © (not really) Cupcake ipsum dolor sit amet dessert danish jelly beans
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body  {
+			background-color:#aaa;
+		}
+
+		.container { 
+			width: 620px; 
+			height:200px;
+			background-color:#fff;
+			margin: 0 auto;
+		}
+
+		ul#menu {
+			font-family: Arial, Helvetica, Sans-serif;
+			width: auto;
+			height: 50px;
+			position: relative;
+			z-index: 500;
+			background-color: #83A91D;
+			text-shadow:#666666 1px 1px;
+			*zoom: 1;
+		}
+
+		ul#menu li {
+			float: left;
+			list-style-type: none; 
+		}
+		
+		ul#menu li ul {
+			height: 50px;
+			line-height: 50px; 
+			background-color:#456456; 
+			display:block;
+		}
+		ul#menu li a, 
+		ul#menu li a:visited {
+			display: block;
+			text-decoration: none;
+			padding: 0 3px 0 3px;
+			height: 50px;
+			line-height: 50px;
+			color: #fff;
+			font-size:80%;
+			border-left: solid 1px orange;
+		}
+		ul#menu table {
+			border-collapse: collapse;
+			margin: 0;
+			padding: 0;
+		}
+		ul#menu li ul, 
+		ul#menu li ul li ul {
+			visibility: hidden; /* visibility: visible; */
+			position: absolute;
+			top: 50px;
+			left: 0;
+			height: 50px;
+			line-height: 50px;
+		}
+		ul#menu li:hover a, 
+		ul#menu li a:hover {
+			background: #97C41F; 
+		}
+		ul#menu li:hover ul, 
+		ul#menu li a:hover ul {
+			visibility: visible;
+			width: 94%; 
+			height:auto;
+			background: #97C41F;
+			color: #999; 
+		}
+		ul#menu li:hover ul.direita li, 
+		ul#menu li a:hover ul.direita li {
+			float: right; 
+		}
+		ul#menu li:hover ul.esquerda li, 
+		ul#menu li a:hover ul.esquerda li {
+			float: left;
+		}
+		ul#menu li:hover ul li a.sub, 
+		ul#menu li a:hover ul li a.sub {
+			color: #fff;
+		}
+		ul#menu li:hover ul li ul, 
+		ul#menu li a:hover ul li a ul {
+			visibility: hidden;
+			position: absolute;
+			left: 0;
+			top: 100px;
+		}
+		ul#menu li:hover ul li a, 
+		ul#menu li a:hover ul li a {
+			display: block;
+			background: #97C41F;
+			color: #fff;
+			height: 50px;
+			line-height: 50px; 
+			font-size:80%; 
+		}
+		ul#menu li:hover ul li a:hover, 
+		ul#menu li a:hover ul li a:hover {
+			color: #000;
+			height: 50px;
+			line-height: 50px;  
+			-webkit-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+			-moz-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+			-ms-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+			-o-transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940); 
+			transition: all 500ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+		}
+		ul#menu li:hover ul li:hover ul, 
+		ul#menu li a:hover ul li a:hover ul {
+			visibility: visible;
+			color: #000;
+			background-color: #A5D820; 
+		}
+		ul#menu li:hover ul.right li {
+			float: right
+		}
+		ul#menu li:hover ul li:hover ul li a, 
+		ul#menu li a:hover ul li a:hover ul li a {
+			color: #fff; 
+			background-color: #A5D820;  
+			font-size:80%;
+		}
+		ul#menu li ul li:hover ul li:hover li a:hover, 
+		ul#menu li ul lia:hover ul li a:hover ul li a:hover {
+			height: 50px;
+			line-height: 50px;
+		}
+
+
+		ul#menu li ul li:hover a.sub { background-color:#A5D820 !important; }
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul id="menu">
+			<li><a href="#">Home</a>
+				<ul>
+					<li><a href="#">Promoções</a></li>
+					<li><a href="#">Disneyland® Paris</a></li>
+					<li><a href="#">Oferta do Dia</a></li>
+					<li><a href="#">Avião</a></li>
+					<li><a href="#">Escapadinhas</a></li>
+					<li><a href="#">Açores e Madeira</a></li>
+					<li><a href="#" class="sub">Férias lá fora </a>
+						<ul class="direita">
+							<li><a href="#">Cidades</a></li>
+							<li><a href="#">Circuitos</a></li>
+							<li><a href="#">Cruzeiros</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#">Brochuras</a>
+				<ul>
+					<li><a href="#">Brochuras Interactivas</a></li>
+					<li><a href="#">Vídeos</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Travel Card</a>
+				<ul>
+					<li><a href="#">Condições Gerais</a></li>
+					<li><a href="#">Parceiros</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Serviços</a>
+				<ul>
+					<li><a href="#">Cheques-viagem</a></li>
+					<li><a href="#">Crédito</a></li>
+					<li><a href="#">Comboios</a></li>
+					<li><a href="#">Espectáculos</a></li>
+					<li><a href="#">Luas-de-mel</a></li>
+					<li><a href="#">Rent-a-car</a></li>
+					<li><a href="#">Seguros</a></li>
+					<li><a href="#">Vistos consulares</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Sites Abreu</a></li>
+			<li><a href="#">Passatempos</a></li>
+			<li><a href="#">Onde estamos</a></li>
+			<li><a href="#">App Mobile</a></li>
+		</ul>
+	</div>
+</body>
+</html>

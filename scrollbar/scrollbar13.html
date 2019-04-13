@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <script>
+		$("body").addClass("inactive");
+	// If user has Javascript disabled, the thick scrollbar is shown
+	$("body").mouseover(function(){
+	  $(this).removeClass("inactive");
+	});
+	$("body").mouseout(function(){
+	  $(this).addClass("inactive");
+	});
+	
+	</script> -->
+	<style>
+	html {
+  overflow: auto;
+}
+body {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  bottom: 5px;
+  right: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #669999;
+  color: #fff;
+}
+
+div {
+  margin: 0 auto;
+  width: 500px;
+}
+
+p {
+  line-height: 1.5em; 
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.inactive::-webkit-scrollbar,
+body.inactive::-webkit-scrollbar-track,
+body.inactive::-webkit-scrollbar-thumb {
+    visibility: hidden;
+}
+
+::-webkit-scrollbar-track {
+  visibility: visible;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+  background: #99cccc; }
+
+::-webkit-scrollbar-thumb { background: #fff; }
+	</style>
+</head>
+<body>
+	<div>
+  <h3>Custom scrollbar does NOT work in Firefox and IE9 and older (of course!).</h3>
+  <p>Cupcake ipsum dolor sit amet. Cotton candy halvah cupcake biscuit donut pastry sugar plum cupcake sweet. Lemon drops oat cake I love. Croissant I love powder sesame snaps chocolate cake. I love topping jelly-o liquorice gummi bears chocolate cake. Candy canes pudding liquorice pudding jujubes lemon drops brownie I love. Ice cream candy canes pastry I love toffee applicake donut ice cream. Cheesecake macaroon cupcake chocolate cake cake. Jelly-o applicake marshmallow icing sweet roll marshmallow jujubes candy brownie. Jelly beans bonbon bear claw liquorice I love lollipop donut powder muffin. Pie cake croissant I love chocolate pastry apple pie tart cupcake. Gummi bears topping cupcake pastry pastry.</p>
+  
+  <p>Tart pastry sesame snaps candy canes topping gingerbread I love. I love toffee jelly-o. Oat cake I love I love croissant. Liquorice apple pie sweet roll powder pie bonbon. I love brownie I love soufflé marshmallow. Oat cake fruitcake oat cake. Powder jujubes pastry I love gingerbread tiramisu danish. Marshmallow chocolate chocolate cake applicake cookie gummies pie dessert chocolate. Caramels liquorice bear claw pudding icing powder jelly ice cream pudding. Caramels sugar plum halvah chocolate bar I love. Chocolate muffin cookie. Sugar plum tootsie roll brownie topping.</p>
+  
+  <p>Soufflé cheesecake ice cream I love tootsie roll topping soufflé pie. Lollipop applicake sugar plum topping caramels. Liquorice jujubes cookie chocolate bar. Marzipan sweet roll brownie icing ice cream pudding macaroon chupa chups. Brownie halvah marshmallow. Wafer brownie dragée icing lemon drops topping danish I love sweet. Cheesecake jujubes I love jelly beans. Cotton candy cookie oat cake sweet I love I love tootsie roll bear claw carrot cake. Sweet roll unerdwear.com I love soufflé pastry I love. Candy canes toffee gummi bears I love wafer. Jelly gummi bears carrot cake. Tootsie roll jelly tart caramels apple pie carrot cake. Caramels candy canes jelly dessert sweet cheesecake icing. Ice cream chocolate cake I love marshmallow.</p>
+  
+  <p>Icing I love cupcake macaroon jujubes ice cream dragée toffee candy. Carrot cake fruitcake I love jelly beans sweet roll unerdwear.com lemon drops wafer I love. Macaroon dessert cotton candy sweet icing sweet roll. Jelly-o donut I love candy danish jelly-o. Wafer cotton candy caramels candy canes dessert icing danish ice cream marzipan. Chupa chups pie marzipan unerdwear.com. Jelly-o liquorice I love candy canes. Marshmallow lollipop I love applicake wafer carrot cake candy canes sesame snaps. Topping wafer cheesecake jelly beans cotton candy. Jelly-o bear claw ice cream pastry chocolate bar. Dragée jelly bear claw cookie tart. Toffee pastry soufflé applicake marshmallow I love donut jelly beans.</p>
+  
+  <p>Sugar plum macaroon chocolate cake danish unerdwear.com jujubes ice cream jelly beans lemon drops. Unerdwear.com pudding wafer dessert. Jujubes sugar plum toffee marzipan pastry jelly. Caramels pudding pastry liquorice wafer gummies. Cake donut marshmallow biscuit I love candy I love sweet. Dessert marshmallow pie toffee cupcake sesame snaps. Tootsie roll dragée jelly beans chupa chups chocolate cake sugar plum toffee bonbon I love. Marshmallow jelly tart applicake. Cotton candy tootsie roll sugar plum. Chocolate I love macaroon biscuit. Ice cream liquorice oat cake unerdwear.com sweet roll ice cream I love sesame snaps. Brownie jelly beans pudding unerdwear.com marshmallow wafer. Marshmallow bear claw sweet.</p>
+</div>
+</body>
+</html>

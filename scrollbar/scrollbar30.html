@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+
+    /** Try the animation! **/
+
+/**.content {animation: star 1s infinite;}**/
+
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+
+/** Styling **/
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #eee;
+  color: #222;
+}
+h1, .description {
+  text-align: center;
+  margin: 5px 0;
+}
+a {color: #000;}
+::selection {background: rgba(0,0,0,0.15);}
+
+/** The Clip Box **/
+.content {
+  position: absolute;
+  margin: auto auto;
+  top: 0; right: 0; bottom: 40px; left: 0;
+  width: 500px;
+  height: 280px;
+  padding: 20px;
+  background: #3498db;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  clip-path: polygon(
+      0 0, 50% 30px, 100% 0, 100% calc(100% - 30px), 50% 100%, 0 calc(100% - 30px));
+  transition: all 200ms;
+}
+.content:hover {
+  clip-path: polygon(
+      0 0, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%);
+    height: 320px;
+  padding-top: 0;
+}
+
+/** custom scrollbar **/
+::-webkit-scrollbar {width: 15px;}
+::-webkit-scrollbar-track {background-color: rgba(255, 255, 255, .2);}
+::-webkit-scrollbar-thumb {background-color: rgba(255, 255, 255, .25);}
+
+/** Fun Animation! **/
+@keyframes star {
+  0% {clip-path: polygon(
+      0 0, 50% 30px, 100% 0, 100% calc(100% - 30px), 50% 100%, 0 calc(100% - 30px));}
+  50% {clip-path: polygon(
+      0 0, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%);}
+  100% {clip-path: polygon(
+      0 0, 50% 30px, 100% 0, 100% calc(100% - 30px), 50% 100%, 0 calc(100% - 30px));}
+}
+
+/** Just in case... **/
+@media (max-height: 500px) {
+  h1, .description {display: none;}
+  .content {scale: 0.7;}
+}
+    </style>
+</head>
+<body>
+    <h1>Experiment with <code>clip-path</code></h1>
+<p class="description">Hover over the <code>&lt;div&gt;</code> to see the transition. Also note the custom <code>-webkit-</code> scrollbar.</p>
+<div class="content">
+  <h2>Clip-Path Example</h2>
+  <p>The clip-path property prevents a portion of an element from drawing by defining a clipping region.<sup>[<a href="#ref-1">1</a>]</sup> This way we can make different shapes out of HTML elements. The clip-path property can be applied to all HTML elements, SVG graphic elements and SVG container elements.<sup>[<a href="#ref-2">2</a>]</sup> It is also fully <a href="http://codepen.io/chriscoyier/pen/YPyYGx">animatable</a>! I added a simple animation for this pen. All you have to do is uncomment line 3 in the CSS editor.</p>
+  <p>If you are interested in learning more about <code>clip-path</code>, I recommend these sources:</p>
+  <ul>
+    <li><a href="http://css-tricks.com/clipping-masking-css/">Clipping and Masking in CSS</a></li>
+    <li><a href="http://docs.webplatform.org/wiki/css/properties/clip-path">clip-path on WPD</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path">clip-path on MDN</a></li>
+    <li><a href="http://www.html5rocks.com/en/tutorials/masking/adobe/">CSS Masking</a></li>
+  </ul>
+  <h4>References</h4>
+  <small><ol>
+    <li id="ref-1"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path">Mozilla Developer Network</a>, 2014</li>
+    <li id="ref-2"><a href="http://www.html5rocks.com/en/tutorials/masking/adobe/">HTML5Rocks</a>, April 4th, 2013</li>
+  </ol></small>
+</div>
+</body>
+</html>

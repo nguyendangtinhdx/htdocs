@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<style>
+	/* -------------------------- GENERAL --------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: black;
+  position: relative;
+  display: table;
+}
+
+.button {
+  border: 3px solid white;
+  overflow: hidden;
+  color: white;
+  height: 100px;
+  margin: 5px;
+  width: 100px;
+  border-radius: 50%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  background-color: rgba(100, 100, 100, .8);
+  cursor: pointer;
+}
+
+.button > .icon {
+  position: relative;
+}
+
+.buttons-container {
+  display: table;
+  border-spacing: 10px;
+  margin: 0 auto;
+}
+
+.buttons-panel {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.icon {
+  font-size: 2em;
+}
+
+
+/* ------------------------- / GENERAL ----------------------- */
+
+
+/* ----------------------- ANIMATIONS & TRANSITIONS --------------------- */
+
+.animated {
+  -webkit-transition: .5s all;
+  transition: .5s all;
+}
+
+.animated.spin:hover {
+  -webkit-transfrom: rotate(360deg);
+  transform: rotate(360deg);
+}
+
+.animated.bounce:hover > .icon {
+  -webkit-animation: bounce .5s linear infinite;
+  animation: bounce .5s linear infinite;
+}
+
+.zoom > .icon {
+  -webkit-transition: .5s all;
+  transition: .5s all;
+}
+
+.animated.zoom:hover > .icon {
+  -wekbkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    bottom: 0;
+  }
+  10% {
+    bottom: 5px;
+  }
+  50% {
+    bottom: 10px;
+  }
+  90% {
+    bottom: 5px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes {
+  0% {
+    bottom: 0;
+  }
+  10% {
+    bottom: 5px;
+  }
+  50% {
+    bottom: 10px;
+  }
+  90% {
+    bottom: 5px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+
+/* ----------------------- / ANIMATIONS & TRANSITIONS --------------------- */
+
+
+/* ------------------- ICONS ------------------- */
+
+#twitch:hover {
+  background-color: #64459B;
+}
+
+#facebook:hover {
+  background-color: #4867AA;
+}
+
+#android:hover {
+  background-color: white;
+  border-color: #99CC00;
+}
+
+#android:hover > .icon {
+  color: #99CC00;
+}
+
+#youtube:hover {
+  background-color: #EE1C1B;
+}
+
+#twitter:hover {
+  background-color: #5EA9DD;
+}
+
+#google-plus:hover {
+  background-color: #DA5333;
+}
+
+
+/* ------------------- / ICONS -------------------- */
+	</style>
+</head>
+<body>
+	<div class="buttons-panel">
+  <div class="buttons-container">
+    <div class="button animated spin" id="facebook"><i class="icon fa fa-facebook"></i></div>
+    <div class="button animated spin" id="twitch"><i class="icon fa fa-twitch"></i></div>
+    <div class="button animated spin" id="android"><i class="icon fa fa-android"></i></div>
+    <div class="button animated spin" id="youtube"><i class="icon fa fa-youtube"></i></div>
+    <div class="button animated spin" id="twitter"><i class="icon fa fa-twitter"></i></div>
+    <div class="button animated spin" id="google-plus"><i class="icon fa fa-google-plus"></i></div>
+  </div>
+  <div class="buttons-container">
+    <div class="button animated bounce" id="facebook"><i class="icon fa fa-facebook"></i></div>
+    <div class="button animated bounce" id="twitch"><i class="icon fa fa-twitch"></i></div>
+    <div class="button animated bounce" id="android"><i class="icon fa fa-android"></i></div>
+    <div class="button animated bounce" id="youtube"><i class="icon fa fa-youtube"></i></div>
+    <div class="button animated bounce" id="twitter"><i class="icon fa fa-twitter"></i></div>
+    <div class="button animated bounce" id="google-plus"><i class="icon fa fa-google-plus"></i></div>
+  </div>
+  <div class="buttons-container">
+    <div class="button animated zoom" id="facebook"><i class="icon fa fa-facebook"></i></div>
+    <div class="button animated zoom" id="twitch"><i class="icon fa fa-twitch"></i></div>
+    <div class="button animated zoom" id="android"><i class="icon fa fa-android"></i></div>
+    <div class="button animated zoom" id="youtube"><i class="icon fa fa-youtube"></i></div>
+    <div class="button animated zoom" id="twitter"><i class="icon fa fa-twitter"></i></div>
+    <div class="button animated zoom" id="google-plus"><i class="icon fa fa-google-plus"></i></div>
+  </div>
+</div>
+</body>
+</html>

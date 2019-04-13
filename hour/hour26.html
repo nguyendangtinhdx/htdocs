@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function () {
+
+    function displayTime() {
+
+        // Creates a JavaScript Date instance
+        var currentTime = new Date();
+
+        // Set UTC time
+        var hours = currentTime.getUTCHours();
+
+        var minutes = currentTime.getUTCMinutes();
+
+        var seconds = currentTime.getUTCSeconds();
+
+        // Set the meridiem to a defuault of AM
+        var meridiem = "PM";
+
+        // Adds time difference between each location to the GMT time & changes the background color of the body element
+        if ($(".active").text() === "Caracas") {
+            hours = hours - 4;
+            minutes = minutes - 30;
+            $("body").css("background", "linear-gradient(to left, #FFE082, #FFCA28)");
+        }
+        if ($(".active").text() === "Miami") {
+            hours = hours - 5;
+            $("body").css("background", "linear-gradient(to left, #4CB8C4, #3CD3AD)");
+        }
+        if ($(".active").text() === "Los Angeles") {
+            hours = hours - 8;
+            $("body").css("background", "linear-gradient(to left, #90CAF9, #42A5F5)");
+        }
+        if ($(".active").text() === "Tokyo") {
+            hours = hours + 9;
+            $("body").css("background", "linear-gradient(to left, #9FA8DA, #3949AB)");
+        }
+        if ($(".active").text() === "Beijing") {
+            hours = hours + 8;
+            $("body").css("background", "linear-gradient(to left, #FFAB91, #FF7043)");
+        }
+        if ($(".active").text() === "Cairo") {
+            hours = hours + 2;
+            $("body").css("background", "linear-gradient(to left, #FFE082, #FFB300)");
+        }
+        if ($(".active").text() === "Paris") {
+            hours = hours + 1;
+            $("body").css("background", "linear-gradient(to left, #CE93D8 , #AB47BC)");
+        }
+        if ($(".active").text() === "Sao Paulo") {
+            hours = hours - 2;
+            $("body").css("background", "linear-gradient(to left, #C5E1A5, #7CB342)");
+        }
+        
+        // Handles cases when the hours are greater than or less than 24
+        if (hours > 24) {
+            hours = hours - 24;
+        }
+        if (hours < 0) {
+            hours = hours + 24;
+        }
+        
+        // Handles cases when the minutes are greater than or less than 60
+        if (minutes > 60) {
+            hours = hours + 1;
+            minutes = minutes - 60;
+        }
+        if (minutes < 0) {
+            hours = hours - 1;
+            minutes = minutes + 60;
+        }
+
+        // Converts from 24 hour to 12 hour format
+        if (hours >= 12) {
+            hours = hours - 12;
+            meridiem = "AM";
+        }
+
+        // 0 AM and 0 PM should read as 12
+        if (hours === 0) {
+            hours = 12;
+        }
+
+        // Adds a "0" digit to the front if the digit is less than ten                
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }                  
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }                 
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+
+        // Sets a "handle" to the clock div in our HTML
+        var clockDiv = document.getElementById('clock');
+
+        // Sets the text inside the clock div
+        // to the hours, minutes, and seconds of the current time
+        clockDiv.innerText = hours + ":" + minutes + ":" + seconds + " " + meridiem;
+    }
+
+    // Selects the button clicked and change its class to '.active'
+    $("li").click(function () {
+        // Removes the active class form the other list items
+        $("li").removeClass("active");
+        // Ads the active class to the clicked list item
+        $(this).addClass("active");
+    });
+
+    // Runs the displayTime function the first time
+    displayTime();
+
+    // Makes our clock 'tick' by repeatedly
+    // running the displayTime function every second.
+    setInterval(displayTime, 500);
+});
+	</script>
+	<style>
+	@import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
+body {
+    background: linear-gradient(to left, #80DEEA, #00ACC1);
+}
+
+#clock {
+    margin: 25vh auto 10vh auto;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+    font-size: 100px;
+}
+
+#menu {
+    margin: 5vh auto;
+}
+
+#clock,
+#menu {
+    min-width: 800px;
+    text-align: center;
+}
+
+#menu li {
+    display: inline-block;
+    margin-right: 15px;
+    padding-bottom: 3px;
+    color: white;
+    font-family: helvetica;
+    text-transform: uppercase;
+    font-size: 14px;
+    cursor: default;
+}
+
+.active {
+    border-bottom: solid white 1px;
+}
+
+#menu li:not(.active):hover {
+    color: #EDEDED;
+    cursor: pointer;
+}
+	</style>
+</head>
+<body>
+	<body>
+    <div id="clock"></div>
+    <ul id="menu">
+        <li>Caracas</li>
+        <li class="active">Miami</li>
+        <li>Los Angeles</li>
+        <li>Tokyo</li>
+        <li>Beijing</li>
+        <li>Cairo</li>
+        <li>Paris</li>
+        <li>Sao Paulo</li>
+    </ul>
+</body>
+</body>
+</html>

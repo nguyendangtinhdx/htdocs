@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+  $(".SlickCarousel").slick({
+    rtl:false, // If RTL Make it true & .slick-slide{float:right;}
+    autoplay:true, 
+    autoplaySpeed:5000, //  Slide Delay
+    speed:800, // Transition Speed
+    slidesToShow:4, // Number Of Carousel
+    slidesToScroll:1, // Slide To Move 
+    pauseOnHover:false,
+    appendArrows:$(".Container .Head .Arrows"), // Class For Arrows Buttons
+    prevArrow:'<span class="Slick-Prev"></span>',
+    nextArrow:'<span class="Slick-Next"></span>',
+    easing:"linear",
+    responsive:[
+      {breakpoint:801,settings:{
+        slidesToShow:3,
+      }},
+      {breakpoint:641,settings:{
+        slidesToShow:3,
+      }},
+      {breakpoint:481,settings:{
+        slidesToShow:1,
+      }},
+    ],
+  })
+})
+	</script>
+	<style>
+/* Slick Slider Css Ruls */
+
+.slick-slider {
+  position: relative;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent
+}
+
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0
+}
+
+.slick-list:focus {
+  outline: none
+}
+
+.slick-list.dragging {
+  cursor: hand
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0)
+}
+
+.slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block
+}
+
+.slick-track:before,
+.slick-track:after {
+  display: table;
+  content: ''
+}
+
+.slick-track:after {
+  clear: both
+}
+
+.slick-loading .slick-track {
+  visibility: hidden
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px
+}
+
+.slick-slide.dragging img {
+  pointer-events: none
+}
+
+.slick-initialized .slick-slide {
+  display: block
+}
+
+.slick-loading .slick-slide {
+  visibility: hidden
+}
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent
+}
+
+.img-fill {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  text-align: center
+}
+
+.img-fill img {
+  height: 100%;
+  min-width: 100%;
+  position: relative;
+  display: inline-block;
+  max-width: none
+}
+/* Slider Theme Style */
+
+.Container {
+  padding: 0 15px;
+}
+
+.Container:after,
+.Container .Head:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.Container .Head {
+  font: 20px/50px NeoSansR;
+  color: #222;
+  height: 52px;
+  over-flow: hidden;
+  border-bottom:1px solid rgba(0,0,0,.25);
+}
+
+.Container .Head .Arrows {
+  float: right;
+}
+
+.Container .Head .Slick-Next,
+.Container .Head .Slick-Prev {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  margin-top: 6px;
+  background: #2b2b2b;
+  color: #FFF;
+  margin-left: 5px;
+  cursor: pointer;
+  font: 18px/36px FontAwesome;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.Container .Head .Slick-Next:hover,
+.Container .Head .Slick-Prev:hover {
+  background: #33687a;
+}
+
+.Container .Head .Slick-Next:before {
+  content: '\f105'
+}
+
+.Container .Head .Slick-Prev:before {
+  content: '\f104'
+}
+
+.SlickCarousel {
+  margin: 0 -7.5px;
+  margin-top: 10px;
+}
+
+.ProductBlock {
+  padding: 0 7.5px;
+}
+
+.ProductBlock .img-fill {
+  height: 200px;
+}
+
+.ProductBlock h3 {
+  font: 15px/36px RalewayR;
+  color: #393939;
+  margin-top: 5px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, .25);
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.04);
+}
+	</style>
+</head>
+<body>
+	<div class="Container">
+  <h3 class="Head">Featured Products <span class="Arrows"></span></h3>
+  <!-- Carousel Container -->
+  <div class="SlickCarousel">
+    <!-- Item -->
+    <div class="ProductBlock">
+      <div class="Content">
+        <div class="img-fill">
+          <img src="http://41.media.tumblr.com/4f61413965b53d9cc901e2f8241a64bd/tumblr_nh1zmuXYUM1su4a4ho1_1280.jpg">
+        </div>
+        <h3>Block Title</h3>
+      </div>
+    </div>
+    <!-- Item -->
+    <!-- Item -->
+    <div class="ProductBlock">
+      <div class="Content">
+        <div class="img-fill">
+          <img src="http://41.media.tumblr.com/4f61413965b53d9cc901e2f8241a64bd/tumblr_nh1zmuXYUM1su4a4ho1_1280.jpg">
+        </div>
+        <h3>Block Title</h3>
+      </div>
+    </div>
+    <!-- Item -->
+    <!-- Item -->
+    <div class="ProductBlock">
+      <div class="Content">
+        <div class="img-fill">
+          <img src="http://41.media.tumblr.com/4f61413965b53d9cc901e2f8241a64bd/tumblr_nh1zmuXYUM1su4a4ho1_1280.jpg">
+        </div>
+        <h3>Block Title</h3>
+      </div>
+    </div>
+    <!-- Item -->
+    <!-- Item -->
+    <div class="ProductBlock">
+      <div class="Content">
+        <div class="img-fill">
+          <img src="http://41.media.tumblr.com/4f61413965b53d9cc901e2f8241a64bd/tumblr_nh1zmuXYUM1su4a4ho1_1280.jpg">
+        </div>
+        <h3>Block Title</h3>
+      </div>
+    </div>
+    <!-- Item -->
+    <!-- Item -->
+    <div class="ProductBlock">
+      <div class="Content">
+        <div class="img-fill">
+          <img src="http://41.media.tumblr.com/4f61413965b53d9cc901e2f8241a64bd/tumblr_nh1zmuXYUM1su4a4ho1_1280.jpg">
+        </div>
+        <h3>Block Title</h3>
+      </div>
+    </div>
+    <!-- Item -->
+  </div>
+  <!-- Carousel Container -->
+</div>
+</body>
+</html>

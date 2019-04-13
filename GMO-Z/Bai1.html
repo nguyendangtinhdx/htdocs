@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<script src="js/Bai1.js"></script>
+	<title>Bài 1</title>
+</head>
+<body>
+	<div class="container">
+		<div class="col-sm-1">
+		</div>
+		<div class="col-sm-10">
+			<h2 align="center">Infomation</h2>
+			<form action="DisplayBai1.html" id="myForm" name="myForm" method="post">
+				<br>
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label for="email">Email: <span style="color: red">*</span></label>
+					</div>
+					<div class="col-sm-7">
+						<input type="email" class="form-control" id="email" placeholder="abc@gmail.com" name="email">
+					</div>
+					<div class="col-sm-3">
+						<span id="erremail" style="color: red"></span>
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label for="pasword">Password: <span style="color: red">*</span></label>
+					</div>
+					<div class="col-sm-7">
+						<input type="password" class="form-control" id="password" placeholder="********" name="password" >
+					</div>
+					<div class="col-sm-3">
+						<span id="errpassword" style="color: red"></span>
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label for="repassword">RePassword: <span style="color: red">*</span></label>
+					</div>
+					<div class="col-sm-7">
+						<input type="password" class="form-control" id="repassword" placeholder="********" name="repassword">
+					</div>
+					<div class="col-sm-3">
+						<span id="errrepassword" style="color: red"></span>
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label for="birthday">BirthDay:<span style="color: red">*</span></label>
+					</div>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="birthday" placeholder="dd-MM-yyyy" name="birthday">
+					</div>
+					<div class="col-sm-3">
+						<span id="errbirthday" style="color: red"></span>
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label for="address">Address:</label>
+					</div>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="address" placeholder="Đà Nẵng" name="address">
+					</div>
+					<div class="col-sm-3">
+						<span id="erraddress" style="color: red"></span>
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label for="mobile">Mobile:</label>
+					</div>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="mobile" placeholder="0789123345" name="mobile">
+					</div>
+					<div class="col-sm-3">
+						<span id="errmobile" style="color: red"></span>
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label for="gender">Gender:</label>
+					</div>
+					<div class="col-sm-7">
+						<div class="col-sm-6">
+							<input type="radio" id="gender" name="gender" value="1" checked="checked"> Male
+						</div>
+						<div class="col-sm-6">
+							<input type="radio" id="gender" name="gender" value="0"> Female
+						</div>
+					</div>
+					<div class="col-sm-3">
+						
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<div class="col-sm-2">
+						<label for="sports">Sports:</label>
+					</div>
+					<div class="col-sm-7">
+						<div class="col-sm-6">
+							<label class="checkbox-inline"><input type="checkbox" name="sports" value="Footbal">Football</label>
+						</div>
+						<div class="col-sm-6">
+							<label class="checkbox-inline"><input type="checkbox" name="sports" value="Volleyball">Volleyball</label>
+						</div>
+						<br>
+						<div class="col-sm-6">
+							<label class="checkbox-inline"><input type="checkbox" name="sports" value="Tennis">Tennis</label>
+						</div>
+						<div class="col-sm-6">
+							<label class="checkbox-inline"><input type="checkbox" name="sports" value="Swimming">Swimming</label>
+						</div>
+						<br>
+						<div class="col-sm-6">
+							<label class="checkbox-inline"><input type="checkbox" name="sports" value="Racing">Racing</label>
+						</div>
+						<div class="col-sm-6">
+							<label class="checkbox-inline"><input type="checkbox" name="sports" value="Gym">Gym</label>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<span id="errsports" style="color: red"></span>
+					</div>
+				</div>
+				<br><br><br>
+				<div class="form-group">
+					<div class="col-sm-2">
+					</div>
+					<div class="col-sm-7">
+						<div class="col-sm-6">
+							<input type="submit" id="btnSubmit" class="btn btn-success" value="Submit" onclick="return CheckValidate(); ">
+						</div>
+						<div class="col-sm-6">
+							<button type="reset" class="btn btn-warning" >Clear</button>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-1">
+			<!-- <h2 align="center">Display</h2>
+			<div><b>Email: </b><span id="showEmail"></span></div>
+			<div><b>Birthday: </b><span id="showBirthDay"></span></div>
+			<div><b>Address: </b><span id="showAddress"></span></div>
+			<div><b>Mobile: </b><span id="showMobile"></span></div>
+			<div><b>Gender: </b><span id="showGender"></span></div>
+			<div><b>Sports: </b><span id="showSports"></span></div> -->
+		</div>
+	</div>
+	<script>
+		var password = document.getElementById("password");
+		// Khi click vào password field
+		password.onfocus = function() {
+			document.getElementById("errpassword").style.display = "block";
+		}
+		// Khi clicks outside password field
+		password.onblur = function() {
+			document.getElementById("errpassword").style.display = "none";
+		}
+		password.onkeyup = function() {
+	 	var lowerCaseLetters = /[a-z]/g; // Validate chữ thường
+	  	var upperCaseLetters = /[A-Z]/g; // Validate chữ hoa
+	  	var numbers = /[0-9]/g; // Validate ký tự số
+	  	if(password.value.match(lowerCaseLetters)) {  
+	  		document.getElementById("errpassword").innerHTML = "Yếu";
+	  		document.getElementById("errpassword").style.color = "red";
+	  		if(password.value.match(upperCaseLetters)) {  
+	  			document.getElementById("errpassword").innerHTML = "Trung bình";
+	  			document.getElementById("errpassword").style.color = "orange";
+	  			if(password.value.match(numbers)) {  
+	  				document.getElementById("errpassword").innerHTML = "Mạnh";
+	  				document.getElementById("errpassword").style.color = "blue";
+	  				if(password.value.length >= 8) {
+	  					document.getElementById("errpassword").innerHTML = "Rất mạnh";
+	  					document.getElementById("errpassword").style.color = "green";
+	  				} 
+	  			}
+	  		} 
+	  	} 
+	  }
+	</script>
+</body>
+</html>

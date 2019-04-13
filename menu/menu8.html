@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// requires jQuery
+// vertically expands collapsed dropdown menus in one-column mobile view (under 640px)
+$('.nav_item.lvl1 div.nav_head').click(function(){
+	if ($(this).parent().css('float') == 'none') {
+		if ($('.nav_item.expand').length == 0) {
+			$(this).parent().addClass('expand');
+		}
+		else if (!$(this).parent().hasClass('expand')) {
+		$('.nav_item.lvl1.expand').each(function(){
+			$(this).removeClass('expand');
+		});
+		var base = $(this).parent();
+		window.setTimeout(function(){
+		$(base).addClass('expand');
+	}, 300);
+		}
+		else {
+		$(this).parent().removeClass('expand');
+		}
+	}
+});
+
+// requires jQuery
+// makes dropdown menu keyboard-accessible by adding/removing .hover class on focus/mouseover 
+$(document).ready(function() {	
+	$(".mainmenu").accessibleDropDown();
+});
+
+$.fn.accessibleDropDown = function () {
+	var el = $(this);
+	
+	/* setup dropdown menus for IE 6 */
+	$("li", el).mouseover(function() {
+		$(this).addClass("hover");
+	}).mouseout(function() {
+		$(this).removeClass("hover");
+	});
+	
+	/* make dropdown menus keyboard accessible */
+	$("a", el).focus(function() {
+		$(this).parents("li").addClass("hover");
+	}).blur(function() {
+		$(this).parents("li").removeClass("hover");
+	});
+}
+
+
+;(function( $, window, document, undefined )
+{
+	$.fn.doubleTapToGo = function( params )
+	{
+		if( !( 'ontouchstart' in window ) &&
+			!navigator.msMaxTouchPoints &&
+			!navigator.userAgent.toLowerCase().match( /windows phone os 7/i ) ) return false;
+ 
+		this.each( function()
+		{
+			var curItem = false;
+
+			$( this ).on( 'click', function( e )
+			{
+				var item = $( this );
+				if( item[ 0 ] != curItem[ 0 ] )
+				{
+					e.preventDefault();
+					curItem = item;
+				}
+			});
+
+			$( document ).on( 'click touchstart MSPointerDown', function( e )
+			{
+				var resetItem = true,
+					parents	  = $( e.target ).parents();
+
+				for( var i = 0; i < parents.length; i++ )
+					if( parents[ i ] == curItem[ 0 ] )
+						resetItem = false;
+
+				if( resetItem )
+					curItem = false;
+			});
+		});
+		return this;
+	};
+})( jQuery, window, document );
+
+$( function()
+	{
+		$( '#primary_nav_menu li:has(ul)' ).doubleTapToGo();
+	});
+
+
+	</script>
+	<style>
+	/****************************************************************************************/
+/*********************************** MOBILE NAVIGATION **********************************/
+/* Fixes sibling selectors (~) and pseudo classes (:checked) */
+/* Not needed as of Safari 5.1 and Chrome 13 (July 20, 2011) - http://css-tricks.com/webkit-sibling-bug/ */
+/*body { -webkit-animation: bugfix infinite 1s; }*/
+@-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} }
+/* Hides check box off of the page */
+.mobile-nav { display:none; margin-left: -9999px; margin-bottom: 11px; }
+.mobile-nav-label { 
+	display: none; 
+	cursor: pointer; 
+	border-radius: inherit; /* button */
+	box-shadow:none; /* button */
+	background: #ffffff; /* button */
+	color: #c34500 !important;
+	padding: 3px 20px;
+}
+a.mobile-more { text-decoration:none; }
+.mobile-more {
+	display: none;
+	padding: 3px 20px;
+	font-size: 1.4em;	
+}
+.mobile-searchbox-button { position: absolute; top: -9999px; left: -9999px; }
+.mobile-searchbox-button-label { display:none; cursor: pointer; border-radius: inherit; }
+
+
+#toplinks .short_label {
+	display: none;
+}
+#toplinks .long_label {
+	display: inline;
+}
+#toplinks {
+	float: left;
+	width: auto;
+	white-space: nowrap;
+	margin: 16px 0 5px 138px;
+}
+#primary_nav_menu, #primary_nav_menu ul, #primary_nav_menu li {
+	list-style: none;
+	display: block;
+	text-align: left;
+	padding: 0;
+	position: relative;
+}
+#primary_nav_menu {
+	height: 38px;
+	width: 100%;
+	margin: 4px auto auto;
+	border-bottom: 4px solid #C34500;
+	/* CSS gradient is complex, looks better as a background image */
+	/*background: #6d98ab; /* Old browsers */
+	/*background: -moz-linear-gradient(top, #144053 0%, #144053 8%, #6d98ab 33%, #6d98ab 93%, #035e77 100%); /* FF3.6+ */
+	/*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#144053), color-stop(8%,#144053), color-stop(33%,#6d98ab), color-stop(93%,#6d98ab), color-stop(100%,#035e77)); /* Chrome,Safari4+ */
+	/*background: -webkit-linear-gradient(top, #144053 0%, #144053 8%, #6d98ab 33%,#6d98ab 93%,#035e77 100%); /* Chrome10+,Safari5.1+ */
+	/*background: -o-linear-gradient(top, #144053 0%, #144053 8%, #6d98ab 33%, #6d98ab 93%, #035e77 100%); /* Opera 11.10+ */
+	/*background: -ms-linear-gradient(top, #144053 0%, #144053 8%, #6d98ab 33%, #6d98ab 93%, #035e77 100%); /* IE10+ */
+	/*background: linear-gradient(to bottom, #144053 0%, #144053 8%, #6d98ab 33%, #6d98ab 93%, #035e77 100%); /* W3C */
+	/* CSS main menu gradient above does not work in IE6-9 */
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#144053', endColorstr='#035e77',GradientType=0 ); /* IE6-9 */
+	background: #6d98ab url('../images/nav_bg_tile.png') repeat-x;
+	color: #fff;
+	font-family: "EksjaExtremesRegular",Arial,Helvetica,Verdana,sans-serif;
+	text-align: center;
+	z-index: 900;
+	-webkit-font-smoothing: antialiased; /* This fixes the Safari nav text issue. */
+}
+#primary_nav_menu a {
+	color: #fff;
+	text-decoration: none;
+}
+#primary_nav_menu .nav_item.lvl1 {
+	height: 100%;
+	padding: 0 10px;
+	margin: 0;
+	line-height: 39px;
+	font-size: 14px;
+	vertical-align: middle;
+	display: inline-block;
+	float: none;
+	border-left: 1px solid #ffffff;
+	width: auto !important;
+}
+
+#primary_nav_menu .nav_item.lvl1:first-child {
+	border-left: none;
+}
+
+#primary_nav_menu .nav_item.lvl1 ul {
+	border-bottom: 2px solid #035e77;
+	position: absolute;
+	overflow: hidden;
+	white-space: nowrap;
+	/*max-height: 0;
+	left: 0;*/
+	min-width: 100%;
+	width: auto;
+	top: 36px;
+	margin: 0;
+	background: #035e77;
+	/*-webkit-transform: translate3d(0,0,0) scaleY(0);
+	-webkit-transform-origin: 50% top;
+	-moz-transform: translate3d(0,0,0) scaleY(0);
+	-moz-transform-origin: 50% top;
+	-o-transform: translate3d(0,0,0) scaleY(0);
+	-o-transform-origin: 50% top;
+	-ms-transform: translate3d(0,0,0) scaleY(0);
+	-ms-transform-origin: 50% top;
+	transform: translate3d(0,0,0) scaleY(0);
+	transform-origin: 50% top;*/
+	-webkit-transition: background 0.3s, color 0.3s, -webkit-transform 0.3s, max-height 0s 0.3s;
+	-moz-transition: background 0.3s, color 0.3s, -moz-transform 0.3s, max-height 0s 0.3s;
+	-o-transition: background 0.3s, color 0.3s, -o-transform 0.3s, max-height 0s 0.3s;
+	-ms-transition: background 0.3s, color 0.3s, -ms-transform 0.3s, max-height 0s 0.3s;
+	transition: background 0.3s, color 0.3s, transform 0.3s, max-height 0s 0.3s;
+}
+
+span.nav_label {
+	display: block;
+	position: relative;
+}
+#primary_nav_menu .nav_item.lvl2 {
+	display: block;
+	font-weight: 100;
+	font-size: 13px;
+	line-height: 22px;
+	margin: 0;
+	border-bottom: 1px dotted #8FBACE;
+	width: auto !important;
+}
+#primary_nav_menu .nav_item.lvl2:last-child {
+	border-bottom: none;
+}
+#primary_nav_menu .nav_item.lvl1 a:hover, #primary_nav_menu .nav_item.lvl1 a:active, #primary_nav_menu .nav_item.lvl1 a:focus, #primary_nav_menu .nav_item.lvl1 a.hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+#primary_nav_menu .nav_item.lvl2 a {
+	display: block;
+	padding: 0px 25px 0px 15px;
+	height: 100%;
+	text-decoration: none !important;
+	width: auto !important;
+}
+#primary_nav_menu .nav_item.lvl2:hover, #primary_nav_menu .nav_item.lvl2:active, #primary_nav_menu .nav_item.lvl2:focus, #primary_nav_menu .nav_item.lvl2.hover {
+	background: #8FBACE;
+}
+#primary_nav_menu .nav_item.lvl1:hover ul, #primary_nav_menu .nav_item.lvl1:active ul, #primary_nav_menu .nav_item.lvl1:focus ul, #primary_nav_menu .nav_item.lvl1.hover ul {
+	max-height: 999px;
+	background: #6D98AB;
+	/*-webkit-transform: translate3d(0,0,0) scaleY(1);
+	-moz-transform: translate3d(0,0,0) scaleY(1);
+	-o-transform: translate3d(0,0,0) scaleY(1);
+	-ms-transform: translate3d(0,0,0) scaleY(1);
+	transform: translate3d(0,0,0) scaleY(1);*/
+	-webkit-transition: background 0.3s, color 0.3s, -webkit-transform 0.3s;
+	-moz-transition: background 0.3s, color 0.3s, -moz-transform 0.3s;
+	-o-transition: background 0.3s, color 0.3s, -o-transform 0.3s;
+	-ms-transition: background 0.3s, color 0.3s, -ms-transform 0.3s;
+	transition: background 0.3s, color 0.3s, transform 0.3s;
+	z-index: 99;
+}
+#primary_nav_menu .nav_item.lvl1 ul a {
+	color: #6D98AB;
+	-webkit-transition: color 0.3s;
+	-moz-transition: color 0.3s;
+	-o-transition: color 0.3s;
+	-ms-transition: color 0.3s;
+	transition: color 0.3s;
+}
+#primary_nav_menu .nav_item.lvl1:hover ul a, #primary_nav_menu .nav_item.lvl1:active ul a, #primary_nav_menu .nav_item.lvl1:focus ul a, #primary_nav_menu .nav_item.lvl1.hover ul a {
+	color: #fff;
+}
+#primary_nav_menu .short_label {
+	display: none;
+}
+#primary_nav_menu .long_label {
+	display: block;
+}
+#primary_nav_menu .nav_item.lvl1 .nav_pointer {
+	display: none;
+}
+#subtabhighlight { 
+	background: #c34500 !important; /* Old browsers */
+	background: -moz-linear-gradient(top, #e17338 0%, #c34500 33%) !important; /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e17338), color-stop(33%,#c34500)) !important; /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #e17338 0%, #c34500 33%) !important; /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #e17338 0%, #c34500 33%) !important; /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #e17338 0%, #c34500 33%) !important; /* IE10+ */
+	background: linear-gradient(to bottom, #e17338 0%, #c34500 33%) !important; /* W3C */
+	margin-right: -4px !important;
+}
+
+/* sets main menu dropdowns to hide off the left side */
+.mainmenu ul li:hover, .mainmenu ul li.hover { z-index: 100; }
+.mainmenu ul ul { left: -9999em; }
+.mainmenu ul li:hover ul, .mainmenu ul li.hover ul { left: 0; }
+
+/****************************************************************************************/
+/************************************* MEDIA QUERIES ************************************/
+@media screen and ( min-width: 959px ) and ( max-width: 1040px ) {
+	/* pushes the dropdown of the last menu item to the left so side-scrolling doesn't occur */
+	.mainmenu ul li:last-child:hover ul , .mainmenu ul li:last-child.hover ul { right: -33px; left: auto; }
+	#primary_nav_menu .nav_item.lvl1:last-child ul:hover { right: -33px; left: auto; }
+}
+@media screen and ( min-width: 640px ) and ( max-width: 759px ) {
+	/* pushes the dropdown of the last menu item to the left so side-scrolling doesn't occur */
+	.mainmenu ul li:last-child:hover ul , .mainmenu ul li:last-child.hover ul { right: -33px; left: auto; }
+	#primary_nav_menu .nav_item.lvl1:last-child ul:hover { right: -33px; left: auto; }
+}
+@media screen and ( max-width: 639px ) {
+  /* switches main menu dropdowns from hiding off the left side to collapsed at zero height */
+  .mainmenu ul ul { left: 0; }
+  #primary_nav_menu .nav_item.lvl1 ul { max-height: 0; left: 0; }
+  #primary_nav_menu .nav_item.lvl1:last-child ul { right: 0; left: auto; }
+  #primary_nav_menu .nav_item.lvl1:focus ul { background: #8FBACE !important; }
+}
+@media screen and ( max-width: 959px ) {
+	
+	#primary_nav_menu .short_label {
+		display: block;
+	}
+  #primary_nav_menu .long_label {
+		display: none;
+	}
+	#primary_nav_menu .nav_item.lvl1 {
+		padding: 0 15px;
+	}	
+}
+/****************************************************************************************/
+/************************************* WIDTH < 640px ************************************/
+@media screen and ( max-width: 639px ) {
+	
+	.nav_pointer { float:right; }
+	#primary_nav_menu { font-family: Arial, sans-serif, Helvetica, Verdana, Geneva, Tahoma;}
+	#primary_nav_menu .nav_item.lvl1 a { padding-left: 5px; }
+	#primary_nav_menu .nav_item.lvl2 a { padding: 0 25px 0 15px !important; }
+	#subtabhighlight { margin-right: 0 !important; }
+	html { -webkit-text-size-adjust: none; } /* "None" is set at the mobile view so that Safari iPhone users don't see large text. This was an issue with our menu at landscape view.*/
+	.expandcollapse { display:none; }
+	
+	.mobile-nav-mainmenu { background-color: #ffffff; }
+	.mobile-nav-mainmenu i { line-height: 2.0em; }
+	.mobile-nav { display: inline; }
+	/* Diplays the menu icon */
+ 	nav[class="mobile-nav-mainmenu"] label {
+    position: relative;
+    display: inline !important;
+    float:left;
+    font-size: 1.4em;
+    margin: 0;
+  }
+	/* Displays the navigation */
+  #primary_nav_menu  { display:none; margin-top: 0; }
+  nav[class="mobile-nav-mainmenu"] input[type=checkbox]:checked ~ ul { display:block !important; }
+  .mobile-more { display: block; }
+	
+	div[class="mobile-searchbox"] label {
+    position: relative;
+    display: inline !important;
+		float: right;
+    font-size: 1.4em;
+		line-height: 2.1em;
+    margin: 0;
+  }	
+	#primary_nav_menu {
+		height: auto;
+		clear: both;
+	}
+	#primary_nav_menu .nav_item.lvl1 {
+		display: block;
+		float: none;
+		max-height: 31px;
+		overflow: hidden;
+		/*background: url('../images/bg_nav_sm.png') repeat-x center top;*/  /* Need to delete the image */
+		background: #6d98ab; 
+		cursor: s-resize;
+		-webkit-transition: max-height 0.5s;
+		-moz-transition: max-height 0.5s;
+		-o-transition: max-height 0.5s;
+		-ms-transition: max-height 0.5s;
+		transition: max-height 0.5s;
+		-webkit-transform: translate3d(0,0,0);
+		-moz-transform: translate3d(0,0,0);
+		-o-transform: translate3d(0,0,0);
+		-ms-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+		padding: 0;
+		border-bottom: 1px solid #144053;
+		border-left: none;
+	}
+	#primary_nav_menu .nav_item.lvl1 a {
+		padding-left: 20px;	
+	}
+	#primary_nav_menu .nav_item.lvl1 ul {
+		max-height: 99px;
+		position: relative;
+		top: 0;
+	}
+	#primary_nav_menu .nav_item.lvl1.expand {
+		max-height: 999px;
+		color: #333;
+		/*background: url('../images/bg_nav_sm_h.png') repeat-x center top;*/  /* Need to delete the image */
+		background: #8fbace; 
+		-webkit-transition: max-height 0.7s;
+		-moz-transition: max-height 0.7s;
+		-o-transition: max-height 0.7s;
+		-ms-transition: max-height 0.7s;
+		transition: max-height 0.7s;
+		cursor: n-resize;
+	}
+	#primary_nav_menu .nav_item.lvl1.expand a {
+		color: #333;
+	}
+	/*start*/
+	#primary_nav_menu .nav_item.lvl1.expand a:hover {
+		color: #ffffff !important ;	
+	}
+	#primary_nav_menu #subtabhighlight a {
+		color: #ffffff;	
+	}
+	#primary_nav_menu .nav_item.lvl1 ul {
+		border-top: 1px solid #035e77;
+		background: #8fbace;
+		max-height: none !important;
+		position: relative;
+		color: #fff !important;
+		border-bottom: none !important;
+		top: -1px;
+	}
+	#primary_nav_menu .nav_item.lvl1 ul li {
+		border-bottom-color: #035e77;
+	}
+	#primary_nav_menu .nav_item.lvl1 ul a {
+		color: #333333 !important;
+	}
+	#primary_nav_menu .nav_item.lvl2 a {
+		border-left: 15px solid #144053;
+	}
+	#primary_nav_menu .nav_item.lvl1:hover ul {
+		background: #8fbace;	
+	}
+	#primary_nav_menu .nav_item.lvl1 ul li:hover {
+		background: #c34500 !important;	
+	}
+	#primary_nav_menu .nav_item.lvl1 ul li:hover a span {
+		color: #ffffff !important;
+	}
+	/*end*/
+	#primary_nav_menu .nav_item.lvl1 ul, #primary_nav_menu .nav_item.lvl1 ul * {
+		-webkit-transform: none !important;
+		-moz-transform: none !important;
+		-o-transform: none !important;
+		-ms-transform: none !important;
+		transform: none !important;
+		-webkit-transition: none !important;
+		-moz-transition: none !important;
+		-o-transition: none !important;
+		-ms-transition: none !important;
+		transition: none !important;
+	}
+	#primary_nav_menu .nav_item.lvl1 ul li a {
+		font-family: Arial, sans-serif, Helvetica, Verdana, Geneva, Tahoma;
+	}
+	#primary_nav_menu .short_label {
+		display: none;
+	}
+	#primary_nav_menu .long_label {
+		display: inline;
+	}
+	#primary_nav_menu .nav_item.lvl1 .nav_pointer {
+		display: inline-block;
+		padding: 0 10px 0 5px;
+		-webkit-transition: -webkit-transform 0.3s;
+		-moz-transition: -moz-transform 0.3s;
+		-o-transition: -o-transform 0.3s;
+		-ms-transition: -ms-transform 0.3s;
+		transition: transform 0.3s;
+	}
+	#primary_nav_menu .nav_item.lvl1.expand .nav_pointer {
+		-webkit-transform: rotate(90deg);
+		-moz-transform: rotate(90deg);
+		-o-transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+		transform: rotate(90deg);
+	}
+	#primary_nav_menu .nav_item.lvl1.expand ul {
+		cursor: default;
+	}
+}
+/*!
+ *  Font Awesome 3.0.2
+ *  the iconic font designed for use with Twitter Bootstrap
+ *  -------------------------------------------------------
+ *  The full suite of pictographic icons, examples, and documentation
+ *  can be found at: http://fortawesome.github.com/Font-Awesome/
+ *
+ *  License
+ *  -------------------------------------------------------
+ *  - The Font Awesome font is licensed under the SIL Open Font License - http://scripts.sil.org/OFL
+ *  - Font Awesome CSS, LESS, and SASS files are licensed under the MIT License -
+ *    http://opensource.org/licenses/mit-license.html
+ *  - The Font Awesome pictograms are licensed under the CC BY 3.0 License - http://creativecommons.org/licenses/by/3.0/
+ *  - Attribution is no longer required in Font Awesome 3.0, but much appreciated:
+ *    "Font Awesome by Dave Gandy - http://fortawesome.github.com/Font-Awesome"
+
+ *  Contact
+ *  -------------------------------------------------------
+ *  Email: dave@davegandy.com
+ *  Twitter: http://twitter.com/fortaweso_me
+ *  Work: Lead Product Designer @ http://kyruus.com
+ */
+
+@font-face{
+  font-family:'FontAwesome';
+  src:url('http://ecampus.oregonstate.edu/includes/fonts/Font-Awesome/font/fontawesome-webfont.eot?v=3.0.1');
+  src:url('http://ecampus.oregonstate.edu/includes/fonts/Font-Awesome/font/fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'),
+  url('http://ecampus.oregonstate.edu/includes/fonts/Font-Awesome/font/fontawesome-webfont.woff?v=3.0.1') format('woff'),
+  url('http://ecampus.oregonstate.edu/includes/fonts/Font-Awesome/font/fontawesome-webfont.ttf?v=3.0.1') format('truetype');
+  font-weight:normal;
+  font-style:normal }
+
+[class^="icon-"],[class*=" icon-"]{font-family:FontAwesome;font-weight:normal;font-style:normal;text-decoration:inherit;-webkit-font-smoothing:antialiased;display:inline;width:auto;height:auto;line-height:normal;vertical-align:baseline;background-image:none;background-position:0 0;background-repeat:repeat;margin-top:0}.icon-white,.nav-pills>.active>a>[class^="icon-"],.nav-pills>.active>a>[class*=" icon-"],.nav-list>.active>a>[class^="icon-"],.nav-list>.active>a>[class*=" icon-"],.navbar-inverse .nav>.active>a>[class^="icon-"],.navbar-inverse .nav>.active>a>[class*=" icon-"],.dropdown-menu>li>a:hover>[class^="icon-"],.dropdown-menu>li>a:hover>[class*=" icon-"],.dropdown-menu>.active>a>[class^="icon-"],.dropdown-menu>.active>a>[class*=" icon-"],.dropdown-submenu:hover>a>[class^="icon-"],.dropdown-submenu:hover>a>[class*=" icon-"]{background-image:none}[class^="icon-"]:before,[class*=" icon-"]:before{text-decoration:inherit;display:inline-block;speak:none}a [class^="icon-"],a [class*=" icon-"]{display:inline-block}.icon-large:before{vertical-align:-10%;font-size:1.3333333333333333em}.btn [class^="icon-"],.nav [class^="icon-"],.btn [class*=" icon-"],.nav [class*=" icon-"]{display:inline}.btn [class^="icon-"].icon-large,.nav [class^="icon-"].icon-large,.btn [class*=" icon-"].icon-large,.nav [class*=" icon-"].icon-large{line-height:.9em}.btn [class^="icon-"].icon-spin,.nav [class^="icon-"].icon-spin,.btn [class*=" icon-"].icon-spin,.nav [class*=" icon-"].icon-spin{display:inline-block}.nav-tabs [class^="icon-"],.nav-pills [class^="icon-"],.nav-tabs [class*=" icon-"],.nav-pills [class*=" icon-"],.nav-tabs [class^="icon-"].icon-large,.nav-pills [class^="icon-"].icon-large,.nav-tabs [class*=" icon-"].icon-large,.nav-pills [class*=" icon-"].icon-large{line-height:.9em}li [class^="icon-"],.nav li [class^="icon-"],li [class*=" icon-"],.nav li [class*=" icon-"]{display:inline-block;width:1.25em;text-align:center}li [class^="icon-"].icon-large,.nav li [class^="icon-"].icon-large,li [class*=" icon-"].icon-large,.nav li [class*=" icon-"].icon-large{width:1.5625em}ul.icons{list-style-type:none;text-indent:-0.75em}ul.icons li [class^="icon-"],ul.icons li [class*=" icon-"]{width:.75em}.icon-muted{color:#eee}.icon-border{border:solid 1px #eee;padding:.2em .25em .15em;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.icon-2x{font-size:2em}.icon-2x.icon-border{border-width:2px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.icon-3x{font-size:3em}.icon-3x.icon-border{border-width:3px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px}.icon-4x{font-size:4em}.icon-4x.icon-border{border-width:4px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px}.pull-right{float:right}.pull-left{float:left}[class^="icon-"].pull-left,[class*=" icon-"].pull-left{margin-right:.3em}[class^="icon-"].pull-right,[class*=" icon-"].pull-right{margin-left:.3em}.btn [class^="icon-"].pull-left.icon-2x,.btn [class*=" icon-"].pull-left.icon-2x,.btn [class^="icon-"].pull-right.icon-2x,.btn [class*=" icon-"].pull-right.icon-2x{margin-top:.18em}.btn [class^="icon-"].icon-spin.icon-large,.btn [class*=" icon-"].icon-spin.icon-large{line-height:.8em}.btn.btn-small [class^="icon-"].pull-left.icon-2x,.btn.btn-small [class*=" icon-"].pull-left.icon-2x,.btn.btn-small [class^="icon-"].pull-right.icon-2x,.btn.btn-small [class*=" icon-"].pull-right.icon-2x{margin-top:.25em}.btn.btn-large [class^="icon-"],.btn.btn-large [class*=" icon-"]{margin-top:0}.btn.btn-large [class^="icon-"].pull-left.icon-2x,.btn.btn-large [class*=" icon-"].pull-left.icon-2x,.btn.btn-large [class^="icon-"].pull-right.icon-2x,.btn.btn-large [class*=" icon-"].pull-right.icon-2x{margin-top:.05em}.btn.btn-large [class^="icon-"].pull-left.icon-2x,.btn.btn-large [class*=" icon-"].pull-left.icon-2x{margin-right:.2em}.btn.btn-large [class^="icon-"].pull-right.icon-2x,.btn.btn-large [class*=" icon-"].pull-right.icon-2x{margin-left:.2em}.icon-spin{display:inline-block;-moz-animation:spin 2s infinite linear;-o-animation:spin 2s infinite linear;-webkit-animation:spin 2s infinite linear;animation:spin 2s infinite linear}@-moz-keyframes spin{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(359deg)}}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(359deg)}}@-o-keyframes spin{0%{-o-transform:rotate(0deg)}100%{-o-transform:rotate(359deg)}}@-ms-keyframes spin{0%{-ms-transform:rotate(0deg)}100%{-ms-transform:rotate(359deg)}}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}@-moz-document url-prefix(){.icon-spin{height:.9em}.btn .icon-spin{height:auto}.icon-spin.icon-large{height:1.25em}.btn .icon-spin.icon-large{height:.75em}}.icon-glass:before{content:"\f000"}.icon-music:before{content:"\f001"}.icon-search:before{content:"\f002"}.icon-envelope:before{content:"\f003"}.icon-heart:before{content:"\f004"}.icon-star:before{content:"\f005"}.icon-star-empty:before{content:"\f006"}.icon-user:before{content:"\f007"}.icon-film:before{content:"\f008"}.icon-th-large:before{content:"\f009"}.icon-th:before{content:"\f00a"}.icon-th-list:before{content:"\f00b"}.icon-ok:before{content:"\f00c"}.icon-remove:before{content:"\f00d"}.icon-zoom-in:before{content:"\f00e"}.icon-zoom-out:before{content:"\f010"}.icon-off:before{content:"\f011"}.icon-signal:before{content:"\f012"}.icon-cog:before{content:"\f013"}.icon-trash:before{content:"\f014"}.icon-home:before{content:"\f015"}.icon-file:before{content:"\f016"}.icon-time:before{content:"\f017"}.icon-road:before{content:"\f018"}.icon-download-alt:before{content:"\f019"}.icon-download:before{content:"\f01a"}.icon-upload:before{content:"\f01b"}.icon-inbox:before{content:"\f01c"}.icon-play-circle:before{content:"\f01d"}.icon-repeat:before{content:"\f01e"}.icon-refresh:before{content:"\f021"}.icon-list-alt:before{content:"\f022"}.icon-lock:before{content:"\f023"}.icon-flag:before{content:"\f024"}.icon-headphones:before{content:"\f025"}.icon-volume-off:before{content:"\f026"}.icon-volume-down:before{content:"\f027"}.icon-volume-up:before{content:"\f028"}.icon-qrcode:before{content:"\f029"}.icon-barcode:before{content:"\f02a"}.icon-tag:before{content:"\f02b"}.icon-tags:before{content:"\f02c"}.icon-book:before{content:"\f02d"}.icon-bookmark:before{content:"\f02e"}.icon-print:before{content:"\f02f"}.icon-camera:before{content:"\f030"}.icon-font:before{content:"\f031"}.icon-bold:before{content:"\f032"}.icon-italic:before{content:"\f033"}.icon-text-height:before{content:"\f034"}.icon-text-width:before{content:"\f035"}.icon-align-left:before{content:"\f036"}.icon-align-center:before{content:"\f037"}.icon-align-right:before{content:"\f038"}.icon-align-justify:before{content:"\f039"}.icon-list:before{content:"\f03a"}.icon-indent-left:before{content:"\f03b"}.icon-indent-right:before{content:"\f03c"}.icon-facetime-video:before{content:"\f03d"}.icon-picture:before{content:"\f03e"}.icon-pencil:before{content:"\f040"}.icon-map-marker:before{content:"\f041"}.icon-adjust:before{content:"\f042"}.icon-tint:before{content:"\f043"}.icon-edit:before{content:"\f044"}.icon-share:before{content:"\f045"}.icon-check:before{content:"\f046"}.icon-move:before{content:"\f047"}.icon-step-backward:before{content:"\f048"}.icon-fast-backward:before{content:"\f049"}.icon-backward:before{content:"\f04a"}.icon-play:before{content:"\f04b"}.icon-pause:before{content:"\f04c"}.icon-stop:before{content:"\f04d"}.icon-forward:before{content:"\f04e"}.icon-fast-forward:before{content:"\f050"}.icon-step-forward:before{content:"\f051"}.icon-eject:before{content:"\f052"}.icon-chevron-left:before{content:"\f053"}.icon-chevron-right:before{content:"\f054"}.icon-plus-sign:before{content:"\f055"}.icon-minus-sign:before{content:"\f056"}.icon-remove-sign:before{content:"\f057"}.icon-ok-sign:before{content:"\f058"}.icon-question-sign:before{content:"\f059"}.icon-info-sign:before{content:"\f05a"}.icon-screenshot:before{content:"\f05b"}.icon-remove-circle:before{content:"\f05c"}.icon-ok-circle:before{content:"\f05d"}.icon-ban-circle:before{content:"\f05e"}.icon-arrow-left:before{content:"\f060"}.icon-arrow-right:before{content:"\f061"}.icon-arrow-up:before{content:"\f062"}.icon-arrow-down:before{content:"\f063"}.icon-share-alt:before{content:"\f064"}.icon-resize-full:before{content:"\f065"}.icon-resize-small:before{content:"\f066"}.icon-plus:before{content:"\f067"}.icon-minus:before{content:"\f068"}.icon-asterisk:before{content:"\f069"}.icon-exclamation-sign:before{content:"\f06a"}.icon-gift:before{content:"\f06b"}.icon-leaf:before{content:"\f06c"}.icon-fire:before{content:"\f06d"}.icon-eye-open:before{content:"\f06e"}.icon-eye-close:before{content:"\f070"}.icon-warning-sign:before{content:"\f071"}.icon-plane:before{content:"\f072"}.icon-calendar:before{content:"\f073"}.icon-random:before{content:"\f074"}.icon-comment:before{content:"\f075"}.icon-magnet:before{content:"\f076"}.icon-chevron-up:before{content:"\f077"}.icon-chevron-down:before{content:"\f078"}.icon-retweet:before{content:"\f079"}.icon-shopping-cart:before{content:"\f07a"}.icon-folder-close:before{content:"\f07b"}.icon-folder-open:before{content:"\f07c"}.icon-resize-vertical:before{content:"\f07d"}.icon-resize-horizontal:before{content:"\f07e"}.icon-bar-chart:before{content:"\f080"}.icon-twitter-sign:before{content:"\f081"}.icon-facebook-sign:before{content:"\f082"}.icon-camera-retro:before{content:"\f083"}.icon-key:before{content:"\f084"}.icon-cogs:before{content:"\f085"}.icon-comments:before{content:"\f086"}.icon-thumbs-up:before{content:"\f087"}.icon-thumbs-down:before{content:"\f088"}.icon-star-half:before{content:"\f089"}.icon-heart-empty:before{content:"\f08a"}.icon-signout:before{content:"\f08b"}.icon-linkedin-sign:before{content:"\f08c"}.icon-pushpin:before{content:"\f08d"}.icon-external-link:before{content:"\f08e"}.icon-signin:before{content:"\f090"}.icon-trophy:before{content:"\f091"}.icon-github-sign:before{content:"\f092"}.icon-upload-alt:before{content:"\f093"}.icon-lemon:before{content:"\f094"}.icon-phone:before{content:"\f095"}.icon-check-empty:before{content:"\f096"}.icon-bookmark-empty:before{content:"\f097"}.icon-phone-sign:before{content:"\f098"}.icon-twitter:before{content:"\f099"}.icon-facebook:before{content:"\f09a"}.icon-github:before{content:"\f09b"}.icon-unlock:before{content:"\f09c"}.icon-credit-card:before{content:"\f09d"}.icon-rss:before{content:"\f09e"}.icon-hdd:before{content:"\f0a0"}.icon-bullhorn:before{content:"\f0a1"}.icon-bell:before{content:"\f0a2"}.icon-certificate:before{content:"\f0a3"}.icon-hand-right:before{content:"\f0a4"}.icon-hand-left:before{content:"\f0a5"}.icon-hand-up:before{content:"\f0a6"}.icon-hand-down:before{content:"\f0a7"}.icon-circle-arrow-left:before{content:"\f0a8"}.icon-circle-arrow-right:before{content:"\f0a9"}.icon-circle-arrow-up:before{content:"\f0aa"}.icon-circle-arrow-down:before{content:"\f0ab"}.icon-globe:before{content:"\f0ac"}.icon-wrench:before{content:"\f0ad"}.icon-tasks:before{content:"\f0ae"}.icon-filter:before{content:"\f0b0"}.icon-briefcase:before{content:"\f0b1"}.icon-fullscreen:before{content:"\f0b2"}.icon-group:before{content:"\f0c0"}.icon-link:before{content:"\f0c1"}.icon-cloud:before{content:"\f0c2"}.icon-beaker:before{content:"\f0c3"}.icon-cut:before{content:"\f0c4"}.icon-copy:before{content:"\f0c5"}.icon-paper-clip:before{content:"\f0c6"}.icon-save:before{content:"\f0c7"}.icon-sign-blank:before{content:"\f0c8"}.icon-reorder:before{content:"\f0c9"}.icon-list-ul:before{content:"\f0ca"}.icon-list-ol:before{content:"\f0cb"}.icon-strikethrough:before{content:"\f0cc"}.icon-underline:before{content:"\f0cd"}.icon-table:before{content:"\f0ce"}.icon-magic:before{content:"\f0d0"}.icon-truck:before{content:"\f0d1"}.icon-pinterest:before{content:"\f0d2"}.icon-pinterest-sign:before{content:"\f0d3"}.icon-google-plus-sign:before{content:"\f0d4"}.icon-google-plus:before{content:"\f0d5"}.icon-money:before{content:"\f0d6"}.icon-caret-down:before{content:"\f0d7"}.icon-caret-up:before{content:"\f0d8"}.icon-caret-left:before{content:"\f0d9"}.icon-caret-right:before{content:"\f0da"}.icon-columns:before{content:"\f0db"}.icon-sort:before{content:"\f0dc"}.icon-sort-down:before{content:"\f0dd"}.icon-sort-up:before{content:"\f0de"}.icon-envelope-alt:before{content:"\f0e0"}.icon-linkedin:before{content:"\f0e1"}.icon-undo:before{content:"\f0e2"}.icon-legal:before{content:"\f0e3"}.icon-dashboard:before{content:"\f0e4"}.icon-comment-alt:before{content:"\f0e5"}.icon-comments-alt:before{content:"\f0e6"}.icon-bolt:before{content:"\f0e7"}.icon-sitemap:before{content:"\f0e8"}.icon-umbrella:before{content:"\f0e9"}.icon-paste:before{content:"\f0ea"}.icon-lightbulb:before{content:"\f0eb"}.icon-exchange:before{content:"\f0ec"}.icon-cloud-download:before{content:"\f0ed"}.icon-cloud-upload:before{content:"\f0ee"}.icon-user-md:before{content:"\f0f0"}.icon-stethoscope:before{content:"\f0f1"}.icon-suitcase:before{content:"\f0f2"}.icon-bell-alt:before{content:"\f0f3"}.icon-coffee:before{content:"\f0f4"}.icon-food:before{content:"\f0f5"}.icon-file-alt:before{content:"\f0f6"}.icon-building:before{content:"\f0f7"}.icon-hospital:before{content:"\f0f8"}.icon-ambulance:before{content:"\f0f9"}.icon-medkit:before{content:"\f0fa"}.icon-fighter-jet:before{content:"\f0fb"}.icon-beer:before{content:"\f0fc"}.icon-h-sign:before{content:"\f0fd"}.icon-plus-sign-alt:before{content:"\f0fe"}.icon-double-angle-left:before{content:"\f100"}.icon-double-angle-right:before{content:"\f101"}.icon-double-angle-up:before{content:"\f102"}.icon-double-angle-down:before{content:"\f103"}.icon-angle-left:before{content:"\f104"}.icon-angle-right:before{content:"\f105"}.icon-angle-up:before{content:"\f106"}.icon-angle-down:before{content:"\f107"}.icon-desktop:before{content:"\f108"}.icon-laptop:before{content:"\f109"}.icon-tablet:before{content:"\f10a"}.icon-mobile-phone:before{content:"\f10b"}.icon-circle-blank:before{content:"\f10c"}.icon-quote-left:before{content:"\f10d"}.icon-quote-right:before{content:"\f10e"}.icon-spinner:before{content:"\f110"}.icon-circle:before{content:"\f111"}.icon-reply:before{content:"\f112"}.icon-github-alt:before{content:"\f113"}.icon-folder-close-alt:before{content:"\f114"}.icon-folder-open-alt:before{content:"\f115"}
+	</style>
+</head>
+<body>
+	<script src="http://ecampus.oregonstate.edu/includes/js/jquery-1.8.2.min.js" type="text/javascript"></script>                                                                    
+<nav style="background-color:#ffffff;" class="mobile-nav-mainmenu" aria-label="Main menu" role="navigation">
+<div class="mainmenu">
+  <input type="checkbox" id="button" class="mobile-nav inputbutton ">
+  <label onclick="" for="button" class="mobile-nav-label"><i class="icon-reorder"></i> Menu</label>
+
+  <div class="clear"></div>
+
+<ul class="gradient" id="primary_nav_menu" role="menubar">
+<li id="subtabhighlight" class="nav_item lvl1 first" tabindex="0" role="presentation">
+		<div class="nav_head"><a title="Home" class="nav_label" href="#home"><span class="long_label">Home</span><span class="short_label">Home</span></a></div>
+	</li>
+<li class="nav_item lvl1" aria-haspopup="true" tabindex="0" role="presentation">
+		<div class="nav_head"><span class="nav_pointer">▶</span><a title="About Us" class="nav_label" href="#about"><span class="long_label">About Us</span><span class="short_label">About</span></a></div>
+		<ul class="dropdown_nav_menu" aria-hidden="true" role="menu">
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="We're Accredited" class="nav_label" href="http://ecampus.oregonstate.edu/about/welcome/accreditation.htm" role="menuitem"><span class="long_label">We're Accredited</span><span class="short_label">Accreditation</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="About Online Learning" class="nav_label" href="http://ecampus.oregonstate.edu/about/welcome/online-learning.htm" role="menuitem"><span class="long_label">About Online Learning</span><span class="short_label">Online Learning</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Top-ranked in the Nation" class="nav_label" href="http://ecampus.oregonstate.edu/online-degrees/promotion/top-ranked.htm" role="menuitem"><span class="long_label">Top-ranked in the Nation</span><span class="short_label">Top-ranked</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Ecampus Course Demo" class="nav_label" href="http://ecampus.oregonstate.edu/coursedemo/" role="menuitem"><span class="long_label">Course Demo</span><span class="short_label">Course Demo</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Student/Faculty Profiles" class="nav_label" href="http://ecampus.oregonstate.edu/about/learn-more/students/" role="menuitem"><span class="long_label">Student/Faculty Profiles</span><span class="short_label">Profiles</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Ask Ecampus" class="nav_label" href="http://ecampus.oregonstate.edu/ask-ecampus/" role="menuitem">Ask Ecampus</a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Contact Us" class="nav_label" href="http://ecampus.oregonstate.edu/forms/contact.htm" role="menuitem"><span class="long_label">Contact Us</span><span class="short_label">Contact</span></a></li>
+		</ul>
+	</li>
+<li class="nav_item lvl1" aria-haspopup="true" tabindex="0" role="presentation">
+		<div class="nav_head"><span class="nav_pointer">▶</span><a title="Degrees and Programs" class="nav_label" href="http://ecampus.oregonstate.edu/online-degrees/"><span class="long_label">Degrees &amp; Programs</span><span class="short_label">Degrees</span></a></div>
+		<ul class="dropdown_nav_menu" aria-hidden="true" role="menu">
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Undergraduate Degrees" class="nav_label" href="http://ecampus.oregonstate.edu/online-degrees/undergraduate/" role="menuitem"><span class="long_label">Undergraduate Degrees &amp; Courses</span><span class="short_label">Undergraduate Degrees</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Graduate Degrees and Programs" class="nav_label" href="http://ecampus.oregonstate.edu/online-degrees/graduate/" role="menuitem"><span class="long_label">Graduate Degrees &amp; Programs</span><span class="short_label">Graduate Programs</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Tuition and Fees" class="nav_label" href="http://ecampus.oregonstate.edu/soc/tuition/" role="menuitem"><span class="long_label">Tuition and Fees</span><span class="short_label">Tuition &amp; Fees</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Professional and Noncredit Education" target="_blank" class="nav_label" href="http://pne.oregonstate.edu/" role="menuitem"><span class="long_label">Professional and Noncredit Education</span><span class="short_label">Professional &amp; Noncredit</span></a></li>
+		</ul>
+	</li>
+<li class="nav_item lvl1" aria-haspopup="true" tabindex="0" role="presentation">
+		<div class="nav_head"><span class="nav_pointer">▶</span><a title="Schedule of Classes" class="nav_label" href="http://ecampus.oregonstate.edu/soc/"><span class="long_label">Schedule of Classes</span><span class="short_label">Classes</span></a></div>
+		<ul class="dropdown_nav_menu" aria-hidden="true" role="menu">
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Credit Class Schedule" class="nav_label" href="http://ecampus.oregonstate.edu/soc/ecatalog/" role="menuitem"><span class="long_label">Credit Class Schedule</span><span class="short_label">Credit Classes</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Register for Classes" class="nav_label" href="http://ecampus.oregonstate.edu/soc/registration/" role="menuitem">Register for Classes</a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Academic Calendar" class="nav_label" href="http://ecampus.oregonstate.edu/services/registration/academic-calendar.htm" role="menuitem"><span class="long_label">Academic Calendar</span><span class="short_label">Academic Calendar</span></a></li>            
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Tuition and Fees" class="nav_label" href="http://ecampus.oregonstate.edu/soc/tuition/" role="menuitem"><span class="long_label">Tuition and Fees</span><span class="short_label">Tuition &amp; Fees</span></a></li>
+		</ul>
+	</li>
+<li class="nav_item lvl1" aria-haspopup="true" tabindex="0" role="presentation">
+		<div class="nav_head"><span class="nav_pointer">▶</span><a title="Current Students" class="nav_label" href="http://ecampus.oregonstate.edu/students/"><span class="long_label">Current Students</span><span class="short_label">Students</span></a></div>
+		<ul class="dropdown_nav_menu" aria-hidden="true" role="menu">
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Newly Admitted Students" class="nav_label" href="http://ecampus.oregonstate.edu/students/newly-admitted/" role="menuitem"><span class="long_label">Newly Admitted Students</span><span class="short_label">Newly Admitted</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Undergraduate Students" class="nav_label" href="http://ecampus.oregonstate.edu/students/undergraduate/" role="menuitem"><span class="long_label">Undergraduate Students</span><span class="short_label">Undergraduate</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Graduate Students" class="nav_label" href="http://ecampus.oregonstate.edu/students/graduate/" role="menuitem"><span class="long_label">Graduate Students</span><span class="short_label">Graduate</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Nondegree Students" class="nav_label" href="http://ecampus.oregonstate.edu/students/nondegree/" role="menuitem"><span class="long_label">Nondegree Students</span><span class="short_label">Nondegree</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Ask Ecampus" class="nav_label" href="http://ecampus.oregonstate.edu/ask-ecampus/" role="menuitem">Ask Ecampus</a></li>
+		</ul>
+	</li>
+<li class="nav_item lvl1" aria-haspopup="true" tabindex="0" role="presentation">
+		<div class="nav_head"><span class="nav_pointer">▶</span><a title="For Faculty and Staff" class="nav_label" href="http://ecampus.oregonstate.edu/faculty/"><span class="long_label">For Faculty &amp; Staff</span><span class="short_label">Faculty</span></a></div>
+		<ul class="dropdown_nav_menu" aria-hidden="true" role="menu">
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Teaching Online with Ecampus" class="nav_label" href="http://ecampus.oregonstate.edu/faculty/manual/welcome.htm" role="menuitem"><span class="long_label">Teaching Online with Ecampus</span><span class="short_label">Teaching with Us</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Department Services" class="nav_label" href="http://ecampus.oregonstate.edu/faculty/department_services/" role="menuitem">Department Services</a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="New Courses and Programs" class="nav_label" href="http://ecampus.oregonstate.edu/faculty/manual/getting-started.htm" role="menuitem"><span class="long_label">New Courses &amp; Programs</span><span class="short_label">New Courses</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Course Design and Development" class="nav_label" href="http://ecampus.oregonstate.edu/faculty/crs-dev.htm" role="menuitem"><span class="long_label">Course Design &amp; Development</span><span class="short_label">Course Design</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Blackboard Training and Support" class="nav_label" href="http://ecampus.oregonstate.edu/faculty/blackboard/" role="menuitem"><span class="long_label">Blackboard Training &amp; Support</span><span class="short_label">Blackboard Help</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Term Checklist" class="nav_label" href="http://ecampus.oregonstate.edu/faculty/manual/term-checklist.htm" role="menuitem">Term Checklist</a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Faculty E-News" class="nav_label" href="http://ecampus.oregonstate.edu/faculty-enews/" role="menuitem">Faculty E-News</a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Contacts" class="nav_label" href="http://ecampus.oregonstate.edu/faculty/manual/contact-lists.htm" role="menuitem">Contacts</a></li>
+		</ul>
+	</li>
+<li class="nav_item lvl1" aria-haspopup="true" tabindex="0" role="presentation">
+		<div class="nav_head"><span class="nav_pointer">▶</span><a title="News and Features" class="nav_label" href="http://ecampus.oregonstate.edu/news-media/"><span class="long_label">News &amp; Media</span><span class="short_label">News</span></a></div>
+		<ul class="dropdown_nav_menu" aria-hidden="true" role="menu">
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="In the News" class="nav_label" href="http://ecampus.oregonstate.edu/in-the-news/" role="menuitem">In the News</a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="E-Newsletters" class="nav_label" href="http://ecampus.oregonstate.edu/enews/" role="menuitem">E-Newsletters</a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Subscribe to E-News" class="nav_label" href="http://ecampus.oregonstate.edu/enews/subscribe.htm" role="menuitem"><span class="long_label">Subscribe to E-News</span><span class="short_label">Subscribe</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Awards" class="nav_label" href="http://ecampus.oregonstate.edu/in-the-news/awards.htm" role="menuitem">Awards</a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Online Education Trends" class="nav_label" href="http://ecampus.oregonstate.edu/online-education-trends/" role="menuitem"><span class="long_label">Online Education Trends</span><span class="short_label">Online Ed Trends</span></a></li>
+			<li class="nav_item lvl2" tabindex="-1" role="presentation"><a title="Student/Faculty Profiles" class="nav_label" href="http://ecampus.oregonstate.edu/about/learn-more/students/" role="menuitem"><span class="long_label">Student/Faculty Profiles</span><span class="short_label">Profiles</span></a></li>        
+		</ul>
+	</li>
+</ul>
+</div>
+</nav>
+</body>
+</html>

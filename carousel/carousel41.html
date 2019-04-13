@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		/* jQuery Circular Carousel 0.1 */
+
+/*
+Author: @samuelgbrown
+Thanks: Addy Osmani, Marcus Haslam
+*/
+
+(function ($) {
+
+  /*
+    Construct, do first draw.
+  */
+
+  $.fn.CircularCarousel = function (options) {
+
+    var $ele = $(this),
+        ovalWidth = options.ovalWidth,
+        ovalHeight = options.ovalHeight,
+        activeItem = options.activeItem,
+        offsetX = options.offsetX,
+        offsetY = options.offsetY,
+        angle = options.angle,
+        $items = $ele.find('.' + options.className),
+        cycleMax = $items.length,
+        itemHeights = [],
+        cycleDuration = options.duration,
+        previousActiveElement = activeItem;
+
+    /*
+       Original Source of this function: Addy Osmani's jquery.shapelib from 2010. Updated, tweaked by @samuelgbrown.
+       Positions the items using margins, relative to an ellipse.
+    
+       @params
+       x: the left offset of all points on the ellipse
+       y: the top offset of all points on the ellipse
+       angle: the angle of the ellipse
+       activeItem: used to influence which element is considered active
+       callback: a callback
+    */
+    function positionItems (x, y, angle) {
+
+      var i = 0,
+          n = 0,
+          beta = -angle * (Math.PI / 180),    
+          sinbeta = Math.sin(beta),
+          cosbeta = Math.cos(beta),
+          offsetElement = activeItem,
+          offsetNextElement = activeItem + 1;
+
+      itemHeights = [];
+
+      $items.eq(activeItem).addClass('active');
+
+      
+//
+//      var itemIndex = $items.eq(activeItem).index()
+
+      while (n < cycleMax) {
+        i+= (360/cycleMax);
+        var alpha = i * (Math.PI / 180);
+
+        var sinalpha = Math.sin(alpha);
+        var cosalpha = Math.cos(alpha);
+
+        var X = x + (ovalHeight * cosalpha * cosbeta - ovalWidth * sinalpha * sinbeta);
+        var Y = y + (ovalHeight * cosalpha * sinbeta + ovalWidth * sinalpha * cosbeta);
+
+        X = Math.floor(X);
+        Y = Math.floor(Y);
+
+        // To update the positions, we just need to change the order and make it loop at either end.
+        offsetElement++;
+        if (offsetElement < 0) {
+          offsetElement = cycleMax-1;
+        } else if (offsetElement === cycleMax) {
+          offsetElement = 0;
+        }
+
+        // used by layering hack
+        offsetNextElement++;
+        if (offsetNextElement < 0) {
+          offsetNextElement = cycleMax-1;
+        } else if (offsetNextElement >= cycleMax) {
+          offsetNextElement = 0;
+        }
+
+        $items.eq(offsetElement).css('margin-top', X + 'px');
+        $items.eq(offsetElement).css('margin-left', Y + 'px');
+
+        var itemMeta = { 'top' : $items.eq(offsetNextElement).offset().top, 'index' : offsetNextElement };
+        itemHeights.push(itemMeta);
+
+        n++;
+      }
+
+      // Fire events
+      var activeElement = $items.eq(activeItem),
+        prevActiveElement = $items.eq(previousActiveElement);
+
+      $ele.trigger('itemBeforeActive', activeElement);
+      $ele.trigger('itemBeforeDeactivate', prevActiveElement);
+
+      var afterTimeout = setTimeout(function() {
+        $ele.trigger('itemActive', activeElement);
+        $ele.trigger('itemAfterDeactivate', prevActiveElement);
+      }, cycleDuration);
+
+      // Run the layering hack (see method below)
+      layerHack(activeItem);
+    };
+
+    /*
+      Cycles through items 1 by 1, doing a redraw of positions each time.
+      direction = 1 / 0 (1 = right, 0 = left)
+      TODO: Improve quality/DRYness here
+    */
+    function doSteppedCycle (steps, direction, stepDuration) {
+
+      var i = 0;
+
+      if (direction === 1) {
+
+        while (i < steps) {
+
+          var timeout = setTimeout(function() {
+            var activeElement = $items.eq(activeItem);
+            activeElement.removeClass('active');
+            previousActiveElement = activeItem;
+            activeItem++;
+            // activeItem changed, validate
+            validateActiveItem();
+            positionItems(offsetX, offsetY, angle, null);
+          }, i * stepDuration);
+
+          i++;
+        }
+
+      } else {
+
+        i = steps;
+        var k = 0;
+        while (i > 0) {
+
+          var timeout = setTimeout(function() {
+            var activeElement = $items.eq(activeItem);
+            activeElement.removeClass('active');
+            previousActiveElement = activeItem;
+            activeItem--;
+            // activeItem changed, validate
+            validateActiveItem();
+            positionItems(offsetX, offsetY, angle, null);
+          }, k * stepDuration);
+
+          k++;
+          i--;
+        }
+
+      }
+
+    };
+
+    /*
+      Often we want to enumerate the activeItem. This utility ensures it doesn't go over the bounds when we're doing so.
+    */
+    function validateActiveItem () {
+      if (activeItem < 0) {
+        activeItem = cycleMax-1;
+      } else if (activeItem >= cycleMax) {
+        activeItem = 0;
+      }
+    };
+
+
+    /*
+      A custom hack that prevents layering issues at either side of carousel.
+      This just numerates z-indexes from the further back items to the furthest front.
+      To do this, we check the offset().top values of each item, therefore a flat carousel doesn't work here.
+    */
+    function layerHack (oldActiveItem) {
+
+
+      // NOTE: heights recorded before the css transition took place.
+
+      // Sort the items by offset().top values
+      var sortedItems = itemHeights.sort(function(a, b) {
+        return a.top - b.top;
+      });
+
+      // Loop through and set z-indexes by top-to-bottom offset().top's.
+      var i = 0;
+      while (i < sortedItems.length) {
+        if (sortedItems[i].index === oldActiveItem) {
+          $items.eq(sortedItems[i].index - 1).css({'z-index': sortedItems.length - 1});
+          $items.eq(sortedItems[i].index).css({'z-index': sortedItems.length - 1});
+        }
+        $items.eq(sortedItems[i].index).css('z-index', i);
+
+        i++;
+      }
+
+      // Small hack: the old active item when going back/left seems to get a low z-index. This works.
+      var buggedItem = activeItem + 1;
+      if (buggedItem < 0) {
+        buggedItem = cycleMax-1;
+      } else if (buggedItem >= cycleMax) {
+        buggedItem = 0;
+      }
+      $items.eq(buggedItem).css('z-index', cycleMax);
+
+      // Strongest z-index on the active item.
+      $items.eq(activeItem).css('z-index', cycleMax + 1);
+
+    };
+
+
+    /*
+      Calculates the shorted route through the items array (forwards OR backwards)
+      
+      @params
+      array: array of carousel items
+        start: route start position
+        end: route end position
+        @returns
+        Object: { direction (int), steps (int) }
+        Credit @marcusehaslam for help here!
+     */
+    function findBestRoute (array, start, end){
+
+      var left = 0, right = 0;
+
+      var index = start;
+      while(index !== end){
+        right++;
+        index = (index === array.length-1) ? 0 : index + 1;
+      }
+     
+      index = start;
+      while(index !== end){
+        left++;
+        index = (index === 0) ? array.length-1 : index - 1;
+      }
+     
+      return (left > right) ? { 'direction' : 1, 'steps' : right } : { 'direction' : 0, 'steps' : left };
+    };
+
+    /*
+      Position items for first time
+    */
+    positionItems(offsetX, offsetY, angle);
+
+    /*
+      Apply transition class only after a brief delay (browser internals mean the transitions happen before we want otherwise)
+      Also then set duration of transitions
+    */
+    var transitionsDelay = setTimeout(function() {
+      $items.addClass('transition');
+      var inSeconds = options.duration / 1000 + 's';
+      $items.css('transition-duration', inSeconds);
+    }, 10);
+    
+
+    var methods = {
+
+      /*
+        Cycles the carousel to the next or previous item. Relies on CSS transition support.
+        @params
+        direction (int) 1/0. 1 = right/forward, 0 = left/backward.
+      */
+
+      cycleActive: function (direction) {
+
+        // Remove old active classes.
+        var activeElement = $items.eq(activeItem);
+        activeElement.removeClass('active');
+
+        // Update activeItem & keep within the array limit.
+        previousActiveElement = activeItem;
+        activeItem = ((direction === 'previous') ? activeItem - 1 : activeItem + 1);
+        validateActiveItem();
+
+        // Add new active class, reposition items with positionItems.
+        positionItems(offsetX, offsetY, angle, null);
+
+      },
+
+      /*
+        Cycles the carousel to a specific item. Relies on CSS transition support.
+        @params
+        index = item you want to cycle to.
+      */
+
+      cycleActiveTo: function (index) {
+
+        // Remove old active classes.
+        var activeElement = $items.eq(activeItem);
+        activeElement.removeClass('active'); 
+
+        //If user clicks more than 2 items away, numerate (over time) the drawing to protect the animation from layering glitches.
+        var difference = Math.abs(index - activeItem);
+
+        // Do either an instant transition, or a stepped animation if user skips more than 2 items at once.
+        if (difference >= 2) {
+
+          var direction = 1;
+          var route = findBestRoute($items, activeItem, index);
+          doSteppedCycle(route.steps, route.direction, cycleDuration - 100);
+
+        } else {
+
+          previousActiveElement = activeItem;
+          activeItem = index;
+
+          // activeItem changed, validate
+          validateActiveItem();
+
+          // Add new active class, reposition items with positionItems.
+          positionItems(offsetX, offsetY, angle, null);
+          
+        }
+
+      },
+
+      /* Proxy binding events */
+      on: function(e, fn) {
+        $ele.on(e, fn);
+      }
+    };
+
+    return methods;
+
+  };
+
+}(jQuery));
+
+
+
+
+
+
+
+
+
+
+(function() {
+
+	$(document).ready(function() {
+
+		var options = {
+			ovalWidth: 180,
+			ovalHeight: 50,
+			offsetX: 0,
+			offsetY: 0,
+			angle: 0,
+			activeItem: 0,
+			duration: 200,
+			className: 'item'
+		}
+
+		var carousel = $('.carousel').CircularCarousel(options);
+
+		/* Fires when an item is about to start it's activate animation */
+		carousel.on('itemBeforeActive', function(e, item) {
+			//$(item).css('box-shadow', '0 0 20px blue');
+		});
+
+		/* Fires after an item finishes it's activate animation */
+		carousel.on('itemActive', function(e, item) {
+			//$(item).css('box-shadow', '0 0 20px green');
+      var itemIndex = $(item).index();
+      $('.corousel-container .carousel-text:nth-child(' + itemIndex + ')').fadeIn();
+		});
+
+		/* Fires when an active item starts it's de-activate animation */
+		carousel.on('itemBeforeDeactivate', function(e, item) {
+			//$(item).css('box-shadow', '0 0 20px yellow');
+		})
+
+		/* Fires after an active item has finished it's de-activate animation */
+		carousel.on('itemAfterDeactivate', function(e, item) {
+			//$(item).css('box-shadow', '');
+		})
+
+		
+		/* Previous button */
+		$('.controls .previous').click(function(e) {
+			carousel.cycleActive('previous');
+      	clearInterval(myInterval);
+			e.preventDefault();
+		});
+
+		/* Next button */
+		$('.controls .next').click(function(e) {
+			carousel.cycleActive('next');
+      clearInterval(myInterval);
+			e.preventDefault();
+		});
+
+		/* Manaully click an item anywhere in the carousel */
+		$('.carousel .item').click(function(e) {
+			var index = $(this).index('li');
+			carousel.cycleActiveTo(index);
+       clearInterval(myInterval);
+			e.preventDefault();
+		});
+    
+//    var myInterval = setInterval(function(){ carousel.cycleActive('next'); }, 4000);
+	
+	});
+
+})();
+	</script>
+	<style>
+	.carousel-container {
+  max-width: 900px;
+  margin: 50px auto;
+}
+.carousel-images {
+  float: left;
+  background-color: #ccc;
+  height: 450px;
+  width: 45%;
+  padding-left: 20px;
+  margin-top: 70px;
+  position: relative;
+}
+
+.carousel .item {
+	display: block;
+	position: absolute;
+	transform: scale(0.9);
+  box-shadow: 0 0 20px black;
+}
+
+.carousel .item.active {
+	transform: scale(1);
+}
+
+.carousel .item.transition {
+    transition: all 0.35s ease;
+}
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.controls a {
+  text-decoration: none;
+  padding: 5px;
+  color: #333;
+  font-weight: bold;
+}
+.controls a:hover {
+  color: #000;
+}
+
+.carousel-text {
+  float:right;
+  width: 45%;
+}
+.item-text {
+  display: none;
+}</style>
+</head>
+<body>
+	<div class="carousel-container">
+
+<div class="carousel-images">
+  <ul class="carousel">
+    <li class="item active"><img src="http://placehold.it/200x350/faf345/000000&text=item 1"></li>
+    <li class="item"><img src="http://placehold.it/200x350/ffa345/000000&text=item 2"></li>
+    <li class="item"><img src="http://placehold.it/200x350/ffa3ee/000000&text=item 3"></li>
+    <li class="item"><img src="http://placehold.it/200x350/ff6145/000000&text=item 4"></li>
+    <li class="item"><img src="http://placehold.it/200x350/ffa395/000000&text=item 5"></li>
+  </ul>
+  
+  <div class="controls">
+   <a href="#" class="previous"><</a> 
+   <a href="#" class="next">></a>
+  </div>
+</div>
+
+ <div class="carousel-text">
+  <div class="item-text"><h1>Item 1</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ducimus totam reiciendis officiis fugit aliquam, asperiores rerum, sunt quae delectus aut </p></div>
+  <div class="item-text"><h1>Item 2</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ducimus totam reiciendis officiis fugit aliquam, asperiores rerum, sunt quae delectus aut </p></div>
+  <div class="item-text"><h1>Item 3</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ducimus totam reiciendis officiis fugit aliquam, asperiores rerum, sunt quae delectus aut </p></div>
+  <div class="item-text"><h1>Item 4</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ducimus totam reiciendis officiis fugit aliquam, asperiores rerum, sunt quae delectus aut </p></div>
+  <div class="item-text"><h1>Item 5</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ducimus totam reiciendis officiis fugit aliquam, asperiores rerum, sunt quae delectus aut </p></div> 
+ </div>
+  
+  </div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script><link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+var search = function(userInput) {
+    $.ajax({
+        url: 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts%7Cinfo&generator=search&exchars=500&exlimit=10&exintro=1&inprop=url&gsrsearch=' + userInput + '&callback=?',
+        type: 'GET',
+        dataType: 'jsonp',
+        headers: {'Api-User-Agent': 'Wikipedia-Viewer'}
+    }).success(function (data,status) {
+        $(data.query.pages).each(function () {
+            $.each(this, function () {
+            $('#result').append('<a href=' + this.fullurl + ' target="_blank">' +
+                '<blockquote>' +
+                '<h4>' + this.title + '</h4>' + this.extract +
+                '</blockquote>' +
+                '</a><hr/>');
+            });
+            $('#result').addClass('animated zoomInUp').one(animationEnd, function() {	        	
+	        	$('#result').removeClass('animated zoomInUp');
+	        });           
+        });
+    }).error(function (data, status) {
+    	$('#result').append('<p>Sorry. Data isn\'t avaiable</p>');
+        console.log("error... " + status);
+    });
+};
+
+$(document).ready(function(){
+	//hide search icon and show input
+	$('.fa-search').on('click', function(){
+		$('.input-group').removeClass('hide');
+		$('.fa-search').addClass('hide');
+
+	});
+
+	//after pressing close button hide and clear input, and show shearch icon
+
+    $(".input-group-btn").on("click", function () {
+        $(".input-group").addClass("hide");
+        $(".fa-search").removeClass("hide");        
+        $('#search-input').val(""); // clear inputs field
+        // $('#result').empty(); // clear screen    
+        $('#result').addClass('animated zoomOutDown').one(animationEnd, function() {
+        	$('#result').empty();
+        	$('#result').removeClass('animated zoomOutDown');
+        });          
+        //$('#result').fadeOut()           
+        $("#wrapper").css("margin", "25vh auto");
+    });
+
+    $("#search-input").keyup(function (e) {
+        var text = encodeURIComponent($('#search-input').val());
+        if (e.which === 13) {
+            $("#search-input").change(function () {
+                $('#result').empty(); // clear screen
+            });
+            search(text); // search  api with users value
+            $("#wrapper").css("margin", "5vh auto");            
+        }
+    });
+});
+	</script>
+	<style>
+	@import url(https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700);
+
+body {
+	font-family: 'PT Serif', serif;	
+	background: #0097A7;
+	color: #212121;
+	font-size: 200%;	
+}
+h1, h2, h3, h4{
+	font-weight: 700;	
+}
+h1 {
+	color: #fff;
+}
+#wrapper {
+	margin: 25vh auto;
+	width: 55vw;
+}
+
+.random,
+.random:link,
+.random:visited,
+.random:hover {
+	color: #B2EBF2;
+	text-decoration: none;	
+}
+
+a,
+a:link,
+a:visited,
+a:hover {
+	color: #212121;
+	text-decoration: none;	
+}
+
+.form-control:focus,
+.btn:focus, .btn:active {
+    outline: none;
+    border-color: transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.input-group {
+    margin: 3vh auto;
+    width: 40%;
+    min-width: 150px;
+}
+
+#search-input {
+    height: 40px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    -webkit-border-top-left-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+}
+
+#close-search .btn {
+    background: white;
+    color: #002F2F;
+    height: 40px;
+    width: 40px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    -webkit-border-top-right-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+}	
+
+	</style>
+</head>
+<body>
+	<div id="wrapper" class="container text-center animated zoomIn">
+		<h1>Wikipedia Viewer</h1>
+		<a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" class="random">Get a random article</a><br/>
+		<div class="input-group hide animated zoomIn">
+            <input type="text" class="form-control" placeholder="Search..." autofocus="true"
+                   id="search-input">
+            <span class="input-group-btn" id="close-search">
+                <button class="btn">
+                    <i class="fa fa-close"></i>
+                </button>
+            </span>
+        </div>
+		<i class="btn fa fa-3x fa-search animated fadeIn" id="search-icon"></i>
+		<div class="container-fluid text-left" id="result"></div>
+	</div>
+</body>
+</html>

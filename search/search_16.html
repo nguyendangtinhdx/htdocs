@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		var diceFrames = [
+    "&#x2680;",
+    "&#x2681;",
+    "&#x2682;",
+    "&#x2683;",
+    "&#x2684;",
+    "&#x2685;"
+];
+
+$(document).ready(function() {
+    $("#dice").click(function (e) {
+        e.preventDefault();
+        var href = $(e.target).attr("href");
+
+        changeDice(18, 75, function () {
+            var win = window.open(href, '_blank');
+            win.focus();
+        });
+    });
+
+    $("#search-button").click(function(e) {
+        if ($("#search-input")[0].value !== "")
+            search($("#search-input")[0].value, function(data){displaySearchResults(data)});
+    });
+
+    $("#search-input").keydown(function(e) {
+        //keycode 13 is enter
+        if (e.keyCode == 13) {
+            search($("#search-input")[0].value, function(data){displaySearchResults(data)});
+        }
+    });
+});
+
+//sends GET request to wikiepedia api that will return a list of the
+//first 10 search results of "query"
+function search(query, callback) {
+    if (query == "") {
+        if (typeof(callback) == "function") return callback("");
+    }
+    $.ajax({
+        type: "GET",
+        url: "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch="+ encodeURIComponent(query) +"&format=json&callback=?",
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        dataType: "json",
+        success: function (data, textStatus, jqXHR) {
+            if (typeof(callback) == "function") return callback(data);
+        },
+    });
+}
+
+
+function generateSearchResultHTML(title, snippet) {
+    var containerLink = document.createElement("a");
+    $(containerLink).attr("href", "https://wikipedia.org/wiki/" + title.replace(/ /g, "_")).attr("target", "_blank");
+
+    var containerDiv = document.createElement("div");
+    $(containerLink).append(containerDiv);
+    $(containerDiv).addClass("search-result");
+
+    var titleHTML = document.createElement("p");
+    $(titleHTML).addClass("search-result-title").html(title);
+
+    var snippetHTML = document.createElement("p");
+    $(snippetHTML).addClass("search-result-snippet").html(snippet);
+
+    $(containerDiv).append(titleHTML).append(snippetHTML);
+
+    return containerLink;
+}
+
+function clearSearchResults() {
+    $("#bottom-row").html("");
+    $("#top-row").removeClass("row-minimized");
+    $("#middle-row").removeClass("row-middlemized");
+    $("#bottom-row").removeClass("row-maximized");
+}
+
+function displaySearchResults(data) {
+    clearSearchResults();
+    if (data == "")
+        return;
+    for (var i = 0; i < 10; i++) {
+        $("#top-row").addClass("row-minimized");
+        $("#middle-row").addClass("row-middlemized");
+        $("#bottom-row").append(generateSearchResultHTML(data.query.search[i].title, data.query.search[i].snippet)).addClass("row-maximized");
+    }
+}
+
+//cycles through the frames of diceFrames "numTimes", with "time" inbetween ech change
+function changeDice(numTimes, time, callback) {
+    if (numTimes == 0) {
+        if (typeof(callback) == "function") return callback();
+        return;
+    }
+    $("#dice").html(diceFrames[randInt(0, 6)]);
+    setTimeout(function () {
+        changeDice(numTimes - 1, time, callback)
+    }, time);
+}
+
+//produces a random int between min and max
+function randInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+	</script>
+	<style>
+	html {
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+
+    background-image: radial-gradient(circle, #fff, #cdcdcd);
+    background-size: cover;
+}
+
+a {
+    color: #000;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+a:active {
+    color: #000;
+    text-decoration: none;
+}
+
+a:link {
+    color: #000;
+    text-decoration: none;
+}
+
+#main {
+    width: 100%;
+    height: 100%;
+}
+
+#main .row {
+    height: 33.333333%;
+    height: 33.333333vh;
+
+    transition: height 1s;
+}
+
+.row-minimized {
+    height: 0% !important;
+    height: 0vh !important;
+}
+
+.row-middlemized {
+    height: 16.665% !important;
+    height: 16.665vh !important;
+}
+
+.row-maximized {
+    height: 83.331666% !important;
+    height: 83.331666vh !important;
+}
+
+#bottom-row {
+    overflow-y: scroll;
+}
+
+#bottom-row::-webkit-scrollbar {
+    display: none;
+}
+
+#random {
+    height: 100%;
+}
+
+#dice {
+    font-size: 160px;
+    line-height: 160px;
+    margin-top: -8px;
+    margin-left: -10px;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+
+    color: #000;
+
+    transition: transform 0.1s;
+}
+
+#dice:hover {
+    transform: scale(1.05, 1.05);
+}
+
+#search-container {
+    height: 100%;
+    margin-top: -8px;
+}
+
+#search {
+    height: 100%;
+    position: relative;
+}
+
+#search-input {
+    margin-top: 12px;
+    height: 48px;
+    width: 100%;
+    padding: 0 10px;
+    margin-left: 10px;
+}
+
+#search i {
+    position: absolute;
+    right: 25px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.search-result {
+    width: 75%;
+    height: 100px;
+    margin: 10px auto;
+    display: block;
+    background: #fdfdfd;
+    box-shadow: 3px 3px 7px #888;
+    position: relative;
+    overflow: hidden;
+
+    transition: transform 0.35s;
+}
+
+.search-result:hover {
+    transform: scale(1.01, 1.01);
+}
+
+.search-result-title {
+    font-size: 22px;
+    margin: 0;
+    padding: 5px 0 0 10px;
+}
+
+.search-result-snippet {
+    margin: 0;
+    padding-left: 10px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-height: 18px;
+    max-height: 54px;
+}
+
+.searchmatch {
+  background: #ffa;
+}
+
+.center-all {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+	</style>
+</head>
+<body>
+	<div id="main" class="container-fluid">
+    <div id="top-row" class="row"></div>
+    <div id="middle-row" class="row">
+        <div id="search-container" class="col-xs-6 col-xs-offset-3">
+            <div id="random" class="col-xs-3 center-all">
+                <a id="dice" href="http://en.wikipedia.org/wiki/Special:Random" target="_blank" title="Random Wikipedia Article">&#x2682;</a>
+            </div>
+            <div id="search" class="col-xs-9 center-all">
+                <input id="search-input" type="text" name="search" placeholder="Search for a Wikipedia Article...">
+                <div id="search-button"><i class="fa fa-search"></i></div>
+            </div>
+        </div>
+    </div>
+    <div id="bottom-row" class="row"></div>
+</div>
+</body>
+</html>

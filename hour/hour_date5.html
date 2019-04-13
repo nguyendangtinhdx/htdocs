@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(function () {
+    var $clock = $('.clock');
+    $hour = $('.hour'), $minute = $('.minute'), $weekday = $('.weekday'), $date = $('.date'), $month = $('.month'), $year = $('.year'), weekdays = [
+        'Sun',
+        'Mon',
+        'Tue',
+        'Wed',
+        'Thu',
+        'Fri',
+        'Sat'
+    ], months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+    ];
+    function setDateTime() {
+        var now = new Date();
+        var hours = now.getHours();
+        $hour.text(hours > 12 ? hours - 12 : hours);
+        $minute.text(('0' + now.getMinutes()).slice(-2));
+        $month.text(months[now.getMonth()]);
+        $date.text(('0' + now.getDate()).slice(-2));
+        $weekday.text(weekdays[now.getDay()]);
+        $year.text(now.getFullYear());
+        $clock.removeClass('dawn').removeClass('day').removeClass('sunset').removeClass('night');
+        if (hours < 6) {
+            $clock.addClass('dawn');
+        } else if (hours < 17) {
+            $clock.addClass('day');
+        } else if (hours == 17) {
+            $clock.addClass('sunset');
+        } else {
+            $clock.addClass('night');
+        }
+        setTimeout(setDateTime, (60 - now.getSeconds()) * 1000);
+    }
+    setDateTime();
+});
+	</script>
+	<style>
+	body {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+}
+
+.clock {
+  background: url('http://cache4.asset-cache.net/gc/165684203-cityscape-dawn-morning-dusk-night-gettyimages.jpg?v=1&c=IWSAsset&k=2&d=%2fmzl3hOQ212xvrWcS4tQlLmIRDPba364F0UXdnWT5ANm2ymS0sSMTGsTGKPW0xi7') no-repeat;
+  background-size: 270%;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  width: 265px;
+}
+
+.dawn {
+  background-position: -120px 0;
+  color: rgba(255, 150, 0, 0.8);
+}
+
+.day {
+  background-position: -70px -170px;
+  color: rgba(255, 100, 200, 0.85);
+}
+
+.sunset {
+  background-position: 0 -337px;
+  color: rgba(200, 255, 160, 0.85);
+}
+
+.night {
+  background-position: -360px -504px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.7em;
+}
+
+.minute + div {
+  line-height: 0.6em;
+}
+
+.hour {
+  font-size: 6.5em;
+}
+
+.minute {
+  font-size: 3.3em;
+}
+
+.weekday {
+  font-size: 0.9em;
+}
+
+.date {
+  font-size: 1.2em;
+}
+
+.month {
+  font-size: 0.7em;
+}
+
+.year {
+  font-size: 0.65em;
+}
+	</style>
+</head>
+<body>
+	<div class="clock">
+  <span class="hour"></span>
+  <div class="right">
+    <span class="minute"></span>
+    <div>
+      <span class="weekday"></span>
+      <span class="date"></span>
+    </div>
+    <div>
+      <span class="month"></span>
+      <span class="year"></span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

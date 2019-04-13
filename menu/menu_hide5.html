@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		/* code is pretty jank, just a concept */
+		/* transition out of animation state? */
+		$(document).ready(function() {
+			var $toggle = $('button');
+			var $header = $('header');
+			
+			$toggle.on('click', function() {
+				$header.toggleClass('is-toggled');
+			})
+		});
+	</script>
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=VT323|Timmana);
+		*, *:before, *:after {
+			box-sizing: border-box;
+		}
+
+		body {
+			-webkit-perspective: 1000px;
+			perspective: 1000px;
+		}
+
+		header {
+			background: #ecf0f1;
+			height: 70px;
+			position: fixed;
+			z-index: 20;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 0 15px;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: justify;
+			-webkit-justify-content: space-between;
+			-ms-flex-pack: justify;
+			justify-content: space-between;
+			-webkit-transition: -webkit-transform 1s ease-out;
+			transition: -webkit-transform 1s ease-out;
+			transition: transform 1s ease-out;
+			transition: transform 1s ease-out, -webkit-transform 1s ease-out;
+			-webkit-transform-origin: 50% 100%;
+			transform-origin: 50% 100%;
+		}
+
+		h1 {
+			line-height: 70px;
+			font-size: 2rem;
+			margin: 0;
+			font-family: 'Timmana';
+		}
+
+		nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 15;
+		}
+
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			height: 70px;
+		}
+
+		li {
+			width: 25%;
+			float: left;
+			height: inherit;
+		}
+
+		a {
+			font-family: 'VT323';
+			font-size: 1.5rem;
+			display: block;
+			text-align: center;
+			text-transform: uppercase;
+			text-decoration: none;
+			line-height: 70px;
+			color: #fff;
+			background: #0a0d14;
+		}
+		a:hover {
+			background: #1b2336;
+			color: cyan;
+		}
+
+		button {
+			background: transparent;
+			border: 0;
+		}
+
+		.is-toggled {
+			-webkit-animation: test .4s ease-in;
+			animation: test .4s ease-in;
+			-webkit-animation-fill-mode: forwards;
+			animation-fill-mode: forwards;
+		}
+
+		.toggle {
+			float: right;
+			background: 0;
+			border: 0;
+			padding: 0;
+			outline: 0;
+		}
+
+		span[class^="toggleBar-"] {
+			display: block;
+			width: 21px;
+			height: 3px;
+			background: #222;
+			-webkit-transition: all .5s;
+			transition: all .5s;
+		}
+
+		.toggleBar-1,
+		.toggleBar-2 {
+			margin-bottom: 3px;
+		}
+
+		.toggleBar-3 {
+			margin-bottom: 0;
+		}
+
+		.is-toggled .toggle .toggleBar-1 {
+			-webkit-transform: translateY(6px) rotate(45deg);
+			transform: translateY(6px) rotate(45deg);
+		}
+
+		.is-toggled .toggle .toggleBar-2 {
+			opacity: 0;
+		}
+
+		.is-toggled .toggle .toggleBar-3 {
+			-webkit-transform: translateY(-6px) rotate(-45deg);
+			transform: translateY(-6px) rotate(-45deg);
+		}
+
+		@-webkit-keyframes close {
+			100% {
+				-webkit-transform: rotateX(-145deg);
+				transform: rotateX(-145deg);
+				-webkit-transform-origin: 50% 100%;
+				transform-origin: 50% 100%;
+				box-shadow: none;
+			}
+		}
+
+		@keyframes close {
+			100% {
+				-webkit-transform: rotateX(-145deg);
+				transform: rotateX(-145deg);
+				-webkit-transform-origin: 50% 100%;
+				transform-origin: 50% 100%;
+				box-shadow: none;
+			}
+		}
+		@-webkit-keyframes test {
+			70% {
+				-webkit-transform: rotateX(-145deg) rotateY(0deg);
+				transform: rotateX(-145deg) rotateY(0deg);
+				-webkit-transform-origin: 50% 100%;
+				transform-origin: 50% 100%;
+				box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.3);
+			}
+			80% {
+				-webkit-transform: rotateX(-145deg) rotateY(0deg) rotateX(10deg) rotateY(0deg);
+				transform: rotateX(-145deg) rotateY(0deg) rotateX(10deg) rotateY(0deg);
+				-webkit-transform-origin: 50% 100%;
+				transform-origin: 50% 100%;
+				box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.1);
+			}
+			100% {
+				-webkit-transform: rotateX(-145deg) rotateY(0deg) rotateX(-10deg) rotateY(0deg);
+				transform: rotateX(-145deg) rotateY(0deg) rotateX(-10deg) rotateY(0deg);
+				-webkit-transform-origin: 50% 100%;
+				transform-origin: 50% 100%;
+				box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.3);
+			}
+		}
+		@keyframes test {
+			70% {
+				-webkit-transform: rotateX(-145deg) rotateY(0deg);
+				transform: rotateX(-145deg) rotateY(0deg);
+				-webkit-transform-origin: 50% 100%;
+				transform-origin: 50% 100%;
+				box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.3);
+			}
+			80% {
+				-webkit-transform: rotateX(-145deg) rotateY(0deg) rotateX(10deg) rotateY(0deg);
+				transform: rotateX(-145deg) rotateY(0deg) rotateX(10deg) rotateY(0deg);
+				-webkit-transform-origin: 50% 100%;
+				transform-origin: 50% 100%;
+				box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.1);
+			}
+			100% {
+				-webkit-transform: rotateX(-145deg) rotateY(0deg) rotateX(-10deg) rotateY(0deg);
+				transform: rotateX(-145deg) rotateY(0deg) rotateX(-10deg) rotateY(0deg);
+				-webkit-transform-origin: 50% 100%;
+				transform-origin: 50% 100%;
+				box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.3);
+			}
+		}
+		main {
+			height: 100vh;
+			padding-top: 85px;
+			background: #ecf0f1;
+			position: relative;
+			z-index: 10;
+			padding-left: 15px;
+			padding-right: 15px;
+			font-size: 1.5rem;
+		}
+
+		.centerer {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			font-family: 'VT323';
+			text-align: center;
+			color: #c0cdd1;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<header>
+		<h1>&topf;&ropf;&aopf;&popf;&dopf;&oopf;&oopf;&ropf;</h1>
+		<button class="toggle closer"><span class="toggleBar-1"></span><span class="toggleBar-2"></span><span class="toggleBar-3"></span></button>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="https://github.com/2474">github</a></li>
+			<li><a href="https://soundcloud.com/zckvns">soundcloud</a></li>
+			<li><a href="https://twitter.com/two4seven4">twitter</a></li>
+			<li><a href="https://instagram.com/zvcke">instagram	</a></li>
+		</ul>
+	</nav>
+	<main>
+		<!--p.centerer 1 2 3 4 5 6 6 7 8 <br> Shanghaied-->
+	</main>
+</body>
+</html>

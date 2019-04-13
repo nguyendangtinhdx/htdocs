@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    @import url(http://fonts.googleapis.com/css?family=Roboto:300,100,900);
+* {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  background: #e1e1e1;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 30%;
+  max-width: 300px;
+  background: #eee;
+}
+.sidebar:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  bottom: 0;
+  height: 100%;
+  width: 10px;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjIiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(0, 0, 0, 0.2)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  -webkit-mask-box-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, transparent), color-stop(0.5, rgba(0, 0, 0, 0.8)), color-stop(1, transparent));
+  border-left: 1px solid #888888;
+}
+
+.sidebar-header {
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  padding: 20px;
+  font-size: 20px;
+}
+.sidebar-header:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 10px;
+  width: 100%;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjIiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.2)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  -webkit-mask-box-image: -webkit-gradient(linear, left top, right top, color-stop(0, transparent), color-stop(0.5, rgba(0, 0, 0, 0.8)), color-stop(1, transparent));
+  border-top: 1px solid #888888;
+}
+
+.sidebar-title {
+  margin: 0;
+  color: #666;
+}
+
+.sidebar-content {
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  overflow: auto;
+  padding: 20px;
+  color: #444;
+}
+
+::-webkit-scrollbar {
+  height: 16px;
+  overflow: visible;
+  width: 16px;
+}
+
+::-webkit-input-placeholder element,
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 1px 1px 1px 6px;
+  min-height: 28px;
+  padding: 100px 0 0;
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.07);
+}
+
+::-webkit-slider-thumb element,
+::-webkit-scrollbar-button {
+  height: 0;
+  width: 0;
+}
+
+::-webkit-search-cancel-button element,
+::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 0 0 0 4px;
+}
+
+::-webkit-search-results-decoration element,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.page {
+  margin-left: 300px;
+  padding: 5%;
+}
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+  <div class="sidebar-header">Sidebar title</div>
+    <div class="sidebar-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis necessitatibus deserunt dolores corrupti ab aut? Illo explicabo ad blanditiis dolores sed nam quam quisquam quo id provident sit dolor.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis necessitatibus deserunt dolores corrupti ab aut? Illo explicabo ad blanditiis dolores sed nam quam quisquam quo id provident sit dolor. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis necessitatibus deserunt dolores corrupti ab aut? Illo explicabo ad blanditiis dolores sed nam quam quisquam quo id provident sit dolor. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis necessitatibus deserunt dolores corrupti ab aut? Illo explicabo ad blanditiis dolores sed nam quam quisquam quo id provident sit dolor. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis necessitatibus deserunt dolores corrupti ab aut? Illo explicabo ad blanditiis dolores sed nam quam quisquam quo id provident sit dolor. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis necessitatibus deserunt dolores corrupti ab aut? Illo explicabo ad blanditiis dolores sed nam quam quisquam quo id provident sit dolor. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis necessitatibus deserunt dolores corrupti ab aut? Illo explicabo ad blanditiis dolores sed nam quam quisquam quo id provident sit dolor. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi quis necessitatibus deserunt dolores corrupti ab aut? Illo explicabo ad blanditiis dolores sed nam quam quisquam quo id provident sit dolor.
+   </div>
+</div>
+<div class="page">
+  <h1>Google analytics like sidebar</h1>
+  <p>Use of webkit-mask to make a nice shadow effect</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		//enlarges text while hovering on it and its vice-versa
+$('#text1').mouseenter(function(){
+	$('#text1').css("font-size","4.3vh");
+});
+$('#text1').mouseleave(function(){
+	$('#text1').css("font-size","4vh");
+});
+
+//the search input field will be hidden initially
+$('input').hide();
+
+//shows the hidden search input field when icon is clicked
+$('#icon').click(function(){
+	$('#text2').hide();
+	$('input').slideToggle('slow',function(){
+		$('input').focus();
+	});
+});
+
+//searches for the entered text when enter is pressed
+$(document).keypress(function(e){
+   if(e.which == 13) { 
+        //calls start function
+        start();
+        //the resultant search is shown at the top of the page, smooth scrooling the non-resultant part
+        $('body,html').animate({scrollTop: 365}, 800);
+      }
+});
+
+function start(){
+    $.ajax({
+      //obtains JSON data
+      url : 'https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch='+$('#inputSearch').val(),
+      dataType:'jsonp',
+      type: 'POST',
+      headers: { 'Api-User-Agent': 'Example/1.0' },
+      //call back function which shows the JSON data obtained
+      success: function(data){
+        //for storing the html obtained from JSON data
+        var infoHTML ='';
+        //stores search list JSON
+        var resJSON = data.query.search;
+        
+        console.log("data is:" + data);
+        console.log("search list is:" +resJSON);
+        console.log(resJSON.length);
+        
+        //loops through each item of the list
+        for(var i=0;i<resJSON.length;i++){
+            var title = resJSON[i].title;
+          console.log(title);
+            infoHTML +=  '<a target="_blank" href="https://en.wikipedia.org/wiki/'+title+'\"'+'>'         +'<p>' + title + '</p></a>';
+            infoHTML += '<p>' + resJSON[i].snippet + '</p>';
+            infoHTML += '</br></br>';
+            $('#results').addClass('resBack container well').html(infoHTML);
+        }
+      }
+  });
+}
+
+
+
+	</script>
+	<style>
+
+	body {
+    background-color: #673ab7;
+}
+
+h1{
+	font-size:8.5vh;
+	margin-top: 13vh;
+	color:white;
+  font-family: 'Candal', sans-serif;
+  font-weight:bold;
+}
+
+#text1{
+    margin-top: 13vh;
+    font-size: 4vh;
+    color:white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight:bold;
+    
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+#icon{
+    font-size: 40px;
+    color:gold;
+}
+
+#text2{
+    font-size: 4vh;
+    color:white;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#inputSearch{body {
+    background-color: #673ab7;
+}
+
+h1{
+	font-size:8.5vh;
+	margin-top: 13vh;
+	color:white;
+  font-family: 'Candal', sans-serif;
+  font-weight:bold;
+}
+
+#text1{
+    margin-top: 13vh;
+    font-size: 4vh;
+    color:white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight:bold;
+    
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+#icon{
+    font-size: 40px;
+    color:gold;
+}
+
+#text2{
+    font-size: 4vh;
+    color:white;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#inputSearch{
+    width:20%;
+}
+
+#results{
+  font-family: 'Quicksand', sans-serif;
+  font-size:3vh;
+}
+.resBack{
+  border:double 6px silver;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;}
+}
+
+#inputSearch{
+    width:18em;
+}
+
+#results{
+  font-family: 'Quicksand', sans-serif;
+  font-size:3vh;
+}
+.resBack{
+  border:double 6px silver;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;}
+}
+
+
+	</style>
+</head>
+<body>
+	<h1 class="text-center">Wikipedia Viewer</h1>
+
+<a href="http://en.wikipedia.org/wiki/Special:Random" target="_blank">
+			  <p id="text1" class="text-center">Click here for a random article</p>
+		</a>
+
+		</br>
+		</br>
+		
+		<a href="#">
+			  <p class="text-center">
+				      <span id="icon" class="fa fa-search"></span>
+			  </p>
+		</a>
+
+	</br>
+
+<p id="text2" class="text-center">Click icon to search</p>
+</br>
+		
+<div id="after">
+		  
+			    <input type="text" name="search" id="inputSearch" class="form-control center-block" required="required" >
+		    <br/>
+    <div id="results"></div>
+</div>
+
+</body>
+</html>

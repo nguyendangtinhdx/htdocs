@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+html, body {
+  padding: 0;
+  margin: 0;
+  background: #3f51b5;
+}
+
+nav#menu {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #FFF;
+  border-radius: 5px;
+}
+nav#menu ul {
+  display: inline-block;
+  letter-spacing: -5px;
+  padding: 0;
+  margin: 0;
+}
+nav#menu ul li {
+  letter-spacing: 0;
+  margin: 0;
+  display: inline-block;
+  padding: 10px 20px;
+  background: #536dfe;
+  -webkit-transform: skewX(-25deg);
+          transform: skewX(-25deg);
+  -webkit-transition: all 180ms ease-in-out;
+  transition: all 180ms ease-in-out;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+}
+nav#menu ul li span {
+  display: block;
+  -webkit-transform: skewX(25deg);
+          transform: skewX(25deg);
+}
+nav#menu ul li:first-child {
+  border-radius: 5px 0 0 5px;
+}
+nav#menu ul li:last-child {
+  border-radius: 0 5px 5px 0;
+}
+nav#menu ul li:hover {
+  background: #6889ff;
+}
+
+	</style>
+</head>
+<body>
+	
+<nav id="menu">
+  <ul>
+    <li><span>home</span></li>
+    <li><span>about</span></li>
+    <li><span>services</span></li>
+    <li><span>contact</span></li>
+  </ul>
+</nav>
+</body>
+</html>

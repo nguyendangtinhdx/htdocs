@@ -1,0 +1,508 @@
+*{
+	margin:0;
+	padding:0;
+}
+ol, ul { list-style: none; }
+img { border: none; vertical-align: top; }
+a:hover{color: #000;text-decoration: none;}
+#banner {
+	background-color: #E2E2E2;
+	height: 100px;
+	width:100%;
+}
+#menu {
+	height:35px;
+	width: 100%;
+}
+.uppercase{
+	 text-transform: uppercase;
+}
+#content {
+	width: 85%;
+	height: auto;
+	margin:auto;
+}
+#footer_main {
+	background-color: #9F3345;
+	height: 120px;
+	width: 100%;
+}
+#sub_footer_main{
+	width: 85%;
+	margin: auto;
+}
+#sub_banner{
+	width: 85%;
+	margin:auto;
+}
+.banner_left {
+    float: left;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+.banner_right {
+    float: right;
+	margin-top:50px;
+}
+#date{
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FD0000;
+}
+#tinchinh{
+	width:34%;
+	height:auto;
+	float:left;
+	margin-top:5px;
+}
+#slideshow{
+	width:65%;
+	float:right;
+}
+.search{  font-family: "Times New Roman", Times, serif;}
+.anh_chinh{
+	width:150px; 
+	height:100px;
+	border-radius:10px;
+	float:left;
+	margin: 0 15px 10px 0;
+}
+.tieudetinchinh{
+	font-family:Verdana, Geneva, sans-serif;
+	margin-top:0;
+}
+.tieudetinchinh a:hover{
+	text-decoration:none;
+	color: #005593;
+	
+}
+.noidungtinchinh{
+	font-size:16px;
+/*	width:550px;
+	height:auto;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;*/
+    font-family: Arial, Helvetica, sans-serif;
+}
+.tinxemthem{list-style-type:square;font-size:12px; margin-left:15px;}
+.tinxemthem li a{color:#666;}
+.tinxemthem li a:hover{text-decoration: underline;}
+.clear{clear:both;}
+<!--slideshow-->
+#content_right{ position:relative}
+.mySlides {display:none;
+	border-radius:20px;
+}
+/*slide 2*/
+.thongtin-title{}
+.thongtin-content { 
+	background:#F4F4F4; 
+	border:1px solid #CCC;
+	border-radius: 3px;
+	overflow:hidden;
+	}
+.thongtin-content img{ padding: 5px 20px;
+ }
+/*slide 1*/
+#mygallery{background:#E2E2E2;}
+.stepcarousel{
+	position: relative; /*leave this value alone*/
+	border:1px solid #CCC;
+	border-radius:5px;
+	overflow: scroll; /*leave this value alone*/
+	width: 100%; /*Width of Carousel Viewer itself*/
+	height: 320px; /*Height should enough to fit largest content's height*/
+	-webkit-box-sizing: border-box; /* set box model so container width and height value includes any padding/border defined */
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.stepcarousel .belt{
+	position: absolute; /*leave this value alone*/
+	left: 0;
+	top: 0;
+}
+.belt img{height:130px; 
+	padding:10px 30px;
+	background:#E2E2E2;
+}
+.tieudeslide{
+	background:#E2E2E2;
+	font-size:12px;
+	margin-left:30px;
+	font-weight:bold;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tieudeslide:hover{
+	overflow: visible;
+    white-space: pre-line;
+}
+.noidungslide{
+	text-align:center;
+	background:#E2E2E2;
+	margin-left:26px;
+	width:88%;
+	font-size:14px;
+}
+.noidungslide:hover{
+	overflow: visible;
+    white-space: pre-line;
+}
+.belt a{text-decoration:none;color:#C00}
+.stepcarousel .panel{
+	float: left; /*leave this value alone*/
+	overflow: hidden; /*clip content that go outside dimensions of holding panel DIV*/
+	margin: 0px; /*margin around each panel*/
+	width: 219px; /*Width of each panel holding each content. If removed, widths should be individually defined on each content DIV then. */
+	background:#E2E2E2;
+}
+
+span.paginatecircle{ /* CSS for paginate circle spans. Required */
+	background: white;
+	border: 2px solid black;
+	border-radius: 10px;
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+	display: inline-block;
+	margin-right: 4px;
+
+}
+div#pag{	
+	text-align: center;
+	margin-top: 290px;
+}
+span.paginatecircle:hover{
+	background: gray;
+}
+
+span.paginatecircle.selected{
+	background: black;
+}
+/*danhsachtin*/
+#danhsachtin{
+	width:75%;
+	float:left;
+	border-right:1px solid #CCC;
+}
+.icon{
+	background-image:url(../icon/tieude.png);
+	height:15px;
+	background-repeat:no-repeat;
+	border-bottom: 2px solid #F37814;
+	margin-bottom: 10px;
+}
+.tin{
+	float:left; 
+	margin-right: 29px;
+	width: 180px;
+}
+.tieudetin {
+	margin-top: 20px;
+	color: #000;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.noidungtin{
+	font-size: 13px;
+	height: 147px;
+	overflow:hidden; 
+	font-family: Arial, Helvetica, sans-serif;
+}
+.xemcactinkhac a{
+	color: #A61732; 
+	text-decoration: underline;
+	font-size: 12px;
+	font-weight: bold;
+}
+.tin ul{
+	color: #666;
+	font-size: 12px;
+}
+.tin ul li{
+	list-style-type: square;
+	margin-bottom: 5px;
+	margin-left: 15px;
+}
+.tin ul li a{
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.tin ul li a:hover{
+	text-decoration: underline;
+	color: #666;
+}
+#quangcao{
+	width:24%;
+	float:right;
+}
+.underline{border-bottom: 1px dashed #CCC}
+#anhquangcao img{margin-bottom: 20px;}
+
+/*video*/
+#video{margin-top: 20px;}
+.icon_video{
+	background-image:url(../icon/tieude.png);
+	background-repeat:no-repeat;
+	border-bottom: 2px solid #F37814;
+	height: 25px;
+}
+.icon_video div{
+	margin-left: 20px;
+	font-weight: bold;
+	color: #FFF;
+}
+#thongtinvideo{
+	width: 40%;
+	float: left;
+}
+#filevideo{
+	width: 58%;
+	background: lightblue;
+	float: right;
+}
+.tieudevideo{
+	font-size: 20px;
+	margin: 10px 0;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.noidungvideo{
+	font-size: 15px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#slide2{
+	margin-top: 20px;
+	box-shadow: 5px 5px 10px #CCC;
+}
+.cacvideokhac{
+	color: #A61732; 
+	text-decoration: underline;
+	font-family: Arial, Helvetica, sans-serif;
+}
+/*footer_menu*/
+#footer_menu{
+	background: #E2E2E2;
+	height: 210px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 30px;
+	border-bottom: 10px solid #CCC;
+}
+.sub_footer_menu{
+	width: 85%;
+	margin: auto;
+}
+#footer_menu ul{
+	float: left;
+	border-right: 1px dashed #666;
+	margin: 20px 7px 0 20px;
+	padding-right: 25px;
+	width: 165px;
+	height: auto;
+}
+#footer_menu ul li a:hover{
+	font-weight: bold;
+}
+#footer_menu ul.not{
+	border-right: none;
+	margin-right: 0;
+}
+#footer_menu ul li{
+	font-size: 12px;
+	padding: 2px;
+}
+/*footer_main*/
+.footer_left{
+	float: left;
+}
+.footer_right{
+	float: right;
+	margin-top: 10px;
+}
+.footer_left div{
+	padding-top: 20px;
+	color: #FFF;
+	font-size: 13px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+/*link*/
+.front {padding: 13px;}
+.back{padding: 8px;}
+.social-nav li {
+	display: inline-block;
+}
+.social-nav a {
+	display: inline-block;
+	float: left;
+	width: 48px;
+	height: 48px;
+	font-size: 20px;
+	color: #FFF;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	line-height: 48px;
+	background: #000;
+	position: relative;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+.model-3d-0 a {
+	background: #333;
+	float: left;
+	margin: 0 3px;
+	-moz-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+.model-3d-0 a:hover {
+	-moz-transform: rotateX(-90deg);
+	-webkit-transform: rotateX(-90deg);
+	transform: rotateX(-90deg);
+}
+.model-3d-0 a:hover .fornt {
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.model-3d-0 a:hover .back {
+	-moz-backface-visibility: visible;
+	-webkit-backface-visibility: visible;
+	backface-visibility: visible;
+}
+.model-3d-0 .front, .model-3d-0 .back {
+	width: 48px;
+	height: 48px;
+	background: #333;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-moz-transform: translateZ(18px);
+	-webkit-transform: translateZ(18px);
+	transform: translateZ(18px);
+	-moz-backface-visibility: visible;
+	-webkit-backface-visibility: visible;
+	backface-visibility: visible;
+}
+.model-3d-0 .back {
+	font-size: 32px;
+	-moz-transform: rotateX(90deg) translateZ(18px);
+	-ms-transform: rotateX(90deg) translateZ(18px);
+	-webkit-transform: rotateX(90deg) translateZ(18px);
+	transform: rotateX(90deg) translateZ(18px);
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.model-3d-0 .twitter .back {
+	background: #00ACED;
+}
+.model-3d-0 .facebook .back {
+	background: #3B579D;
+}
+.model-3d-0 .google-plus .back {
+	background: #DD4A3A;
+}
+.model-3d-0 .linkedin .back {
+	background: #007BB6;
+}
+.model-3d-0 .pinterest .back {
+	background: #CB2026;
+}
+/*thongke*/
+.thongke{
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.soluong{
+	color: #9ACD32;
+}
+/*scrollbar*/
+body::-webkit-scrollbar {
+    width: 6px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ body::-webkit-scrollbar-thumb {
+  background-color: #0ae;
+}
+/*to_top*/
+#bttop{
+	position:fixed;
+	bottom:30px;
+	right:15px;
+	cursor:pointer;
+}
+#bttop img:hover{
+	box-shadow: 5px 5px 30px red;
+}
+
+
+
+@media only screen and (max-width: 1353px) {
+	#footer_menu{height: 350px;}
+}
+@media only screen and (max-width: 800px) {
+	.banner_right{visibility:visible;position:absolute;}
+	#content{width:100%}
+	#footer{margin-top: 2500px;}
+	.thongke{visibility: hidden;}
+}
+@media only screen and (max-width: 800px) {
+	.banner_right{visibility:visible;position:absolute;
+		margin: 95px 0 0 0 
+	}
+}
+@media only screen and (max-width: 767px) {
+	.banner_right{visibility:visible;position:absolute;
+		margin: 80px 15px 0 -38px ;
+	}
+	#date{visibility: hidden;}
+}
+@media only screen and (max-width: 700px) {
+ 	.banner_right{visibility:visible;
+ 		margin: 80px 15px 0 -15px ;}
+	#content{margin-top:-180px;width:100%}
+	#footer{margin-top: 2850px;position: absolute;}
+	#tinchinh{width:100%;margin-top: 190px;}
+	#slideshow{width:100%;}
+	.slideshow{margin-left:-12px}
+	.thongtin-content{margin-top:100px;
+	position:absolute}
+	.thongtin-content{background:none;border:none}
+	#mygallery{width:92%;
+	position:absolute;
+	margin-right:100px;
+	}
+	#danhsachtin {
+		width: 100%;
+		margin-top: 310px;
+		border-right: none;
+	}
+	#danhsachtin .tin{width: 100%;}
+	#danhsachtin img{width: 100%;}
+	#quangcao{visibility: hidden;}
+	#thongtinvideo{width: 100%;margin-top: -760px;}
+	#filevideo{width: 100%;margin-top: -380px;}
+	.underline{margin-top: -780px;}
+	#filevideo iframe{height: 200px}
+	.cacvideokhac{visibility: hidden;}
+	#slide2{visibility: hidden;}
+	#footer_menu{visibility: hidden;}
+	.footer_left{margin-left: 10px;}
+	.footer_right{margin: 30px 15px 0 0}
+	#footer_main{
+		height: 220px;
+		width: 100%;
+		position: absolute;
+		margin-top: 380px;
+	}
+}
+
+
+
+

@@ -1,0 +1,57 @@
+table,tr,td{
+	border: 1px solid #C3C3C3;
+	border-collapse: collapse;}
+table{
+	margin: auto;
+	width: 75%;}
+#ratio{width: 25%;}
+#a1{
+	color: #00669C;
+	font-size: 100px}
+#a2{
+	color: #00669C;
+	font-size: 80px}
+#a3{
+	color: #00669C;
+	font-size: 60px}
+#anh2{
+	float:left;
+	height: 150px;
+	width: 300px}
+#anh1{
+	float:right;
+	height: 150px;
+	width: 150px;
+}
+#chu{position: absolute;
+	left:300px;
+float: center;}
+.tag_b{
+	background: #006699;
+	color: #FEFEFE;
+	text-align: left;
+	font-weight: bold;}
+b{color: #2D6B89}
+.anh3{
+	width: 100px;
+	height: 100px;
+	float: left; }
+.anh4{
+	width: 100px;
+	height: 100px;
+	float: right; }
+.input1{
+	background: #CCCCCC;
+	color: blue;
+	float: right;}
+.up{float: right;
+	background: #CCCCCC}
+#nav{
+	font-size: 25px;
+	color: #008000;
+	padding: 5px;
+}
+#bi{background: #ADD8E6;}
+form,input{
+	float: right;
+	margin: 5px}

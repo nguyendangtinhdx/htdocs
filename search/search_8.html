@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		
+function search(){
+	var text = $('#textSearch').val();
+
+		if (text === '') {
+			return;
+		}
+
+		var conf = {
+			action: 'query',
+			list: 'search',
+			srwhat: 'text',
+			srsearch: text,
+			format: 'json',   
+		}
+
+		$.ajax({
+			url: 'https://en.wikipedia.org/w/api.php',
+			data: conf,
+			'jsonp': 'callback',
+			dataType: 'jsonp',
+			type: 'POST',			
+			success: function(data){
+				
+				if (data.query.search.length > 0) {
+
+					var str = '';
+
+					data.query.search.forEach(function(i){
+						str += '<a href="http://www.wikipedia.org/wiki/'+i.title+'" target="_blank"><div class="result-item">';
+						str += '<h4>'+i.title+'</h4>';
+						str += '<p>'+i.snippet+'</p>';
+						str += '</div></a>';
+					})
+
+					$('.search-box').css('display', 'block');
+
+					$('#result').html(str);
+				}
+			}
+		})	
+}
+
+
+$(document).ready(function(){
+
+	$(document).keypress(function(e) {
+
+		if (e.keyCode === 13) {			
+	  		search();
+	  	}
+	});
+
+	$('#buttonSearch').click(function(){
+		search();
+	})
+
+
+	if($('#textSearch').val() !== '') {
+		$('#remove_circle').show();
+	}
+
+	$('#textSearch').keyup(function(){
+
+		var text = $(this).val();
+
+		if (text.length === 0) {
+			$('#remove_circle').hide();
+		} else {
+			$('#remove_circle').show();
+		}
+
+	})
+
+
+	$('#remove_circle').click(function(){
+		$('#textSearch').val('');
+		$('#result').html('');
+		$('.search-box').css('display', 'table-cell');
+		$(this).hide();
+	})
+
+})
+	</script>
+	<style>
+	html{
+	height:100%;
+}
+
+body{
+	background: #383739 !important;
+	height:100%;
+}
+
+* {
+	transition: all 0.5s; 
+}
+
+a{
+	color: rgba(255,255,255,0.8) !important;
+}
+
+a:hover{
+	text-decoration:none !important;
+}
+
+main{
+	height:100%;
+	display: table !important;
+}
+
+.search-box{
+	display: table-cell;
+    vertical-align: middle;
+}
+
+.random_link{
+	margin-top:20px;
+}
+
+#textSearch{
+	position: relative;
+}
+
+#remove_circle{
+	font-size: 24px;
+    position: absolute;
+    right: 100px;
+    top: 5px;
+    z-index: 100;
+    display:none;
+}
+
+#remove_circle:hover{
+	cursor:pointer;
+}
+
+.random_link a:hover{
+	color:#337ab7 !important;	
+}
+
+.logo{
+	margin:20px auto;
+}
+
+#result{
+	padding: 20px;	
+}
+
+.result-item{
+	background: #ccc none repeat scroll 0 0;
+    color: #000;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.result-item a{
+	color:#000;
+}
+
+.result-item a:hover{	
+	color:#000;
+	text-decoration:none;
+}
+
+#result a:hover{
+	background: #eee !important;
+}
+	</style>
+</head>
+<body>
+	
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<title>Wikipedia searcher</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel='stylesheet' href='style.css'>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src='main.js'></script>
+
+</head>
+<body>
+<main class='container'>
+	<section class='row text-center search-box'>
+	<img class='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Wikipedia-logo-v2-en.svg/2000px-Wikipedia-logo-v2-en.svg.png" class='img-responsive' alt="Wikipedia" width='100px'>
+	<div class="row text-center">
+  		<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+			<div class="input-group">
+		      <input id="textSearch"  type="text" class="form-control" placeholder="Search for...">
+		      <span class="input-group-btn">
+		        <button id='buttonSearch' class="btn btn-primary" type="button">Look up</button>
+
+		      </span>
+
+		    </div><!-- /input-group -->
+		    <span id='remove_circle' class='glyphicon glyphicon-remove-circle' aria-hidden="true"></span>
+			<p class='random_link'><a href='https://en.wikipedia.org/wiki/Special:Random' target='_blank'>Click here for a random article</a></p>
+		</div>
+
+	</div>		
+	</section>
+	<section id='result'>
+		
+	</section>
+</main>
+</body>
+</html>
+
+</body>
+</html>

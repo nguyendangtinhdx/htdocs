@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .scrollbar--webkit {
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+  margin: 36px;
+  padding: 10px;
+  background: #eee;
+  font-size: 34px;
+}
+.scrollbar--webkit::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.scrollbar--webkit::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+.scrollbar--webkit::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border: 4px solid transparent;
+  background-color: #ccc;
+  background-clip: padding-box;
+}
+.scrollbar--webkit::-webkit-scrollbar-button {
+  display: none;
+}
+
+    </style>
+</head>
+<body>
+    
+<div class="scrollbar--webkit">Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Etiam iaculis nunc ac metus. Maecenas egestas arcu quis ligula mattis placerat. Morbi mollis tellus ac sapien. Vestibulum fringilla pede sit amet augue.</div>
+</body>
+</html>

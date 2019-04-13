@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		/*
+credit to Dima Carpov for this js only idea --
+http://codepen.io/carpov/  
+*/
+var WW = 'L';
+
+var Pagination = {
+	code: '',
+
+	Extend: function(data) {
+		data = data || {};
+		Pagination.size = data.size || 300;
+		Pagination.page = data.page || 1;
+		Pagination.step = data.step || 3;
+	},
+
+	Add: function(s, f) {
+		for (var i = s; i < f; i++) {
+			Pagination.code += '<a>' + i + '</a>';
+		}
+	},
+
+	Last: function() {
+		Pagination.code += '<i>...</i><a>' + Pagination.size + '</a>';
+	},
+
+	First: function() {
+		Pagination.code += '<a>1</a><i>...</i>';
+	},
+
+
+	Click: function() {
+		Pagination.page = +this.innerHTML;
+		Pagination.Start();
+	},
+
+	Prev: function() {
+		Pagination.page--;
+		if (Pagination.page < 1) {
+			Pagination.page = 1;
+		}
+		Pagination.Start();
+	},
+
+	Next: function() {
+		Pagination.page++;
+
+		if (Pagination.page > Pagination.size) {
+			Pagination.page = Pagination.size;
+		}
+		Pagination.Start();
+	},
+
+	TypePage: function() {
+		Pagination.code = '<input onclick="this.setSelectionRange(0, this.value.length);this.focus();" onkeypress="if (event.keyCode == 13) { this.blur(); }" value="' + Pagination.page + '" /> &nbsp; / &nbsp; ' + Pagination.size;
+		Pagination.Finish();
+		var v = Pagination.e.getElementsByTagName('input')[0];
+		v.click();
+		
+		if (WW !== 'T') {
+			v.addEventListener("blur", function(event) {
+
+				var p = parseInt(this.value);
+
+				if (!isNaN(parseFloat(p)) && isFinite(p)) {
+					if (p > Pagination.size) {
+						p = Pagination.size;
+					} else if (p < 1) {
+						p = 1;
+					}
+				} else {
+					p = Pagination.page;
+				}
+				Pagination.Init(document.getElementById('pagination'), {
+					size: Pagination.size,
+					page: p,
+					step: Pagination.step
+				});
+			}, false);
+		}
+		else {
+
+		}
+	},
+
+	Bind: function() {
+		var a = Pagination.e.getElementsByTagName('a');
+		for (var i = 0; i < a.length; i++) {
+			if (+a[i].innerHTML === Pagination.page) a[i].className = 'current';
+			a[i].addEventListener('click', Pagination.Click, false);
+		}
+		var d = Pagination.e.getElementsByTagName('i');
+		for (i = 0; i < d.length; i++) {
+			d[i].addEventListener('click', Pagination.TypePage, false);
+		}
+	},
+
+	Finish: function() {
+		Pagination.e.innerHTML = Pagination.code;
+		Pagination.code = '';
+		Pagination.Bind();
+	},
+
+	Start: function() {
+		if (WW === 'T') {
+			Pagination.step = 0;
+			Pagination.TypePage();
+		}
+		else {
+			
+			
+			if (WW === 'L') {
+				Pagination.step = 3;
+			}
+			else if (WW === 'M') {
+				Pagination.step = 2;
+			}
+			else if (WW === 'S') {
+				Pagination.step = 1;
+			}
+			
+			if (Pagination.size < Pagination.step * 2 + 6) {
+				Pagination.Add(1, Pagination.size + 1);
+			} else if (Pagination.page < Pagination.step * 2 + 1) {
+				Pagination.Add(1, Pagination.step * 2 + 4);
+				Pagination.Last();
+			} else if (Pagination.page > Pagination.size - Pagination.step * 2) {
+				Pagination.First();
+				Pagination.Add(Pagination.size - Pagination.step * 2 - 2, Pagination.size + 1);
+			} else {
+				Pagination.First();
+				Pagination.Add(Pagination.page - Pagination.step, Pagination.page + Pagination.step + 1);
+				Pagination.Last();
+			}
+			Pagination.Finish();
+		}
+	},
+
+	Buttons: function(e) {
+		var nav = e.getElementsByTagName('a');
+		nav[0].addEventListener('click', Pagination.Prev, false);
+		nav[1].addEventListener('click', Pagination.Next, false);
+	},
+
+	Create: function(e) {
+		var html = [
+            '<a>&#9668;</a>', // previous button
+            '<span></span>', // pagination container
+            '<a>&#9658;</a>' // next button
+            ];
+            e.innerHTML = html.join('');
+            Pagination.e = e.getElementsByTagName('span')[0];
+            Pagination.Buttons(e);
+        },
+
+        Init: function(e, data) {
+        	Pagination.Extend(data);
+        	Pagination.Create(e);
+        	Pagination.Start();
+        }
+    };
+
+    var init = function() {
+    	
+    	Pagination.Init(document.getElementById('pagination'), {
+        size: 80, // pages size
+        page: 1, // selected page
+        step: 3 // pages before and after current
+    });
+    	
+    	document.getElementById('T').addEventListener('click', function(){ 
+    		WW = 'T'; 
+    		
+    		document.getElementById('T').classList.add('chosen');
+    		document.getElementById('S').classList.remove('chosen');
+    		document.getElementById('M').classList.remove('chosen');
+    		document.getElementById('L').classList.remove('chosen');
+    		
+    		document.getElementById('container').style.width = '135px';
+    		Pagination.Start();
+    	}, false);
+    	
+    	document.getElementById('S').addEventListener('click', function(){ 
+    		WW = 'S'; 
+    		
+    		document.getElementById('T').classList.remove('chosen');
+    		document.getElementById('S').classList.add('chosen');
+    		document.getElementById('M').classList.remove('chosen');
+    		document.getElementById('L').classList.remove('chosen');
+    		
+    		document.getElementById('container').style.width = '250px';
+    		Pagination.Start();
+    	}, false);
+
+    	document.getElementById('M').addEventListener('click', function(){ 
+    		WW = 'M'; 
+    		
+    		document.getElementById('T').classList.remove('chosen');
+    		document.getElementById('S').classList.remove('chosen');
+    		document.getElementById('M').classList.add('chosen');
+    		document.getElementById('L').classList.remove('chosen');
+    		
+    		document.getElementById('container').style.width = '300px';
+    		Pagination.Start();
+    	}, false);
+
+    	document.getElementById('L').addEventListener('click', function(){ 
+    		WW = 'L'; 
+    		
+    		document.getElementById('T').classList.remove('chosen');
+    		document.getElementById('S').classList.remove('chosen');
+    		document.getElementById('M').classList.remove('chosen');
+    		document.getElementById('L').classList.add('chosen');
+    		
+    		document.getElementById('container').style.width = '350px';
+    		Pagination.Start();
+    	}, false);
+    };
+
+    document.addEventListener('DOMContentLoaded', init, false);
+</script>
+<style>
+	
+	body{font-family:Arial,sans-serif;}
+	body:before{content:'';display:inline-block;width:0;height:100%;vertical-align:middle;}
+	.link {
+		cursor: pointer;
+		text-decoration: underline;
+		color: blue;
+	}
+	.chosen {
+		cursor: default;
+		text-decoration: none;
+		color: black;
+	}
+	#container {
+		border: 1px solid silver;
+		padding: 20px 10px 15px 10px;
+		width: 350px;
+	}
+	#pagination{display:inline-block;vertical-align:middle;padding:1px 2px 4px 2px;font-size:12px;color:#7D7D7D;}
+	#pagination a,#pagination i{display:inline-block;vertical-align:middle;width:22px;color:#7D7D7D;text-align:center;padding:4px 0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}
+	#pagination a{margin:0 2px 0 2px;cursor:pointer;}
+	#pagination a:hover{background-color:#999;color:#fff;}
+	#pagination i{margin:0 1px 0 1px;cursor:pointer;border:2px solid transparent;}
+	#pagination i:hover{margin:0 1px 0 1px;border:2px solid #999;cursor:pointer;}
+	#pagination input{width:30px;padding:4px 4px;color:#7D7D7D;border: 1px solid #cccccc;text-align:right;font-size:12px;margin-bottom:2px;}
+	#pagination a.current{border:1px solid #E9E9E9;background-color:#666;color:#fff;}
+
+
+
+</style>
+</head>
+<body>
+	<div id="r">
+		<b>Responsive:</b> &nbsp; <a id="L" class="link chosen">Large</a> &nbsp; <a id="M" class="link">Medium</a> &nbsp; <a id="S" class="link">Small</a> &nbsp; <a id="T" class="link">Tiny</a> &nbsp; 
+	</div>
+
+	<br/>
+
+	<div id="container">
+		<div id="pagination"></div>
+	</div>
+
+	<br/>
+
+</body>
+</html>

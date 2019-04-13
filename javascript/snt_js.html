@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<body>
+	<input id="1" type="number" >  
+	<button onclick="my()">Check</button>
+	<p id="2"></p>
+		<script>
+		function my()
+		{
+			var i,d=0;
+			var x = document.getElementById('1').value;
+			for(i=2;i<=x/2;i++)
+			if(x%i==0)
+				d++;
+			if(d==0)
+				document.getElementById('2').innerHTML = x + " Là số nguyên tố";
+			else
+				document.getElementById('2').innerHTML = x + " Không phải số nguyên tố  ";
+			
+		}
+		</script>
+</body>
+</html>

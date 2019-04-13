@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(function() {
+  $(window).on('click', function() {
+    var $first = $('.carousel li:first-child');
+    $first.addClass('loop').appendTo('.carousel');
+    setTimeout(function() {
+      $first.removeClass('loop');
+    }, 10);
+  })
+})
+	</script>
+	<style>
+html {
+  height: 100%;
+  background: black;
+  overflow: hidden;
+}
+body {
+  height: 100%;
+  perspective: 1000px;
+  overflow: hidden;
+}
+.carousel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+  list-style: none;
+  transform: translateZ(-400px) rotateY(0deg);
+  transform-style: preserve-3d;
+}
+.carousel li {
+  display: inline-block;
+  position: absolute;
+  transform: translateZ(400px);
+  transition: 1s;
+  transition-delay: 10ms;
+  backface-visibility: hidden;
+}
+.carousel li:nth-child(2) {
+  transform: rotateY(30deg) translateZ(400px);
+}
+.carousel li:nth-child(3) {
+  transform: rotateY(60deg) translateZ(400px);
+}
+.carousel li:nth-child(4) {
+  transform: rotateY(90deg) translateZ(400px);
+}
+.carousel li:nth-child(5) {
+  display: none;
+  transform: rotateY(120deg) translateZ(400px);
+}
+.carousel li:nth-child(6) {
+  display: none;
+  transform: rotateY(150deg) translateZ(400px);
+}
+.carousel li:nth-child(7) {
+  display: none;
+  transform: rotateY(180deg) translateZ(400px);
+}
+.carousel li:nth-child(8) {
+  display: none;
+  transform: rotateY(210deg) translateZ(400px);
+}
+.carousel li:nth-child(9) {
+  display: none;
+  transform: rotateY(240deg) translateZ(400px);
+}
+.carousel li:nth-child(10) {
+  transform: rotateY(270deg) translateZ(400px);
+}
+.carousel li:nth-child(11) {
+  transform: rotateY(300deg) translateZ(400px);
+}
+.carousel li:nth-child(12) {
+  transform: rotateY(330deg) translateZ(400px);
+  transition-delay: 0;
+}
+.carousel li:nth-child(12).loop {
+  transform: translateZ(400px);
+}
+
+	</style>
+</head>
+<body>
+	<ul class="carousel">
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+  <li>
+    <img src="http://placehold.it/200x200" />
+  </li>
+</ul>
+</body>
+</html>

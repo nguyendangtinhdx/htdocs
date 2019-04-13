@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,100,400);
+body {
+  font-family: 'Roboto';
+  font-weight: 100;
+  font-size: 36px;
+  background-color: #333;
+}
+
+header {
+  width: 100%;
+}
+
+nav {
+  width: 535px;
+  margin: 80px auto;
+}
+nav li {
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  padding: 8px;
+  z-index: 10;
+}
+nav li a {
+  text-decoration: none;
+  position: relative;
+  padding: 6px 0;
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+  color: lightblue;
+}
+nav li a:after {
+  content: '';
+  width: 0%;
+  margin-left: 50%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  border-radius: 40%;
+  position: absolute;
+  transition: all 0.5s;
+}
+nav li a:hover:after {
+  background-color: lightblue;
+  width: 60%;
+  margin-left: 20%;
+  box-shadow: 0px 0px 10px lightblue;
+}
+nav li a.active:after {
+  background-color: lightblue;
+  width: 60%;
+  margin-left: 20%;
+  box-shadow: 0px 0px 10px lightblue;
+}
+
+	</style>
+</head>
+<body>
+	<header>
+  <nav>
+    <ul>
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+</body>
+</html>

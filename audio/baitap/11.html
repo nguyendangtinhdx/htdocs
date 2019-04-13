@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	table,tr,td{border-collapse: collapse;
+				border: 1px solid #555;
+				background: #C5F5FE;}
+	div{width: 244px;
+		box-shadow: 3px 2px 3px #7d7d7d;
+		margin: auto;
+	}
+	caption{color: #9D3319;
+		font-size: 25px;
+		padding: 18px 5px;
+	}
+	 #a11{text-align: center;}
+	 #b11{
+	 	color: blue;
+	 	text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<div>
+		<table>
+			<caption><b>Đăng nhập</b></caption>
+			<form id="view">
+			<tr>
+				<td>Mã người dùng</td>
+				<td><input type="text" name="user" size="15"></td>
+			</tr>
+			</form>
+			<tr>
+				<td>Mật khẩu</td>
+				<td><input type="password" name="pw" size="15"></td>
+			</tr>
+			<tr>
+				<td id="a11" colspan="2"><button onclick="my()">Đồng ý</button></td>
+			</tr>
+			<tr>
+				<td colspan="2" id="b11">
+					<p id="1"></p>
+					<script>
+					function my()
+					{
+						var x = document.forms["view"];
+						var y = "";
+						for (i = 0; i < x.length; i++) 
+						{
+							y += x.elements[i].value ;
+							alert(y);
+						}
+						// document.getElementById('1').innerHTML= y;
+					}
+					</script>
+				</td>
+			</tr>
+			
+			
+		</table>
+	</div>
+	
+</body>
+</html>

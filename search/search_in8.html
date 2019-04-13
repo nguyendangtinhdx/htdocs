@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+  var streamers = ["freecodecamp", "storbeck", "terakilobyte", "habathcx",
+    "RobotCaleb", "thomasballinger", "noobs2ninjas", "beohoff",
+    "medrybw", "brunofin", "comster404"
+  ];
+
+  // Get data for each streamer and store the deferred return objects in an array.
+  var deferreds = streamers.map(getChannel);
+
+  // When we have all requests, sort the array and display the result.
+  $.when.apply($, deferreds).done(function(args) {
+    console.log("We have", arguments.length, 'elements');
+    var streamerArr = [];
+    for (var i = 0; i < arguments.length; i++) {
+      streamerArr.push(arguments[i]);
+    }
+
+    streamerArr.sort(function(a, b) {
+      return a.display_name.toLowerCase().localeCompare(b.display_name.toLowerCase());
+    });
+
+    // We now have a sorted array. Just display the result.
+    streamerArr.map(displayStreamer);
+  });
+
+  // Handler for filter tabs.
+  $('#navigation a').click(function(e) {
+    e.preventDefault();
+    $(this).tab('show');
+    // The search filter automatically applies the filterTabs
+    // function. This way, any text in the search field will be
+    // correctly applied when we switch tabs.
+    filterSearch($(this).parent());
+  });
+
+  // Handler for search filter.
+  $('#searchField').on("keyup", filterSearch);
+
+});
+
+// Performs ajax requests and returns a deferred object which is
+// resolved when the requests have completed. When the deferred object
+// is resolved, it will return an object with data for the given
+// streamer.
+function getChannel(streamer) {
+  var deferred = $.Deferred();
+
+  var baseUrl = "https://api.twitch.tv/kraken/channels/";
+  var streamBaseUrl = "https://api.twitch.tv/kraken/streams/";
+
+  // The first ajax call will retrieve information about the
+  // streamer.
+  var channelAjaxCall = $.ajax({
+    dataType: "json",
+    url: baseUrl + streamer
+  });
+
+  // The second ajax call will retrieve information about the
+  // stream.
+  var streamAjaxCall = $.ajax({
+    dataType: "json",
+    url: streamBaseUrl + streamer
+  });
+
+  // If the user has closed his account, we will recieve a 422
+  // status code which will cause the request to fail. In this case
+  // we construct a placeholder object and resolves the deferred
+  // object. For other status codes, we reject it.
+  channelAjaxCall.fail(function(error) {
+    // Status code 422 means that the account is no longer available.
+    // In this case we will use a placeholder.
+    if (error.status === 422) {
+      console.warn("The account is nuked!");
+      // Construct placeholder data and send it to be displayed.
+      var placeholder = {
+        logo: 'http://placehold.it/100x100',
+        name: streamer,
+        url: null,
+        display_name: streamer,
+        available: false
+      };
+      deferred.resolve(placeholder);
+    }
+    deferred.reject(error);
+  });
+
+  // If both calls succeds, we can construct the streamer object and
+  // resolve the deferred object.
+  $.when(channelAjaxCall, streamAjaxCall).done(function(data, streamData) {
+    var result = {
+      logo: data[0].logo ? data[0].logo : 'http://placehold.it/100x100',
+      name: streamer,
+      display_name: data[0].display_name,
+      url: data[0].url,
+      stream: streamData[0].stream,
+      available: true
+    };
+    deferred.resolve(result);
+  });
+
+  return deferred;
+}
+
+// Adds the contents of streamerData into the documents.
+function displayStreamer(streamerData) {
+  var templateStr = ['<div class="row">',
+    '<div class="col-xs-12">',
+    '<div class="channel">',
+    '<a class="streamerLink">',
+    '<div class="col-xs-2">',
+    '<img class="avatar img-responsive">',
+    '</div>',
+    '<div class="col-xs-8">',
+    '<div class="infobox">',
+    '<h4><span class="displayName"></span>',
+    '<p><small class="streamInfo"></small></p></h4>',
+    '</div>',
+    '</div>',
+    '<div class="col-xs-1">',
+    '<div class="status"><i class="statusIcon"></i></div>',
+    '</div>',
+    '</a></div>'
+  ].join("");
+
+  var row = $(templateStr);
+  var channel = row.find("div.channel");
+  channel.attr("id", streamerData.name);
+  channel.children(".streamerLink").attr("href", streamerData.url);
+  channel.find("img.avatar").attr("src", streamerData.logo);
+  channel.find(".displayName").prepend(streamerData.display_name);
+
+  if (streamerData.available) {
+    channel.find(".streamInfo").text(streamerData.stream ? truncate(streamerData.stream.channel.status, 36) : '');
+    channel.find(".statusIcon").addClass(streamerData.stream ? "glyphicon glyphicon-ok" : "glyphicon glyphicon-remove");
+    channel.find(".status").addClass(streamerData.stream ? "online" : "offline");
+  } else {
+    channel.children(".streamerLink").children().unwrap();
+    channel.addClass("unavailable");
+    channel.find(".streamInfo").text("Account disabled");
+  }
+  $("#channelList").append(row);
+}
+
+// Truncate a string to the given length, adding ... as needed.
+function truncate(str, len) {
+  if (str.length <= len) {
+    return str;
+  }
+  if (len <= 3) {
+    return str.slice(0, len) + '...';
+  }
+  if (str.length > len) {
+    return str.slice(0, len - 3) + '...';
+  }
+  return undefined;
+}
+
+// Filter the streamer list according to which tab is active. The
+// argument is the element which has the id the link in the nav tab
+// points to.
+function filterTabs(elem) {
+  var id = $(elem).attr("id");
+  console.log(elem, id);
+
+  if (id === "online") {
+    $(".channel:has(.online)").show();
+    $(".channel:has(.offline)").hide();
+    $(".channel.unavailable").hide();
+  } else if (id === "offline") {
+    $(".channel:has(.online)").hide();
+    $(".channel:has(.offline)").show();
+    $(".channel.unavailable").hide();
+  } else {
+    $(".channel:has(.online)").show();
+    $(".channel:has(.offline)").show();
+    $(".channel.unavailable").show();
+  }
+}
+
+// Filter on search field taking any tab filter into account.
+function filterSearch(e) {
+  var re = new RegExp($("#searchField").val(), "i");
+  console.log(re);
+  var matches = function(elem) {
+    return re.test($(elem).find(".displayName").text());
+  };
+
+  // Start by applying any tab filter.
+  filterTabs("#navigation .active");
+
+  // Then, hide all visible elements that don't match.
+  $("#channelList").find(".channel").filter(":visible").filter(function() {
+    return !matches(this);
+  }).hide();
+}
+	</script>
+	<style>
+	#navigation {
+  margin-bottom: 1em;
+}
+
+#channelList .row {
+  margin-bottom: 1em;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.infobox {
+  word-wrap: break-word;
+}
+
+.status {
+  font-size: larger;
+}
+
+.online {
+  color: green;
+}
+
+.offline {
+  color: red;
+}
+
+.unavailable {
+  opacity: 0.5;
+  pointer-events: none;
+}
+	</style>
+</head>
+<body>
+	<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+      <div id="mainContent">
+        <nav id="navigation" class="col-xs-12">
+          <ul class="nav nav-tabs">
+            <li id="all" class="active"><a href="#all" data-toggle="tab">All</a></li>
+            <li id="online"><a href="#online" data-toggle="tab">Online</a></li>
+            <li id="offline"><a href="#offline" data-toggle="tab">Offline</a></li>
+          </ul>
+        </nav>
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="searchField">Search</label>
+            <input id="searchField" class="form-control">
+          </div>
+        </div>
+        <div id="channelList">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- container -->
+</body>
+</html>

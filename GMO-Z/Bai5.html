@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<br>
+	<div class="col-sm-5"></div>
+	<div class="col-sm-2">
+		<div class="form-group">
+			<select class="form-control" name="select">
+				<option value="opt0" selected="selected">Tất cả</option>
+				<option value="opt1">Lẻ</option>
+				<option value="opt2">Chẵn</option>
+			</select>
+		</div>
+		<br><br><br><br> 
+		<div id="show">
+			<ul class="list-group" style="text-align: center;">
+				<li class="opt1 list-group-item">1</li>
+				<li class="opt2 list-group-item">2</li>
+				<li class="opt1 list-group-item">3</li>
+				<li class="opt2 list-group-item">4</li>
+				<li class="opt1 list-group-item">5</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-sm-5"></div>
+</body>
+<script>
+	$("#show ul li").css("background-color","lightblue");
+	$('select[name="select"]').change(function(){
+		var chosen = $(this).val();  
+		$("#show ul li").css("background-color","lightblue");
+		$("#show ul li").not('.' + chosen).css("background-color","#fff");
+		// $("#show ul li").show();
+		// $("#show ul li").not('.' + chosen).hide();
+		if (chosen === "opt0") {
+			$("#show ul li").css("background-color","lightblue");
+		}   
+	});
+</script>
+</html>

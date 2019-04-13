@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			padding: 3em;
+			font-family: sans-serif;
+		}
+		* {
+			box-sizing: border-box;
+		}
+		a {
+			text-decoration: none;
+			transition: all 0.5s ease-out;
+		}
+		.pagination {
+			display: block;
+			margin-bottom: 1em;
+			color: white;
+			text-align: center;
+		}
+		.pagination .page-numbers li {
+			display: inline-block;
+			width: 28px;
+			height: 28px;
+		}
+		.pagination .page-numbers li a,
+		.pagination .page-numbers li span {
+			color: black;
+			background: white;
+			border: 1px solid #000000;
+			box-shadow: 0px 1px 2px #fff;
+			padding: 5px;
+			width: 28px;
+			height: 28px;
+			display: block;
+			text-align: center;
+		}
+		.pagination .page-numbers li a.current,
+		.pagination .page-numbers li span.current {
+			background: black;
+			color: white;
+		}
+		.pagination .page-numbers li a:hover {
+			background: black;
+			color: white;
+		}
+
+	</style>
+</head>
+<body>
+	<body>
+		
+		<div class="pagination">
+			<ul class="page-numbers">
+				<li><a href="" class="prev">«</a></li>
+				<li><a href="">1</a></li>
+				<li><a href="" class="current" >2</a></li>
+				<li><a href="">3</a></li>
+				<li><a href="">4</a></li>
+				<li><a href="">5</a></li>
+				<li><a href="" class="next">»</a></li>
+			</ul>
+		</div>
+		
+	</body>
+</body>
+</html>

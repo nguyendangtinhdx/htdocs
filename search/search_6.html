@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		
+$("document").ready(function() {
+  // Variable Declarations: Cache jQuery items needed
+  var resultsListDiv = $("#resultsList");
+  var searchForm = $("#searchForm");
+
+  //Wire Event Handler
+  searchForm.submit(function(event) {
+    var theSearchTerm = $("#searchfield").val();
+    console.log(theSearchTerm);
+    var resultSet = getResultsFromWikipedia(theSearchTerm);
+    //renderResults(resultSet);
+    event.preventDefault();
+  }); //searchForm.submit
+
+  // function getResultsFromWikipedia(searchTerm);
+  //ajax call for search results
+  function getResultsFromWikipedia(searchTerm) {
+    var apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srprop=snippet&callback=response&srsearch=" + encodeURIComponent(searchTerm);
+
+    $.ajax({
+      url: apiUrl,
+      dataType: 'jsonp',
+      success: function(data) {
+        // your code to handle data here
+        renderResults(data);
+      }
+    });
+  } //getResultsFromWikipedia
+
+  function makeResultItem(title, snippet) {
+    var wikiUrl = "https://en.wikipedia.org/wiki/"+ encodeURIComponent(title);
+  
+    var theHtml = '<div class="resultitem\">' + 
+      '<a href="' + wikiUrl + '" target="_blank">' +
+        '<div class="itemTitle">' + title + '</div>' +
+        '<div class="itemSnippet">' + snippet + '</div>' +
+      '</a>' +
+    '</div>';
+
+    return theHtml;
+  } //makeResultsItem
+
+  function renderResults(results) {
+    //clear the results if they are still listed 
+    $(".resultitem").remove();
+    //get an array of results, and handle none
+    var arrResults = results.query.search;
+    if (arrResults.length === 0) {
+      alert("No results from Wikipedia for that search");
+    } 
+
+    //iterate through results 
+    for (var i = 0; i < arrResults.length; i++) {
+      $("#resultsList")
+        .append(
+          makeResultItem(
+            arrResults[i].title,
+            arrResults[i].snippet
+          )
+        );
+    } //for
+  } //renderResults
+}); //$.document.ready
+	</script>
+	<style>
+	.vertical-center {
+  background-color: #f0e68c;
+  text-align: center;
+}
+.searchmatch {
+  background-color: #f0e68c;
+}
+body {
+  background-color: #f0e68c;
+  font-family: verdana;
+}
+.resultitem {
+  text-align: left;
+  background-color: white;
+  margin: 5px;
+  padding: 2px;
+}
+
+.itemTitle {
+  font-size: 18px;
+  color: black;
+  text-decoration: underline;
+}
+.itemSnippet {
+  font-size: 15px;
+  color: #555;
+  
+}
+	</style>
+</head>
+<body>
+	<html>
+
+<body class="body">
+  <div class="jumbotron vertical-center">
+    <h1>Wikipedia Search</h1>
+    <!-- Search Box -->
+
+    <div>
+      <form id="searchForm" class="form-inline">
+        <div class="form-group form-group-lg">
+          <label class="sr-only" for="searchfield">Search Wikipedia</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="searchfield" placeholder="Query" value="">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Search</button>
+      </form>
+    </div>
+    <!-- Random Wiki Page -->
+    <div class="container"> 
+      <br/><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" class="btn btn-info">Launch Random Wikipedia Page</a></div>
+    <!-- Search Results -->
+    <div class="container"><br/>
+      <div id="resultsList"></div>
+    </div>
+  </div>
+</body>
+
+</html>
+</body>
+</html>

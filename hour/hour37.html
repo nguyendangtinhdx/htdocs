@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		'use strict';
+
+// @see https://en.wikipedia.org/wiki/Seven-segment_display
+/** abcdefg :
+ -   a
+ - f   b
+ -   g
+ - e   c
+ -   d
+ */
+//
+/**
+ * Array of equivalence  between digit/ binary bars to light
+ * example : index of the tab : binary abcdefg to display in hexadecimal when called with .toString(2)
+ * (1111110) will light bars a b c d e f but not g.
+ *
+ * @see https://en.wikipedia.org/wiki/Seven-segment_display#Displaying_letters
+ * @type {number[]}
+ */
+var DIGIT_TO_HEX = [0x7E, 0x30, 0x6D, 0x79, 0x33, 0x5B, 0x5F, 0x70, 0x7F, 0x7B];
+/**
+ * Returns a binary representation of the seven segment bars to light.
+ *
+ * @param i the digit to display (index of the array)
+ * @returns {string} 7 bits in a string.
+ */
+var barToLightFromInt = function barToLightFromInt(i) {
+    var s = DIGIT_TO_HEX[i].toString(2);
+    while (s.length < 7) {
+        s = "0" + s;
+    }return s;
+},
+
+/**
+ * Adds a leading 0 to an integer (for instance, takes 2, returns '02')
+ * @param x
+ * @returns {string} a string value of the integer.
+ */
+trimDigit = function trimDigit(x) {
+    return ('' + x).length < 2 ? '0' + x : '' + x;
+},
+
+/**
+ * Remove class off of a DOM Element.
+ *
+ * @param element
+ * @param test
+ */
+toggleOnOff = function toggleOnOff(element, test) {
+    if (test === '1') {
+        element.classList.remove('off');
+        element.classList.add('on');
+    } else {
+        element.classList.remove('on');
+        element.classList.add('off');
+    }
+},
+    applyToDOMElement = function applyToDOMElement(elem, digit) {
+    var digits = barToLightFromInt(digit);
+    for (var i = 0; i < digits.length; i++) {
+        toggleOnOff(elem.children[i], digits[i]);
+    }
+},
+    refreshDate = function refreshDate() {
+    var date = new Date(),
+        hour = trimDigit(date.getHours()),
+        min = trimDigit(date.getMinutes()),
+        sec = trimDigit(date.getSeconds());
+
+    for (var i = 0; i < hour.length; i++) {
+        applyToDOMElement(document.getElementById('h-' + (i + 1)), hour[i]);
+    }
+    for (var i = 0; i < min.length; i++) {
+        applyToDOMElement(document.getElementById('m-' + (i + 1)), min[i]);
+    }
+    for (var i = 0; i < sec.length; i++) {
+        applyToDOMElement(document.getElementById('s-' + (i + 1)), sec[i]);
+    }
+    requestAnimationFrame(refreshDate);
+    //window.setTimeout(()=>refreshDate, 1000);
+},
+    drawBackground = function drawBackground() {
+    var canvas = document.getElementById('canvas'),
+        context = canvas.getContext('2d');
+    for (var y = 0; y < canvas.height; y++) {
+        for (var x = 0; x < canvas.width; x++) {
+            var color = Math.floor(Math.random() * 10),
+                width = Math.floor(Math.random() * 10) + 1;
+            context.fillStyle = 'rgb(' + color + ',' + color + ',' + color + ')';
+            context.fillRect(x, y, width, 1);
+            x += width - 1;
+        }
+    }
+    //requestAnimationFrame(drawBackground);
+},
+    resize = function resize() {
+    var canvas = document.getElementById('canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    drawBackground();
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+    resize();
+    //refresh every seconds.
+    refreshDate();
+});
+window.addEventListener('resize', resize);
+	</script>
+	<style>
+	body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+}
+
+#container {
+  width: 50%;
+  left: 25%;
+  top: 25%;
+  position: absolute;
+}
+
+.on {
+  fill: #FF0000;
+  stroke: black;
+  stroke-width: .5;
+}
+
+.off {
+  fill: #111111;
+  stroke: black;
+  stroke-width: .2;
+}
+
+	</style>
+</head>
+<body>
+	
+<!--bar length-->
+<!--hour-minutes-seconds digits-->
+<!--7 bars of a digit-->
+<!-- space between digits-->
+<div id="container">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-4 0 108 22">
+    <defs>
+      <path id="a" d="M 1,1 l 1,-1 h 8 l 1,1 l -1,1 h -8 Z"></path>
+      <path id="b" d="M 11,1 l 1,1 v 8 l -1,1 l -1,-1 v -8 Z"></path>
+      <path id="c" d="M 11,11 l 1,1 v 8 l -1,1 l -1,-1 v -8 Z"></path>
+      <path id="d" d="M 11,21 l-1,1 h -8 l -1,-1 l 1,-1 h8 Z"></path>
+      <path id="e" d="M 1,21 l -1,-1 v -8 l 1,-1 l 1,1 v 8 Z"></path>
+      <path id="f" d="M 1,11 l -1,-1 v -8 l 1,-1 l 1,1 v 8 Z"></path>
+      <path id="g" d="M 1,11 l 1,-1 h 8 l 1,1 l -1,1 h -8 Z"></path>
+      <path id="dp" d="M 0,0 L 2,0 L 2,2 L 0,2 Z"></path>
+    </defs>
+    <g id="h-1" transform="translate(0,0) skewX(-8)">
+      <use xlink:href="#a" class="off"></use>
+      <use xlink:href="#b" class="off"></use>
+      <use xlink:href="#c" class="off"></use>
+      <use xlink:href="#d" class="off"></use>
+      <use xlink:href="#e" class="off"></use>
+      <use xlink:href="#f" class="off"></use>
+      <use xlink:href="#g" class="off"></use>
+    </g>
+    <g id="h-2" transform="translate(16,0) skewX(-8)">
+      <use xlink:href="#a" class="off"></use>
+      <use xlink:href="#b" class="off"></use>
+      <use xlink:href="#c" class="off"></use>
+      <use xlink:href="#d" class="off"></use>
+      <use xlink:href="#e" class="off"></use>
+      <use xlink:href="#f" class="off"></use>
+      <use xlink:href="#g" class="off"></use>
+    </g>
+    <g transform="translate(27.5,10) skewX(-8)" class="on">
+      <use xlink:href="#dp" transform="translate(0,0)"></use>
+      <use xlink:href="#dp" transform="translate(0,8)"></use>
+    </g>
+    <g id="m-1" transform="translate(32,0) skewX(-8)">
+      <use xlink:href="#a" class="off"></use>
+      <use xlink:href="#b" class="off"></use>
+      <use xlink:href="#c" class="off"></use>
+      <use xlink:href="#d" class="off"></use>
+      <use xlink:href="#e" class="off"></use>
+      <use xlink:href="#f" class="off"></use>
+      <use xlink:href="#g" class="off"></use>
+    </g>
+    <g id="m-2" transform="translate(48,0) skewX(-8)">
+      <use xlink:href="#a" class="off"></use>
+      <use xlink:href="#b" class="off"></use>
+      <use xlink:href="#c" class="off"></use>
+      <use xlink:href="#d" class="off"></use>
+      <use xlink:href="#e" class="off"></use>
+      <use xlink:href="#f" class="off"></use>
+      <use xlink:href="#g" class="off"></use>
+    </g>
+    <g transform="translate(59.5,10) skewX(-8)" class="on">
+      <use xlink:href="#dp" transform="translate(0,0)"></use>
+      <use xlink:href="#dp" transform="translate(0,8)"></use>
+    </g>
+    <g id="s-1" transform="translate(64,0) skewX(-8)">
+      <use xlink:href="#a" class="off"></use>
+      <use xlink:href="#b" class="off"></use>
+      <use xlink:href="#c" class="off"></use>
+      <use xlink:href="#d" class="off"></use>
+      <use xlink:href="#e" class="off"></use>
+      <use xlink:href="#f" class="off"></use>
+      <use xlink:href="#g" class="off"></use>
+    </g>
+    <g id="s-2" transform="translate(80,0) skewX(-8)">
+      <use xlink:href="#a" class="off"></use>
+      <use xlink:href="#b" class="off"></use>
+      <use xlink:href="#c" class="off"></use>
+      <use xlink:href="#d" class="off"></use>
+      <use xlink:href="#e" class="off"></use>
+      <use xlink:href="#f" class="off"></use>
+      <use xlink:href="#g" class="off"></use>
+    </g>
+  </svg>
+</div>
+<!--img(src='')-->
+<canvas id="canvas"></canvas>
+</body>
+</html>

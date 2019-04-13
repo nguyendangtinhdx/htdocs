@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function init() {
+
+	//Grab canvas element
+		var myCanvas = document.getElementById('myCanvas').getContext('2d');
+		var canvasWidth = myCanvas.canvas.width; 
+		var canvasHeight = myCanvas.canvas.height;
+		var centerX = canvasWidth / 2;
+		var centerY = canvasHeight / 2;
+		var radius = 175;
+
+		function makeClock() {	
+            
+			//Draw the circle of the clock
+			myCanvas.lineWidth = 10;
+			myCanvas.beginPath();
+			myCanvas.arc(centerX, centerY, radius, 0, Math.PI * 2, false);
+			myCanvas.stroke();
+			myCanvas.closePath();
+			//The angle will separate the circle/clock into 12 different pieces to put the numbers in the right places 
+			//270 starts it at the 12:00 position
+			var angle = 270;
+
+			//Drawing the numbers on the clock
+			for (var i = 12; i >= 1; i--) {
+
+				//Get x and y positions of where to draw the numbers, angle * Math.PI/180 converts to radians
+			
+				var numX = centerX + Math.cos(angle * Math.PI/180) * (radius - 20);
+				var numY = (centerY + 10) + Math.sin(angle * Math.PI/180) * (radius - 20);
+				myCanvas.font = '30px Arial';
+				myCanvas.textAlign = 'center';
+				myCanvas.fillText(i, numX, numY);
+
+				if (angle == 0) {
+					angle = 360;
+				}
+				//360 degrees divided by 12 hours/numbers on a clock = 30 degrees
+				angle -= 30;
+			}
+		}
+
+		function passTime() {
+
+			var date = new Date();
+			var hours = date.getHours();
+			var mins = date.getMinutes();
+			var seconds = date.getSeconds();
+			//handShortener increases during loop, will be subtracted from radius during drawing to make the hands shorter
+			var handShortener = [80, 40, 105];
+			//lineWidth decreases during loop to make hours hand thicker than minutes hand, and minutes hand thicker than seconds hand
+			var lineWidth = 4;
+			//Which unit of time to use
+			var timeUnit;
+			//How many degrees to use
+			var degrees;
+
+			/*Draw hands of hours, minutes, and seconds
+			
+			360 divided by 60 minutes/seconds = 6 degrees change (converted to radians)
+
+			First loop is drawing the hours hand, after iterations, hand length and width decrease
+
+			On third iteration, strokeStyle is changed to red and seconds hand is drawn 
+
+			FUTURE TASK: Make hour hand able to point inbetween hours
+			*/
+			for (var i = 0; i <= 2; i++) {
+
+				//Changes timeUnit to get the correct unit to use (hours, mins, or secs) and strokeStyle to appropriate color
+				switch (i) {
+					case 0: 
+						timeUnit = hours;
+						myCanvas.strokeStyle = 'black';
+						/*
+						Because of way I wrote formulas below (handX, handY) below, multiplying time unit by degrees for each piece in there, to make hour hand move between hour markings I had to multiply entire formula by the number of hours to compensate for timeUnit * degrees in handX, handY
+	
+						*/
+						degrees = (((hours + mins / 60) * 30) / hours);
+						break;
+					case 1: 
+						timeUnit = mins;
+						myCanvas.strokeStyle = 'black';
+						degrees = 6;
+						break;
+					case 2: 
+						timeUnit = seconds;
+						myCanvas.strokeStyle = 'red';
+						degrees = 6;
+						break;
+				}
+
+				myCanvas.lineWidth = lineWidth;
+				myCanvas.beginPath();
+				//Move to center of canvas
+				myCanvas.moveTo(centerX, centerY);
+				//Calculate where to draw the hands to
+				var handX = centerX + Math.cos((timeUnit * degrees - 90) * Math.PI/180) * (radius - handShortener[i]);
+				var handY = centerY + Math.sin((timeUnit * degrees - 90) * Math.PI/180) * (radius - handShortener[i]);
+
+				myCanvas.lineTo(handX, handY);
+				myCanvas.stroke();
+				myCanvas.closePath();
+
+				//Increment/decrement variables
+				lineWidth--;
+			}
+
+		}
+
+		function animate() {
+            
+			myCanvas.save();
+			myCanvas.clearRect(0, 0, canvasWidth, canvasHeight);
+			makeClock();
+			passTime();
+			myCanvas.restore();
+		}
+
+	var clockInterval = setInterval(animate, 1000);
+
+	}
+
+	//Start code when document loads
+	window.addEventListener('load', function(event) {
+		init();
+	});
+	</script>
+	<style>
+	/*
+  NOTE: As of right now (11/18/14), the hours hand has been changed to move between hour markings. However, smoother hand transitions and more appealing aesthetics may follow in the near future. 
+*/
+
+body {
+		background: gray;
+		margin: 0;
+		padding: 0;
+	}
+
+	#canvasWrapper {
+		width: 600px;
+		margin: 0 auto;
+	}
+
+	#myCanvas {
+		background: #FFF;
+}
+	</style>
+</head>
+<body>
+	<body>
+<div id="canvasWrapper">
+<canvas id="myCanvas" height="400" width="600"></canvas>
+</div>
+</body>
+</body>
+</html>

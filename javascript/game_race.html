@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var time = new Array();
+		function startRace() 
+		{
+			window.document.form.winner.value="And they are off";
+			moveNumber('numberOne');
+			moveNumber('numberTrue');
+			moveNumber('numberThree');
+		}
+		function stopRace()
+		{
+			clearTimeout(time['numberOne']);
+			clearTimeout(time['numberTrue']);
+			clearTimeout(time['numberThree']);
+		}
+		function moveNumber(number)
+		{
+			var the_div, div_string, time_out_string;
+			var loop_speed = 100;	// how fast the number move
+			var distance = 10;	// how far the number move
+			var finish_line = 400;	// where the race ends
+			if(document.all)
+			{
+				the_div_name = "document.all.divOne.style";
+				the_div = eval(the_div_name);
+			}
+			else if(document.layers)
+			{
+				div_string = "window.document.all." + number + ".style";
+				the_div = eval(div_string);
+			}
+			else if(document.layers)
+			{
+				div_string = "window.document." + number;
+				the_div = eval(div_string);
+			}
+			else
+			{
+				alert("Sorry, this only works in 4.0 browers");
+				return ;
+			}
+			the_div.left = parselnt(the_div.left) + Math.floor(Math.random() * distance);
+			if(parselnt(the_div.left)>finish_line)
+			{
+				if(window.document.form.winner.value.indexOf("WINNER")==-1)
+				{
+					window.document.form.winner.value = "THE WINNER IS: " + number + "!!!";
+					window.document.form.winner.value += "(reload the page for a new race).";
+					stopRace();
+				}
+			}
+			else
+			{
+				time_out_string="moveNumber("+ number +");";
+				time[number] = setTimeout(time_out_string,loop_speed);
+			}
+		}
+	</script>
+	<h1>Number Race</h1>
+	<form name="form">
+		<input type="text" name="winner" size="60">
+	</form>
+	<div id="numberOne" style="position: absolute; top: 150; left: 100">
+	1<img src="../baitap/square.gif">
+	</div>
+	<div id="numberTrue" style="position: absolute; top: 200; left: 100">
+	2<img src="../baitap/square.gif">
+	</div>
+	<div id="numberThree" style="position: absolute; top: 250; left: 100">
+	3<img src="../baitap/square.gif">
+	</div>
+	<br>
+	<a href="#" onclick="startRace();return false" style="text-decoration:  none"><mark style="background: greenyellow ">Start Race</mark></a><br>
+	<a href="#" onclick="stopRace();return false" style="text-decoration: none"><mark>Stop Race</mark></a>
+</body>
+</html>

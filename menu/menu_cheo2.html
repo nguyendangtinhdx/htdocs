@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+@charset "utf-8";
+/* CSS3 Parallelogram Menu
+Audee Mirza
+http://audeemirza.com
+
+*/
+
+
+h2 {
+  font-size:2.2em;
+  font-family: 'Titillium Web', sans-serif;
+  color:#888888;
+  margin:50px 0 0 100px;}
+
+#single-menu {
+	margin:0 100px 0 0 ;
+	padding:0 0 50px 0;	
+	}
+.main-menu-wrapper ul {
+	margin:0;
+	padding:0;
+	float:right;
+	}
+
+.main-menu-wrapper li{
+	display:block;
+	width:120px;
+	height:auto;
+	margin: 0;
+	padding:20px;
+	list-style:none;
+	position:relative;
+	}
+
+.main-menu-wrapper {
+
+	float:right;
+	position:relative;
+	}
+
+.trapesium-chunked a {
+	font-family: 'Titillium Web', sans-serif;
+  color:#ffffff;
+	margin:0 0 0 15px;
+	top:42px;
+	position:absolute;
+	text-decoration:none;
+	}
+
+.trapesium-chunked a:hover {
+  color: #cccccc;
+}
+
+.trapesium-chunked {
+    width:150px;
+	 float:left;
+	 padding:0;
+	 margin: 15px 0 0 -145px;
+	transition: background .2s linear;
+	-moz-transition: background .2s linear;
+	-o-transition: background .2s linear;
+	-webkit-transition: background .2s linear;
+height: 0; 
+     border-bottom: 40px solid #b93024;;
+   border-left: 10px solid transparent;
+   border-right: 0px solid transparent;
+   list-style:none
+	}
+	
+.right-triangle {
+   width: 0;
+   height: 0;
+   border-left: 15px solid red;
+   border-top: 15px solid transparent;
+   border-bottom: 0px solid transparent;
+}
+
+.main-menu-wrapper ul li ul
+{
+	border-radius: none;
+	display: block;
+	right: 100%;
+	opacity: 0;
+	position: absolute;
+	top:25px;
+	left:-320px;
+	transition: opacity .2s ease;
+	visibility: hidden;
+	width: 180px;
+	z-index: 1;
+	-moz-transition: opacity .2s ease;
+	-o-transition: opacity .2s ease;
+	-webkit-transition: opacity .2s ease;
+ 
+ 	width:150px;
+    height:auto;
+    background:#B93024;
+    transform: skew(-15deg);
+    -o-transform: skew(-15deg);
+    -moz-transform: skew(-15deg);
+    -webkit-transform: skew(-15deg);
+	
+}
+
+
+.main-menu-wrapper ul li ul li a {
+	text-decoration:none;
+    margin:2px 0 0 0 !important;
+	padding:2px 0 0 0 !important;'
+	height:30px !important;
+	width:150px;
+	}
+
+.main-menu-wrapper ul li ul li a:hover {
+  color: #cccccc;
+}
+
+.main-menu-wrapper ul li ul li {
+display:block;
+text-align:left;
+border-bottom:1px dotted #ffffff;
+width:120px;
+margin:2px 0 2px 0;
+padding:0 15px 5px 15px;
+}
+
+
+.main-menu-wrapper li a span
+ {  
+  font-family: 'Titillium Web', sans-serif;
+  color:#ffffff;
+	transform: skew(15deg);
+    -o-transform: skew(15deg);
+    -moz-transform: skew(15deg);
+    -webkit-transform: skew(15deg);
+	 }
+
+.main-menu-wrapper li a:hover span {
+  color: #cccccc;
+}
+
+.main-menu-wrapper ul li:hover>ul
+{
+	opacity: 1;
+	visibility: visible;
+	z-index: 1;
+	margin:10px !important;
+	padding:10px !important;
+}
+
+
+	</style>
+</head>
+<body>
+	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600' rel='stylesheet' type='text/css'>
+
+ <h2> CSS3 Parallelogram Menu</h2>
+
+<div id="single-menu" class="right">
+	<div class="main-menu-wrapper">
+    <ul>
+    	<li>
+    		<div class="trapesium-chunked">
+          <a href="#">Level 1</a>
+        	</div>
+			<div class="right-triangle">
+	    	</div>
+    	</li>
+      <li>
+    		<div class="trapesium-chunked">
+            <a href="#">Level 1 ++</a>
+        	</div>
+			<div class="right-triangle">
+    		</div>
+          		<ul>
+          
+                  <li><a href="#"><span>Level 2 has very long title</span> </a></li>
+                  <li><a href="#"><span>Level 2</span></a></li>
+                  <li><a href="#"><span>Level 2</span></a></li>
+            	</ul>
+    	</li>
+        <li>
+    		<div class="trapesium-chunked">
+            <a href="#">Level 1</a>
+        	</div>
+			<div class="right-triangle">
+	    	</div>
+    	</li>
+        <li>
+    		<div class="trapesium-chunked">
+            <a href="#">Level 1 </a>
+        	</div>
+			<div class="right-triangle">
+	    	</div>
+           	 	
+    	</li>
+        
+  	</ul>
+  	</div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>Nguyễn Đăng Tỉnh</p>
+	<p>Trường Đại học Khoa học</p>
+	<p class="3">Công nghệ thông tin</p>
+	<p class="3">Công nghệ sinh học</p>
+	<p id="1"></p>
+	<p id="4"></p>
+	<script>
+		var x = document.getElementsByTagName("p");// trả về thẻ
+		document.getElementById('1').innerHTML = x[1].innerHTML;
+
+		var t = document.getElementsByClassName("3"); // trả về lớp || t.document.querySelectorAll(p.3);
+		document.getElementById('4').innerHTML = t[1].innerHTML;
+
+	/*	document.anchors.length  đếm các thẻ
+		alert(document.body.innerHTML) 	 hiển thị body 
+		alert(document.documentElement.innerHTML) hiển thị body 
+		document.embeds.length 
+		document.forms.length	đếm các thẻ form
+		document.images.length	đếm các thẻ img
+		document.links.length	đếm các thẻ link <a>
+		document.scripts.length	đếm các thẻ script
+		document.title	       hiển thị nội dung trong thẻ <title>*/
+	</script>
+<!-- <div id="name">
+	<p>Nguyễn Đăng Tỉnh</p>
+	<p>Trường Đại học Khoa học</p>
+	</div>
+	<p id="2"></p>
+<script>
+	var x = document.getElementById('name');
+	var y = x.getElementsByTagName("p");
+	document.getElementById('2').innerHTML = y[1].innerHTML;
+</script> -->
+
+<form id="f" action="form_action.asp">
+	<input type="text" name="Họ" value="Nguyễn Đăng">
+	<input type="text" name="Tên" value="Tỉnh">
+	<input type="submit">
+</form>
+<button onclick="my()">Click Me</button>
+<p id="5"></p>
+<script>
+	function my() 
+	{
+		var x=document.forms["f"];
+		var y="",i;
+		for ( i = 0 ; i <x.length; i++)
+		{
+			y += x.elements[i].value + "<br>";
+		}
+		document.getElementById("5").innerHTML = y;
+	}
+</script>
+</html>

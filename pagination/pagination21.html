@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.pagination{
+  display:inline-block;
+  margin-top:100px;
+  text-align:center;
+  width:100%;
+}
+
+ul{
+  display:inline-block;
+  padding:0;
+  width:100%;
+}
+
+ul li{
+  display:inline-block;
+  position:relative;
+  width:35px;
+}
+
+ul li a{
+  background-color:#ef3e36;
+  border-top:solid 2px #a2100a;
+  border-right:solid 2px #a2100a;
+  border-radius:8px;
+  -moz-border-radius:8px;
+  -webkit-border-radius:8px;
+  color:#fff;
+  display:block;
+  height:35px;
+  line-height:35px;
+  position:absolute; bottom:0;
+  text-decoration:none;
+  width:35px;
+   
+  /*transition*/
+  transition: height 0.2s ease-in-out;
+   -moz-transition: height 0.2s ease-in-out;
+   -webkit-transition: height 0.2s ease-in-out;
+}
+
+ul li a:hover{
+  background-color:#ca2820;
+  height:40px;
+}
+
+ul li a span{
+  position:relative;
+}
+
+ul li:first-child a,
+ul li:last-child a{
+ line-height:30px; 
+}
+
+ul li:first-child a:hover,
+ul li:last-child a:hover{
+  height:35px;
+}
+
+ul li:first-child a:hover span{
+  -webkit-animation:arrow-left 0.5s ease-out infinite;
+  -moz-animation:arrow-left 0.5s ease-out infinite;
+  animation:arrow-left 0.5s ease-out infinite;
+}
+
+ul li:last-child a:hover span{
+  -webkit-animation:arrow-right 0.5s linear infinite;
+  -moz-animation:arrow-right 0.5s linear infinite;
+  animation:arrow-right 0.5s linear infinite;
+}
+
+/*Arrow Left*/
+@-webkit-keyframes arrow-left {
+  0% { left:0; }
+  50% { left:-5px;}
+  100% { left:0; }
+}
+@-moz-keyframes arrow-left {
+  0% { left:0; }
+  50% { left:-5px;}
+  100% { left:0; }
+}
+@keyframes arrow-left {
+  0% { left:0; }
+  50% { left:-5px;}
+  100% { left:0; }
+}
+
+/*Arrow Right*/
+@-webkit-keyframes arrow-right {
+  0% { left:0; }
+  50% { left:5px;}
+  100% { left:0; }
+}
+@-moz-keyframes arrow-right {
+  0% { left:0; }
+  50% { left:5px;}
+  100% { left:0; }
+}
+@keyframes arrow-right {
+  0% { left:0; }
+  50% { left:5px;}
+  100% { left:0; }
+}
+	</style>
+</head>
+<body>
+	<div class="pagination">
+  <ul>
+    <li><a href="#"> <span> &laquo; </span> </a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#"> <span> &raquo; </span> </a></li>
+  </ul>  
+</div>
+</body>
+</html>

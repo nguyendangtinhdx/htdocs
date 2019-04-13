@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  background: #f25916;
+}
+
+.container {
+  width: 960px;
+  margin: 50px auto;
+}
+
+nav {
+  list-style: none;
+  position: relative;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  position: relative;
+  padding: 18px 24px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #374140;
+  border-right: 1px solid #2A2C2B;
+  border-bottom: 10px solid #2A2C2B;
+  transition: all 0.2s ease;  
+}
+
+nav li:first-child a {
+  border-radius: 4px 0 0 0;
+}
+
+nav li:last-child a {
+  border-radius: 0 4px 0 0;
+  border-right: 0;
+}
+
+nav li a:hover {
+   color: rgba(255, 255, 255, 0.9);
+   border-bottom: 15px solid #2A2C2B;
+   top: -5px;
+}
+
+nav li a:active {
+   color: rgba(255, 255, 255, 0.2);
+   border-bottom: 0px solid #2A2C2B;
+   top: 10px;  
+}
+	</style>
+</head>
+<body>
+	<div class="container">
+  <nav>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Work</a></li>
+    <li><a href="#">Shop</a></li>
+    <li><a href="#">Contact</a></li>
+  </nav>
+</div>
+</body>
+</html>

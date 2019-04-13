@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+
+  /*As with the html and css, the script that has to do with the button was found at http://www.htmldrive.net/items/show/1167/-jQuery-and-CSS3-Next-Level-animation-Search-Form I only slightly modified it to get the functionality I was looking for.*/
+  /* Cube Style */
+  $('.search-button1').click(function() {
+
+    $('.content-wrapper1').addClass('switch-show');
+    $('.search-box1').addClass('show-search-box');
+    
+    /*It seemed like after you click the button the cursor should already be waiting in the search box for you, so I added the following line.*/
+    $("#searchBox").focus();
+
+    setTimeout(function() {
+
+      $('.content-wrapper1').removeClass('switch-show');
+      $('.search-button1').removeClass('show-search-button').addClass('hide-search-button');
+      $('.search-box1').addClass('showed-search-box');
+
+    }, 480);
+  });
+
+  $('.search-box1 img').click(function() {
+
+    $('.search-button1').removeClass('hide-search-button');
+    $('.search-box1').addClass('hidden-search-box');
+    $('.content-wrapper1').addClass('switch-hide');
+    
+    /*I also added the following two lines to clear everything when you close the search box. Makes sense, right?*/
+    document.getElementById("searchBox").value = "";
+    $("#contentBox").empty();
+
+    setTimeout(function() {
+
+      $('.content-wrapper1').removeClass('switch-hide');
+      $('.search-button1').removeClass('show-search-button');
+      $('.search-box1').removeClass('show-search-box showed-search-box hidden-search-box');
+
+    }, 480);
+
+  });
+
+  if (!Modernizr.input.placeholder) {
+    $("input").each(function() {
+
+      thisPlaceholder = $(this).attr("placeholder");
+
+      if (thisPlaceholder != "") {
+
+        $(this).val(thisPlaceholder);
+
+        $(this).focus(function() {
+          if ($(this).val() == thisPlaceholder) $(this).val("");
+        });
+        $(this).blur(function() {
+          if ($(this).val() == "") $(this).val(thisPlaceholder);
+        });
+      }
+    });
+  }
+
+  /*Start of the home-made stuff*/
+
+  /*I decided to query google every time a character was written in the box. It accomplishes the role of an automatic suggestion drop down, and wikipedia doesn't seem to mind. Let me know if I'm wrong about that in the comments, though.*/
+  $("#searchBox").keyup(function() {
+    
+    /*This is so we're not sending wikipedia empty queries!*/
+    if ($("#searchBox").val() === "") {
+      $("#contentBox").empty();
+    } else {
+      
+      /*this url needs the &callback=? at the end so that codepen can use the api*/
+      var url = "http://en.wikipedia.org/w/api.php?action=opensearch&redirects=resolve&search=" + $(this).val() + "&callback=?";
+      
+      /*the header is so that wikipedia can identify this page if they have a problem*/
+      $.ajax({
+        dataType: 'jsonp',
+        headers: {
+          'Api-User-Agent': 'CodepenWikipediaSearch/0.1'
+        },
+        url: url,
+        success: function(res) {
+          
+          /*Got to get rid of what came before, so you can see the new results!*/
+          $("#contentBox").empty();
+
+          /*The type of array that wikipedia returns always keeps the names at array index one, the descriptions at array index two, and the links to that page at array index three. For the sake of readability I gave those numbers names.*/
+          var name = 1;
+          var desc = 2;
+          var link = 3;
+
+          /*If wikipedia finds nothing from your query, it returns a bunch of empty arrays. This checks for that, and desplays a special message for you, with the class 'badResultBox', which you can click to clear the textbox and start over.*/
+          if (res[name].length === 0) {
+            $("#contentBox").append("<div class='badResultBox'> <h3>No results from wikipedia.</h3> <p>What did you write? As far as wikipedia is concerned, whatever <strong>\"" + $("#searchBox").val() + "\" </strong>is, it doesn't exist! Click here to start over!</p></div>");
+          } else {
+           
+            /*if there are results, iterate through them and make a clickable div with the name and description in it.*/
+            for (var i = 0; i < res[name].length; i++) {
+              
+              var description;
+              
+              /*Another special case are the disambiguation pages. The description of 'may refer to' wasn't very helpful, so I check here if the description ends with that, and replace it with a more helpful description, otherwise, leave the description the same*/
+              if (res[desc][i].slice(-13) === "may refer to:") {
+                description = "Click to be taken to the disambiguation page on Wikipedia.";
+              } else {
+                description = res[desc][i];
+              }
+
+              $("#contentBox").append("<div class='resultBox'> <a href='" + res[link][i] + "' target='_blank' id='res" + i + "' class='resultLink'><h3>" + res[name][i] + "</h3></a> <p>" + description + "</p></div>");
+            }
+          }
+          
+          /*if you click a result's div, it finds the link inside the box and clicks it for you. A weird shortcut, but it worked for me before on here.*/
+          $(".resultBox").click(function() {
+            var link = $(this).find("a").attr("id");
+            document.getElementById(link).click();
+          });
+          
+          /*when you click the badresultbox it should erase the search box, erase itself, and then return focus to the search box*/
+          $(".badResultBox").click(function() {
+            document.getElementById("searchBox").value = "";
+            $("#contentBox").empty();
+            $("#searchBox").focus();
+          });
+
+        }
+      });
+    }
+  });
+});
+	</script>
+	<style>
+	@import url(http://fonts.googleapis.com/css?family=Coming+Soon);
+
+/*all the css to make that beautiful button comes from http://www.htmldrive.net/items/show/1167/-jQuery-and-CSS3-Next-Level-animation-Search-Form , and I can't comment much on it except that it's really cool! Let's meet up near the bottom where the css I wrote resides.*/
+body {
+  margin-top: 2em;
+  background: #E9E9E9;
+  text-align: center;
+}
+
+h1 {
+  font-family: "Coming Soon", cursive;
+  margin-bottom: 1em;
+  font-size: 20px;
+  
+}
+
+.wrapper1,
+.wrapper2 {
+  display: inline-block;
+  width: 60vw;
+  min-width: 288px;
+  margin: 0 auto;
+  -webkit-perspective: 1200px;
+  -moz-perspective: 1200px;
+  -ms-perspective: 1200px;
+  perspective: 1200px;
+}
+
+
+.search-button1,
+.search-button2,
+.newSearch-button {
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  border: 1px solid #aa7818;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffb700), to(#ff8c00));
+  background-image: -webkit-linear-gradient(top, #ffb700, #ff8c00);
+  background-image: -moz-linear-gradient(top, #ffb700, #ff8c00);
+  background-image: -ms-linear-gradient(top, #ffb700, #ff8c00);
+  background-image: -o-linear-gradient(top, #ffb700, #ff8c00);
+  background-image: linear-gradient(to bottom, #ffb700, #ff8c00);
+  box-shadow: inset rgba(255, 254, 255, 0.2) 0 0.3em .3em, #8e620e 0 0.5em 0, rgba(0, 0, 0, 0.2) 0 0.9em 3px;
+  padding: 10px 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-transform: translateZ(45px);
+  -moz-transform: translateZ(45px);
+  -ms-transform: translateZ(45px);
+  transform: translateZ(45px);
+}
+
+.search-button1 {
+  width: 60vw;
+  min-width: 288px;
+}
+
+.search-button1 span,
+.search-button2 span,
+.newSearch-button span {
+  display: block;
+  margin: 0 auto;
+  background: #643904;
+  border-radius: 30px;
+  width: 30px;
+  height: 30px;
+  box-shadow: rgba(255, 255, 255, .3) 0 1px 0px;
+}
+
+.search-button1 span img,
+.search-button2 span img {
+  vertical-align: middle;
+  padding-top: 7px;
+}
+
+.search-button1:hover,
+.search-button2:hover,
+.wrapper-simple input[type=submit]:hover,
+.newSearch-button:hover {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcb48), to(#ff9c23));
+  background-image: -webkit-linear-gradient(top, #ffcb48, #ff9c23);
+  background-image: -moz-linear-gradient(top, #ffcb48, #ff9c23);
+  background-image: -ms-linear-gradient(top, #ffcb48, #ff9c23);
+  background-image: -o-linear-gradient(top, #ffcb48, #ff9c23);
+  background-image: linear-gradient(to bottom, #ffcb48, #ff9c23);
+}
+
+.search-button1:active,
+.search-button2:active,
+.newSearch-button:active {
+  margin-top: 0.2em;
+  box-shadow: inset rgba(255, 254, 255, 0.2) 0 0.3em .3em, #8e620e 0 0.3em 0, rgba(0, 0, 0, 0.2) 0 0.5em 3px;
+}
+
+.search-box1,
+.search-box2 {
+  margin-top: -.6em;
+  display: none;
+  position: absolute;
+  width: 60vw;
+  min-width: 288px;
+  height: 50px;
+  padding: 10px 6px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f5fafe), to(#e2edf4));
+  background-image: -webkit-linear-gradient(top, #f5fafe, #e2edf4);
+  background-image: -moz-linear-gradient(top, #f5fafe, #e2edf4);
+  background-image: -ms-linear-gradient(top, #f5fafe, #e2edf4);
+  background-image: -o-linear-gradient(top, #f5fafe, #e2edf4);
+  background-image: linear-gradient(to bottom, #f5fafe, #e2edf4);
+  border: 1px solid #9bb6c9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  box-shadow: inset rgba(255, 254, 255, 0.2) 0 0.3em .3em, #899faf 0 .5em 0px, rgba(0, 0, 0, 0.2) 0 .9em 3px;
+  -webkit-transform: rotate3d(1, 0, 0, 90deg) translateZ(20px);
+  -moz-transform: rotate3d(1, 0, 0, 90deg) translateZ(20px);
+  -ms-transform: rotate3d(1, 0, 0, 90deg) translateZ(20px);
+  transform: rotate3d(1, 0, 0, 90deg) translateZ(20px);
+}
+
+.search-box1 input,
+.search-box2 input,
+.wrapper-simple input[type=text] {
+  font-family: Arial;
+  font-weight: bold;
+  color: #1a3d51;
+  background: #d8e6ef;
+  border-radius: 2px;
+  padding: 10px 10px 15px 10px;
+  width: 55vw;
+  min-width: 260px;
+  border: 0;
+  font-size: 16px;
+  text-shadow: rgba(255, 255, 255, 0.7) 1px 1px 1px;
+  box-shadow: inset rgba(0, 0, 0, .4) 0 1px 1px;
+}
+
+.search-box1 input:focus,
+.search-box2 input:focus,
+.wrapper-simple input[type=text]:focus {
+  outline: none;
+}
+
+input::-webkit-input-placeholder {
+  font-family: Arial;
+  font-weight: bold;
+  color: #1a3d51;
+  text-shadow: rgba(255, 255, 255, 0.7) 1px 1px 1px;
+}
+
+input:-moz-placeholder {
+  font-family: Arial;
+  font-weight: bold;
+  color: #1a3d51;
+  text-shadow: rgba(255, 255, 255, 0.7) 1px 1px 1px;
+}
+
+
+
+.search-box1 img,
+.search-box2 img {
+  opacity: .5;
+  position: absolute;
+  margin: .6em 0 0 -2em;
+  cursor: pointer;
+  -webkit-transition: 0.5s linear;
+  -moz-transition: 0.5s linear;
+  -ms-transition: 0.5s linear;
+  -o-transition: 0.5s linear;
+  transition: 0.5s linear;
+}
+
+.search-box1 img:hover,
+.search-box2 img:hover {
+  opacity: 1;
+}
+
+.hide-search-button {
+  display: none;
+}
+
+.show-search-button {
+  display: block;
+}
+
+.show-search-box {
+  display: block;
+}
+
+.showed-search-box {
+  display: block;
+  -webkit-transform: rotate3d(1, 0, 0, 0deg);
+  -moz-transform: rotate3d(1, 0, 0, 0deg);
+  -ms-transform: rotate3d(1, 0, 0, 0deg);
+  transform: rotate3d(1, 0, 0, 0deg);
+}
+
+.hidden-search-box {
+  -webkit-transform: rotate3d(1, 0, 0, 90deg) translateZ(25px);
+  -moz-transform: rotate3d(1, 0, 0, 90deg) translateZ(25px);
+  -ms-transform: rotate3d(1, 0, 0, 90deg) translateZ(25px);
+  transform: rotate3d(1, 0, 0, 90deg) translateZ(25px);
+}
+
+.switch-show {
+  height: 50px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-animation: showBox 0.5s ease-in-out;
+  -moz-animation: showBox 0.5s ease-in-out;
+  -ms-animation: showBox 0.5s ease-in-out;
+}
+
+.switch-hide {
+  height: 50px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-animation: hideBox 0.5s ease-in-out;
+  -moz-animation: hideBox 0.5s ease-in-out;
+  -ms-animation: hideBox 0.5s ease-in-out;
+}
+
+.switch-show {
+  height: 50px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-animation: showBox 0.5s ease-in-out;
+  -moz-animation: showBox 0.5s ease-in-out;
+  -ms-animation: showBox 0.5s ease-in-out;
+}
+
+.switch-hide {
+  height: 50px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-animation: hideBox 0.5s ease-in-out;
+  -moz-animation: hideBox 0.5s ease-in-out;
+  -ms-animation: hideBox 0.5s ease-in-out;
+}
+
+@-webkit-keyframes showBox {
+  0% {
+    -webkit-transform: rotate3d(1, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: rotate3d(1, 0, 0, -90deg);
+  }
+}
+
+@-moz-keyframes showBox {
+  0% {
+    -moz-transform: rotate3d(1, 0, 0, 0);
+  }
+  100% {
+    -moz-transform: rotate3d(1, 0, 0, -90deg);
+  }
+}
+
+@-ms-keyframes showBox {
+  0% {
+    -ms-transform: rotate3d(1, 0, 0, 0);
+  }
+  100% {
+    -ms-transform: rotate3d(1, 0, 0, -90deg);
+  }
+}
+
+@-webkit-keyframes hideBox {
+  0% {
+    -webkit-transform: rotate3d(1, 0, 0, -90deg);
+  }
+  100% {
+    -webkit-transform: rotate3d(1, 0, 0, 0);
+  }
+}
+
+@-moz-keyframes hideBox {
+  0% {
+    -moz-transform: rotate3d(1, 0, 0, -90deg);
+  }
+  100% {
+    -moz-transform: rotate3d(1, 0, 0, 0);
+  }
+}
+
+@-ms-keyframes hideBox {
+  0% {
+    -ms-transform: rotate3d(1, 0, 0, -90deg);
+  }
+  100% {
+    -ms-transform: rotate3d(1, 0, 0, 0);
+  }
+}
+
+
+
+/*Pretty good stuff up there, huh? Below is the stuff I wrote myself.*/
+
+/*The header of the result boxes is a link, but I didn't want it to look that way.*/
+.resultLink:link, .resultLink:visited{
+  text-decoration:none;
+  color:black;
+}
+
+/*I kept with coming soon font for the headers of the result boxes and added an orange line to separate the title from the description.*/
+h3{
+  font-family: "Coming Soon", cursive;
+  border-bottom: 1px solid orange;
+}
+
+/*the div all the results go in, centered and a little bit wider than the button*/
+#contentBox{
+  width:70vw;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 0;
+}
+
+/*resultbox is where the results go, and badresultbox is when you write something wikipedia can't find. cursor is pointer to show you can click it. Materials-like shadow.*/
+.resultBox, .badResultBox{
+  background-color:white;
+  padding: 0px 10px 2px 10px;
+  margin:0px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/*to make the descriptions a bit thinner than the title*/
+p{
+  padding: 0px 5px 0px 5px;
+}
+
+/*Puts an orange line on the left when you hover a box, padding-left is necessary or the contents of the box move when the border comes up*/
+.resultBox:hover, .badResultBox:hover{
+  border-left: 5px solid orange;
+  padding-left:5px;
+}
+	</style>
+</head>
+<body>
+	<h1>What would you like to know more about? (It'll be dynamically added below the button)</h1>
+
+<!--Here's that fancy button! Copied from http://www.htmldrive.net/items/show/1167/-jQuery-and-CSS3-Next-Level-animation-Search-Form and then modified a bit by me!-->
+<div class="wrapper1">
+  <div class="content-wrapper1">
+    <div class="search-button1">
+      <span><img src="http://i448.photobucket.com/albums/qq202/kevlarrelic/search-icon_zps99wiyin0.png" /></span>
+    </div>
+    <div class="search-box1">
+      <input id="searchBox" type="text" placeholder="Search Wikipedia..." />
+      <img src="http://i448.photobucket.com/albums/qq202/kevlarrelic/close_zpsrsghgo1f.png" />
+    </div>
+  </div>
+</div>
+
+<!--This snippet of code was to be a random article button, but I prefer the clean look of the page now, and decided not to clutter it up with an extra button.-->
+<!-- <div class="newSearch-button">
+        <span style="color:white; 			padding-top: 2px; padding-bottom: 0px; font-size:1.5em;"><strong>?</strong></span>
+      </div>-->
+
+<div id="contentBox">
+  <!--the search results go here, added through jquery-->
+</div>
+</body>
+</html>

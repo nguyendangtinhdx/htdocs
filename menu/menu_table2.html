@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>	
+		.menu {font-family: arial, sans-serif; width:100%; height:30px; position:relative; font-size:11px; margin:20px 0 200px 0; background:#fff; position:relative; z-index:100;}
+		.menu ul {padding:0; margin:0; list-style-type: none;}
+
+		.menu ul li {float:left; border-left:1px solid #eee; width:106px;}
+
+		.menu ul li a, .menu ul li a:visited {display:block; width:101px; text-decoration:none; padding:0 0 0 5px; height:30px; line-height:30px; color:#000; background:#c9c9a7 url(../../graphics/drop.gif) bottom right no-repeat;}
+
+		.menu table {border-collapse:collapse; margin:0; padding:0; font-size:1em;}
+
+		.menu ul li ul {visibility:hidden; position:absolute; top:30px; left:0; }
+
+
+		.menu ul li:hover a,
+		.menu ul li a:hover {color:#fff; background:#b3ab79;}
+
+		.menu ul li:hover ul,
+		.menu ul li a:hover ul {visibility:visible; width:749px;background:#b3ab79; color:#fff;}
+
+		.menu ul li:hover ul.right_side li,
+		.menu ul li a:hover ul.right_side li {float:right; border:0; border-left:1px solid #eee;}
+
+		.menu ul li:hover ul.left_side li,
+		.menu ul li a:hover ul.left_side li {float:left; border:0; border-left:1px solid #eee;}
+
+		.menu ul li:hover ul li a.sub,
+		.menu ul li a:hover ul li a.sub {background:#bd8d5e url(../../graphics/drop2.gif) bottom right no-repeat; color:#fff;}
+
+		.menu ul li:hover ul li ul,
+		.menu ul li a:hover ul li a ul {visibility:hidden; position:absolute; left:0; top:30px; }
+
+		.menu ul li:hover ul li a,
+		.menu ul li a:hover ul li a {display:block; background:#b3ab79; color:#fff;}
+
+		.menu ul li:hover ul li a:hover,
+		.menu ul li a:hover ul li a:hover {background:#dfc184; color:#000;}
+
+		.menu ul li:hover ul li:hover ul,
+		.menu ul li a:hover ul li a:hover ul {visibility:visible; color:#000; background:#dfc184;}
+
+		.menu ul li:hover ul.right li {float:right;}
+
+		.menu ul li:hover ul li:hover ul li a,
+		.menu ul li a:hover ul li a:hover ul li a {background:#dfc184; color:#000;}
+
+		.menu ul li:hover ul li:hover ul li a:hover,
+		.menu ul li a:hover ul li a:hover ul li a:hover {background:#bd8d5e; color:#fff;}
+
+	</style>
+</head>
+<body>
+	<div class="menu">
+
+		<ul>
+			<li><a href="../menu/index.html">DEMOS<!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul>
+					<li><a href="../menu/zero_dollars.html" title="The zero dollar ads page">zero dollars</a></li>
+					<li><a href="../menu/embed.html" title="Wrapping text around images">wrapping text</a></li>
+					<li><a href="../menu/form.html" title="Styling forms">styled form</a></li>
+					<li><a href="../menu/nodots.html" title="Removing active/focus borders">active focus</a></li>
+					<li><a class="sub" href="../menu/hover_click.html" title="Hover/click with no active/focus borders">HOVER/CLICK<!--[if gte IE 7]><!--></a><!--<![endif]-->
+						<!--[if lte IE 6]><table><tr><td><![endif]-->
+						<ul class="right_side">
+							<li><a href="../menu/form.html" title="Styling forms">styled form</a></li>
+							<li><a href="../menu/nodots.html" title="Removing active/focus borders">active focus</a></li>
+							<li><a href="../menu/hover_click.html" title="Hover/click with no active/focus borders">hover/click</a></li>
+						</ul>
+						<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+					</li>
+					<li><a href="../menu/shadow_boxing.html" title="Multi-position drop shadow">shadow boxing</a></li>
+					<li><a href="../menu/old_master.html" title="Image Map for detailed information">image map</a></li>
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+			<li><a href="index.html">MENUS<!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul>
+					<li><a href="spies.html" title="a coded list of spies">spies menu</a></li>
+					<li><a href="vertical.html" title="a horizontal vertical menu">vertical menu</a></li>
+					<li><a href="expand.html" title="an enlarging unordered list">enlarging list</a></li>
+					<li><a href="enlarge.html" title="an unordered list with link images">link images</a></li>
+					<li><a href="cross.html" title="non-rectangular links">non-rectangular</a></li>
+					<li><a href="jigsaw.html" title="jigsaw links">jigsaw links</a></li>
+					<li><a href="circles.html" title="circular links">circular links</a></li>
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+			<li><a href="../layouts/index.html">LAYOUTS<!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul>
+					<li><a href="../layouts/bodyfix.html" title="Cross browser fixed layout">Fixed 1</a></li>
+					<li><a href="../layouts/body2.html" title="Cross browser fixed layout">Fixed 2</a></li>
+					<li><a href="../layouts/body4.html" title="Cross browser fixed layout">Fixed 3</a></li>
+					<li><a href="../layouts/body5.html" title="Cross browser fixed layout">Fixed 4</a></li>
+					<li><a href="../layouts/minimum.html" title="A simple minimum width layout">minimum width</a></li>
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+			<li><a href="../boxes/index.html">BOXES<!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul>
+					<li><a href="spies.html" title="a coded list of spies">spies menu</a></li>
+					<li><a href="vertical.html" title="a horizontal vertical menu">vertical menu</a></li>
+					<li><a href="expand.html" title="an enlarging unordered list">enlarging list</a></li>
+					<li><a href="enlarge.html" title="an unordered list with link images">link images</a></li>
+					<li><a href="cross.html" title="non-rectangular links">non-rectangular</a></li>
+					<li><a href="jigsaw.html" title="jigsaw links">jigsaw links</a></li>
+					<li><a href="circles.html" title="circular links">circular links</a></li>
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+			<li><a href="../mozilla/index.html">MOZILLA<!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul>
+					<li><a href="../mozilla/dropdown.html" title="A drop down menu">drop down menu</a></li>
+					<li><a href="../mozilla/cascade.html" title="A cascading menu">cascading menu</a></li>
+					<li><a href="../mozilla/content.html" title="Using content:">content:</a></li>
+					<li><a href="../mozilla/moxbox.html" title=":hover applied to a div">mozzie box</a></li>
+					<li><a href="../mozilla/rainbow.html" title="I can build a rainbow">rainbow box</a></li>
+					<li><a href="../mozilla/snooker.html" title="Snooker cue">snooker cue</a></li>
+					<li><a href="../mozilla/target.html" title="Target Practise">target practise</a></li>
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+			<li><a href="../ie/index.html">EXPLORER<!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul class="right_side">
+					<li><a href="../ie/exampleone.html" title="Example one">example one</a></li>
+					<li><a href="../ie/weft.html" title="Weft fonts">weft fonts</a></li>
+					<li><a href="../ie/exampletwo.html" title="Vertical align">vertical align</a></li>
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+			<li><a href="../opacity/index.html">OPACITY<!--[if gte IE 7]><!--></a><!--<![endif]-->
+				<!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul class="right_side">
+					<li><a href="../opacity/colours.html" title="colour wheel">opaque colours</a></li>
+					<li><a href="../opacity/picturemenu.html" title="a menu using opacity">opaque menu</a></li>
+					<li><a href="../opacity/png.html" title="partial opacity">partial opacity</a></li>
+					<li><a href="../opacity/png2.html" title="partial opacity II">partial opacity II</a></li>
+					<li><a class="sub" href="../menu/hover_click.html" title="Hover/click with no active/focus borders">HOVER/CLICK<!--[if IE 7]><!--></a><!--<![endif]-->
+						<!--[if lte IE 6]><table><tr><td><![endif]-->
+						<ul class="left_side">
+							<li><a href="../menu/form.html" title="Styling forms">styled form</a></li>
+							<li><a href="../menu/nodots.html" title="Removing active/focus borders">active focus</a></li>
+							<li><a href="../menu/hover_click.html" title="Hover/click with no active/focus borders">hover/click</a></li>
+						</ul>
+						<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+					</li>
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>

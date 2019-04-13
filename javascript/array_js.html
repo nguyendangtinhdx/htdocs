@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p id="1"></p>
+	<p id="2"></p>
+	<p id="3"></p>
+	<p id="4"></p>
+	<p id="5"></p>
+	<p id="6"></p>
+	<button onclick="my()">Delete</button>
+	<button onclick="my1()">Arrange</button>
+	<script>
+		s = [" Nguyen"," Dang"," Tinh"];	/*Good*/
+		s1 = new Array(" Quach"," Cong"," Manh");	/*Bad*/
+		r = [3,6,1,8,10];
+		document.getElementById("1").innerHTML = s[2] + s1[1] + s.length;
+		document.getElementById("5").innerHTML = s1.concat(s,r);	/*nối*/
+		function my()
+		{
+			s.push("Tinh");	 /*thêm*/	
+			s1.pop();		/*xóa*/
+		/*	s.shift()  <=> s.splice(0,1)	xóa từ phía trước*/
+		/*	s.unshift()	thêm từ phía trước*/
+		/*  s.splice(2,0,"Mystery","Shock")  thêm 2 chuỗi từ kí tự thứ 2 và 0 có giá bị loại bỏ*/
+		/*  s.sort(); sắp xếp tăng */
+		/*  s.reverse(); sắp xếp giảm */
+			document.getElementById('2').innerHTML = s;		/* nối = * :s.join("*")*/
+		}
+
+			document.getElementById('3').innerHTML = r;
+		function my1()
+		{						
+			r.sort(function(a,b){return a-b});			/* <=> a>b:  sắp xếp tăng*/
+			document.getElementById('3').innerHTML = r;
+		}
+			document.getElementById('6').innerHTML = Boolean(10>6);
+	</script>
+</body>
+</html>

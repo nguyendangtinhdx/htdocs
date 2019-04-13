@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	/**
+ * Scrollbar hacks
+ */
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+  width: .85rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #666;
+}
+
+::-webkit-scrollbar-thumb {
+  width: .85rem;
+  height: 45px;
+  background: #222;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #111;
+}
+
+/**
+ * Base
+ */
+body {
+  font: 100% / 1.414 "Roboto", arial, sans-serif;
+  background-color: #f1f1f1;
+}
+
+.wrapper {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 30rem;
+  height: 40rem;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.22);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+header {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+header svg {
+  fill: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  -webkit-transition: fill .25s ease-in;
+  transition: fill .25s ease-in;
+}
+header svg:focus, header svg:hover {
+  text-decoration: none;
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.feed {
+  position: relative;
+  overflow-y: auto;
+  padding-top: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 5rem !important;
+  padding-left: 1.5rem;
+  height: 100%;
+  background: url(http://ultraimg.com/images/waterfall-tourists.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/**
+ * Card styles
+ */
+.card {
+  overflow: hidden;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.22);
+  -webkit-transition: box-shadow .25s ease-in;
+  transition: box-shadow .25s ease-in;
+}
+.card:focus, .card:hover {
+  box-shadow: 0 13px 8px rgba(0, 0, 0, 0.22);
+}
+
+.card-img {
+  width: 100%;
+}
+
+.card-img-overlay {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: background .25s ease-in;
+  transition: background .25s ease-in;
+  background: rgba(0, 0, 0, 0.31);
+}
+
+.card .card-img-overlay:focus,
+.card .card-img-overlay:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.card-img-overlay > .card-block {
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.card-inverse .card-text {
+  color: #fff;
+}
+
+.card a {
+  color: white;
+  -webkit-transition: color .25s ease-in;
+  transition: color .25s ease-in;
+}
+.card a:focus, .card a:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btn {
+  position: fixed;
+  right: 2.25rem;
+  bottom: -4rem;
+  padding: .9rem .9rem;
+  line-height: 0;
+  background-color: #e91e63;
+  border-radius: 50%;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.22);
+  -webkit-transition: box-shadow .25s ease-in;
+  transition: box-shadow .25s ease-in;
+}
+.btn:focus, .btn:hover {
+  box-shadow: 0 13px 8px rgba(0, 0, 0, 0.3);
+}
+.btn:focus svg, .btn:hover svg {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.btn svg {
+  fill: rgba(255, 255, 255, 0.9);
+  -webkit-transition: fill .25s ease-in;
+  transition: fill .25s ease-in;
+}
+
+	</style>
+</head>
+<body>
+	<section class="wrapper">
+  <header class="p-a-md">
+    <svg width="30px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+      <path d="M91,76H9c-1.657,0-3,1.343-3,3s1.343,3,3,3h82c1.657,0,3-1.343,3-3S92.657,76,91,76z M91,48H9c-1.657,0-3,1.343-3,3  c0,1.657,1.343,3,3,3h82c1.657,0,3-1.343,3-3C94,49.343,92.657,48,91,48z M9,25h82c1.657,0,3-1.343,3-3s-1.343-3-3-3H9  c-1.657,0-3,1.343-3,3S7.343,25,9,25z"
+      />
+    </svg>
+    <svg class="pull-right" width="30px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 45.188 45.316" enable-background="new 0 0 70.188 45.316" xml:space="preserve">
+      <g>
+        <circle fill-rule="evenodd" clip-rule="evenodd" cx="22.749" cy="10.658" r="3" />
+        <circle fill-rule="evenodd" clip-rule="evenodd" cx="22.749" cy="22.658" r="3" />
+        <circle fill-rule="evenodd" clip-rule="evenodd" cx="22.749" cy="34.658" r="3" />
+      </g>
+    </svg>
+  </header>
+  <div class="feed">
+    <article class="card card-inverse card--airport">
+      <img src="http://ultraimg.com/images/app-planner-airport-925607_640.jpg" alt="" class="card-img img-responsive" />
+      <div class="card-img-overlay">
+        <div class="card-block">
+          <h1 class="card-title">Airport</h1>
+          <p class="card-text">Do you need to find the closest airport?
+            <br />Find the shortest and most economic way.</p>
+        </div>
+        <div class="card-block">
+          <a href="#"><i class="fa fa-plane"></i>&nbsp;&nbsp;Find nearby airport</a>
+        </div>
+      </div>
+    </article>
+    <article class="card card-inverse card--train">
+      <img src="http://ultraimg.com/images/app-planner-tgv-trains-258285_640.jpg" alt="" class="card-img img-responsive" />
+      <div class="card-img-overlay">
+        <div class="card-block">
+          <h1 class="card-title">Train</h1>
+          <p class="card-text">Do you need to find the closest train station?
+            <br />Find the shortest and most economic way.</p>
+        </div>
+        <div class="card-block">
+          <a href="#"><i class="fa fa-train"></i>&nbsp;&nbsp;Find nearby train station</a>
+        </div>
+      </div>
+    </article>
+    <article class="card card-inverse card--bus">
+      <img src="http://ultraimg.com/images/app-planner-bus-923199_640.jpg" alt="" class="card-img img-responsive" />
+      <div class="card-img-overlay">
+        <div class="card-block">
+          <h1 class="card-title">Bus</h1>
+          <p class="card-text">Do you need to find the closest bus station?
+            <br />Find the shortest and most economic way.</p>
+        </div>
+        <div class="card-block">
+          <a href="#"><i class="fa fa-bus"></i>&nbsp;&nbsp;Find nearby bus station</a>
+        </div>
+      </div>
+    </article>
+    <article class="card card-inverse card--taxi">
+      <img src="http://ultraimg.com/images/app-planner-taxi-238478_640.jpg" alt="" class="card-img img-responsive" />
+      <div class="card-img-overlay">
+        <div class="card-block">
+          <h1 class="card-title">Taxi</h1>
+          <p class="card-text">Do you need to find the closest taxi?
+            <br />Find the shortest and most economic way.</p>
+        </div>
+        <div class="card-block">
+          <a href="#"><i class="fa fa-taxi"></i>&nbsp;&nbsp;Find taxi</a>
+        </div>
+      </div>
+    </article>
+  </div>
+  <a href="#" class="btn">
+    <svg width="25px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+      <path d="M89.465,45.868H54.132V10.535c0-2.282-1.85-4.132-4.132-4.132s-4.132,1.85-4.132,4.132v35.333H10.535  c-2.282,0-4.132,1.85-4.132,4.132s1.85,4.132,4.132,4.132h35.333v35.333c0,2.282,1.85,4.132,4.132,4.132s4.132-1.85,4.132-4.132  V54.132h35.333c2.282,0,4.132-1.85,4.132-4.132S91.748,45.868,89.465,45.868z"
+      />
+    </svg>
+  </a>
+</section>
+</body>
+</html>

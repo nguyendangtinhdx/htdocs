@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="16.css">
+	<link rel="shortcut icon" href="poll.gif">
+	<script type="text/javascript" src="16.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://dl.dropboxusercontent.com/u/237350339/blog/Code/Js/back-to-top.js"></script>
+</head>
+<body>
+	<div id="tb">
+		<table>
+			<tr>
+				<td colspan="3"><img id='a4' src="image/tinhyeu1.jpg"><b id='anh2'><span id='a1'>Ai?</span><span id='a2'>Cái gì?</span><span id='a3'>Ở đâu? ...</span></b><img id ='anh1' src="image/tinhyeu2.jpg"></td>
+			</tr>
+			<tr>
+				<td id="bi" colspan="3">
+					<div id="nav">
+						<div id="1"></div>
+						<script>
+							var day =["Chủ nhật","Thứ hai","Thứ ba","Thứ tư","Thứ năm","Thứ sáu","Thứ bảy"];
+							var x =setInterval(hour);
+							function hour()
+							{
+								var d = new Date();
+								document.getElementById('1').innerHTML = day[d.getDay()] + " " + d.toLocaleDateString() + "<br>" + d.toLocaleTimeString();
+							}
+						</script>
+					</div>
+					<div id="nav1">
+						<form>
+							&ensp;Email hoặc số điện thoại &ensp;&ensp; Mật khẩu <br>
+							<input type="submit" value="Đăng nhập">
+							<input type="password" name="password" placeholder="Password">
+							<input type="text" name="login" placeholder="Email or number phone">
+						</form>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td id="ratio"  rowspan="15">
+					<ul id="list" type='circle'>
+						<li><a href="#1" >Tình yêu và gia đình
+						</li>
+						<li><a href="#2">Sức khỏe</a></li>
+						<li><a href="#3">Du lịch</a></li>
+						<li><a href="#4">Ẩm thực</a></li>
+						<li><a href="#5">Âm nhạc</a></li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class='tag_b'>Tình yêu và gia đình</div>
+					<tr><td>
+						<b>Trầu câu</b>
+						<article>
+							<img class="anh3" src="image/traucau.jpg">
+							Tình yêu là gì? Là ta yêu một người mỗi ngày trong một năm. Mỗi năm trong một đời người...
+						</article>
+					</td></tr>
+					<tr><td>
+						<b>Xây dựng gia đình hạn phúc qua những bữa cơm hằng ngày</b>
+						<article>
+							<img class="anh3" src="image/monan.jpg">
+							Hạnh phúc gia đình biểu hiện như thế nào? Biểu hiện đầu tiên là các thành viên trong gia đình phải thương yêu, thấu hiểu và thông cảm cho nhau; tình cảm thiêng liêng ấy là chất keo gắn kết các thành viên thành một khối bền chặt. Biểu hiện thứ hai đó là gia đình ấy phải là điểm tựa vững chắc, là bến đỗ bình yên nhất đối với mỗi thành viên, nhất là khi ta phải đương đầu với những  sóng gió cuộc đời...
+						</article>
+					</td></tr>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class='tag_b'>Sức khỏe</div>
+					<tr><td>
+						<b>10 lời khuyên trong dinh dưỡng</b>
+						<article>
+							<img class="anh3" src="image/traicay.jpg">Xoài là một loại trái cây rất tốt bởi giàu kali và canxi, xoài rất tốt cho các thai phụ có nguy cơ thiếu sắt bởi vitamin C giúp cơ thể hấp thụ sắt. Xoài là một hương vị trái cây giàu canxi, giúp bảo vệ xương và răng của người mẹ cùng các tế bào của thai nhi. Trong 100g xoài chín có rất nhiều chất như protein, lipid, canxi, sắt, vitamin A, vitamin B1, vitamin C, phốt pho…
+						</article>
+					</td></tr>
+					<tr><td>
+						<b>Làm sao để bỏ thuốc lá</b>
+						<article>
+							<img class='anh3' src="image/thuocla.jpg">Khói thuốc lá chứa tới hơn 7000 chất phần lớn là chất độc hại, trong đó có khoảng 60 chất là tác nhân gây ung thư, đặc biệt nguy hiểm nhất là nicotin. Nicotin dưới dạng tinh khiết đó là một chất lỏng trong suốt, có mùi khó chịu và vị đắng, dễ tan trong nước và dễ dàng xâm nhập vào cơ thể qua đường miệng, hô hấp, thậm chí qua cả da. Trong khói thuốc lá có nhiều chất kích thích khối u, tuy nhiên người nghiện hút thuốc lá quá nhiều không bị chết ngay vì liều lượng cứ ngấm dần vào cơ thể.
+							<input class="input1" type="button" onclick="scroll()" value="Về đầu trang">
+						</article>
+					</td></tr>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class='tag_b'>Du lịch</div>
+					<tr><td>
+						<b>Các tour mới nhất</b>
+						<ul>
+							<li>Côn Minh - Đại Lý - Lệ Giang</li>
+							<li>Đến Macau xe casino</li>
+							<li>Về Cà Mai ăn tôm tít</li>
+						</ul>	
+					</td></tr>
+					<tr><td>
+						<b>Các điểm du lịch nổi tiếng</b>
+						<ul>
+							<li>Đảo Bali xinh đẹp - Indonexia</li>
+							<li>Thành cổ Rome và tháp nghiêng Pisa</li>
+							<li>Vạn Lý Trường Thành</li>
+						</ul>
+						<input class="input1" type="button" onclick="scroll()" value="Về đầu trang">
+					</td></tr>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class='tag_b'>Ẩm thực</div>
+					<tr><td>
+						<img class="anh4" src="image/amthuc.jpg">
+						<ul>
+							<li>Các món ăn mới trong tuần</li>
+							<li>Chuyên mục dạy nấu ăn</li>
+							<li>Món ngon Hà Nội</li>
+							<li>Các món ăn dân gian ở miền Tây</li>
+						</ul>
+					</td></tr>
+				</td>
+			</tr>
+			<tr>
+				<td> 
+					<div class='tag_b'>Âm nhạc</div>
+					<tr><td>
+						<b>Nhạc thiếu nhi</b>
+						<img class="anh4" src="image/nhaccu.jpg">
+						<ul>
+							<li>Nắng sân trường</li>
+							<li>Mẹ yêu không nào</li>
+							<li>Ba bà đi bán lợn con</li>
+						</ul>
+					</td></tr>
+					<tr><td>
+						<b>Dân ca</b>
+						<img class="anh4" src="image/notnhac.jpg">
+						<ul>
+							<li>Bèo dạt mây trôi</li>
+							<li>Mười thương</li>
+							<li>Lý cây bông</li>
+						</ul>
+						<input class="input1"type="button" onclick="scroll()" value="Về đầu trang">
+					</td></tr>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

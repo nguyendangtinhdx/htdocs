@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>	
+	body{background:#fff;}
+.container{overflow:hidden;padding:50px 10px;}
+.cycle-slideshow img{width:auto;height:auto;}
+.cycle-slideshow .span2{float:none;}
+
+/*padding tricks
+nb-visible-item X gutter width
+*/
+@media (min-width: 1200px) {
+.cycle-slideshow{padding-right:180px;}
+}
+@media (min-width: 768px) and (max-width: 1199px)  {
+.cycle-slideshow{padding-right:120px;}
+}
+
+@media (max-width: 767px) {
+.cycle-slideshow{padding-right:0px;}
+}
+	</style>
+</head>
+<body>
+	
+<div class="container">
+  <div class="row cycle-slideshow" data-cycle-fx=carousel data-cycle-timeout=1000 data-cycle-carousel-visible=6 data-cycle-carousel-fluid=true data-cycle-slides="div">
+    <div class="span2"><img src="http://lorempixel.com/200/200/"></div>
+    <div class="span2"><img src="http://lorempixel.com/200/200/"></div>
+    <div class="span2"><img src="http://lorempixel.com/200/200/"></div>
+    <div class="span2"><img src="http://lorempixel.com/200/200/"></div>
+    <div class="span2"><img src="http://lorempixel.com/200/200/"></div>
+    <div class="span2"><img src="http://lorempixel.com/200/200/"></div>
+  </div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://malsup.github.com/jquery.cycle2.js"></script>
+<script src="http://malsup.github.com/jquery.cycle2.carousel.js"></script>
+</body>
+</html>

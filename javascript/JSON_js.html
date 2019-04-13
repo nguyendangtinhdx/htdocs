@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h2> JSON: Java Script Object Notation </h2>
+	<p id="1"></p>
+	<p id="2"></p>
+	<script>
+		n = '{"name": "Nguyen Dang Tinh", "age": "19", "high": "173cm"}';
+		t = JSON.parse(n);
+		document.getElementById("1").innerHTML = t.name + t.high;	
+
+		m = '{"name":[' +'{"ten":"Tan","tuoi":"34" },'+'{"ten":"Loi","tuoi":"32"},'+'{"ten":"Tinh","tuoi":"19" }]}';
+		l = JSON.parse(m);
+		document.getElementById("2").innerHTML = l.name[1].ten + " " + l.name[2].tuoi;
+	</script>
+</body>
+</html>

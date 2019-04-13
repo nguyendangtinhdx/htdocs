@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		var watch = {
+  onReady: function() {
+    var timer = setInterval(watch.clock, 1e3);
+    return timer; //run the timer, 1000ms of interval
+  },
+  //=====================================
+  //function to capture system time
+  clock: function() {
+    var all = new Date(), //get sys date
+      hour = all.getHours(), //get hour
+      min = all.getMinutes(), //get mnt
+      sec = all.getSeconds(), //get sec
+      //add the zero for digit < 10
+      hourD = watch.addZ(hour),
+      minD = watch.addZ(min),
+      secD = watch.addZ(sec),
+      //split the number into two sections
+      //hour
+      hO = hourD.toString().split("")[0],
+      hT = hourD.toString().split("")[1],
+      //minute
+      mO = minD.toString().split("")[0],
+      mT = minD.toString().split("")[1],
+      //second
+      sO = secD.toString().split("")[0],
+      sT = secD.toString().split("")[1];
+
+    //moving to "entrance" function
+    watch.entrance(hO, hT, mO, mT, sO, sT);
+  },
+  //=====================================
+  //entrance
+  entrance: function(hO, hT, mO, mT, sO, sT) {
+    //to test whether the system time capture succeeded
+    //hm... (?)
+    //this can be eliminated I suppose
+    var display = $(".test")
+      .css("display") === "block";
+
+    $(".clock_wrap")
+      .delay(2e3).slideDown(1e3);
+    $(".test")
+      .delay(2e3).slideUp(1e3);
+
+    //test basic output
+    //this "if" test can be bypassed
+    if (display) {
+      $(".test").html(
+        "Your system clock is " +
+        hO + hT +
+        " : " +
+        mO + mT +
+        " : " +
+        sO + sT
+      );
+    }
+
+    //move to "output" function
+    watch.output(hO, hT, mO, mT, sO, sT);
+  },
+  //=====================================
+  //the lines output function
+  output: function(hO, hT, mO, mT, sO, sT) {
+    //define the disappearing line(s) index
+    //manuaLOL (I literally drew and wrote this down on a piece of paper)
+    //you can use that hex-to-binary-conversion convention-digital-digit thingy
+    //these can be um, declared as object, hm
+    var zero = [3],
+      one = [0, 1, 3, 4, 6],
+      two = [1, 5],
+      three = [1, 4],
+      four = [0, 4, 6],
+      five = [2, 4],
+      six = [2],
+      seven = [1, 3, 4, 6],
+      eight = [],
+      nine = [4],
+
+      //all digit and line arrays      
+      digit = [
+        zero, one, two, three, four, five, six, seven, eight, nine
+      ],
+      digitElm = [
+        $(".ho_0"), $(".ho_1"), $(".min_0"), $(".min_1"), $(".sec_0"), $(".sec_1")
+      ],
+      lines = [
+        digit[hO], digit[hT], digit[mO], digit[mT], digit[sO], digit[sT]
+      ];
+
+    //start iteration — this is the digital clock OUTPUT
+    //I compacted the duplicated "for"s using jQuery each()
+    //long live jQuery!
+    $.each(digitElm, function(i, digitElmElm) {
+      //FIRST, clear everything		
+      digitElmElm.children("li")
+        .removeClass("h_e");
+      //THEN, append the transparent class
+      $.each(lines, function(j) {
+        digitElmElm.children("li")
+          .eq(lines[i][j]).addClass("h_e");
+      });
+    });
+  },
+  //=====================================
+  //adding zero in front of digit
+  addZ: function(a) {
+    if (a < 10) {
+      a = "0" + a;
+    }
+    return a;
+  }
+
+  //end of all functions
+};
+//=====================================
+//Begin the show, WOO!
+$(document).ready(watch.onReady);
+	</script>
+	<style>
+	body {
+  background: #eee;
+  font-family: consolas;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.clock_wrap {
+  margin: auto;
+  width: 480px;
+  padding: 20px 0;
+  text-align: center;
+  display: none;
+}
+
+.digit_wrap {
+  display: inline-block;
+  text-align: center;
+  width: 48px;
+  padding: 10px 0;
+}
+
+.digit_inner {
+  padding: 0;
+  margin: 0;
+}
+
+.d_e,
+.dot_0,
+.dot_1 {
+  width: 40px;
+  height: 10px;
+  border-radius: 50%;
+  background: #333;
+  box-shadow: 1px 2px 3px #000;
+  list-style: none;
+  margin: 0 auto;
+  position: relative;
+  transition: all .25s .25s;
+}
+
+._1,
+._2,
+._4,
+._5 {
+  height: 40px;
+  width: 6px;
+  display: inline-block;
+}
+
+._1,
+._4 {
+  left: -12px;
+}
+
+._2,
+._5 {
+  left: 13px;
+}
+
+._3,
+._6 {
+  margin-top: -8px;
+}
+
+._0,
+._3 {
+  margin-bottom: -4px;
+}
+
+.dot_0,
+.dot_1 {
+  height: 15px;
+  width: 6px;
+  border-radius: 6px;
+  position: relative;
+}
+
+.dot_0 {
+  top: -16px;
+}
+
+.dot_1 {
+  top: -6px;
+}
+
+.divider {
+  width: 48px;
+}
+
+.h_e {
+  background: transparent;
+  box-shadow: 0 0 0 transparent;
+}
+
+.inline {
+  display: inline-block;
+}
+	</style>
+</head>
+<body>
+	<div class="clock_wrap">
+  <!--HOUR-->
+  <div id="hour" class="inline">
+    <div class="digit_wrap">
+      <ul class="ho_0 digit_inner">
+        <li class="d_e _0"></li>
+        <li class="d_e _1"></li>
+        <li class="d_e _2"></li>
+        <li class="d_e _3"></li>
+        <li class="d_e _4"></li>
+        <li class="d_e _5"></li>
+        <li class="d_e _6"></li>
+      </ul>
+    </div>
+    <div class="digit_wrap">
+      <ul class="ho_1 digit_inner">
+        <li class="d_e _0"></li>
+        <li class="d_e _1"></li>
+        <li class="d_e _2"></li>
+        <li class="d_e _3"></li>
+        <li class="d_e _4"></li>
+        <li class="d_e _5"></li>
+        <li class="d_e _6"></li>
+      </ul>
+    </div>
+  </div>
+  <!--DIVIDER-->
+  <div class="digit_wrap divider">
+    <ul class="digit_inner">
+      <li class="dot_0"></li>
+      <li class="dot_1"></li>
+    </ul>
+  </div>
+  <!--MINUTE-->
+  <div id="minute" class="inline">
+    <div class="digit_wrap">
+      <ul class="min_0 digit_inner">
+        <li class="d_e _0"></li>
+        <li class="d_e _1"></li>
+        <li class="d_e _2"></li>
+        <li class="d_e _3"></li>
+        <li class="d_e _4"></li>
+        <li class="d_e _5"></li>
+        <li class="d_e _6"></li>
+      </ul>
+    </div>
+    <div class="digit_wrap">
+      <ul class="min_1 digit_inner">
+        <li class="d_e _0"></li>
+        <li class="d_e _1"></li>
+        <li class="d_e _2"></li>
+        <li class="d_e _3"></li>
+        <li class="d_e _4"></li>
+        <li class="d_e _5"></li>
+        <li class="d_e _6"></li>
+      </ul>
+    </div>
+  </div>
+  <!--DIVIDER-->
+  <div class="digit_wrap divider">
+    <ul class="digit_inner">
+      <li class="dot_0"></li>
+      <li class="dot_1"></li>
+    </ul>
+  </div>
+  <!--SECOND-->
+  <div id="second" class="inline">
+    <div class="digit_wrap">
+      <ul class="sec_0 digit_inner">
+        <li class="d_e _0"></li>
+        <li class="d_e _1"></li>
+        <li class="d_e _2"></li>
+        <li class="d_e _3"></li>
+        <li class="d_e _4"></li>
+        <li class="d_e _5"></li>
+        <li class="d_e _6"></li>
+      </ul>
+    </div>
+    <div class="digit_wrap">
+      <ul class="sec_1 digit_inner">
+        <li class="d_e _0"></li>
+        <li class="d_e _1"></li>
+        <li class="d_e _2"></li>
+        <li class="d_e _3"></li>
+        <li class="d_e _4"></li>
+        <li class="d_e _5"></li>
+        <li class="d_e _6"></li>
+      </ul>
+    </div>
+  </div>
+  <!--end-->
+</div>
+<div class="test"></div>
+</body>
+</html>

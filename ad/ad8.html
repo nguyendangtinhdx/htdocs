@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		$(window).load(function() {
+  // 設定展開的動畫時間
+  // 先取得要 img.show 的 src 及 alt 屬性
+  // 並把用來判斷是否展開的狀態 isBig 設成 false
+  // 接著先取得目前小廣告圖片的高度；大廣告圖片的高度等載入後再取得
+  var speed = 800,
+    img = $('#ad img.show'),
+    imgSrc = img.attr('src'),
+    imgAlt = img.attr('alt'),
+    isBig = false,
+    imgHeight = img.outerHeight,
+    bimgHeight;
+  // 把 img.show 的 alt 屬性清空
+  img.attr('alt', '');
+  // 因為 IE 的問題，因此幫 .control 多設定背景色並透明
+  $('#ad .control').css({
+    backgroundColor: '#fff',
+    opacity: 0
+  });
+  $('<img class="big" />').load(function() {
+    if (bimgHeight <= 0) bimgHeight = $('img.big').outerHeight();
+    var bmigHeight = this.height;
+    $('control').click(function() {
+      if (!isbig) {
+        $('#ad img.show').attr('src', imgAlt);
+        $('#ad').animate({
+          height: bimgHeight
+        }, speed);
+      } else {
+        $('#ad').animate({
+          height: isHeight
+        }, speed, function() {
+          $('#ad img.show').attr('src', imgSrc);
+        });
+      }
+      isBig = !isBig;
+
+    });
+  }).attr('src', imgAlt).hide().appendTo('body');
+
+});
+	</script>
+	<style>
+
+	#ad {
+	width: 300px;
+	height: 118px;
+	overflow: hidden;
+	position: relative;
+}
+#ad a img {
+	border: none;
+	vertical-align: middle;
+}
+#ad .control {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	width: 60px;
+	height: 20px;
+	line-height: 20px;
+	right: 5px;
+	bottom: 2px;
+	cursor: pointer;
+  
+}
+	</style>
+</head>
+<body>
+	<div id="ad">
+		<a href="http://tw.yahoo.com"><img src="http://abgne.tw/wp-content/uploads/2010/01/abc.gif" alt="http://abgne.tw/wp-content/uploads/2010/01/def.gif" class="show" /></a>
+		<div class="control"></div>
+	</div>
+</body>
+</html>

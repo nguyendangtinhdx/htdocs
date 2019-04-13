@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    
+.outer {
+  height: 150px;
+  width: 150px;
+  overflow: auto;
+  resize: both;
+}
+
+.outer::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 15px;
+}
+
+.outer::-webkit-scrollbar {
+  background-color: rgba(255,255,255,.5);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, .05);
+}
+
+.outer::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #ccc;
+  border: 2px solid white;
+}
+
+
+
+.inner {
+  height: 300px;
+  width: 300px;
+}
+    </style>
+</head>
+<body>
+    <div class="outer">
+  <p class="inner">
+    This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. This is overflowed content. 
+  </p>
+</div>
+</body>
+</html>

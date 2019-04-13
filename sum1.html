@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<style>
+header{background: lightblue;
+	height: 200px;
+	padding: 50px;
+	text-align: right;
+}
+section{width: 70%;
+		float: left;
+		margin: 0px;
+}
+nav{background: lightgray;
+	color: green;
+	width: 230px;
+	height: 1000px;
+	float: left;
+}
+aside{background: #ed8f34;
+	color: blue;
+	width: 169.9px;
+	height: 1000px;
+	float: right;
+}
+footer{background: darkkhaki;
+		clear: both;
+		height: 60px;
+		padding: 10px;
+}
+.t{width: 100px;
+	height: 100px;
+	background: olive;
+	color: cyan;
+	float: left;
+	margin: -25px ;
+	border-radius: 10px;
+	-webkit-animation: mymove 1s infinite linear alternate;
+	animation: mymove 1s infinite linear alternate;
+}
+@-webkit-keyframes mymove
+{to{-webkit-transform: rotateY(180deg);
+	box-shadow: 6px 8px 10px greenyellow};}
+@keyframes mymove
+{to{transform: rotateY(180deg);
+ box-shadow: 6px 8px 10px greenyellow};}
+
+ #bi a{text-decoration: none;
+	color: red;
+	text-shadow: 1px 2px 3px tomato;
+}
+ #bi ul li {
+	background: goldenrod;
+	padding: 10px 20px;
+	float: left;	
+	margin: 10px;
+	border-radius: 5px;
+}
+ #bi ul li:hover{background: gold}
+
+.tin li{display: inline;}
+.tin li a{color: red;
+		float: left;
+		padding: 8px 16px;
+		text-decoration: none;
+		border-radius: 5px;
+	
+}
+.tin li a.active{
+	background: #4caf50;
+	color: while;
+	border-radius: 5px;
+}
+.tin li a:hover:not(.active){background: #ddd}
+div.my{position: absolute;
+		bottom: -640px;
+		left:500px;
+}
+img {outline: 1px solid lime;}
+img:hover{opacity: 0.5;}
+</style>
+<div>
+<body>
+<header>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+		<script src='http://www.techrum.vn/js/fly/flies-obj.js' type='text/javascript' var_1='true' var_2='false' var_3='false'></script> <!-- ruồi -->
+	<link rel="stylesheet" type="text/css" href="style.css">	<!-- Tạo file CSS riêng -->
+	<meta http-equiv = "content-type" content = "text / html; charset = UTF-8"> 
+	<div style="float:left; position: absolute; top:10px; left:10px">
+<!-- 	<button type="button"onclick="document.getElementById('a1').innerHTML = Date()">Date and Time</button> -->
+ <!-- 	<p id="a1"></p> 
+	<script>
+		document.getElementById('a1').innerHTML = Date();
+	</script>  
+	 -->
+	 <img src="http://i.imgur.com/hhprR3c.gif" height="150px" width="250px">
+	 <button type="button" onclick="this.innerHTML=Date()">Date and Time</button>
+
+	</div>
+	<h1 style="color: red; text-align: center; font-family:cursive; font-size: 40px; text-shadow: 2px 2px 3px pink, 2px 2px 3px tomato">Music K-POP</h1>
+	<form>
+		Email or phone: 
+		<input type="text" name="Account" placeholder="Account">
+		Password:
+		<input type="password" name="PassWord" placeholder="Password">
+		<input type="Submit" value="Sign in"><br>
+		<input type="checkbox" name="dtdn" checked>Duy tri dang nhap</input>
+		<button type="button" onclick="alert('Welcome to you with music start')">Welcome</button><br>
+		<input type="radio" name="nam" checked>Male</input>
+		<input type="radio" name="nu">Female</input>
+	<script>
+		function scrollWindow()
+		{
+			window.scrollTo(0,1000);
+		};
+	</script>
+	<input type="button" onclick="scrollWindow()" value="Down"
+	style="background: green ; color: white ; padding: 0 20px 0 20px">
+	<div class="t" id ="1" style="font-size: 30px; font-family: courier; text-align: center; color: tomato">Star Music</div>
+<div style="float: left; margin: 20px;">		<input type="checkbox" onclick="my(this)" checked><p style="float: right">backface-visibility</input>
+	
+	</div>
+		<script>
+		function my(x)
+		{
+			if(x.checked==true)
+			{
+				document.getElementById("1").style.WebkitBackfaceVisibility="visible";
+				document.getElementById("1").style.backfaceVisibility="visible";
+			}
+			else
+			{
+				document.getElementById("1").style.WebkitBackfaceVisibility="hidden";
+				document.getElementById("1").style.backfaceVisibility="hidden";
+			}
+		}
+		</script> 
+	</form>
+</header>
+<nav>
+	<h3 style="color: lime; background-color: yellow">Wecome to music world</h3>
+	<p style="color: #73ad21;font-size:20px; font-family: Impact">Group Music</p>
+		<form action="active_page.php">
+			<select name="GroupMusic">
+				<option value="beast">BEAST</option>
+				<option value="bigbang">BIBANG</option>
+				<option value="2pm">2PM</option>
+				<option value="teentop" selected>TEENTOP</option>
+				<option value="nu'est">NU'EST</option>
+			</select>
+			<input type="Submit">
+		</form>
+
+	<p style="color: blue;font-size:20px; font-family: sans-serif ">Kind</p>
+
+	<input list="bi1">
+		<datalist id="bi1">
+			<option value="Pop">
+			<option value="DJ">
+			<option value="Rock">
+			<option value="Dance">
+		</datalist>
+	<input type="Submit"><br><br>
+
+	<iframe src="http://mp3.zing.vn/" style="width: 225px; border-color: red;
+	 outline-style: dashed "></iframe>
+			   <!-- double -->
+	<svg height="130" width="200">
+	<defs>
+		<linearGradient id="bi" x1="0%" y1="0%" x2="100%"  y2="0%">
+		<stop offset="0%" style="stop-color: rgb(0,255,0); stop-opacity: 1"/>
+		<stop offset="100%" style="stop-color: rgb(255,0,0); stop-opacity: 1"/>
+		</linearGradient>
+	</defs>
+	<ellipse cx="100" cy="70" rx="100" ry="50" fill="url(#bi)"/>
+	<text fill="purple" font-size="25px" font-family="cursive" x="60" y="78">K-POP</text>
+	<ul type="none">
+	<li><a href="http://cems-husc.hueuni.edu.vn" target="_blank">Dai hoc Khoa hoc Hue</a></li><br>
+	<li><a href="http://flts.hueuni.edu.vn" target="_blank">Dai hoc Ngoai ngu Hue</a></li><br>
+	<li><a href="http://www.dhsphue.edu.vn/" target="_blank">Dai hoc Su phan Hue</a></li><br>
+	<li><a href="http://huemed-univ.edu.vn/" target="_blank">Dai hoc Y duoc Hue</a></li><br>
+	<li><a href="http://www.hce.edu.vn/" target="_blank">Dai hoc Kinh te Hue</a></li><br>
+	<li><a href="http://www.huaf.edu.vn/" target="_blank">Dai hoc Nong lam Hue</a></li><br>
+	<li><a href="http://www.hul.edu.vn/" target="_blank">Dai hoc Luat Hue</a></li><br>
+	</ul>
+
+	<details style="color: chocolate">
+		<summary>Type</summary>
+		<ul type="none">
+			<li><a href="Phim">Film</a></li>
+			<li><a href="Nhac">Music</a></li>
+			<li><a href="Kich">Dramatic</a></li>
+			<li><a href="Nhay">Dance</a></li>
+		</ul>
+	</details>
+</nav>
+<section>
+	<div class="sd" style="font-size: 50px; font-family: sans-serif; color: darkgreen; padding: 50px;
+	background-color: darkseagreen; text-align: center">HISTORY</div>
+	<style>
+	#cot {
+    border: 20px solid lightgreen;
+	padding: 20px;
+	outline: 1px dotted red;
+	color: fuchsia;
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	-webkit-column-gap: 50px;
+	-moz-column-gap: 50px;
+	column-gap: 50px;
+	-webkit-column-rule: 1px blue solid;
+	-moz-column-rule: 1px blue solid;
+	column-rule: 1px blue solid;}
+	</style>
+	<div id="cot">Yoon Doo Joon(Leader) 
+	Ngay sinh: 04/07/1989 
+	Chieu cao: 180cm 
+	Can nang: 67kg 
+	Kha nang dat biet: Vocals 
+	Yeu thich: Hip Hop va R&B 
+	Tung xuat hien tren Mnet Hot Blood Documentary voi tu cach la ung cu vien
+	cua ban nhac One Day cua JYPE.Hien nay dang tham gia bai Wiping The Tears 
+	cua AJ voi tu cach larapper. 
+	Lee Ki Kwang(Dancer) 
+	Ngay sinh: 30/03/1990 
+	Noi sinh: Seoul 
+	Nhom mau: A 
+	Chieu cao: 174cm 
+	Can nang: 58kg 
+	So thich: nhay, xem phim 
+	So nam lam trainee: 4 nam duoi quyen quan ly cua JYPE 
+	Ca si yeu thich: Taeyang, Omarion, Usher 
+	duoc debut voi tu cach la ca si solo,anh ay se doi stage name mot ngay gan day. 
+	</div>
+		<div style="color:darkblue; background:coral; padding: 20px; font-size: 30px; text-align: center">List my video</div>
+	<div>	
+		<iframe width="300" height="200" src="https://www.youtube.com/embed/GVEqIAc_OHk" 
+		frameborder="0" allowfullscreen></iframe>
+		<iframe width="300" height="200" src="https://www.youtube.com/embed/23BPk7WzPJ8"
+		frameborder="0" allowfullscreen></iframe>
+		<iframe width="300" height="200" src="https://www.youtube.com/embed/7_VP8erai-8"
+		frameborder="0" allowfullscreen></iframe>
+		<div style="color:darkblue; background:darkcyan; padding: 20px; font-size: 30px; text-align: center">List K-POP video</div>
+		<iframe width="300" height="200" src="https://www.youtube.com/embed/eLgm3TALW4g"
+		frameborder="0" allowfullscreen></iframe>
+		<iframe width="300" height="200" src="https://www.youtube.com/embed/JXxGo1MvNls"
+		frameborder="0" allowfullscreen></iframe>
+		<iframe width="300" height="200" src="https://www.youtube.com/embed/gyXy0m-4bvE"
+		frameborder="0" allowfullscreen></iframe>
+	</div>
+	<div class="my">
+		<ul class="tin">
+			<li><a href="#">&laquo;</a></li>
+			<li><a href="#">1</a></li>
+			<li><a href="#" class="active">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+			<li><a href="#">&raquo;</a></li>
+		</ul>
+	</div>
+</section>
+<aside>
+	<script>
+		function clickCounter()
+		{
+			if(typeof(Storage)!=="undefned")
+			{
+				if(localStorage.clickcount)
+				{
+					localStorage.clickcount=Number(localStorage.clickcount)+1;
+				}
+				else
+				{
+					localStorage.clickcount = 1;
+				}
+				document.getElementById("result").innerHTML= localStorage.clickcount;
+			}
+			else
+			{
+				document.getElementById("result").innerHTML=" Error";
+			}
+		}
+	</script>
+	<div><button onclick="clickCounter()" type="button">Like</button><div id="result" style="float: left"></div></div>
+	<img src="https://lh3.googleusercontent.com/aKoUj_xhVQqvC7L9yoH3mUc_G5SHIMilvpPLhgad52fzJe-CBbLldK3RrYoWZan_jKWv02FgPBmFzOIz73tVa7l0h1GjbCtyVGUgAZo2DIQlS5zGgvkBLXi-_ccuLIrZB6VdZDYS2Wn-PNkT6lJ_VPqJ25IQ7stbngBU-FkRYABAxzJGrQxAhDJB2CaItUfegWys6so74EI0HzF61Z9z3fs7giSO1cb8YARPRQFQWV9ePLUL54jd3LKeUUBunroQxD9Y8sWzZoZAYNlc31LqR88uXGWf05IV8KESwZtesE6lnIzZvjrdIYUEQxiOzGcjVIwvVVRbgPUQWcFzeMcU-Srv3tCYnBzbwV2gM5JbFemeX2eNVZI8ZAulUhss1nMZ88v4QhzWp4GuKvMaTRrgCAtkvtBgmzsg17DMg99hCqhmwtdULLxLAvS5g0fwEoTBomVI3Z0wuBqpE7IvFHvvhiQcOYL3mTI2v1zLVz2EqhlBbFBl24JRicGn7XclJlZC5PurhTWKInwCbYGSs-WfzcMFN-R48P-IbKx_wU4tDjw=w1183-h665-no" height="100px" width="169px" href="Shock"></img>
+	<img src="https://lh3.googleusercontent.com/AJvCX1a7BnF9TKgyMSnuuQTO0nwNhFfMsfSa7fq9sqdBkaNTIGCFgFh1gnwksV-9WfS5aC_nKsIORIK6iMES1vtsA_ihGVmCPB-Ptty2kU9cs9gHY2HnpFZs-JNg2KdnAckvqEn11kKVCbjtJXf5d4CHQSu8jvaCv6mWt9vZA7PO9A2xm5MmqOPStTezh5hqWpf7pjHnJuSkImiWvtfQJUUHi4O73MQDZvKXmA1X1tENde4l0CnFxp6rAHJ9jgLpAWy3f59Hs-uE7h1yYhK1WZhA4Xwq1rNZE-62c7rF3oOFiZ-3mUbY7xJrztJnKPwvtDSvuzT5Hc9FOxKOTweckq6_VFZ52Hz7WeJQzBYEaK03YJlWmsUm8P6adGdt_ar940dSi6Z2Ku8vh2GeKGySrzrwJkEr_vPu5tWq26kcqYglgavSf6nQJk8y-lCfNq8yb-ggTQLUatXEwdNsqfZigHzw1MbeO-LLbDAM77dZrc7nrAisEs4XzJf03ZcqVO_mXnu3gGhXeo4iZG7Tym0cH-RPZWdeYN49qAx01PoIhpI=w887-h665-no" height="100px" width="169px"></img>
+	<img src="https://lh3.googleusercontent.com/JhIaxwoxWagC4JF7qgkz2JBRjIrjH1_PtKLgW9CNPM3W4g1sgGja0pmvjM7ym0yNnMIyrQRnoAj2bW8ZTZAcy98CgfRInpW3cbh8hq4ici8JxiNn3Rw_FvxfdtYXRpRk-s9Or9InpZ-ifzxWx0RlHhHujMcr3TyJSrNDSebCKCUyKbaVPy93VMRVTcYYep22RHFVySfLy2dyuVcrzrb8qm1jnLQk6unhcz3lxLzG7QnnBQ61AvpHIu6abhj8rPlLvetheZXcy8YE_4IY2D7eLs5pbDEXMVBs3qiXczxzykw1L41QqjOCj9iG61Pzhg2ebmIT6KRz_5RuHE79EYzZDsK66rZdSMbWtAHQ3dupd0iLR_ByaS-lUtFGqXhDWewwbErka1jTYpv_zRAKBEhNyDt77ZtcmW3mSGhnD9zjKk7yy8tI-zn7yyaoyjzEvYWyarEJx6klNcVInePgdyqte1eKbN5DzlF1DSqz6JV-FATzBgK4jEujPYNYhc7DS3Cs4Ut7Yv1UjET0hXqlVaAWfKyHIanr_rLTyy5cj3pFNx8=w888-h379-no" height="100px" width="169px"></img>
+	<img src="https://lh3.googleusercontent.com/3PC9gljjHGkh2elfTcQbL2Yggv8WrSk5T1_-Xqh7meYtN0eZt88cgBNBeG_j4g_-dt9iMMPFUSffVprfXB6VYyDtdouzRn4SMd8NM8za4aWN0vOpwiU6WQb7sOlXNh9CnXzFd8QQIwxAEhtH4DuJ9AELDn_Ci8JuoWJ_NObhxPWx2rCs7-15zGywXWkmFPvpvI2SDiI9GJoMCaIElkPKyUObjdTBMfoCA2KNxFmF6JjKtgpsO1MfgaR-SStfO21KSl4z1S0JpVcOO4ZtdRUz6Etike-k5nW16g-izUV2DigfAtrZ07vpOivLRWvW59cvaP2RlNMVSZmfiwbyYjt8w3G1rCY2So_GdyIQaIzComynf3haVuYH4lSqU8A5XzH1_rZcPfHGyh0b--AmOk2T-qxkz8LeeBbzxbAnGf96coWDtE2vGkxDF-UkAxQAYy4XUkyXTq_r5QytiYT-eqT-ZudY1irZJMeF0vqSvrOYoVTa7TF1fMczQ6nfPfZcFBlf_mWGhAy3TkZAEuDTF_0wXxmnznUGwvK5l3F5pL_HhnQ=w749-h417-no" height="100px" width="169px"></img>
+	<img src="https://photos-4.dropbox.com/t/2/AAD5fFABkoJt-AlFvFhnO6tJhq3AYXIX-QbHgiTeXbuoPA/12/497689379/jpeg/32x32/1/_/1/2/0300006b.jpg/EPqfioUEGPEBIAIoAg/RixSaP01L4doMKwfUZ3YMdK48ilqt0NZarMd3kjQTSE?size=1024x768&size_mode=3" height="230px" width="169px"></img>
+	<img src="https://lh3.googleusercontent.com/A-gD9D1A-9-Pnf8SdXz3jijpjgl8cgd1kxyBlSdoir3W4jgSr24iDKcnIag6AHboiwRFiHtwOLF-vgRI9ij3_0xM3Uz8WpHU8FwxOyGoHggaZC1VJyZ18x9Wv4TEgaWjanP-W-L1KuhM-jr21z9zk0ppki-ynNTXPqm31QKULWqfV8t_GWBmyjsW6rK0u9kMkd8Z0Apd3Ip8STFliib90Rr34uZIjX8w_hi2mEliy9CLyaIvSp3T3wF5gnuCXIe2qp-7tDWuOHbrcDP5tbbDEJl--RTkKLMMYQMzxR1xROjWeIbTXWCYHBAvmkmgP_vPlM8BZZcebSvxh4H7mdlD4ApFhewh1cO-RQ3gd-tAXe8dbvJIO7337LPBm4ynO9c0cwL-vpvKgfPkwfY2D4DRKml_F7ax1OqwUWHERpmsf0DaeBNbl4T_xRawlwriW2Nv7Q4eKlbp9U5QSKYELGdsXKPjQl1sn07h917q5PwAtqm19LQTQgkHU3zOFzTxQ11Dng7vGs8zQmwDzVse1NvaP0FhdYKc_kTReHNTcEZ-c2w=w375-h665-no"height="230px"width="169px"></img>
+	<img src="https://lh3.googleusercontent.com/Hn0e8dv7Ov8ciWMYd55qy577XGk3acRXS6-p8yh7yfORx8Xkef8upZvsrd8fHuYGLsSR5TCzqxW0iAk99NB7Ef2VTOQli6N7DOASykTqufUAOX-VGSpyyo_cBoYfnHmEwnOjsXeLR56yIUQdy_muM6KiiHwrgAfGmjs-9g98TEkFAkJuwkfL10dQz2oJJ7Mv3peKLsRhcnDqUanbS4Y7QNV0XR_DAllMjtTsm5i6rt4amv6u5Rc2Y4L1juWSU2I11A-PcIrzO5rHihVA2xbNOYMLJsqumGNWj9ApIHS_HZQTgk01-UwCrNSDFg2TU77KvzDoaM7S8xYytEi3vXOtCS0u05pVryEQSyUjQj1mC18VKRRP3S5lEk8MnfpAM-Vyhn2dgp9U9NTHOQZ40yDhL3BpErcc4o566Z0qzo05U5eEQ9rLswG4tzFdk0rSjs9UVBAF-XnU9ZH3lwF2xBFDLhpQ0OwqsZFXNjVsFpNVDq4m5PgpHzAdaDDnFLLJTpYKS9X08-bxXmKnE6Lq1ZkAgu_Rq9R3wRpvk2Z6N6QCNvQ=s665-no"height="95px"width="169px"></img>
+
+</aside>
+<footer>
+<div id="bi" style="float: right">
+	<ul type="none">
+		<li><a href="http://www.facebook.com" target="_blank">Facebook</a></li>
+		<li><a href="http://www.youtube.com" target="_blank">Youtube</a></li>
+		<li><a href="http://www.w3schools.com" target="_blank">W3schools</a></li>
+		<li><a href="http://www.gmail.com" target="_blank">Gmail</a></li>
+	</ul>
+</div>
+	<p> &hearts; &diams; &clubs; &spades; </p>
+	<script>
+	function scrollWindow1()
+	{
+		window.scrollTo(500,0);
+	};
+	</script>
+	<input type="button" onclick="scrollWindow1()" value="Up"
+	style="background: red ; color: white ; padding: 0 20px 0 20px">
+</footer>
+</body>
+</html>

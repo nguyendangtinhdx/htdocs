@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.tooltip1{
+			position: relative;
+			display: inline-block;
+		}
+		.tooltip2{
+			visibility: hidden;
+			height: 100px;
+			width: 120px;
+			background: #555555;
+			color: #ddd;
+			border-radius: 10px;
+			padding: 10px 10px;
+			position: absolute;
+			opacity: 0;
+			transition: opacity 3s;
+
+			/*hiển thị phải*/
+			/*top: 50px;
+			left: 105%; # right: trái*/
+
+			/*hiển thị dưới*/
+			top: 100%; /*#bottom 100%: trên*/
+			left: 50%; 
+			margin-left: -60px; /*120/2 = 60(width)*/
+		}
+		.tooltip1:hover .tooltip2{visibility: visible;opacity: 1}
+		/*mũi tên*/
+		.tooltip1 .tooltip2::after{
+			content: "";
+			position: absolute;
+			bottom: 100%;  /*top:100%; lên trên*/
+			left: 50%;
+			border-style: solid;
+			border-width:5px;	/*độ lớn mũi tên*/
+			border-color: transparent transparent black transparent; /*hướng mũi tên: bottom-left-top-right*/
+		}
+		body{text-align: center;}
+	</style>
+</head>
+<body>
+	<div class="tooltip1">
+		<img id="img" src="baitap/image/hoadiendien.jpg" title="Hoa điên điển">
+		<span class="tooltip2">nguyen</span>
+	</div>
+</body>
+</html>

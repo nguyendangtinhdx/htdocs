@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+body{
+  margin:0;
+  background:#ddd;
+}
+.wrapper{
+  height:800px;
+  background:#eee;
+}
+#folding-menu{
+  width: 1000px;
+  margin: auto;
+  padding:0;
+  list-style:none;
+  margin-top:100px;
+  margin-left:-20px;
+  position:relative;
+  display:inline-block;
+}
+
+#folding-menu a{
+  width:120px;
+  display:block;
+  font-size:14px;
+  color: #cde0ec;
+  line-height:45px;
+  padding-left:40px;
+  background:#0764a1;
+  text-decoration:none;
+  border-left:1px solid #0982bd;
+  border-top:1px solid #0982bd;
+  border-bottom:1px solid #054685;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  -moz-box-shadow:3px 5px 5px rgba(0,0,0,0.5);
+  -khtml-box-shadow:3px 5px 5px rgba(0,0,0,0.5);
+  -webkit-box-shadow:3px 5px 5px rgba(0,0,0,0.5);
+  box-shadow:3px 5px 5px rgba(0,0,0,0.5);
+}
+
+#folding-menu li:first-child a{
+  border-top-right-radius:10px;
+}
+
+#folding-menu li:last-child a{
+  border-bottom-right-radius:10px;
+}
+
+#folding-menu a:hover{
+  padding-left:55px;
+  background:#05528f;
+  border-top:1px solid #066fae;
+  border-bottom:1px solid #033772;
+  -webkit-transform-origin:0;
+  -moz-transform-origin:0;
+  -o-transform-origin:0;
+  -moz-box-shadow:0 5px 5px rgba(0,0,0,0.5);
+  -khtml-box-shadow:0 5px 5px rgba(0,0,0,0.5);
+  -webkit-box-shadow:5px 5px 5px rgba(0,0,0,0.5);
+  box-shadow:5px 5px 5px rgba(0,0,0,0.5);
+}
+
+#folding-menu a:active{
+  background:#033f7e;
+  border-top:1px solid #045ca0;
+  border-bottom:1px solid #02275f;
+}
+
+#folding-menu::after{
+  width:0;
+  height:0;
+  content:'';
+  position:absolute;
+  border-color:#054685 #054685 transparent transparent;
+  border-style:solid solid dashed dashed;
+  border-width:5px 10px;
+}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+  <ul id="folding-menu">
+    <li><a href="">Home</a></li>
+    <li><a href="">Diaries</a></li>
+    <li><a href="">Frontier</a></li>
+    <li><a href="">Front-end</a></li>
+    <li><a href="">Back-end</a></li>
+    <li><a href="">Programming</a></li>
+    <li><a href="">Archives</a></li>
+    <li><a href="">About</a></li>
+  </ul>
+</div>
+</body>
+</html>

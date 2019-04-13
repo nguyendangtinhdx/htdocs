@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(function(){
+  
+  var $glitch = $('h1');
+  var hackHeight = $glitch.height();
+  var hackWidth = $glitch.width();
+  
+  function glitchOut(){
+      var reHackHeight = Math.floor(Math.random(0, hackHeight) * 1000);
+      var reHackWidth = Math.floor(Math.random(0, hackWidth) * 1000);
+
+      $glitch.css({
+          'background-position': reHackWidth+"px "+reHackHeight+"px"
+      });
+  }
+  
+  (function glitchOutLoop(){
+    var rand = Math.floor((Math.random()* 4)+1)*1000;
+
+    setTimeout(function(){
+      glitchOut();
+      glitchOutLoop();
+    },rand);
+  }());
+});
+	</script>
+	<style>
+	@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
+body, html {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: #000;
+}
+
+.glitch {
+  color: #000;
+  font-size: 60px;
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Open Sans Condensed';
+  text-transform: uppercase;
+  width: 700px;
+  position: absolute;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+h1 {
+  background: url(http://cl.ly/image/3S0x440w3g2H/glitch.gif);
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+@keyframes noise-anim {
+  0% {
+    clip: rect(279px, 9999px, 44px, 0);
+  }
+  5% {
+    clip: rect(2px, 9999px, 59px, 0);
+  }
+  10% {
+    clip: rect(80px, 9999px, 279px, 0);
+  }
+  15% {
+    clip: rect(137px, 9999px, 152px, 0);
+  }
+  20% {
+    clip: rect(259px, 9999px, 116px, 0);
+  }
+  25% {
+    clip: rect(246px, 9999px, 108px, 0);
+  }
+  30% {
+    clip: rect(274px, 9999px, 76px, 0);
+  }
+  35% {
+    clip: rect(35px, 9999px, 138px, 0);
+  }
+  40% {
+    clip: rect(269px, 9999px, 213px, 0);
+  }
+  45% {
+    clip: rect(251px, 9999px, 29px, 0);
+  }
+  50% {
+    clip: rect(80px, 9999px, 216px, 0);
+  }
+  55% {
+    clip: rect(216px, 9999px, 292px, 0);
+  }
+  60% {
+    clip: rect(132px, 9999px, 191px, 0);
+  }
+  65% {
+    clip: rect(107px, 9999px, 125px, 0);
+  }
+  70% {
+    clip: rect(144px, 9999px, 186px, 0);
+  }
+  75% {
+    clip: rect(104px, 9999px, 286px, 0);
+  }
+  80% {
+    clip: rect(278px, 9999px, 174px, 0);
+  }
+  85% {
+    clip: rect(202px, 9999px, 146px, 0);
+  }
+  90% {
+    clip: rect(37px, 9999px, 267px, 0);
+  }
+  95% {
+    clip: rect(183px, 9999px, 74px, 0);
+  }
+  100% {
+    clip: rect(279px, 9999px, 287px, 0);
+  }
+}
+.glitch:after {
+  content: attr(data-text);
+  position: absolute;
+  left: 4px;
+  text-shadow: -2px 0 #fff;
+  top: 0;
+  color: white;
+  background: transparent;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2 {
+  0% {
+    clip: rect(171px, 9999px, 279px, 0);
+  }
+  5% {
+    clip: rect(151px, 9999px, 174px, 0);
+  }
+  10% {
+    clip: rect(299px, 9999px, 208px, 0);
+  }
+  15% {
+    clip: rect(77px, 9999px, 289px, 0);
+  }
+  20% {
+    clip: rect(27px, 9999px, 123px, 0);
+  }
+  25% {
+    clip: rect(269px, 9999px, 271px, 0);
+  }
+  30% {
+    clip: rect(82px, 9999px, 131px, 0);
+  }
+  35% {
+    clip: rect(40px, 9999px, 23px, 0);
+  }
+  40% {
+    clip: rect(250px, 9999px, 221px, 0);
+  }
+  45% {
+    clip: rect(53px, 9999px, 245px, 0);
+  }
+  50% {
+    clip: rect(16px, 9999px, 128px, 0);
+  }
+  55% {
+    clip: rect(258px, 9999px, 270px, 0);
+  }
+  60% {
+    clip: rect(281px, 9999px, 175px, 0);
+  }
+  65% {
+    clip: rect(155px, 9999px, 93px, 0);
+  }
+  70% {
+    clip: rect(60px, 9999px, 168px, 0);
+  }
+  75% {
+    clip: rect(72px, 9999px, 252px, 0);
+  }
+  80% {
+    clip: rect(172px, 9999px, 272px, 0);
+  }
+  85% {
+    clip: rect(185px, 9999px, 298px, 0);
+  }
+  90% {
+    clip: rect(209px, 9999px, 225px, 0);
+  }
+  95% {
+    clip: rect(298px, 9999px, 100px, 0);
+  }
+  100% {
+    clip: rect(95px, 9999px, 86px, 0);
+  }
+}
+.glitch:before {
+  content: attr(data-text);
+  position: absolute;
+  left: -4px;
+  text-shadow: 3px 0 white;
+  top: 0;
+  color: white;
+  background: black;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+	</style>
+</head>
+<body>
+	<div class="glitch" data-text="The future of television will be hacked"><h1>The future of television will be hacked</h1></div> 
+</body>
+</html>

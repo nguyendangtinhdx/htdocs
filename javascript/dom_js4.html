@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	#hide{background: red;
+		color: white;
+		box-shadow: 1px 2px 3px red}
+	#show{background: green;
+		color: white;
+		box-shadow: 1px 2px 3px green}
+</style>
+<body>
+	<p id="1">Nguyễn Đăng Tỉnh</p>
+	<input id="hide" type="button" value="Hide" onclick="document.getElementById('1').style.visibility='hidden'">
+	<input id="show" type="button" value="Show" onclick="document.getElementById('1').style.visibility='visible'">
+	<br/>
+	<br/>
+	<form>
+		<select id="myselect">
+			<optgroup label="Fruits juice">
+			<option value="táo">Apple</option>
+			<option value="cà chua">Tomato</option>
+			<option value="cà rốt">Carrot</option>
+			<option value="khoai tây">Potato</option>
+			<option value="mận">Plum</option>
+			<option value="ổi">Guava</option>
+			<option value="dưa hấu">Watermelon</option>
+			</optgroup>
+		</select>
+	<input type="button" onclick="my()" value="Click Me">
+	<script>
+	function my() {
+		var x = document.getElementById('myselect');
+		document.getElementById('2').innerHTML = x.options[x.selectedIndex].text;
+	//	x.options[x.selectedIndex].text="Sugercane";//thay thế cái đầu
+	//	x.remove(x.selectedIndex);	// xóa
+	};
+	</script>
+	</form>
+	<p id="2"></p>
+	
+	<img id="myImg" src="http://www.w3schools.com/js/compman.gif" alt="Crazy" width="107" height="98">
+</body>
+</html>

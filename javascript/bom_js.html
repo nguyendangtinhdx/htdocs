@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="1"></p>
+	<script>
+	w = screen.width;	// màng hình rộng
+	h = screen.height; 	// màng hình cao
+	//window.innerWidth  // cửa sổ rộng
+	//window.innerHeight  // cửa sổ cao
+	//screen.availHeight 	// chiều cao có sẵn
+	//screen.colorDepth		// độ sâu màu sắc
+	// screen.pixelDepth	// chiều sâu màn hình	
+	// window.location.href  // vị trí trang hiệ tại
+	// window.location.hostname // tên chủ nhà			
+	// window.location.pathname // tên đường dẫn			
+	// window.location.protocol // tên giao thức web			
+	// window.location.assign("http://www.w3schools.com) // <input type="button" value="Click me" onclick="my()">	
+	document.getElementById('1').innerHTML = " Height = " + h + "<br />" + " Width = " + w +"<br /> Ngôn ngữ: "+ navigator.language ;
+
+	function my() {
+		window.history.back(); // trang trước
+	//	window.history.forward();	// trang sau
+	};
+	function my1() {
+		window.history.forward();	// trang sau
+	};
+	</script>
+	<input type="button" value="History" onclick="my()">
+	<input type="button" value="Forward" onclick="my()">
+</body>
+</html>

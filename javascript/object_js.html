@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p id="1"></p>
+	<p id="2"></p>
+	<p id="3"></p>
+	<script>
+		var person = {
+			firstName: "John",
+			lastName: "Doe",
+			age: 50,
+			eyecolor: "blue"
+		};
+
+/*	var person = new Object();
+	person.firstName="Join";
+	person.lastName="Doe";
+	person.age=50;
+	person.eyecolor="blue;"*/
+	delete person.eyecolor;
+	document.write(person.firstName,person.lastName,person.age,person.eyecolor);
+
+	t="";
+	for(i in person)
+	{
+		t += person[i] + " ";	
+	}
+	document.getElementById('2').inne+ = t;			
+	function my(name,age) {
+		this.ten=name;
+		this.tuoi=age;
+		this.change=function(high){
+			this.tuoi=high;
+		}	
+	};
+	var a= new my("Tinh",19);
+	var b= new my("Bi",18);
+	a.change(20);	// thay đổi
+	document.getElementById('1').innerHTML = a.ten + a.tuoi + b.ten + b.tuoi;
+</script>		
+</body>
+</html>

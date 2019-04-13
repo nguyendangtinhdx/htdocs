@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- icon -->
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+	<style>
+		form{border: 5px solid #8EC1DA;
+			width: 30%;
+			margin: auto;
+		}
+		.floor ,b,i{background: #F6F7F8;
+			padding: 5px;
+		}
+		.section{padding: 10px;margin: 5px;}
+		.border{width: 95%;
+			padding: 5px;
+		}
+		#border1{
+			float: left;
+		}
+		.button{background: #4C66A4;
+			color: #FFFFFF;
+			border: none;
+			width: 100%}
+		.button1{border-radius: 3px;
+			height: 30px}
+		</style>
+	</head>
+	<body>
+		<form action="name">
+			<div class="floor">
+				<i class="fa fa-search"></i>
+				<b>Tiềm kiếm sản phẩm</b>
+			</div>
+			<div class="section">
+				Tên sản phẩm <br>
+				<input class="form-control" type="text" name="name product" placeholder="Nhập tên sản phẩm">
+				Gian hàng <br>
+				<select name="select1" class="form-control">
+					<option value="Chọn gian hàng">&laquo;Chọn gian hàng&raquo;</option>
+					<option value="gian hàng 1">Gian hàng 1</option>
+					<option value="gian hàng 2">Gian hàng 2</option>
+				</select>
+				Danh mục <br>
+				<select name="select2" class="form-control">
+					<option value="Chọn danh mục">&laquo;Chọn danh mục&raquo;</option>
+					<option value="danh mục 1">Danh mục 1</option>
+					<option value="danh mục 2">Danh mục 2</option>
+					<option value="danh mục 3">Danh mục 3</option>
+				</select>
+				Chọn vùng rao bán <br>
+				<select name="select2" class="form-control">
+					<option value="Chọn danh mục">&laquo;Chọn vùng rao bán&raquo;</option>
+					<option value="vùng rao bán 1">vùng rao bán 1</option>
+					<option value="vùng rao bán 2">vùng rao bán 2</option>
+					<option value="vùng rao bán 3">vùng rao bán 3</option>
+					<option value="vùng rao bán 4">vùng rao bán 4</option>
+				</select>
+				Giá rao bán <br>
+				<input id="border1" class="form-control" type="text" name="to" placeholder="Từ" style="width: 50%">
+				<input id="border1" class="form-control" type="text" name="from" placeholder="Đến"  style="width: 50%">
+				<br><br><br>
+				<button type="submit" id="border" class="btn btn-primary btn-block">Tìm kiếm</button>
+			</div>
+		</form>
+	</body>
+	</html>

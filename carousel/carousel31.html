@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		(function($) {
+	$.fn.carousel = function(options) {
+		var settings = {
+			previous: '#carousel-prev',
+			next: '#carousel-next',
+			speed: 600
+		};
+		options = $.extend(settings, options);
+		
+		return this.each(function() {
+		    
+		    // 1. Setup
+		    
+			var $element = $(this),
+				$wrapper = $('ul', $element), // items wrapper
+				$items = $('li', $wrapper), // carousel items
+				$outerWrapper = $wrapper.parent(), // outer items wrapper
+				outerWrapperWidth = $outerWrapper.outerWidth(), // the visible portion of the carousel
+				itemsNumber = $items.length, // items total number
+				singleItemWidth = $items.eq(0).outerWidth(), // single item width
+				singleItemMarginWidth = 5 * 2, // left/right margins set in the CSS styles
+				visiblePages = Math.ceil(outerWrapperWidth / singleItemWidth), // visible pages
+				pageNumber = Math.ceil(itemsNumber / visiblePages), // number of pages
+				index = 0; // to keep track of the page number
+				
+			    // set the overall width of the wrapper
+			    
+			    $wrapper.width((singleItemWidth + singleItemMarginWidth) * itemsNumber);
+			    
+			// 2. Run the carousel
+			
+			$(options.previous).on('click', function(e) {
+				e.preventDefault();
+				index--; // decrement the counter
+				if(index >= 0) {
+					$wrapper.animate({
+						left: '+=' + (singleItemWidth + singleItemMarginWidth)
+					}, options.speed);
+        }
+        
+          
+			});
+			
+			$(options.next).on('click', function(e) {
+				e.preventDefault();
+				index++; // increment the counter
+				if(index <= pageNumber) {
+					$wrapper.animate({
+						left: '-=' + (singleItemWidth + singleItemMarginWidth)
+					}, options.speed);
+        }
+			});
+				
+				
+		
+		});
+		
+		
+	};
+
+})(jQuery);
+
+$(function() {
+	$('#carousel').carousel();
+});
+	</script>
+	<style>	
+	#carousel {
+	margin: 2em auto;
+	width: 550px;
+}
+
+#carousel-wrapper {
+	width: 100%;
+	height: 110px;
+	overflow: hidden;
+}
+
+#carousel-items {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	height: 100%;
+	background: #eee;
+}
+
+#carousel-items li {
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+	line-height: 100px;
+	text-align: center;
+	background: silver;
+}
+
+#carousel-nav {
+	margin: 1em 0;
+	overflow: hidden;
+}
+
+#carousel-nav a {
+	padding: 5px 16px;
+	background: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#carousel-next {
+	float: right;
+}
+
+#carousel-prev {
+	float: left;
+}
+	</style>
+</head>
+<body>
+	<div id="carousel">
+	<div id="carousel-wrapper">
+		<ul id="carousel-items">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+		</ul>
+	</div>
+	<div id="carousel-nav">
+		<a href="#" id="carousel-prev">&laquo;</a>
+		<a href="#" id="carousel-next">&raquo;</a>
+	</div>
+</div>
+</body>
+</html>

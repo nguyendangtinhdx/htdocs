@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="js/angular.min.js"></script>
+</head>
+<body>
+  <button type="button" id="btnOpenLine" class="btn btn-default btn-sm" ng-click="orderMaster.openLineItems()">Order Line Items</button>
+</body>
+<script>
+    function openLineItems() {
+    if (this.$stateParams.id == 0) {
+        this.Flash.create('warning', "Need to save order!", 3000);
+        return
+    }
+    this.$window.open('#/orderLineitems/' + this.$stateParams.id);
+</script>
+</html>

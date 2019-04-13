@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		3 kí tự từ a-z hoặc A-Z: <mark>[A-Za-z]{3}</mark>
+		<input type="text" name="name" pattern="[A-Za-z]{3}" title="3 kí tự từ a-z hoặc A-Z">
+		<input type="submit">
+		<br>	
+		6 kí tự hoặc nhiều: <mark>.{6,}</mark>
+		<input type="password" name="pw" pattern=".{6,}" title="6 kí tự">
+		<input type="submit">
+		<br>
+		8 kí tự hoặc nhiều, ít nhất 1 số,1 chữ thường,1 chữ hoa: <mark>(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}</mark>
+		<input type="password" name="pw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+		<input type="submit">
+		<br>
+		địa chỉ email có kítự@.kítự.miền: <mark>[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$</mark>
+		<input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+		<button type="submit">Submit</button>
+		<br>
+		không chứ kí tự ' hoặc ": <mark>[^'\x22]+</mark>
+		<input type="text" name="name" pattern="[^'\x22]+">
+		<input type="submit">
+		<br>
+		địa chỉ url phải bắt đầu bằng http:// : <mark>https?://.+</mark>
+		<input type="url" name="url" pattern="https?	qrt://.+">
+		<input type="submit">	
+	</form>
+</body>
+</html>

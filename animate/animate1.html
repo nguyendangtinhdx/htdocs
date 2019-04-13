@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		@import url(http://fonts.googleapis.com/css?family=Bangers);
+		html {
+			min-height: 100%;
+		}
+		body {
+			font-family: Bangers;
+			font-size: 100px;
+			background: -webkit-radial-gradient(50% 100%, yellow, red);
+			background: radial-gradient(50% 100%, yellow, red);
+			color: #fff;
+		}
+		.welcome-text {
+			width: 650px;
+			margin: 10% auto 0;
+		}
+		.welcome-text ul {
+			padding: 0;
+			margin: 0;
+		}
+		.welcome-text ul li {
+			float: left;
+			list-style: none;
+			padding: 10px;
+			color: #fff;
+			text-shadow: 2px 2px #ff0000;
+		}
+		.welcome-text ul li:nth-child(even) {
+			-webkit-animation-name: wiggleEven;
+			-webkit-animation-duration: .6s;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-timing-function: ease;
+			animation-name: wiggleEven;
+			animation-duration: .6s;
+			animation-iteration-count: infinite;
+			animation-timing-function: ease;
+		}
+		.welcome-text ul li:nth-child(odd) {
+			-webkit-animation-name: wiggleOdd;
+			-webkit-animation-duration: .4s;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-timing-function: ease;
+			animation-name: wiggleOdd;
+			animation-duration: .4s;
+			animation-iteration-count: infinite;
+			animation-timing-function: ease;
+		}
+		@-webkit-keyframes wiggleEven {
+			from {
+				-webkit-transform: rotateZ(10deg) translateY(4px);
+			}
+			50% {
+				-webkit-transform: rotateZ(-20deg) translateY(-4px);
+			}
+			to {
+				-webkit-transform: rotateZ(10deg) translateY(4px);
+			}
+		}
+		@-webkit-keyframes wiggleOdd {
+			from {
+				-webkit-transform: rotateZ(-20deg) translateY(-4px);
+			}
+			50% {
+				-webkit-transform: rotateZ(2deg) translateY(4px);
+			}
+			to {
+				-webkit-transform: rotateZ(-20deg) translateY(-4px);
+			}
+		}
+		@keyframes wiggleEven {
+			from {
+				transform: rotateZ(10deg) translateY(4px);
+			}
+			50% {
+				transform: rotateZ(-20deg) translateY(-4px);
+			}
+			to {
+				transform: rotateZ(10deg) translateY(4px);
+			}
+		}
+		@keyframes wiggleOdd {
+			from {
+				transform: rotateZ(-20deg) translateY(-4px);
+			}
+			50% {
+				transform: rotateZ(2deg) translateY(4px);
+			}
+			to {
+				transform: rotateZ(-20deg) translateY(-4px);
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div class="welcome-text">
+		<ul>
+			<li>C</li>
+			<li>S</li>
+			<li>S</li>
+			<li>3</li>
+			<li>&nbsp;</li>
+			<li>D</li>
+			<li>A</li>
+			<li>N</li>
+			<li>C</li>
+			<li>E</li>
+		</ul>
+	</div>
+</body>
+</html>

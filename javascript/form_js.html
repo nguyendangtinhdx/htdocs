@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form_JS </title>
+</head>
+<body>
+	<script>
+		function my()
+		{
+			var x = document.forms["form"]["name"].value;
+			if(x==null||x=="")
+			{
+				alert(" Name must be filled out");
+				return false;
+			}
+		}
+	</script>
+												<!-- method="post" -->
+	<form name="form" action="demo_form.asp" onsubmit=" return my()" >
+		Name: <input type="text" name="name"> 
+	<!-- Name: <input type="text" name="name" required> -->
+		<input type="submit">
+	</form>
+
+	<style>
+	::-moz-selection
+	{
+		color: red;
+		background: yellow;
+	}
+	::selection
+	{
+		color: red;
+		background: yellow;
+	}
+
+	</style>
+	<p>Nguyen Dang Tinh</p>
+</body>
+</html>

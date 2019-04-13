@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+body {
+  background: #1f1f1f;
+}
+
+.site-navigation {
+	display: block;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 40px;
+}
+
+.site-navigation ul {
+  background: #3498DB;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+.site-navigation li {
+	color: #fff;
+  background: #3498DB;
+	display: block;
+	float: left;
+	margin: 0 2px 0 0;
+	padding: 12px;
+	position: relative;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+  
+.site-navigation li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.site-navigation li:hover {
+	@include transition(background, 0.2s);
+	background: #52a6df;
+	cursor: pointer;
+}
+
+.site-navigation ul li ul {
+	background: #52a6df;
+	visibility: hidden;
+	float: left;
+  min-width: 150px;
+	position: absolute;
+  transition: visibility 0.65s ease-in;
+  margin-top:12px;
+	left: 0;
+	z-index: 999;
+}
+
+.site-navigation ul li:hover > ul,
+.site-navigation ul li ul:hover {
+   visibility: visible;
+}
+
+.site-navigation ul li ul li {
+	clear: both;
+	padding: 5px 0 5px 18px;
+  width: 100%;
+}
+
+.site-navigation ul li ul li:hover {
+	background: #74b7e4;
+}
+	</style>
+</head>
+<body>
+	  <nav id="navigation" class="site-navigation" role="navigation">
+  <ul class="menu">
+    <li class="menu-item"><a href="#">News</a></li>
+    <li class="menu-item"><a href="#">Snippets</a>
+      <ul class="dropdown">
+        <li class="menu-item sub-menu"><a href="#">CSS</a></li>
+        <li class="menu-item sub-menu"><a href="#">HTML</a></li>
+        <li class="menu-item sub-menu"><a href="#">jQuery</a></li>
+        <li class="menu-item sub-menu"><a href="#">PHP</a></li>
+        <li class="menu-item sub-menu"><a href="#">WordPress</a></li>
+      </ul>
+    </li>
+    <li class="menu-item"><a href="#">Inspiration</a></li>
+    <li class="menu-item"><a href="#">Tools</a></li>
+    <li class="menu-item"><a href="#">Tutorials</a></li>
+  </ul>
+</nav>
+</body>
+</html>

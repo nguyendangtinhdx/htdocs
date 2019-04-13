@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Display Infomation</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="col-sm-3">
+		</div>
+		<div class="col-sm-6">
+
+			<h2 align="center">Display Infomation</h2>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th>Email:</th>
+						<td><span id="showEmail"></span></td>
+					</tr>
+					<tr>
+						<th>Birthday:</th>
+						<td><span id="showBirthDay"></span></td>
+					</tr>
+					<tr>
+						<th>Address:</th>
+						<td><span id="showAddress"></span</td>
+					</tr>
+					<tr>
+						<th>Mobile:</th>
+						<td><span id="showMobile"></span></td>
+					</tr>
+					<tr>
+						<th>Gender:</th>
+						<td><span id="showGender"></span></td>
+					</tr>
+					<tr>
+						<th>Sports:</th>
+						<td><span id="showSports"></span></td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="Bai1.html" class="btn btn-danger">Back to Form</a>
+	
+		</div>
+		<div class="col-sm-3">
+		</div>
+	</div>
+</body>
+<script>
+	document.getElementById('showEmail').innerHTML = localStorage.getItem('email');
+	document.getElementById('showBirthDay').innerHTML = localStorage.getItem('birthday');
+	document.getElementById('showAddress').innerHTML = localStorage.getItem('address');
+	document.getElementById('showMobile').innerHTML = localStorage.getItem('mobile');
+	document.getElementById('showGender').innerHTML = localStorage.getItem('gender');
+	document.getElementById('showSports').innerHTML = localStorage.getItem('sports');
+</script>
+</html>

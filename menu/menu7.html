@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+/*		*{
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+*/
+	/*	body{
+			font-family: 'calibri', sans-serif;
+		}*/
+
+		nav ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.menu{
+			display: table;
+			margin: 1em auto;
+		}
+
+		.menu > li{
+			background: #333;
+			display: inline-block;
+			position: relative;
+		}
+
+		.menu > li + li{
+			border-left: solid 1px #000;
+		}
+
+		.menu > li:hover .submenu{
+			top: 100%;
+			left: auto;
+		}
+
+		.menu a{
+			color: #eee;
+			display: block;
+			padding: .5em 2em;
+			text-decoration: none;
+
+			-webkit-transition: all .2s linear;
+			-moz-transition: all .2s linear;
+			-ms-transition: all .2s linear;
+			-o-transition: all .2s linear;
+			transition: all .2s linear;
+		}
+
+		.menu a:hover,
+		.menu a:focus{
+			background: #369;
+			outline: none;
+		}
+
+		.submenu{
+			background: #444;
+			left: -9999px;
+			position: absolute;
+			top: -9999px;
+			width: 150%;
+		}
+
+		/*.submenu > li + li{
+			border-top: solid 1px #000;
+		}*/
+
+	/*	.submenu > li:last-child{
+			border-bottom: solid 3px #000;
+		}*/
+
+		.submenu a{
+			padding: .5em 1em;
+		}
+
+		/*.is-show{
+			left: auto;
+			top: 100%;
+		}*/
+	</style>
+</head>
+<body>
+	<nav role="navigation">
+		<ul class="menu">
+			<li>
+				<a href="#">link 1</a>
+				<ul class="submenu">
+					<li><a href="#">sub link 1</a></li>
+					<li><a href="#">sub link 1</a></li>
+					<li><a href="#">sub link 1</a></li>
+					<li><a href="#">sub link 1</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">link 2</a>
+				<ul class="submenu">
+					<li><a href="#">sub link 2</a></li>
+					<li><a href="#">sub link 2</a></li>
+					<li><a href="#">sub link 2</a></li>
+					<li><a href="#">sub link 2</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">link 3</a>
+				<ul class="submenu">
+					<li><a href="#">sub link 3</a></li>
+					<li><a href="#">sub link 3</a></li>
+					<li><a href="#">sub link 3</a></li>
+					<li><a href="#">sub link 3</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">link 4</a>
+				<ul class="submenu">
+					<li><a href="#">sub link 4</a></li>
+					<li><a href="#">sub link 4</a></li>
+					<li><a href="#">sub link 4</a></li>
+					<li><a href="#">sub link 4</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">link 5</a>
+				<ul class="submenu">
+					<li><a href="#">sub link 5</a></li>
+					<li><a href="#">sub link 5</a></li>
+					<li><a href="#">sub link 5</a></li>
+					<li><a href="#">sub link 5</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
+	<script>
+		var App = {
+
+			accessibleMenu: function(){
+				$menu = $('.menu');
+				$menuItem = $menu.find('> li > a');
+
+				$subMenu = $('.submenu');
+				$subMenuItem = $subMenu.find('> li > a');
+				$submenuLastItem = $subMenu.find('> li:last-child > a');
+
+				$menuItem.bind({
+					focus: function(){
+						$subMenu.removeClass('is-show');
+						if($(this).next($subMenu)){
+							$(this).next($subMenu).addClass('is-show');
+						}
+					},
+
+					blur: function(){
+						$subMenu.removeClass('is-show');
+					}
+				});
+
+				$subMenuItem.bind({
+					focus: function(){
+						$(this).parent().parent().addClass('is-show');
+					}
+				});
+
+				$submenuLastItem.bind({
+					blur: function(){
+						$subMenu.removeClass('is-show');
+					}
+				});
+			},
+
+			cancelAccessibleMenu: function(){
+				$(document).click(function(){
+					if($subMenu.hasClass('is-show')){
+						$subMenu.removeClass('is-show');
+					}
+				});
+			}
+
+		};
+
+		$(function(){
+			App.accessibleMenu();
+			App.cancelAccessibleMenu();
+		});
+	</script>
+</body>
+</html>

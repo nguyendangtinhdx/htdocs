@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<script>
+		$('body').append("<div id='what'></div>");
+
+//Add class to active's previous and next element
+$('.nav-active').next().addClass('brotha');
+$('.nav-active').prev().addClass('brotha');
+
+//If the active is the last, the "go to next" button disappears
+if($('ul li').last().hasClass('nav-active')){
+  $('#next').css('visibility', 'hidden');
+}
+
+//Same with the first (don't know why didn't put this part first, lol)
+if($('ul li').first().hasClass('nav-active')){
+  $('#prev').css('visibility', 'hidden');
+}
+
+//On click gives the active stage for pagination
+//This includes the same behavior for the previous and next buttons
+$('ul li a').on('click', function(){
+  $(this).parent().addClass('nav-active').removeClass('brotha').siblings().removeClass('nav-active brotha');
+  $(this).parent().next().addClass('brotha');
+  $(this).parent().prev().addClass('brotha');
+  
+  $('#next').css('visibility', 'visible');
+  $('#prev').css('visibility', 'visible');
+  
+  if($('ul li').last().hasClass('nav-active')){
+    $('#next').css('visibility', 'hidden');
+  }
+  if($('ul li').first().hasClass('nav-active')){
+    $('#prev').css('visibility', 'hidden');
+  }
+});
+
+//Prev button change active stage in nav (same as previous code)
+$('#prev').on('click', function(){
+   $('.nav-active').siblings().removeClass("brotha");
+   $('.nav-active').removeClass("nav-active brotha").prev().addClass('nav-active');
+   $('.nav-active').next().addClass('brotha');
+   $('.nav-active').prev().addClass('brotha');
+  
+   $('#next').css('visibility', 'visible');
+   $('#prev').css('visibility', 'visible');
+  
+   if($('ul li').first().hasClass('nav-active')){
+     $('#prev').css('visibility', 'hidden');
+   }
+});
+
+//Next button change active stage in nav (same as previous code)
+$('#next').on('click', function(){
+   $('.nav-active').siblings().removeClass("brotha");
+   $('.nav-active').removeClass("nav-active brotha").next().addClass('nav-active');
+   $('.nav-active').next().addClass('brotha');
+   $('.nav-active').prev().addClass('brotha');
+  
+  $('#next').css('visibility', 'visible');
+  $('#prev').css('visibility', 'visible');
+  
+  if($('ul li').last().hasClass('nav-active')){
+    $('#next').css('visibility', 'hidden');
+  }
+});
+	</script>
+	<style>
+	@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+h1 {
+  font-family: 'Open Sans';
+  text-align: center;
+  margin: 0 auto 40px;
+  background-color: #e6e6e6;
+  padding: 10px 0 15px;
+}
+nav {
+  margin: 0 auto;
+  display: table;
+  width: 100%;
+}
+nav #prev {
+  float: left;
+}
+nav #next {
+  float: right;
+}
+nav a {
+  text-decoration: none;
+  padding: 3px;
+  border: 1px solid #ccc;
+  width: 20px;
+  height: 20px;
+  -ms-display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Open Sans';
+  color: #666;
+  transition: all .3s ease;
+}
+nav a:hover {
+  color: #fff;
+  background-color: #666;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin: 0 auto;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li.nav-active a {
+  color: #fff;
+  background-color: #666;
+}
+#what {
+  background: url('http://i.imgur.com/0bM9vbD.jpg') no-repeat center;
+  width: 100%;
+  display: none;
+  height: 180px;
+  background-size: cover;
+}
+p {
+  font-family: 'Open Sans';
+  position: absolute;
+  width: 80px;
+  margin: 0;
+  height: 45px;
+  right: 10px;
+  top: 45%;
+  opacity: .6;
+  transition: all .3s ease;
+}
+p svg {
+  position: absolute;
+  right: 0;
+  top: 22px;
+}
+@media (max-width: 400px) {
+  nav li a {
+    display: none;
+  }
+  nav li.nav-active a,
+  nav li.brotha a {
+    display: flex;
+  }
+  p {
+    opacity: 0;
+  }
+}
+@media (max-width: 185px) {
+  nav,
+  h1 {
+    display: none;
+  }
+  #what {
+    display: block;
+  }
+}
+
+	</style>
+</head>
+<body>
+	<h1>Responsive pagination</h1>
+
+<nav>
+  <a href="#" id="prev">‹</a>
+  <a href="#" id="next">›</a>
+  <ul>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li class="nav-active"><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">6</a></li>
+    <li><a href="#">7</a></li>
+    <li><a href="#">8</a></li>
+  </ul>
+</nav>
+
+<p>Resize me
+  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="40px" height="40px" viewBox="60 180 360 300" enable-background="new 60 180 360 300" xml:space="preserve">
+  <g id="reply">
+    <path d="M280,400v80l140-140L280,200v82c-100,0-170-32-220-102C80,280,140,380,280,400z"/>
+  </g>
+  </svg>
+</p>
+</body>
+</html>

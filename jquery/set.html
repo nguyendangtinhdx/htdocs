@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../bootstrap/js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			// content
+			$("#bt1").click(function(){
+				$("#text1").text(function(i,x){
+					return  "Hello" + x + "(index: " + i + ")";
+				});
+			});
+			// element
+			$("#bt2").click(function(){
+				$("#text2").html(function(i,x){
+					return  "Hello" + x + "(index: " + i + ")";
+				});
+			});
+			// attribute
+			$("#bt3").click(function(){
+				$("#text3").attr("href","http://www.facebook.com");
+			});
+			// attribute (title)
+			$("#bt4").click(function(){
+				$("#text4").attr({
+					"href": "http://www.facebook.com",
+					"title": "Facebook"
+				});
+			});
+			// attribute callback
+			$("#bt5").click(function(){
+				$("#text5").attr("href",function(i,x){
+					return x + "/NguyenDangTinhBI";
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<p id="text1">Nguyễn <b>Đăng</b> Tỉnh</p>
+	<p id="text2">Nguyễn <b>Đăng</b> Tỉnh Bi</p>
+	<button id="bt1">Show Old/Text</button>
+	<button id="bt2">Show Old/HTML</button>
+	<br><br>
+
+	<a href="http://www.w3schools.com" id="text3" target="blank">W3school.com</a>
+	<button id="bt3">Change href W3 -> Facebook</button>
+	<br>
+
+	<a href="http://www.w3schools.com" id="text4" target="blank" title="W3school">W3school.com</a>
+	<button id="bt4">Change href W3 and Title -> Facebook</button>
+	<br>
+
+	<a href="http://www.facebook.com" id="text5" target="blank">W3school.com</a>
+	<button id="bt5">Change Add đuôi vào</button>
+</body>
+</html>

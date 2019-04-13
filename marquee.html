@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{font-size: 50px;
+		color:#1C7C01}
+	</style>
+</head>
+<body>
+	<marquee direction="up">Up</marquee>
+	<marquee direction="left" style="background: #ddd">Left</marquee>
+	<marquee behavior="alternate" direction="right">Right: alternate </marquee>
+	<marquee direction="down">Down</marquee>
+
+	<marquee behavior="alternate" width="3%">&raquo;</marquee>
+	Nguyễn Đăng Tỉnh
+	<marquee behavior="alternate" width="3%">&laquo;</marquee>
+
+	<marquee behavior="alternate">
+		<marquee width="300">Disappear: Biến mất</marquee>
+	</marquee>
+
+	<marquee onmouseover="this.stop()" onmouseout="this.start()"
+	scrollamout="2">Touch will stop: chạm vào sẽ dừng lại</marquee>
+	<marquee direction="right" onmouseover="this.stop()" onmouseout="this.start()"  scrollamout="3">
+		<img src="img/1.jpg" height="100" width="100">
+		<img src="img/2.jpg" height="100" width="100">
+		<img src="img/3.png" height="100" width="100">
+	</marquee>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+
+  var $preloader = $(".preloader");
+  var afterPreloaderAT = 200;
+
+  var scrolling = false;
+  var curPage = 1;
+  var numOfPages = $(".page").length;
+  var $rotater = $(".rotater");
+  var $iframes = $(".phone__iframes");
+  var $phone = $(".phone");
+
+  $(".preloader__overlay").on("animationend", function() {
+    $preloader.addClass("inactive");
+  });
+
+  function afterPreloader() {
+    $rotater.addClass("active");
+    $phone.addClass("active");
+    $(".page-1").addClass("active");
+    $(".pagination").addClass("active");
+    $rotater.css("transform", "rotate(0deg)");
+
+    $(document).on("mousewheel DOMMouseScroll", scrollHandler);
+    $(document).on("keydown", keydownHandler);
+  };
+
+  $preloader.on("transitionend", function() {
+    $preloader.addClass("hidden");
+
+    setTimeout(afterPreloader, afterPreloaderAT);
+  });
+
+  function pagination(page) {
+    if (page) curPage = page;
+
+    scrolling = true;
+    $(".page.active").removeClass("active");
+    $(".page-" + curPage).addClass("active");
+    $(".pagination__item.active").removeClass("active");
+    $(".pagination__item[data-page="+ curPage +"]").addClass("active");
+    $rotater.css("transform", "rotate("+ (curPage - 1) * 180 +"deg)");
+    $iframes.css("transform", "translate3d("+ (curPage - 1) * -100 +"%,0,0)");
+  };
+
+  function navigateUp() {
+    if (curPage === 1) return;
+    curPage--;
+    pagination();
+  };
+
+  function navigateDown() {
+    if (curPage === numOfPages) return;
+    curPage++;
+    pagination();
+  };
+
+  function scrollHandler(e) {
+    if (scrolling) return;
+    if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
+      navigateUp();
+    } else { 
+      navigateDown();
+    }
+  };
+
+  function keydownHandler(e) {
+    if (scrolling) return;
+    if (e.which === 38) {
+      navigateUp();
+    } else if (e.which === 40) {
+      navigateDown();
+    }
+  };
+  
+  function paginationClickHandler() {
+    if (scrolling) return;
+    var $item = $(this);
+    var page = $item.data("page");
+
+    pagination(page);
+  };
+  
+  $(document).on("click", ".pagination__item:not(.active)", paginationClickHandler);
+  
+  function paginationArrowHandler() {
+    if (scrolling) return;
+    if ($(this).hasClass("js-up")) {
+      navigateUp();
+    } else {
+      navigateDown();
+    }
+  };
+  
+  $(document).on("click", ".pagination__arrow", paginationArrowHandler);
+
+  $rotater.on("transitionend", function() {
+    scrolling = false;
+  });
+
+});
+	</script>
+	<style>
+	@font-face {
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/polar.otf");
+  font-family: 'Custom Font';
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.preloader, .preloader__img, .preloader__overlay, .main-content__inner:before, .page, .phone__bg, .pagination__item:before, .pagination__item:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+html, body {
+  font-size: 62.5%;
+}
+
+body {
+  background: #fff;
+}
+
+.preloader {
+  z-index: 10;
+  background: #000;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+.preloader.inactive {
+  opacity: 0;
+}
+.preloader.hidden {
+  display: none;
+}
+.preloader__cont {
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 25.6rem;
+  height: 25.6rem;
+  margin-left: -12.8rem;
+  margin-top: -12.8rem;
+}
+.preloader__img {
+  background-size: cover;
+  background-image: url("http://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/profile/profile-512_5.jpg");
+  border-radius: 1rem;
+}
+.preloader__overlay {
+  background: #000;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-animation: animatePreloader 1.5s 0.5s ease-in forwards;
+          animation: animatePreloader 1.5s 0.5s ease-in forwards;
+}
+
+@-webkit-keyframes animatePreloader {
+  to {
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes animatePreloader {
+  to {
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+  }
+}
+.main-content {
+  position: relative;
+  padding: 50px;
+  width: 100%;
+  height: 100vh;
+}
+.main-content__inner {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/big-img.jpg");
+  background-size: cover;
+}
+.main-content__inner:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.rotater {
+  z-index: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 150vmax;
+  height: 150vmax;
+  margin-left: -75vmax;
+  margin-top: -75vmax;
+  margin-top: 0;
+  background: #F6CC4C;
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
+  -webkit-transition: -webkit-transform 1s cubic-bezier(1, -0.01, 0.6, 1);
+  transition: -webkit-transform 1s cubic-bezier(1, -0.01, 0.6, 1);
+  transition: transform 1s cubic-bezier(1, -0.01, 0.6, 1);
+  transition: transform 1s cubic-bezier(1, -0.01, 0.6, 1), -webkit-transform 1s cubic-bezier(1, -0.01, 0.6, 1);
+  -webkit-transform: translate3d(0, calc(50vh - 50px*1.5), 0) rotate(0);
+          transform: translate3d(0, calc(50vh - 50px*1.5), 0) rotate(0);
+}
+.rotater.active {
+  -webkit-transform: translate3d(0, 0, 0) rotate(0);
+          transform: translate3d(0, 0, 0) rotate(0);
+}
+
+.pages {
+  z-index: 2;
+  position: relative;
+  height: 100%;
+}
+
+.page__number, .page__headings {
+  position: absolute;
+  right: calc(50% + 36.4rem / 2 + 5rem);
+  opacity: 0;
+  -webkit-transform: translateX(200px);
+          transform: translateX(200px);
+  -webkit-transition: opacity 0.6s, -webkit-transform 0.6s ease-out;
+  transition: opacity 0.6s, -webkit-transform 0.6s ease-out;
+  transition: opacity 0.6s, transform 0.6s ease-out;
+  transition: opacity 0.6s, transform 0.6s ease-out, -webkit-transform 0.6s ease-out;
+}
+.page.active .page__number, .page.active .page__headings {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+  -webkit-transition-delay: 0.8s;
+          transition-delay: 0.8s;
+}
+
+.page.active {
+  z-index: 1;
+}
+.page__number {
+  top: 75%;
+  margin-top: -7.5rem;
+  font-size: 15rem;
+  line-height: 1;
+  font-family: "Custom Font", Helvetica, Arial, sans-serif;
+  color: #fff;
+}
+.page:nth-child(even) .page__number {
+  top: 25%;
+}
+.page__headings {
+  top: 25%;
+  text-align: right;
+}
+.page:nth-child(even) .page__headings {
+  top: 75%;
+}
+.page__headings-main {
+  margin-bottom: 0.5rem;
+  font-size: 4rem;
+  font-family: "Custom Font", Helvetica, Arial, sans-serif;
+  color: #F6CC4C;
+  text-transform: uppercase;
+}
+.page__headings-sub {
+  font-size: 2rem;
+  color: #fff;
+}
+.page__headings-link {
+  color: #F6CC4C;
+}
+
+.phone {
+  z-index: 3;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 36.4rem;
+  height: 74.3288rem;
+  margin-left: -18.2rem;
+  margin-top: -37.1644rem;
+  padding-top: 8.91946rem;
+  -webkit-transform: translate3d(0, 100vh, 0) rotate(-30deg);
+          transform: translate3d(0, 100vh, 0) rotate(-30deg);
+  -webkit-transition: -webkit-transform 0.7s 0.3s ease-out;
+  transition: -webkit-transform 0.7s 0.3s ease-out;
+  transition: transform 0.7s 0.3s ease-out;
+  transition: transform 0.7s 0.3s ease-out, -webkit-transform 0.7s 0.3s ease-out;
+}
+.phone:before {
+  content: "";
+  z-index: -10;
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 5.6rem;
+  box-shadow: 4rem 4rem 6rem rgba(0, 0, 0, 0.3), -2rem 2rem 5rem rgba(0, 0, 0, 0.3);
+}
+.phone.active {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.phone__bg {
+  background-size: cover;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/iphone-6-mockup.png);
+}
+.phone__inner {
+  position: relative;
+  width: 320px;
+  height: 56.48989rem;
+  margin: 0 auto;
+  background: #000;
+}
+.phone__inner:before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  border: 1px solid #000;
+}
+.phone__content {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+.phone__iframes {
+  position: relative;
+  height: 100%;
+  -webkit-transition: -webkit-transform 0.7s 0.3s;
+  transition: -webkit-transform 0.7s 0.3s;
+  transition: transform 0.7s 0.3s;
+  transition: transform 0.7s 0.3s, -webkit-transform 0.7s 0.3s;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.phone__iframe {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.phone__iframe-1 {
+  left: 0%;
+}
+.phone__iframe-2 {
+  left: 100%;
+}
+.phone__iframe-3 {
+  left: 200%;
+}
+.phone__iframe-4 {
+  left: 300%;
+}
+.phone__iframe-5 {
+  left: 400%;
+}
+.phone__iframe-6 {
+  left: 500%;
+}
+.phone__iframe-6 {
+  background: #fff;
+  color: #000;
+  padding: 2rem;
+  text-align: center;
+}
+
+.pagination {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 50px;
+  -webkit-transform: translateY(-50%) scale(0.8);
+          transform: translateY(-50%) scale(0.8);
+  opacity: 0;
+  -webkit-transition: opacity 1s, -webkit-transform 1s;
+  transition: opacity 1s, -webkit-transform 1s;
+  transition: opacity 1s, transform 1s;
+  transition: opacity 1s, transform 1s, -webkit-transform 1s;
+}
+.pagination.active {
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  opacity: 1;
+}
+.pagination__arrow {
+  position: absolute;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border: 0.3rem solid #cfcfcf;
+  border-left: none;
+  border-bottom: none;
+  -webkit-transition: border-color 0.3s;
+  transition: border-color 0.3s;
+  cursor: pointer;
+}
+.pagination__arrow--up {
+  bottom: 110%;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.pagination__arrow--down {
+  top: 110%;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+.pagination__arrow:hover {
+  border-color: #F6CC4C;
+}
+.pagination__items {
+  list-style-type: none;
+}
+.pagination__item {
+  position: relative;
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin: 0 auto 35px;
+  cursor: pointer;
+}
+.pagination__item:last-child {
+  margin-bottom: 0;
+}
+.pagination__item:before, .pagination__item:after {
+  content: "";
+}
+.pagination__item:before {
+  border-radius: 50%;
+  border: 0.3rem solid #cfcfcf;
+}
+.pagination__item:after {
+  border-radius: 50%;
+  background: #F6CC4C;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+.pagination__item.active:after, .pagination__item:hover:after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.info__heading {
+  margin-bottom: 20px;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-family: "Custom Font", Helvetica, Arial, sans-serif;
+}
+.info__img {
+  display: block;
+  width: 60%;
+  margin: 0 auto 20px;
+}
+.info__text {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.info__link {
+  color: #03A9F4;
+}
+
+	</style>
+</head>
+<body>
+	<div class="preloader">
+  <div class="preloader__cont">
+    <div class="preloader__img"></div>
+    <div class="preloader__overlay"></div>
+  </div>
+</div>
+<div class="main-content">
+  <div class="main-content__inner">
+    <div class="rotater"></div>
+    <!-- pages start -->
+    <div class="pages">
+      <div class="page page-1">
+        <h3 class="page__number">01</h3>
+        <div class="page__headings">
+          <h2 class="page__headings-main">Elastic Sidebar</h2>
+          <h4 class="page__headings-sub">
+            Just scroll down!<br/> 
+            You can find demo code 
+            <a href="http://codepen.io/suez/pen/emjwvP" target="_blank" class="page__headings-link">here</a>
+          </h4>
+        </div>
+      </div>
+      <div class="page page-2">
+        <h3 class="page__number">02</h3>
+        <div class="page__headings">
+          <h2 class="page__headings-main">Paper Plane PDTR</h2>
+          <h4 class="page__headings-sub">
+            You can find code 
+            <a href="http://codepen.io/suez/pen/oXLroX" target="_blank" class="page__headings-link">here</a>
+          </h4>
+        </div>
+      </div>
+      <div class="page page-3">
+        <h3 class="page__number">03</h3>
+        <div class="page__headings">
+          <h2 class="page__headings-main">Login Animation</h2>
+          <h4 class="page__headings-sub">
+            You can find code 
+            <a href="http://codepen.io/suez/pen/dPqxoM" target="_blank" class="page__headings-link">here</a>
+          </h4>
+        </div>
+      </div>
+      <div class="page page-4">
+        <h3 class="page__number">04</h3>
+        <div class="page__headings">
+          <h2 class="page__headings-main">Elastic PDTR</h2>
+          <h4 class="page__headings-sub">
+            You can find code 
+            <a href="http://codepen.io/suez/pen/epgZjK" target="_blank" class="page__headings-link">here</a>
+          </h4>
+        </div>
+      </div>
+      <div class="page page-5">
+        <h3 class="page__number">05</h3>
+        <div class="page__headings">
+          <h2 class="page__headings-main">CSS Questionnaire</h2>
+          <h4 class="page__headings-sub">
+            You can find code 
+            <a href="http://codepen.io/suez/pen/XJGOyL" target="_blank" class="page__headings-link">here</a>
+          </h4>
+        </div>
+      </div>
+      <div class="page page-6">
+        <h3 class="page__number">06</h3>
+        <div class="page__headings">
+          <h2 class="page__headings-main">The end</h2>
+          <h4 class="page__headings-sub">
+            Very end!
+          </h4>
+        </div>
+      </div>
+    </div>
+    <!-- pages end -->
+    <!-- phone start -->
+    <div class="phone">
+      <div class="phone__bg"></div>
+      <div class="phone__inner">
+        <div class="phone__content">
+          <div class="phone__iframes">
+            <iframe class="phone__iframe phone__iframe-1" src="http://s.codepen.io/suez/debug/emjwvP"></iframe>
+            <iframe class="phone__iframe phone__iframe-2" src="http://s.codepen.io/suez/debug/oXLroX"></iframe>
+            <iframe class="phone__iframe phone__iframe-3" src="http://s.codepen.io/suez/debug/dPqxoM"></iframe>
+            <iframe class="phone__iframe phone__iframe-4" src="http://s.codepen.io/suez/debug/epgZjK"></iframe>
+            <iframe class="phone__iframe phone__iframe-5" src="http://s.codepen.io/suez/debug/XJGOyL"></iframe>
+            <div class="phone__iframe phone__iframe-6">
+              <h3 class="info__heading">About me</h3>
+              <img src="http://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/profile/profile-512_5.jpg" class="info__img"/>
+              <p class="info__text">
+                My <a href="https://twitter.com/NikolayTalanov" target="_blank" class="info__link">Twitter</a>
+              </p>
+              <p class="info__text">
+                My <a href="http://codepen.io/suez/pens/public/" target="_blank" class="info__link">other demos</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- phone end -->
+  </div>
+  <nav class="pagination">
+    <div class="pagination__arrow pagination__arrow--up js-up"></div>
+    <div class="pagination__arrow pagination__arrow--down js-down"></div>
+    <ul class="pagination__items">
+      <li class="pagination__item active" data-page="1"</li>
+      <li class="pagination__item" data-page="2"></li>
+      <li class="pagination__item" data-page="3"></li>
+      <li class="pagination__item" data-page="4"></li>
+      <li class="pagination__item" data-page="5"></li>
+      <li class="pagination__item" data-page="6"></li>
+    </ul>
+  </nav>
+</div>
+</body>
+</html>

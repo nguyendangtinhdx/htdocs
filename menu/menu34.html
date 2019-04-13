@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+/*****LESS*****/
+/**************/
+html,
+body {
+  background: #333;
+}
+.content {
+  background: #fff;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 1em;
+  -webkit-box-shadow: 0 20px 10px -15px rgba(0,0,0,.8);
+  -moz-box-shadow: 0 20px 10px -15px rgba(0,0,0,.8);
+  box-shadow: 0 20px 10px -15px rgba(0,0,0,.8);
+  margin: 0 auto;
+  padding: 5px;
+  width: 70%;
+}
+.content h1 {
+  font: bold 21px/1.5em sans-serif;
+  margin: .5em 0;
+  padding: 0;
+  text-align: center;
+  -webkit-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+  -moz-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+  text-shadow: 0 1px 1px rgba(0,0,0,.5);
+  text-transform: uppercase;
+}
+#menu {
+  background-color: #ddd;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#999));
+  background: -webkit-linear-gradient(top, #ddd, #999);
+  background: -moz-linear-gradient(top, #ddd, #999);
+  background: -ms-linear-gradient(top, #ddd, #999);
+  background: -o-linear-gradient(top, #ddd, #999);
+  background: linear-gradient(top, #ddd, #999);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr="#ddd", EndColorStr="#999");
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 10px 6px -6px rgba(0,0,0,.7);
+  -moz-box-shadow: 0 10px 6px -6px rgba(0,0,0,.7);
+  box-shadow: 0 10px 6px -6px rgba(0,0,0,.7);
+  display: inline-block;
+  margin: 10px 0 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  z-index: 900;
+}
+#menu ul {
+  float: right;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  right: 50%;
+}
+#menu ul li {
+  float: left;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+#menu ul li a {
+  background: transparent;
+  border-left: 1px solid #888;
+  border-right: 1px solid #eee;
+  color: #333;
+  display: block;
+  font: 12px/1.5em "Verdana", sans-serif;
+  margin: 0;
+  padding: 5px 20px;
+  text-decoration: none;
+  -webkit-text-shadow: 0 1px 0 rgba(255,255,255,.7);
+  -moz-text-shadow: 0 1px 0 rgba(255,255,255,.7);
+  text-shadow: 0 1px 0 rgba(255,255,255,.7);
+}
+#menu ul li a.dropdown:after {
+  content: "\25BC";
+  padding-left: 5px;
+}
+#menu ul li a.dropright:after {
+  content: "\25BA";
+  padding-left: 5px;
+}
+#menu ul li:first-child {
+  border-left: 1px solid #eee;
+}
+#menu ul li:last-child {
+  border-right: 1px solid #888;
+}
+#menu ul li.active a {
+  background-color: #fa6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fa6), to(#fe0));
+  background: -webkit-linear-gradient(top, #fa6, #fe0);
+  background: -moz-linear-gradient(top, #fa6, #fe0);
+  background: -ms-linear-gradient(top, #fa6, #fe0);
+  background: -o-linear-gradient(top, #fa6, #fe0);
+  background: linear-gradient(top, #fa6, #fe0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr="#fa6", EndColorStr="#fe0");
+  color: #000;
+  -webkit-text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  -moz-text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+#menu ul li:hover > a {
+  background-color: #111;
+  background: -webkit-gradient(linear, left top, left bottom, from(#111), to(#555));
+  background: -webkit-linear-gradient(top, #111, #555);
+  background: -moz-linear-gradient(top, #111, #555);
+  background: -ms-linear-gradient(top, #111, #555);
+  background: -o-linear-gradient(top, #111, #555);
+  background: linear-gradient(top, #111, #555);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr="#111", EndColorStr="#555");
+  color: #fff;
+  -webkit-text-shadow: 0 1px 0 rgba(0,0,0,.7);
+  -moz-text-shadow: 0 1px 0 rgba(0,0,0,.7);
+  text-shadow: 0 1px 0 rgba(0,0,0,.7);
+}
+#menu ul li:hover > ul {
+  display: block;
+}
+#menu ul ul {
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,.70);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,.70);
+  box-shadow: 0 0 10px rgba(0,0,0,.70);
+  display: none;
+  left: 0;
+  position: absolute;
+  right: auto;
+  text-align: left;
+  width: 140px;
+}
+#menu ul ul li {
+  border: 0 !important;
+  left: 0;
+  width: 100%;
+}
+#menu ul ul li a {
+  background-color: #ddd;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#999));
+  background: -webkit-linear-gradient(top, #ddd, #999);
+  background: -moz-linear-gradient(top, #ddd, #999);
+  background: -ms-linear-gradient(top, #ddd, #999);
+  background: -o-linear-gradient(top, #ddd, #999);
+  background: linear-gradient(top, #ddd, #999);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr="#ddd", EndColorStr="#999");
+  border: 0 !important;
+  margin: 0;
+  padding: 5px;
+}
+#menu ul ul li:hover > ul {
+  display: block;
+}
+#menu ul ul ul {
+  display: none;
+  position: absolute;
+  left: 140px;
+  top: 0;
+}
+
+	</style>
+</head>
+<body>
+	<div class="content">
+  <h1>centered dropdown menu with css</h1>
+  <div id="menu">
+    <ul>
+      <li class="active">
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="#">Blog</a>
+      </li>
+      <li>
+        <a class="dropdown" href="#">Tutorials</a>
+        <ul>
+          <li>
+            <a href="#">CSS</a>
+          </li>
+          <li>
+            <a href="#">Illustrator</a>
+          </li>
+          <li>
+            <a href="#">jQuery</a>
+          </li>
+          <li>
+            <a href="#">Photoshop</a>
+          </li>
+          <li>
+            <a class="dropright" href="#">Web Design</a>
+            <ul>
+              <li><a href="#">Articles</a></li>
+              <li><a href="#">Snippets</a></li>
+              <li><a href="#">Tips & Tricks</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a class="dropdown" href="#">Freebies</a>
+        <ul>
+          <li><a href="">Icons</a></li>
+          <li><a href="">Images</a></li>
+          <li><a href="">Fonts</a></li>
+          <li><a href="">PSDs</a></li>
+          <li><a href="">Vectors</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+    </ul>
+  </div>
+  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+</div>
+</body>
+</html>

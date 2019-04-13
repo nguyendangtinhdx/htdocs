@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p> Nhap cac so tu 5 -> 10: </p>
+	<input id="1" type="text">
+	<button onclick="my()">Test input</button>
+	<p id="2"></p>
+	<script>
+	/*	try
+		{
+			aalert("Hello Nguyen Dang Tinh ");		nếu sai cú pháp ở try thì hiển thị ở phần catch
+		}
+		catch(err)
+		{
+			document.write(err.message);
+		}*/
+		function my()
+		{
+			t = document.getElementById("2");
+		//	t.innerHTML = "";
+			x = document.getElementById("1").value;
+			try
+			{
+				if(x == "")	throw "empty";
+				if(isNaN(x))	throw "not is number";
+		//		x=Number(x);
+				if(x > 10)		throw "too high"; 
+				if(x < 5)		throw "too low"; 
+				else	throw "OK"
+			}
+			catch(err)
+			{
+				t.innerHTML = "Input is " + err;
+			}
+		/*	finally
+			{
+				document.getElementById("1").value = "first ";  hiển thị first sau khi vt thực hiện
+			}*/
+		}
+	</script>
+</body>
+</html>

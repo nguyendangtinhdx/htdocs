@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body {
+  background: #ddd;
+}
+
+.yosemite-search {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -15px -150px;
+  width: 300px;
+  background: #fff;
+  border-radius: 4px;
+  font-family: sans-serif;
+  font-weight: 300;
+}
+.yosemite-search * {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  font: inherit;
+}
+.yosemite-search .clear {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 8px;
+  height: 16px;
+  width: 16px;
+  border: 0;
+  padding: 0;
+  margin: -8px 0 0;
+  border-radius: 100%;
+  text-align: center;
+  background: #7d7d7d;
+  color: #fff;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  cursor: default;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.yosemite-search .clear:focus {
+  outline: 0;
+}
+.yosemite-search .clear svg {
+  fill: #fff;
+  height: 12px;
+  width: 12px;
+}
+.yosemite-search .ring {
+  z-index: 0;
+  position: absolute;
+  border-radius: inherit;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 1px 1px -1px rgba(0, 0, 0, 0.4), 0 0 0 30px rgba(141, 186, 234, 0);
+  -webkit-transition: box-shadow 0 ease-in-out;
+  transition: box-shadow 0 ease-in-out;
+}
+.yosemite-search .ring svg {
+  fill: #333;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -7px;
+  height: 14px;
+  width: 14px;
+  margin-left: -45px;
+  -webkit-transition: margin 0.2s ease-in-out;
+  transition: margin 0.2s ease-in-out;
+}
+.yosemite-search input {
+  display: block;
+  position: relative;
+  z-index: 1;
+  box-shadow: none;
+  background: none;
+  border: 0;
+  margin: 0 auto;
+  padding: 3px 28px;
+  width: 54px;
+  font-size: 0.9em;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+}
+.yosemite-search input::-webkit-input-placeholder {
+  color: #bbb;
+}
+.yosemite-search input::-moz-placeholder {
+  color: #bbb;
+}
+.yosemite-search input:-ms-input-placeholder {
+  color: #bbb;
+}
+.yosemite-search input::placeholder {
+  color: #bbb;
+}
+.yosemite-search input:focus, .yosemite-search input:valid {
+  outline: 0;
+  width: 250px;
+}
+.yosemite-search input:focus::-webkit-input-placeholder, .yosemite-search input:valid::-webkit-input-placeholder {
+  color: #ddd;
+}
+.yosemite-search input:focus::-moz-placeholder, .yosemite-search input:valid::-moz-placeholder {
+  color: #ddd;
+}
+.yosemite-search input:focus:-ms-input-placeholder, .yosemite-search input:valid:-ms-input-placeholder {
+  color: #ddd;
+}
+.yosemite-search input:focus::placeholder, .yosemite-search input:valid::placeholder {
+  color: #ddd;
+}
+.yosemite-search input:focus + .ring, .yosemite-search input:valid + .ring {
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+  box-shadow: 0 1px 1px -1px rgba(0, 0, 0, 0.4), 0 0 0 3px #8dbaea;
+}
+.yosemite-search input:focus + .ring svg, .yosemite-search input:valid + .ring svg {
+  margin-left: -145px;
+}
+.yosemite-search input:focus ~ .clear, .yosemite-search input:valid ~ .clear {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
+	</style>
+</head>
+<body>
+	
+<form class="yosemite-search">
+  <input type="text" id="y-search" required="required" placeholder="Search"/>
+  <label for="y-search" class="ring">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+      <path d="M10 1q1.828 0 3.496 0.715t2.871 1.918 1.918 2.871 0.715 3.496q0 1.57-0.512 3.008t-1.457 2.609l5.68 5.672q0.289 0.289 0.289 0.711 0 0.43-0.285 0.715t-0.715 0.285q-0.422 0-0.711-0.289l-5.672-5.68q-1.172 0.945-2.609 1.457t-3.008 0.512q-1.828 0-3.496-0.715t-2.871-1.918-1.918-2.871-0.715-3.496 0.715-3.496 1.918-2.871 2.871-1.918 3.496-0.715zM10 3q-1.422 0-2.719 0.555t-2.234 1.492-1.492 2.234-0.555 2.719 0.555 2.719 1.492 2.234 2.234 1.492 2.719 0.555 2.719-0.555 2.234-1.492 1.492-2.234 0.555-2.719-0.555-2.719-1.492-2.234-2.234-1.492-2.719-0.555z"></path>
+    </svg>
+  </label>
+  <button type="reset" class="clear">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+      <path d="M19 4q0.43 0 0.715 0.285t0.285 0.715q0 0.422-0.289 0.711l-6.297 6.289 6.297 6.289q0.289 0.289 0.289 0.711 0 0.43-0.285 0.715t-0.715 0.285q-0.422 0-0.711-0.289l-6.289-6.297-6.289 6.297q-0.289 0.289-0.711 0.289-0.43 0-0.715-0.285t-0.285-0.715q0-0.422 0.289-0.711l6.297-6.289-6.297-6.289q-0.289-0.289-0.289-0.711 0-0.43 0.285-0.715t0.715-0.285q0.422 0 0.711 0.289l6.289 6.297 6.289-6.297q0.289-0.289 0.711-0.289z"></path>
+    </svg>
+  </button>
+</form>
+</body>
+</html>

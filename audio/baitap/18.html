@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#tooltip1{position: absolute;}
+	#tooltip2{visibility: hidden;
+		color: #E99E09;
+		font-size: 40px;
+		font-weight: bold;
+		position: fixed;
+		transition: opacity 3s;
+		opacity: 0}
+	#tooltip1:hover #tooltip2{visibility: visible;
+		opacity: 1}
+	span{
+		float: left;
+		background: #FCFFCA;
+		padding: 10px;
+		position: relative;
+		left:320px;
+		top: -220px;
+		width: 73%;
+		border: 4px dashed #E99E09}
+	u{color: #E99E09;}
+	</style>
+</head>
+<body>
+	<div id="tooltip1">
+		<article>
+		<a href="#1"><img onclick="my()" src="image/muine.jpg"height="200" width="300"></a>
+	<p id="1"></p>
+	<script>
+		function my()
+		{
+			document.getElementById('1').innerHTML = "<span>Nếu bạn đang ở châu Á, không cần phải suy nghĩ nhiều, cách dễ dàng nhất để khám phá nơi đây là thuê một chiếc xe máy. Giá thuê xe máy ở Mũi Né khoảng từ 8 đến 12 USD/ngày. Bạn phải thật cẩn thận vì giao thông ở đây khá lộn xộn. Một lời khuyên dành cho bạn là phải luôn đội nón bảo hiểm nếu bạn không muốn bị cảnh sát giao thông phạt.Vi vu bằng xe máy khiến bạn cảm thấy khá thoải mái và linh hoạt để tự mình khám phá nhiều địa điểm khác lạ, nhiều bãi biển đẹp và cả cuộc sống thường ngày của người dân nơi đây.Nếu bạn đã thuê một chiếc xe máy, nhất định phải đi một chuyến đến <u>Bàu Trắng</u>. Bạn sẽ cảm thấy thú vị khi chạy xe trên đoạn đường nhựa trải dài tuyệt đẹp băng qua những làng quê Việt Nam...<br> ...Khi đã tới Bàu Trắng, bạn có thể chinh phục những triền cát uốn lượn bằng những chiếc mô tô cho thuê ở đây. Cồn cát chỉ cách trung tâm Mũi Né khoảng 25km, và sau những giờ phút thú vị lượn mình trên cát, bạn có thể đi bộ dạo quanh hồ sen ngắm nhìn mặt trời lặn.<u>Chợ Mũi</u> Né lúc mờ sáng cho bạn một cái nhìn chân thật nhất về cuộc sống của những ngư dân Việt Nam. Mỗi sáng, từng chiếc thuyền đánh cá cập bờ, các thành viên articlerong gia đình cùng nhau bày bán hải sản đánh bắt được cho các thương nhân địa phương, chủ nhà hàng và cả chủ các hàng quán vỉa hè. Hình ảnh lưới đầy ắp cá, hải sản tươi mới khắp nơi và không khí buôn bán buổi sáng chắc chắn đọng lại trong bạn nhiều ấn tượng.<u>Chợ Mũi</u> Né lúc mờ sáng cho bạn một cái nhìn chân thật nhất về cuộc sống của những ngư dân Việt Nam. Mỗi sáng, từng chiếc thuyền đánh cá cập bờ, các thành viên articlerong gia đình cùng nhau bày bán hải sản đánh bắt được cho các thương nhân địa phương, chủ nhà hàng và cả chủ các hàng quán vỉa hè. Hình ảnh lưới đầy ắp cá, hải sản tươi mới khắp nơi và không khí buôn bán buổi sáng chắc chắn đọng lại trong bạn nhiều ấn tượng.</span>";
+		}
+	</script>
+			<div id="tooltip2">
+				<p>Mũi Né - Huyền bí và quyến rũ</p>
+			</div></article>
+	</div>
+</body>
+</html>

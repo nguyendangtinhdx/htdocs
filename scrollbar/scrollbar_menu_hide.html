@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    @font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v8/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+/* Reset/Normalize */
+  article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block;
+  }
+  audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+  }
+  audio:not([controls]) {
+    display: none;
+  }
+  [hidden] {
+    display: none;
+  }
+  html {
+    font-size: 100%;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.231;
+  }
+
+body, button, input, select, textarea {
+    font-family: 'Open Sans', sans-serif;
+    color: #222;
+}
+
+/* WEBKIT SCROLLBAR */
+/* **************** */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 4px rgba(120,120,120,0.5);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    background: rgba(120,120,120,0.6);
+    -webkit-box-shadow: inset 0 0 4px rgba(120,120,120,0.6);
+  }
+
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(120,120,120,0.4);
+  }
+
+
+/*MOBILE FIRST APPROACH*/
+/* STYLES GO HERE */
+/*Define Accordion box*/
+.accordion {
+    width: 90%;
+    overflow: hidden;
+    margin: 1em auto;
+    border: solid 1px #d7dcde;
+    padding: 0;
+}
+
+/*General Accordion****************************************************************************/
+/*Set style of open slide*/
+.accordion section:target {
+    background: #fFF;
+    padding: 1em;
+
+    height: 350px;
+    width: 97%;
+    overflow: auto;
+}
+
+.accordion section:target:hover {
+    background: #FFF;
+}
+
+.accordion section:target h3 {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: #9be100;
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+.accordion section:target h2 {
+    display: none;
+}
+
+.accordion section:target .sectionContent {
+    display: block;
+}
+
+.accordion section h2 a {
+    padding: 0.4em 0.7em;
+    display: block;
+    font-size: 0.9em;
+    font-weight: normal;
+    color: #002776;
+    text-decoration: none;
+}
+
+/*set style of closed slide*/
+.accordion section {
+    float: left;
+    overflow: hidden;
+    color: #333;
+    cursor: pointer;
+    background: #9be100;
+    margin-bottom: 1px;
+
+    width: 100%;
+    height: 40px;
+    -webkit-transition: height 0.2s ease-out;
+    -moz-transition: height 0.2s ease-out;
+    -o-transition: height 0.2s ease-out;
+    -ms-transition: height 0.2s ease-out;
+    transition: height 0.2s ease-out;
+    margin-right: 0px;
+    
+
+}
+
+.accordion section:hover {
+    background: #00a1de;
+}
+
+.accordion section h3, .accordion section .sectionContent {
+    display: none;
+}
+
+.accordion section:after {
+    position: relative;
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+}
+/*
+.accordion section:nth-child(1):after{content:'1';}
+.accordion section:nth-child(2):after{content:'2';}
+.accordion section:nth-child(3):after{content:'3';}
+.accordion section:nth-child(4):after{content:'4';}
+*/
+/*End General Accordion****************************************************************************/
+
+
+/* VERTICAL ACCORDION */
+.accordion section {
+    
+}
+/*Set height of the slide*/
+.accordion :target {
+    
+}
+
+.accordion section h2 {
+    position: relative;
+    left: 0;
+    top: -15px;
+}
+
+/*Set position of the number on the slide*/
+.accordion section:after {
+    top: -60px;
+    left: 810px;
+}
+
+.accordion section:target:after {
+    left: -9999px;
+}
+
+div.sectionContent {
+    padding: 1em;
+    overflow: auto;
+    height: calc(100% - 3em);
+}
+
+
+
+
+/*Up To Ipad portrait width (768px) */
+@media only screen 
+and (min-width : 768px) {
+ /* STYLES GO HERE */
+/* Horizontal Accordion */
+    .accordion section {
+        width: 5%;
+        height: 350px;
+        -moz-transition: width 0.2s ease-out;
+        -webkit-transition: width 0.2s ease-out;
+        -o-transition: width 0.2s ease-out;
+        -ms-transition: width 0.2s ease-out;
+        transition: width 0.2s ease-out;
+        margin-right: 1px;
+        margin-bottom: 0;
+        width: 40px;
+    }
+  
+/*Position the number of the slide*/
+  /*
+.accordion section:after{top:140px;left:15px;}
+*/
+  
+/*Header of closed slide*/
+    .accordion section h2 {
+        -webkit-transform: translateX(-100%) rotate(-90deg);
+        -moz-transform: translateX(-100%) rotate(-90deg);
+        -o-transform: translateX(-100%) rotate(-90deg);
+        -ms-transform: translateX(-100%) rotate(-90deg);
+        transform: translateX(-100%) rotate(-90deg);
+        -webkit-transform-origin: right top;
+        -moz-transform-origin: right top;
+        -o-transform-origin: right top;
+        -ms-transform-origin: right top;
+        transform-origin: right top;
+     -webkit-backface-visibility: hidden;
+        text-align: right;
+  /* position: absolute; */
+        margin: 0;
+        top: 0;
+        left: 0;
+        width: 350px;
+    } 
+
+/*On mouse over open slide*/
+    .accordion section:target {
+        width: calc(100% - 150px);
+        height: 320px;
+        overflow: hidden;
+    }
+  
+  
+/*End Horizontal Accordion *********************************************************************/;
+}
+
+/*Up To Ipad portrait width (768px) */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+ /* STYLES GO HERE */;
+}
+
+/*Bigger width (>768px) */
+@media only screen 
+and (min-width : 1024px) {
+ /* STYLES GO HERE */;
+}
+    </style>
+</head>
+<body>
+    <p>Resize the screen to see the accordion change</p>
+<div class="accordion">
+  <section id="profile">
+    <h2><a href="#profile">Profile</a></h2>
+    <h3>Contact Information</h3>
+    <div class="sectionContent">Profile Info</div>
+  </section>
+  <section id="interests">
+    <h2><a href="#interests">Interests</a></h2>
+    <h3>Interests</h3>
+    <div class="sectionContent">Bla bla bla lkerl
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla<br/><br/>
+      Bla bla bla Last<br/><br/>
+    </div>
+  </section>
+  <section id="webcasts">
+    <h2><a href="#webcasts">Webcasts</a></h2>
+    <h3>Our Webcasts</h3>
+    <div class="sectionContent">ppppp</div>
+  </section>
+  <section id="newsletters">
+    <h2><a href="#newsletters">Newsletters</a></h2>
+    <h3>Newsletters</h3>
+    <div class="sectionContent">aaaaa</div>
+  </section>
+</div>
+</body>
+</html>

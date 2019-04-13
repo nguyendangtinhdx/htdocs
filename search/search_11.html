@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function() {
+  $("#results").css("display", "none");
+
+  $("#search").submit(function(event) {
+    if ($("input").val() !== "") {
+      if ($("#results").css("display") == "none") {
+        getSearch($("input").val());
+        $("#results").fadeIn(400);
+      } else {
+        $("#results").fadeOut(400);
+        getSearch($("input").val());
+        // Delay before fade in to prevent occasional graphical issues
+        setTimeout(function () {
+          $("#results").fadeIn(400)
+        }, 250);
+      }
+    }
+    event.preventDefault();
+  });
+  $("#reset").click(function() {
+    $("#results").fadeOut(400, function (){
+      $("#results").html("");
+    });
+  });
+
+});
+
+function getSearch(term) {
+  $.ajax({
+    type: 'GET',
+    dataType: 'json',
+    url: "https://en.wikipedia.org/w/api.php?&callback=?",
+    data: {action: 'opensearch',  
+           format: 'json',
+          search: term},
+    contentType: "application/json; charset=utf-8"
+  })
+    .done(updateDoc)
+    .fail(handleErr);
+}
+
+
+function updateDoc(result) {
+  // Use wiki return data
+  var resString = "";
+  for (var i = 0; i < result[1].length; i++) {
+    resString += '<a target="_blank" href=' + result[3][i] + '><li>';
+    resString += '<h4>' + result[1][i] + '</h4>';
+    resString += '<p>' + result[2][i] + '</p>';
+    resString += '</li></a>';
+  }
+  $("#results").html(resString);
+}
+
+function handleErr(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+}
+	</script>
+	<style>
+	body {
+  background-image: url("http://s20.postimg.org/pc73jy8b1/sayagata_400px.png");
+  background-repeat: repeat;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  margin-top: 200px;
+}
+.container h1 {
+  font-size: 45px;
+  font-weight: 700;
+  padding-bottom: 25px;
+  color: #496D89;
+}
+.container .search-bar {
+  padding-bottom: 20px;
+}
+.container .search-bar .form-input {
+  border-color: #496D89;
+  border-width: 1px;
+  border-style: solid;
+  color: #496D89;
+}
+.container .results ul {
+  padding-left: 0;
+}
+.container .results ul li {
+  list-style-type: none;
+  background-color: #496D89;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.container .results ul li:hover {
+  opacity: 0.8;
+}
+.container .results a {
+  color: #fff;
+}
+.container .results a:hover {
+  text-decoration: none;
+}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+  <h1 class="text-center">Wikipedia Viewer</h1>
+  <form id="search" class="input-group search-bar">
+    <span class="input-group-btn">
+      <button id="submit" class="btn btn-default form-input" type="submit">Search</button>
+    </span>
+    <input id="input" type="text" class="form-control form-input" placeholder="Search for..." autocomplete="off">
+    <span class="input-group-btn">
+      <button id="reset" class="btn btn-default form-input" type="reset"><i class="fa fa-times"></i></button>
+      <a class="btn btn-default form-input" type="button" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Random</a>
+    </span>
+  </form>
+  <div class="results">
+    <ul id="results"></ul>
+  </div>
+</div>
+</body>
+</html>

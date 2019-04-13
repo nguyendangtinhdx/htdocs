@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	table,tr,td{border-collapse: collapse;
+				border: 1px solid black;
+				background: #E0F9D9;
+				color: #3D6600;
+				}
+	caption{font-size: 20px;
+			text-align: center;
+			color: #336600;
+			padding: 15px}
+	td:nth-child(2){padding-right: 50px}
+	#a12{width: 480px;box-shadow: 3px 3px 3px #787878;
+		margin: auto;}
+	#b12{text-align: center;}
+	#c12{text-align: center;color: red}
+	#d12{height: 70px;
+		border: 1px solid black;
+		width: 99px;
+		margin: 0;
+		background: #FFFFFF;}
+	#e12{background: #0A246A;color: #FFFFFF}
+	#f12{color: #000000}
+	</style>
+</head>
+<body>
+	<div id="a12">
+		<table>
+		<form name="view">
+				<caption><b>Phiếu đăng ký tham gia chương trình khuyến mãi</b></caption>
+				<tr>
+					<td>Họ và tên</td>
+					<td><input type="text" size="30"></td>
+				</tr>
+				<tr>
+					<td>Địa chỉ</td>
+					<td><input type="text" size="25"></td>
+				</tr>
+				<tr>
+					<td>Điện thoại</td>
+					<td><input type="text" size="20"></td>
+				</tr>
+				<tr>
+					<td>Phái</td>
+					<td>
+						<input type="radio" name="gender">Nam
+						<input type="radio" name="gender" checked>Nữ
+					</td>
+				</tr>
+				<tr>
+					<td>Nghề nghiệp</td>
+					<td>
+						<select name="job" id="">
+							<option value="teacher">Giáo viên</option>
+							<option value="student">Sinh viên</option>
+							<option value="doctor">Bác sĩ</option>
+							<option value="engineer">Kĩ sư</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Chọn sản phẩm tham gia</td>
+					<td>
+					<!-- 	<p id="d12" type="text" size="15">
+							<t id="e12">Kem đánh răng </t><br>	
+							<t id="f12">Bột giặt </t><br>	
+							<t id="e12">Dầu gội đầu&ensp;&ensp; </t><br>	
+							<t id="f12">Sữa tắm</t><br>	 -->
+							<select name="personal tems" id="">
+								<option value="toothpaste">Kem đánh răng</option>
+								<option value="washing porder">Bột giặt</option>
+								<option value="shampoo">Dầu gội đầu</option>
+								<option value="milk toothpick">Sữa tắm</option>
+							</select>
+						<!-- </p> -->
+					</td>
+				</tr>
+				<tr>
+					<td>Số người dự đoán tham gia</td>
+					<td><input type="text" size="10"></td>
+				</tr>
+				<tr>
+					<td colspan="2" id="b12">
+						<button onclick="my();return false">Đồng ý</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" id='c12'>
+						<p id="1"></p>
+						<script>
+							function my() 
+							{
+								var x =document.forms['view'];
+								var y="";
+								for (i = 0; i < x.length;i++) 
+								{
+									y += x.elements[i].value+"-";
+								}
+								// document.getElementById('1').innerHTML = "Bạn đã đăng kí thành công !!!";
+								document.getElementById('1').innerHTML = y + "<br>" + "Bạn đã đăng kí thành công !!!";
+							}
+						</script>
+					</td>
+				</tr>
+			</form>
+			</table>
+	</div>
+</body>
+</html>

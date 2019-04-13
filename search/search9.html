@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		$(function() {
+  $('.srch-button').click(function(){
+    var $wrapper = $('.srch-wrapper'), 
+        isOpen = $wrapper.hasClass('open');
+    $wrapper.toggleClass('open')
+      .find('.srch-input')[isOpen ? 'blur' : 'focus']();
+    // remove this - onyl for demo
+    return false;
+  });
+  
+})
+	</script>
+	<style>
+	body {
+  padding: 10px 20px;
+  background-color: #343434;
+  color: #fff;
+}
+
+.center {
+  padding: 60px;
+  max-width: 400px;
+  margin-left: 200px;
+}
+
+.srch-form {
+  position: relative;
+  width: 44px;
+}
+
+.srch-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 40px;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+.srch-wrapper.open {
+  width: 200px;
+}
+
+.srch-input {
+  position: relative;
+  background-color: transparent;
+  height: 44px;
+  line-height: 26px;
+  padding: 5px 10px 5px 32px;
+  box-sizing: border-box;
+  border: 2px solid #ddd;
+  border-radius: 100px;
+  margin: 0;
+  width: 100%;
+}
+.srch-input:focus {
+  outline: none;
+  border-color: #aaa;
+}
+
+.srch-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  color: #ddd;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+}
+.srch-button:focus {
+  outline: none;
+}
+
+.srch-input:focus + .srch-button,
+.srch-button:hover {
+  color: #aaa;
+}
+
+	</style>
+</head>
+<body>
+	<h1>Collapsible search form</h1>
+<div class="center">
+<form action="" class="srch-form">
+  <div class="srch-wrapper open">
+    <input type="text" class="srch-input" placeholder="Search..." />
+    <button class="srch-button" type="submit">
+      <em class="icon-search"></em>
+    </button>
+  </div>
+</form>
+</div>
+</body>
+</html>
