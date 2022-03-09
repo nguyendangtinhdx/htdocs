@@ -1,169 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<script>
-		// giữ thanh nav cố định bên trái
-		// <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
-		$(document).ready(fucntion(){
-			$('nav').affix({offset:{top:205}});
-		});
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // giữ thanh nav cố định bên trái
+      // <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
+      $(document).ready(function () {
+        $("nav").affix({ offset: { top: 205 } });
+      });
 
-		// giữ thanh menu cố định 
-		// <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
-		$(document).ready(fucntion(){
-			$('.navbar').affix({offset:{top:$("header").outerHeight(true)}});
-		});
+      // giữ thanh menu cố định
+      // <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+      $(document).ready(function () {
+        $(".navbar").affix({ offset: { top: $("header").outerHeight(true) } });
+      });
 
-		// Tạo dấu X(close)
-		// <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> Try it
-		$(document).ready(fucntion(){
-			$('.close').click(fucntion(){
-				$(#my).alert("close");
-			});
-		});
+      // Tạo dấu X(close)
+      // <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> Try it
+      $(document).ready(function () {
+        $(".close").click(function () {
+          $("#my").alert("close");
+        });
+      });
 
-		// Các nút
-		$(document).ready(fucntion(){
-			$(".btn").click(fucntion(){
-				$(this).button('loading');	// toggle | reset | string
-			});
-		});
+      // Các nút
+      $(document).ready(function () {
+        $(".btn").click(function () {
+          $(this).button("loading"); // toggle | reset | string
+        });
+      });
 
-		//carousel
-		$(document).ready(fucntion(){
-			// activate carousel
-			$("#my").carousel();
+      //carousel
+      $(document).ready(function () {
+        // activate carousel
+        $("#my").carousel();
 
-			// enalbe  carousel indicator
-			$(".item1").click(fucntion(){
-				$("#my").carousel(0);
-			})
-			$(".item1").click(fucntion(){
-				$("#my").carousel(1);
-			});
-			// enable carousel controls
-			$("left").click(fucntion()
-			{
-				$("#my").carousel("prev");
-			});
-			$("right").click(fucntion()
-			{
-				$("#my").carousel("next");
-			});
-			// tốc độ: 500
-			$("#my").carousel({interval: 500});
-			// click để start
-			$(#myBtn).click(fucntion(){
-				$(#my).carousel("cycle");
-			});
-			// click để stop
-			$(#myBtn).click(fucntion(){
-				$(#my).carousel("pause");
-			});
-		})
+        // enalbe  carousel indicator
+        $(".item1").click(function () {
+          $("#my").carousel(0);
+        });
+        $(".item1").click(function () {
+          $("#my").carousel(1);
+        });
+        // enable carousel controls
+        $("left").click(function () {
+          $("#my").carousel("prev");
+        });
+        $("right").click(function () {
+          $("#my").carousel("next");
+        });
+        // tốc độ: 500
+        $("#my").carousel({ interval: 500 });
+        // click để start
+        $("#myBtn").click(function () {
+          $("#my").carousel("cycle");
+        });
+        // click để stop
+        $("#myBtn").click(function () {
+          $("#my").carousel("pause");
+        });
+      });
 
-		// collapse:(click để hiển thị nội dung)
-		$(document).ready(fucntion(){
-			// vừa hiển thị vừa ẩn
-			$(".btn-primary").click(fucntion(){
-				$(".collapse").collapse('toggle');
-			});
-			// hiển thị
-			$(".btn-success").click(fucntion(){
-				$(".collapse").collapse('show');
-			});
-			// vừa hiển thị vùa ẩn
-			$(".btn-warning").click(fucntion(){
-				$(".collapse").collapse('hide');
-			});
-		});
+      // collapse:(click để hiển thị nội dung)
+      $(document).ready(function () {
+        // vừa hiển thị vừa ẩn
+        $(".btn-primary").click(function () {
+          $(".collapse").collapse("toggle");
+        });
+        // hiển thị
+        $(".btn-success").click(function () {
+          $(".collapse").collapse("show");
+        });
+        // vừa hiển thị vùa ẩn
+        $(".btn-warning").click(function () {
+          $(".collapse").collapse("hide");
+        });
+      });
 
-		// collapse:(click để hiển thị nội dung) 2
-		$(document).ready(fucntion(){
-			// open
-			$('.#demo').on("hide.bs.collapse",fucntion(){
-				$(".btn").html('<span class="glyphicon glyphicon-collapse-down"></span>Open');
-			});
-			// close
-			$('.#demo').on("hide.bs.collapse",fucntion(){
-				$(".btn").html('<span class="glyphicon glyphicon-collapse-up"></span>Close');
-			});
-		});
+      // collapse:(click để hiển thị nội dung) 2
+      $(document).ready(function () {
+        // open
+        $(".#demo").on("hide.bs.collapse", function () {
+          $(".btn").html(
+            '<span class="glyphicon glyphicon-collapse-down"></span>Open'
+          );
+        });
+        // close
+        $(".#demo").on("hide.bs.collapse", function () {
+          $(".btn").html(
+            '<span class="glyphicon glyphicon-collapse-up"></span>Close'
+          );
+        });
+      });
 
-		// dropdown 
-		// <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Example</a>
-		$(document).ready(fucntion(){
-			// dropdown
-			$('.dropdown-toggle').dropdown();
+      // dropdown
+      // <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Example</a>
+      $(document).ready(function () {
+        // dropdown
+        $(".dropdown-toggle").dropdown();
 
-			// dropdown change arrow
-			$(.dropdown).on("hide.bs.dropdown",fucntion(){
-				$(".btn").html('Dropdown <span class="caret"></span>');
-			});
-			$(.dropdown).on("hide.bs.dropdown",fucntion(){
-				$(".btn").html('Dropdown <span class="caret caret-up"></span>');
-			});
-		});
+        // dropdown change arrow
+        $(".dropdown").on("hide.bs.dropdown", function () {
+          $(".btn").html('Dropdown <span class="caret"></span>');
+        });
+        $(".dropdown").on("hide.bs.dropdown", function () {
+          $(".btn").html('Dropdown <span class="caret caret-up"></span>');
+        });
+      });
 
-		// multi menu
-		$(document).ready(fucntion(){
-			// menu vertical(dọc)
-			$('.dropdown a.test').on("click",fucntion(e){
-				$(this).next('ul').toggle();
-				e.stopPropagation();
-				e.preventDefault();
-			});
-			// menu horizontal(ngang)
-			$('.dropdown-submenu a.test').on("click",fucntion(e){
-				$(this).next('ul').toggle();
-				e.stopPropagation();
-				e.preventDefault();
-			});
-		});
+      // multi menu
+      $(document).ready(function () {
+        // menu vertical(dọc)
+        $(".dropdown a.test").on("click", function (e) {
+          $(this).next("ul").toggle();
+          e.stopPropagation();
+          e.preventDefault();
+        });
+        // menu horizontal(ngang)
+        $(".dropdown-submenu a.test").on("click", function (e) {
+          $(this).next("ul").toggle();
+          e.stopPropagation();
+          e.preventDefault();
+        });
+      });
 
-		// modal
-		$(document).ready(fucntion(){
-			$(#myBtn).click(fucntion(){
-				$("#myModal").modal();
+      // modal
+      $(document).ready(function () {
+        $("#myBtn").click(function () {
+          $("#myModal").modal();
 
-				// $("#myBtn").click(function(){
-				// 	$("#myModal").modal({backdrop: true});
-				// });
-				// $("#myBtn2").click(function(){
-				// 	$("#myModal2").modal({backdrop: false});
-				// });
-			});
-		});
+          // $("#myBtn").click(function(){
+          // 	$("#myModal").modal({backdrop: true});
+          // });
+          // $("#myBtn2").click(function(){
+          // 	$("#myModal2").modal({backdrop: false});
+          // });
+        });
+      });
 
-		// popover
-		$(document).ready(fucntion(){
-			$('[data-toggle="popover"]').popover();
-			// hover
-			$('.btn-warning').popover({title: "Header", content: "Blabla", trigger: "hover", placement:"right"}); 
-		});
+      // popover
+      $(document).ready(function () {
+        $('[data-toggle="popover"]').popover();
+        // hover
+        $(".btn-warning").popover({
+          title: "Header",
+          content: "Blabla",
+          trigger: "hover",
+          placement: "right",
+        });
+      });
 
-		// scroll
-		$(document).ready(fucntion(){
-			$("body").scrollspy({target:".navbar",offset:50});
-		});
+      // scroll
+      $(document).ready(function () {
+        $("body").scrollspy({ target: ".navbar", offset: 50 });
+      });
 
-		// tab
-		$(document).ready(fucntion(){
-			$('.nav-tab a').click(fucntion(){
-				$(this).tab("show");
-			});
-		})
+      // tab
+      $(document).ready(function () {
+        $(".nav-tab a").click(function () {
+          $(this).tab("show");
+        });
+      });
 
-		// tooltip
-		$(document).ready(fucntion(){
-			$('[data-toggle="tooltip"]').tooltip();
+      // tooltip
+      $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
 
-			// $('.btn').tooltip({title: "<h1><strong>HTML</strong> inside <code>the</code> <em>tooltip</em></h1>", html: true, placement: "bottom"});
-		});
-	</script>
-</body>
+        // $('.btn').tooltip({title: "<h1><strong>HTML</strong> inside <code>the</code> <em>tooltip</em></h1>", html: true, placement: "bottom"});
+      });
+    </script>
+  </body>
 </html>
